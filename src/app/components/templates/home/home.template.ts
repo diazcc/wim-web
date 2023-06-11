@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-home-template',
@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class HomeTemplate {
 
+  classMenu = "menu hidden";
+  classMain = "main";
+  showMenu(){
+    if (this.classMenu=="menu hidden") {
+      this.classMenu="menu";
+      this.classMain = "main filterBlur";
+    }else{
+      this.classMenu="menu hidden";
+      this.classMain = "main";
+    }
+    console.log("Menu activo");
+  }
 }

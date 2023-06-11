@@ -6,15 +6,14 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./home.template.scss']
 })
 export class HomeTemplate {
-
-  classMenu = "menu hidden";
+  classMenu = "menu--hidden";
   classMain = "main";
   showMenu(){
-    if (this.classMenu=="menu hidden") {
+    if (this.classMenu=="menu--hidden") {
       this.classMenu="menu";
       this.classMain = "main filterBlur";
     }else{
-      this.classMenu="menu hidden";
+      this.classMenu="menu--hidden";
       this.classMain = "main";
     }
     console.log("Menu activo");

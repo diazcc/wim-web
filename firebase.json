@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "dist/infinityindustry",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

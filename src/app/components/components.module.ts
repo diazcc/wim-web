@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeTemplate } from './templates/home/home.template';
 import { NavbarMolecule } from './molescules/navbar/navbar.molecule';
 import { HeaderOrganism } from './organisms/header/header.organism';
+import { IconAtom } from './atoms/icon/icon.atom';
 
 
 
@@ -10,7 +11,8 @@ import { HeaderOrganism } from './organisms/header/header.organism';
   declarations: [
     HomeTemplate,
     NavbarMolecule,
-    HeaderOrganism
+    HeaderOrganism,
+    IconAtom
   ],
   imports: [
     CommonModule
@@ -18,7 +20,8 @@ import { HeaderOrganism } from './organisms/header/header.organism';
   exports:[
     HomeTemplate,
     NavbarMolecule,
-    HeaderOrganism
+    HeaderOrganism,
+    IconAtom
   ]
 })
 export class ComponentsModule { }

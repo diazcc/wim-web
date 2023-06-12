@@ -1,18 +1,13 @@
 <div class="wrapper">
   <app-header [dataHeader]="dataHeader"></app-header>
-  <!-- <header class="header">
-    <div [ngClass]="classMenu">
-      <ul class="content-menu ">
-        <li class="option-menu">Adidas</li>
-        <li class="option-menu">Nike</li>
-        <li class="option-menu">Puma</li>
-        <li class="option-menu">Bershka</li>
-      </ul>
-    </div>
-  </header> -->
   <main [ngClass]="classMain">
-    <div class="img">
-      <img src="assets/img/c2.jpg" alt="">
+    <div class="img-presentation">
+        <ul class="optionContentPresentation">
+          <li><app-icon [urlIcon]="'assets/icons/adidas.svg'"></app-icon></li>
+          <li><app-icon [urlIcon]="'assets/icons/nike.svg'"></app-icon></li>
+          <li><app-icon [urlIcon]="'assets/icons/puma.svg'"></app-icon></li>
+          <li><app-icon [urlIcon]="'assets/icons/quest.png'"></app-icon></li>
+        </ul>
     </div>
     <section class="section">
       <article class="article">

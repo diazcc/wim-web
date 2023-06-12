@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class HomeTemplate {
   dataHeader = {
+    urlIconMenu: "assets/icons/menu.svg",
     classHeader :"header",
     classContentHeader :"content-header",
     classIconMenu :"icon-Menu",
@@ -29,9 +30,11 @@ export class HomeTemplate {
     if (this.dataHeader.dataNavBar.classMenu=="menu--hidden") {
       this.dataHeader.dataNavBar.classMenu="menu";
       this.classMain = "main filterBlur";
+      this.dataHeader.urlIconMenu = "assets/icons/close.svg"
     }else{
       this.dataHeader.dataNavBar.classMenu="menu--hidden";
       this.classMain = "main";
+      this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
     }
     console.log("Menu activo");
   }

@@ -1,3 +1,17 @@
+@keyframes sliderPhotos{
+  0%{margin-left: 0%;}
+  20%{margin-left: 0%;}
+
+  25%{margin-left: -100%;}
+  45%{margin-left: -100%;}
+
+  50%{margin-left: -200%;}
+  70%{margin-left: -200%;}
+
+  75%{margin-left: -300%;}
+  100%{margin-left: -300%;}
+}
+
 
 .wrapper{
   width: 100vw;
@@ -80,6 +94,7 @@
     flex-wrap: wrap;
     gap: 1rem;
     align-items: center;
+    justify-content: center;
     overflow-y: auto;
     transition: ease-in-out .2s;
     h1{
@@ -136,13 +151,76 @@
         height: 90%;
         background-color: rgb(54, 54, 54);
       }
+
     }
+    .sectionPhotos{
+      width: 100%;
+      height: 35rem;
+      overflow: hidden;
+      text-align: center;
+      h1{
+        font-size: 2rem;
+        padding: 1rem;
+      }
+      .containerArticlePhotos{
+        animation: sliderPhotos 16s infinite ease-in-out;
+        display: flex;
+        width: 400%;
+        .articlePhoto{
+          background-color: white;
+          width: 100%;
+          p{
+            width: 100%;
+            background-color: rgb(48, 48, 48);
+            height: 10rem;
+            color: white;
+          }
+          img{
+            width: 100%;
+          }
+
+        }
+      }
+
+    }
+    .sectionPrincipalProduct{
+      display: flex;
+      width: 100%;
+      height: 25rem;
+      background-color: white;
+      align-items: center;
+      justify-content: center;
+      .articlePrincipalProduct{
+        display: flex;
+        width: 90%;
+        height: 60%;
+        background-color: rgb(196, 196, 196);
+        display: flex;
+        flex-direction: column;
+        .imgPrincipalProduct{
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          img{
+            width: 100%;
+          }
+        }
+        h2{
+          color: black;
+        }
+        p{
+          color: black;
+        }
+      }
+    }
+
   }
 
   .footer{
     background-color: rgb(38, 38, 38);
     width: 100%;
-    height: 4rem;
+    height: 20rem;
   }
 }
 

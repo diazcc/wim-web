@@ -1,3 +1,12 @@
+@font-face{
+  font-family: 'bulone';
+  src: url('/assets/fonts/bulone/Bulone.ttf') format('truetype');
+}
+@font-face{
+  font-family: 'buvica';
+  src: url('/assets/fonts/queensides/Queensides-3z7Ey.ttf') format('truetype');
+}
+
 .header{
   display: flex;
   flex-direction: column;
@@ -16,10 +25,14 @@
   }
 
   .header-titulo{
+    display: flex;
+    justify-content: center;
     cursor: pointer;
     margin: 0.5rem;
     color: white;
     font-size: x-large;
+    width: 100%;
+    font-family:'buvica';
 
     &:hover{
       color: rgb(171, 170, 170);

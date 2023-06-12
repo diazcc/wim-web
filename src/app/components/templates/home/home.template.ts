@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class HomeTemplate {
   dataHeader = {
+    textTitle :"Infinity Industry",
     urlIconMenu: "assets/icons/menu.svg",
     classHeader :"header",
     classContentHeader :"content-header",

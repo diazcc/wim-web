@@ -7,10 +7,10 @@ import { Component } from '@angular/core';
 })
 export class HeaderOrganism {
   dataNavBar = {
-    textOption1 : "fd",
-    textOption2 : "fdf",
-    textOption3 : "fdf",
-    textOption4 : "fdf",
+    textOption1 : "Adidas",
+    textOption2 : "Nike",
+    textOption3 : "Quest",
+    textOption4 : "Puma",
     classMenu : "menu",
     classContentMenu : "content-menu",
     classOptionMmenu : "option-menu"

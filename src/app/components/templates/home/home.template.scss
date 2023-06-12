@@ -1,15 +1,4 @@
 
-
-ul{
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-}
-
-li{
-  list-style: none;
-}
-
 .wrapper{
   width: 100vw;
   height: 100vh;
@@ -43,45 +32,46 @@ li{
         color: rgb(171, 170, 170);
       }
     }
-    .menu{
-      display: flex;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.436);
-      transition: ease-in-out .3s;
-      z-index: -1;
-      transform: translateY(0%);
+    // .menu{
+    //   display: flex;
+    //   width: 100%;
+    //   background-color: rgba(0, 0, 0, 0.436);
+    //   transition: ease-in-out .3s;
+    //   z-index: -1;
+    //   transform: translateY(0%);
 
-      &--hidden{
-        transform: translateY(-140%);
-        transition: ease-in-out .3s;
-        z-index: -1;
-        .content-menu{
-          display: none;
-        }
-      }
-      .content-menu{
-        display: flex;
-        width: 100%;
-        height: 100%;
-        .option-menu{
-          display: flex;
-          font-size: 1.5rem;
-          margin: 0.2rem;
-          padding-left: 1rem;
-          height: 3rem;
-          align-items: center;
+    //   &--hidden{
+    //     transform: translateY(-140%);
+    //     transition: ease-in-out .3s;
+    //     z-index: -1;
+    //     .content-menu{
+    //       display: none;
+    //     }
+    //   }
+    //   .content-menu{
+    //     display: flex;
+    //     width: 100%;
+    //     height: 100%;
+    //     .option-menu{
+    //       display: flex;
+    //       font-size: 1.5rem;
+    //       margin: 0.2rem;
+    //       padding-left: 1rem;
+    //       height: 3rem;
+    //       align-items: center;
 
-          cursor: pointer;
-          &:hover{
-            background-color: rgba(255, 255, 255, 0.236);
-          }
-          &:active{
-            background-color: rgba(255, 255, 255, 0.346);
-          }
-        }
-      }
-    }
+    //       cursor: pointer;
+    //       &:hover{
+    //         background-color: rgba(255, 255, 255, 0.236);
+    //       }
+    //       &:active{
+    //         background-color: rgba(255, 255, 255, 0.346);
+    //       }
+    //     }
+    //   }
+    // }
   }
+
   .main{
     background-color: rgb(11, 11, 11);
     width: 100%;
@@ -129,11 +119,6 @@ li{
     width: 100%;
     height: 4rem;
   }
-}
-
-
-.hidden{
-
 }
 
 .filterBlur{

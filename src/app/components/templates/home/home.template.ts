@@ -6,6 +6,17 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./home.template.scss']
 })
 export class HomeTemplate {
+
+  dataNavBar = {
+    textOption1 : "fd",
+    textOption2 : "fdf",
+    textOption3 : "fdf",
+    textOption4 : "fdf",
+    classMenu : "menu",
+    classContentMenu : "content-menu",
+    classOptionMmenu : "option-menu"
+  }
+
   classMenu = "menu--hidden";
   classMain = "main";
   showMenu(){

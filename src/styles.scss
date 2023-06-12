@@ -5,3 +5,12 @@
 }
 
 
+li{
+  list-style: none;
+}
+
+ul{
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}

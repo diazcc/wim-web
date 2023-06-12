@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,13 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.organism.scss']
 })
 export class HeaderOrganism {
-  dataNavBar = {
-    textOption1 : "Adidas",
-    textOption2 : "Nike",
-    textOption3 : "Quest",
-    textOption4 : "Puma",
-    classMenu : "menu",
-    classContentMenu : "content-menu",
-    classOptionMmenu : "option-menu"
+  @Input() dataHeader = {
+    classHeader :"",
+    classContentHeader :"",
+    classIconMenu :"",
+    classIconMenu2 :"",
+    classHeaderTitulo :"",
+    clickHeader : () => {},
+    dataNavBar : {
+      textOption1 : "",
+      textOption2 : "",
+      textOption3 : "",
+      textOption4 : "",
+      classMenu : "",
+      classContentMenu : "",
+      classOptionMmenu : ""
+    }
   }
+
+
+
 }

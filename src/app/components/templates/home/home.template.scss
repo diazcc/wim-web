@@ -81,6 +81,7 @@
     gap: 1rem;
     align-items: center;
     overflow-y: auto;
+    transition: ease-in-out .2s;
     h1{
       color: rgb(255, 255, 255);
     }
@@ -112,7 +113,6 @@
       }
     }
   }
-
 
   .footer{
     background-color: rgb(38, 38, 38);

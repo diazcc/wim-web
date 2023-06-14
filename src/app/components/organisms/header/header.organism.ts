@@ -6,6 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./header.organism.scss']
 })
 export class HeaderOrganism {
+
+  @Input() urlIcon ="assets/img/logoconletra.svg";
+  @Input() classIconContent ="logoTitle";
   @Input() dataHeader = {
     textTitle :"",
     urlIconMenu: "",

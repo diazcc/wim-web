@@ -1,30 +1,25 @@
 <div class="wrapper">
   <app-header [dataHeader]="dataHeader"></app-header>
   <main [ngClass]="classMain">
-    <div class="img-presentation">
-        <ul class="optionContentPresentation">
-          <li><app-icon [urlIcon]="'assets/icons/adidas.svg'"></app-icon></li>
-          <li><app-icon [urlIcon]="'assets/icons/nike.svg'"></app-icon></li>
-          <li><app-icon [urlIcon]="'assets/icons/puma.svg'"></app-icon></li>
-          <li><app-icon [urlIcon]="'assets/icons/quest.png'"></app-icon></li>
-        </ul>
-    </div>
+    <app-article-presentation [dataArticlePresentation]="dataArticlePresentation"></app-article-presentation>
     <section class="sectionPhotos">
-      <h1>Nuevas estilos para gorras</h1>
-      <ul class="containerArticlePhotos">
-        <li class="articlePhoto" id="articlePhoto1">
-          <img src="/assets/img/default-photoart.jpg" alt="">
-        </li>
-        <li class="articlePhoto" id="articlePhoto2">
-          <img src="/assets/img/default-photoart2.jpg" alt="">
-        </li>
-        <li class="articlePhoto" id="articlePhoto3">
-          <img src="/assets/img/default-photoart3.jpg" alt="">
-        </li>
-        <li class="articlePhoto" id="articlePhoto3">
-          <img src="/assets/img/default-photoart4.jpg" alt="">
-        </li>
-      </ul>
+      <div class="contentSectionPhotos">
+        <h1>Nuevas estilos para gorras</h1>
+        <ul class="containerArticlePhotos">
+          <li class="articlePhoto" id="articlePhoto1">
+            <img src="/assets/img/default-photoart.jpg" alt="">
+          </li>
+          <li class="articlePhoto" id="articlePhoto2">
+            <img src="/assets/img/default-photoart2.jpg" alt="">
+          </li>
+          <li class="articlePhoto" id="articlePhoto3">
+            <img src="/assets/img/default-photoart3.jpg" alt="">
+          </li>
+          <li class="articlePhoto" id="articlePhoto3">
+            <img src="/assets/img/default-photoart4.jpg" alt="">
+          </li>
+        </ul>
+      </div>
     </section>
     <section class="sectionPrincipalProduct">
       <article class="articlePrincipalProduct">
@@ -33,11 +28,6 @@
         </div>
         <h2>Gorra estilo negra</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi labore placeat corporis amet? Consequuntur</p>
-      </article>
-    </section>
-    <section class="section">
-      <article class="article">
-
       </article>
     </section>
     <footer class="footer">

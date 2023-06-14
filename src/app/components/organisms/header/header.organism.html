@@ -3,7 +3,7 @@
     <div [ngClass]="dataHeader.classIconMenu" (click)="dataHeader.clickHeader()">
         <img [src]="dataHeader.urlIconMenu" alt="SVG Image" class="icon">
     </div>
-    <h1 [ngClass]="dataHeader.classHeaderTitulo">{{dataHeader.textTitle}}</h1>
+    <app-icon [urlIcon]="urlIcon" [classIconContent]="classIconContent" class="app-icon"></app-icon>
   </div>
   <app-navbar [dataNavBar]="dataHeader.dataNavBar"></app-navbar>
 </header>

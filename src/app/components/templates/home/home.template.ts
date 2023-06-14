@@ -6,6 +6,12 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./home.template.scss']
 })
 export class HomeTemplate {
+  dataArticlePresentation = {
+    icon1 : "assets/icons/adidas.svg",
+    icon2 : "assets/icons/nike.svg",
+    icon3 : "assets/icons/puma.svg",
+    icon4 : "assets/icons/quest.png",
+   }
   dataHeader = {
     textTitle :"Infinity Industry",
     urlIconMenu: "assets/icons/menu.svg",

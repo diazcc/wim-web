@@ -4,9 +4,14 @@
   align-items: center;
   width: 7rem;
   height: 5rem;
+
+  &--logoTitle{
+    display: flex;
+    width: 8rem;
+  }
   .icon{
     display: flex;
-    height: 100%;
+    width: 100%;
     overflow: hidden;
   }
 }

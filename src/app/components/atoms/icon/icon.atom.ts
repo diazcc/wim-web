@@ -7,4 +7,5 @@ import { Component,Input } from '@angular/core';
 })
 export class IconAtom {
   @Input() urlIcon = "";
+  @Input() classIconContent = "";
 }

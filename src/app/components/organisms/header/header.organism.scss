@@ -19,23 +19,14 @@
     height: 4rem;
     display: flex;
     align-items: center;
+    .app-icon{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
   }
   .iconMenu{
     cursor: pointer;
   }
 
-  .header-titulo{
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-    margin: 0.5rem;
-    color: white;
-    font-size: x-large;
-    width: 100%;
-    font-family:'buvica';
-
-    &:hover{
-      color: rgb(171, 170, 170);
-    }
-  }
 }

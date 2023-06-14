@@ -4,6 +4,7 @@ import { HomeTemplate } from './templates/home/home.template';
 import { NavbarMolecule } from './molescules/navbar/navbar.molecule';
 import { HeaderOrganism } from './organisms/header/header.organism';
 import { IconAtom } from './atoms/icon/icon.atom';
+import { ArticlePresentationOrganism } from './organisms/article-presentation/article-presentation.organism';
 
 
 
@@ -12,7 +13,8 @@ import { IconAtom } from './atoms/icon/icon.atom';
     HomeTemplate,
     NavbarMolecule,
     HeaderOrganism,
-    IconAtom
+    IconAtom,
+    ArticlePresentationOrganism
   ],
   imports: [
     CommonModule
@@ -21,7 +23,8 @@ import { IconAtom } from './atoms/icon/icon.atom';
     HomeTemplate,
     NavbarMolecule,
     HeaderOrganism,
-    IconAtom
+    IconAtom,
+    ArticlePresentationOrganism
   ]
 })
 export class ComponentsModule { }

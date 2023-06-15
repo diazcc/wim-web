@@ -1,11 +1,4 @@
-@font-face{
-  font-family: 'bulone';
-  src: url('/assets/fonts/bulone/Bulone.ttf') format('truetype');
-}
-@font-face{
-  font-family: 'buvica';
-  src: url('/assets/fonts/queensides/Queensides-3z7Ey.ttf') format('truetype');
-}
+
 
 .header{
   display: flex;
@@ -16,7 +9,7 @@
   .content-header{
     background-color: rgba(0, 0, 0, 0.436);
     width: 100%;
-    height: 4rem;
+    height: 5rem;
     display: flex;
     align-items: center;
     .app-icon{

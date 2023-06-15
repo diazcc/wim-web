@@ -1,8 +1,19 @@
+@font-face{
+  font-family: 'bulone';
+  src: url('/assets/fonts/bulone/Bulone.ttf') format('truetype');
+}
+@font-face{
+  font-family: 'buvica';
+  src: url('/assets/fonts/queensides/Queensides-3z7Ey.ttf') format('truetype');
+}
+
+
 *{
   margin: 0;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: white;
+  font-family: buvica;
 }
+
 
 
 li{
@@ -12,4 +23,11 @@ li{
 ul{
   display: flex;
   padding: 0;
+}
+
+
+
+p{
+  margin: 0;
+
 }

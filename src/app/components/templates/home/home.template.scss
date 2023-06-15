@@ -89,7 +89,7 @@
   }
 
   .main{
-    background: linear-gradient(to bottom, #000000 0%, #000000 25%, #0f0000 50%, #1f0000 75%, #190000 100%);
+    background: linear-gradient(to bottom, #000000 0%, #000000 25%, #0f0000 50%, #160000 75%, #1f0000 100%);
     width: 100%;
     height: 100%;
     display: flex;
@@ -119,27 +119,30 @@
     }
     .sectionPhotos{
       width: 100%;
-      height: 50rem;
+      max-height: 35rem;
       display: flex;
       justify-content: center;
       align-items: center;
       .contentSectionPhotos{
         width: 100%;
+        max-width: 24rem;
         height: max-content;
         overflow: hidden;
         text-align: center;
+        max-height: 30.4rem;
         h1{
           font-size: 2rem;
-          padding: 1rem;
+          padding: .5rem;
         }
         .containerArticlePhotos{
           animation: sliderPhotos 16s infinite ease-in-out;
           display: flex;
           width: 400%;
-          max-height: 40rem;
+          height: 100%;
           .articlePhoto{
             background-color: white;
             width: 100%;
+
             p{
               width: 100%;
               background-color: rgb(48, 48, 48);
@@ -157,33 +160,40 @@
       }
 
     }
-    .sectionPrincipalProduct{
+    .sectionPrincipalProducts{
       display: flex;
       width: 100%;
-      height: 30rem;
-      align-items: center;
+      height: max-content;
+      gap: .1rem;
+      flex-wrap: wrap;
       justify-content: center;
-      .articlePrincipalProduct{
-        gap: .5rem;
+      .articlePrincipalProducts{
         display: flex;
-        width: 100%;
-        height: 100%;
+        width: 49%;
+        max-width: 15rem;
+        height: 15rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        .imgPrincipalProduct{
+
+        .imgPrincipalProducts{
           display: flex;
           width: 100%;
-          max-width: 28.3rem;
+          height: 28.3rem;
+          background-color: #ffffff;
           img{
             width: 100%;
           }
         }
         h2{
-          color: rgb(0, 0, 0);
+          color: rgb(255, 255, 255);
+          font-size: .9rem;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         p{
+          margin: .2rem;
           color: rgb(255, 255, 255);
+          font-size: .9rem;
         }
       }
     }
@@ -191,13 +201,19 @@
   }
 
   .footer{
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(16, 16, 16);
     width: 100%;
     height: 30rem;
+    h3{
+      width: 100%;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+    }
     .sectionFooter{
       display: flex;
       width: 100%;
-      height: 80%;
+      height: 70%;
       align-items: center;
 
       .formFooter{
@@ -207,6 +223,28 @@
         gap: 1rem;
         padding: .5rem;
 
+        input{
+          border: none;
+          border-radius: .4rem;
+          background-color: grey;
+          text-align: center;
+          color: black;
+          font-weight: bold;
+          height: 1.5rem;
+        }
+
+        .button-submit{
+          color: black;
+          font-weight: bolder;
+          background-color: white;
+          width: 50%;
+          max-width: 7rem;
+          cursor: pointer;
+
+          &:hover{
+            background-color: rgb(169, 169, 169);
+          }
+        }
       }
 
       .whatsApp{

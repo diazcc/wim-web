@@ -19,8 +19,6 @@
   background-color: rgb(0, 0, 0);
   display: flex;
   flex-direction: column;
-
-
   .header{
     display: flex;
     flex-direction: column;
@@ -37,7 +35,6 @@
     .iconMenu{
       cursor: pointer;
     }
-
     .header-titulo{
       cursor: pointer;
       margin: 0.5rem;
@@ -87,7 +84,6 @@
     //   }
     // }
   }
-
   .main{
     background: linear-gradient(to bottom, #000000 0%, #000000 25%, #0f0000 50%, #160000 75%, #1f0000 100%);
     width: 100%;
@@ -99,10 +95,8 @@
     justify-content: center;
     overflow-y: auto;
     transition: ease-in-out .2s;
-
     .section{
       display: flex;
-
       width: 100%;
       height: 15rem;
       border-top: 1px rgb(91, 91, 91) solid;
@@ -115,22 +109,22 @@
         height: 90%;
         background-color: rgb(54, 54, 54);
       }
-
     }
     .sectionPhotos{
       width: 100%;
-      max-height: 35rem;
+      max-height: max-content;
       display: flex;
       justify-content: center;
       align-items: center;
       .contentSectionPhotos{
         width: 100%;
-        max-width: 24rem;
+        max-width: 30rem;
         height: max-content;
         overflow: hidden;
         text-align: center;
-        max-height: 30.4rem;
+        max-height: 39.4rem;
         h1{
+          font-weight: lighter;
           font-size: 2rem;
           padding: .5rem;
         }
@@ -142,7 +136,6 @@
           .articlePhoto{
             background-color: white;
             width: 100%;
-
             p{
               width: 100%;
               background-color: rgb(48, 48, 48);
@@ -152,13 +145,10 @@
             img{
               width: 100%;
               max-width: 40rem;
-
             }
-
           }
         }
       }
-
     }
     .sectionPrincipalProducts{
       display: flex;
@@ -171,18 +161,19 @@
         display: flex;
         width: 49%;
         max-width: 15rem;
-        height: 15rem;
+        min-height: 15rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        text-align: center;
         .imgPrincipalProducts{
           display: flex;
+          align-items: center;
           width: 100%;
-          height: 28.3rem;
-          background-color: #ffffff;
+          min-height: 14.9rem;
           img{
             width: 100%;
+            height: max-content;
           }
         }
         h2{
@@ -195,15 +186,30 @@
           color: rgb(255, 255, 255);
           font-size: .9rem;
         }
+
+        .buttonPrincipalProduct{
+          color: rgb(255, 255, 255);
+          font-weight: bold;
+          background-color: rgb(0, 115, 0);
+          border: none;
+          padding: .3rem;
+          border-radius: .5rem;
+        }
+        .iconWpp{
+          width: 1rem;
+          height: 1rem;
+        }
       }
     }
-
   }
-
   .footer{
     background-color: rgb(16, 16, 16);
     width: 100%;
-    height: 30rem;
+    height: max-content;
+    .logoFooter{
+      width: 100%;
+      height: 10rem;
+    }
     h3{
       width: 100%;
       text-align: center;
@@ -213,16 +219,14 @@
     .sectionFooter{
       display: flex;
       width: 100%;
-      height: 70%;
+      height: 20rem;
       align-items: center;
-
       .formFooter{
         display: flex;
         width: 50%;
         flex-direction: column;
         gap: 1rem;
         padding: .5rem;
-
         input{
           border: none;
           border-radius: .4rem;
@@ -232,7 +236,6 @@
           font-weight: bold;
           height: 1.5rem;
         }
-
         .button-submit{
           color: black;
           font-weight: bolder;
@@ -246,7 +249,6 @@
           }
         }
       }
-
       .whatsApp{
         width: 50%;
         height: 100%;
@@ -256,14 +258,11 @@
         justify-content: center;
         text-align: center;
       }
-
-
     }
-
     .navbarFooter{
       display: flex;
       width: 100%;
-      height: 20%;
+      height: 5rem;
       .content-navbarFooter{
         display: flex;
         justify-content: space-evenly;
@@ -275,7 +274,6 @@
     }
   }
 }
-
 .filterBlur{
   filter: blur(3px);
 }

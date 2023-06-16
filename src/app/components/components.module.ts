@@ -5,6 +5,8 @@ import { NavbarMolecule } from './molescules/navbar/navbar.molecule';
 import { HeaderOrganism } from './organisms/header/header.organism';
 import { IconAtom } from './atoms/icon/icon.atom';
 import { ArticlePresentationOrganism } from './organisms/article-presentation/article-presentation.organism';
+import { FooterOrganism } from './organisms/footer/footer.organism';
+import { ArticlePrincipalProductOrganism } from './organisms/article-principal-product/article-principal-product.organism';
 
 
 
@@ -14,7 +16,9 @@ import { ArticlePresentationOrganism } from './organisms/article-presentation/ar
     NavbarMolecule,
     HeaderOrganism,
     IconAtom,
-    ArticlePresentationOrganism
+    ArticlePresentationOrganism,
+    FooterOrganism,
+    ArticlePrincipalProductOrganism
   ],
   imports: [
     CommonModule
@@ -24,7 +28,9 @@ import { ArticlePresentationOrganism } from './organisms/article-presentation/ar
     NavbarMolecule,
     HeaderOrganism,
     IconAtom,
-    ArticlePresentationOrganism
+    ArticlePresentationOrganism,
+    FooterOrganism,
+    ArticlePrincipalProductOrganism
   ]
 })
 export class ComponentsModule { }

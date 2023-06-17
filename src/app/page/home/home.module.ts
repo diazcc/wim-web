@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePage } from './home.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { HomeRoutingModule } from './home-routing.module';
 
 
 
@@ -11,10 +12,10 @@ import { ComponentsModule } from 'src/app/components/components.module';
   ],
   imports: [
     CommonModule,
-    ComponentsModule
+    ComponentsModule,
+    HomeRoutingModule
   ],
   exports:[
-    HomePage
   ]
 })
 export class HomeModule { }

@@ -1,22 +1,12 @@
-@keyframes sliderPhotos{
-  0%{margin-left: 0%;}
-  20%{margin-left: 0%;}
 
-  25%{margin-left: -100%;}
-  45%{margin-left: -100%;}
 
-  50%{margin-left: -200%;}
-  70%{margin-left: -200%;}
-
-  75%{margin-left: -300%;}
-  100%{margin-left: -300%;}
-}
 .wrapper{
   width: 100vw;
   height: 100vh;
   background-color: rgb(0, 0, 0);
   display: flex;
   flex-direction: column;
+  transition: ease-in-out 1s;
   .main{
     background: linear-gradient(to bottom, #000000 0%, #000000 25%, #0f0000 50%, #160000 75%, #1f0000 100%);
     width: 100%;
@@ -28,72 +18,9 @@
     justify-content: center;
     overflow-y: auto;
     transition: ease-in-out .2s;
-    .section{
-      display: flex;
-      width: 100%;
-      height: 15rem;
-      border-top: 1px rgb(91, 91, 91) solid;
-      border-bottom: 1px rgb(91, 91, 91) solid;
-      align-items: center;
-      justify-content: center;
-      .article{
-        display: flex;
-        width: 90%;
-        height: 90%;
-        background-color: rgb(54, 54, 54);
-      }
-    }
+
     .sectionPhotos{
       width: 100%;
-      max-height: max-content;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .contentSectionPhotos{
-        width: 100%;
-        max-width: 30rem;
-        height: max-content;
-        overflow: hidden;
-        text-align: center;
-        max-height: 39.4rem;
-        h1{
-          font-weight: lighter;
-          font-size: 2rem;
-          padding: .5rem;
-        }
-        .containerArticlePhotos{
-          animation: sliderPhotos 16s infinite ease-in-out;
-          display: flex;
-          width: 400%;
-          height: 100%;
-          .articlePhoto{
-            background-color: white;
-            width: 100%;
-            p{
-              width: 100%;
-              background-color: rgb(48, 48, 48);
-              height: 10rem;
-              color: white;
-            }
-            img{
-              width: 100%;
-              max-width: 40rem;
-            }
-          }
-        }
-      }
-    }
-    .sectionPrincipalProducts{
-      display: flex;
-      width: 100%;
-      height: max-content;
-      gap: .1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      .articlePrincipalProduct{
-        width: 49%;
-        max-width: 15rem;
-      }
     }
   }
   app-footer{

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IndexPage } from './index.page';
+import { SectionPhotosOrganism } from './section-photos.organism';
 
-describe('IndexPage', () => {
-  let component: IndexPage;
-  let fixture: ComponentFixture<IndexPage>;
+describe('SectionPhotosOrganism', () => {
+  let component: SectionPhotosOrganism;
+  let fixture: ComponentFixture<SectionPhotosOrganism>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IndexPage ]
+      declarations: [ SectionPhotosOrganism ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(IndexPage);
+    fixture = TestBed.createComponent(SectionPhotosOrganism);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,12 +6,10 @@ import { AppComponent } from './app.component';
 import { HomeTemplate } from './components/templates/home/home.template';
 import { ComponentsModule } from './components/components.module';
 import { HomeModule } from './page/home/home.module';
-import { IndexPage } from './page/index/index.page';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    IndexPage,
+    AppComponent
   ],
   imports: [
     BrowserModule,

@@ -1,34 +1,10 @@
+<app-presentation-index [classPresentation]="dataPresentation.classPresentation"></app-presentation-index>
 <div class="wrapper">
   <app-header [dataHeader]="dataHeader"></app-header>
   <main [ngClass]="classMain">
     <app-article-presentation [dataArticlePresentation]="dataArticlePresentation"></app-article-presentation>
-    <section class="sectionPhotos">
-      <div class="contentSectionPhotos">
-        <h1>Nuevas estilos para gorras</h1>
-        <ul class="containerArticlePhotos">
-          <li class="articlePhoto" id="articlePhoto1">
-            <img src="/assets/img/default-photoart.jpg" alt="">
-          </li>
-          <li class="articlePhoto" id="articlePhoto2">
-            <img src="/assets/img/default-photoart2.jpg" alt="">
-          </li>
-          <li class="articlePhoto" id="articlePhoto3">
-            <img src="/assets/img/default-photoart3.jpg" alt="">
-          </li>
-          <li class="articlePhoto" id="articlePhoto3">
-            <img src="/assets/img/default-photoart4.jpg" alt="">
-          </li>
-        </ul>
-      </div>
-    </section>
-    <section class="sectionPrincipalProducts">
-      <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-      <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-      <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-      <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-      <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-      <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-    </section>
+    <app-section-photos class="sectionPhotos"></app-section-photos>
+    <app-section-principal-product></app-section-principal-product>
     <app-footer></app-footer>
   </main>
 </div>

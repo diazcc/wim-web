@@ -6,7 +6,10 @@ import { HeaderOrganism } from './organisms/header/header.organism';
 import { IconAtom } from './atoms/icon/icon.atom';
 import { ArticlePresentationOrganism } from './organisms/article-presentation/article-presentation.organism';
 import { FooterOrganism } from './organisms/footer/footer.organism';
-import { ArticlePrincipalProductOrganism } from './organisms/article-principal-product/article-principal-product.organism';
+import { PresentationIndexOrganism } from './organisms/presentation-index/presentation-index.organism';
+import { SectionPhotosOrganism } from './organisms/section-photos/section-photos.organism';
+import { SectionPrincipalProductOrganism } from './organisms/section-principal-product/section-principal-product.organism';
+import { ArticlePrincipalProductMolecule } from './molescules/article-principal-product/article-principal-product.molecule';
 
 
 
@@ -18,7 +21,10 @@ import { ArticlePrincipalProductOrganism } from './organisms/article-principal-p
     IconAtom,
     ArticlePresentationOrganism,
     FooterOrganism,
-    ArticlePrincipalProductOrganism
+    PresentationIndexOrganism,
+    SectionPhotosOrganism,
+    SectionPrincipalProductOrganism,
+    ArticlePrincipalProductMolecule
   ],
   imports: [
     CommonModule
@@ -30,7 +36,9 @@ import { ArticlePrincipalProductOrganism } from './organisms/article-principal-p
     IconAtom,
     ArticlePresentationOrganism,
     FooterOrganism,
-    ArticlePrincipalProductOrganism
+    PresentationIndexOrganism,
+    SectionPhotosOrganism,
+    SectionPrincipalProductOrganism
   ]
 })
 export class ComponentsModule { }

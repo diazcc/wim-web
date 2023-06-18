@@ -6,6 +6,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./home.template.scss']
 })
 export class HomeTemplate {
+  dataPresentation = {
+    classPresentation : ""
+  }
+
+
   dataArticlePresentation = {
     icon1 : "assets/icons/adidas.svg",
     icon2 : "assets/icons/nike.svg",
@@ -33,6 +38,14 @@ export class HomeTemplate {
   }
 
   classMain = "main";
+
+  ngOnInit(){
+    setTimeout(() => {
+      this.dataPresentation.classPresentation = "close";
+    }, 1500);
+  }
+
+
   showMenu(){
     if (this.dataHeader.dataNavBar.classMenu=="menu--hidden") {
       this.dataHeader.dataNavBar.classMenu="menu";

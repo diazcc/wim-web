@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-section-photos',
@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./section-photos.organism.scss']
 })
 export class SectionPhotosOrganism {
+  @Input() dataSectionPhotos = {
+    textTitle : "",
+    urlImg1 : "",
+    urlImg2 : "",
+    urlImg3 : "",
+    urlImg4 : "",
 
+  }
 }

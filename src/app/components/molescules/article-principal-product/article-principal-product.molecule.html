@@ -1,10 +1,10 @@
-<article class="articlePrincipalProducts">
+<article class="articlePrincipalProducts" (click)="dataPrincipalProduct.clickProduct()">
   <div class="imgPrincipalProducts">
-    <img src="/assets/img/gorra-principal.jpg" alt=""  class="imgPp">
+    <img [src]="dataPrincipalProduct.urlImgPrincipalProduct" alt=""  class="imgPp">
   </div>
-  <h2>Gorra estilo negra</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-  <p>$120.000</p>
+  <h2>{{dataPrincipalProduct.textTitle}}</h2>
+  <p>{{dataPrincipalProduct.textDescription}}</p>
+  <p>{{dataPrincipalProduct.textValue}}</p>
   <button class="buttonPrincipalProduct">
     PEDIR POR WHATSAPP
     <img src="/assets/icons/wpp.svg" alt="" class="iconWpp">

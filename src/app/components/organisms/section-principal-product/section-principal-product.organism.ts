@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-section-principal-product',
@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./section-principal-product.organism.scss']
 })
 export class SectionPrincipalProductOrganism {
-
+  @Input() dataPrincipalProduct = {
+    data : [
+      {
+        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
+        textTitle : "",
+        textDescription :"",
+        textValue : "",
+        clickProduct :()=>{}
+      }
+    ]
+  }
 }

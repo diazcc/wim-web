@@ -5,6 +5,7 @@ import { HomePage } from './page/home/home.page';
 const routes: Routes = [
   {path:'home', component:HomePage},
   {path:'home', loadChildren: () => import('./page/home/home.module').then(m => m.HomeModule)},
+  {path:'product', loadChildren: () => import('./page/product/product.module').then(m => m.ProductModule)},
   {path:'**', pathMatch:'full', redirectTo:'home'}
 ];
 

@@ -1,8 +1,5 @@
 <section class="sectionPrincipalProducts">
-  <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-  <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-  <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-  <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-  <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-  <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
+  <ng-container *ngFor="let data of dataPrincipalProduct.data; let i = index;">
+    <app-article-principal-product [dataPrincipalProduct]="data" class="articlePrincipalProduct" C></app-article-principal-product>
+  </ng-container>
 </section>

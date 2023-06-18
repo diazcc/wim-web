@@ -3,8 +3,8 @@
   <app-header [dataHeader]="dataHeader"></app-header>
   <main [ngClass]="classMain">
     <app-article-presentation [dataArticlePresentation]="dataArticlePresentation"></app-article-presentation>
-    <app-section-photos class="sectionPhotos"></app-section-photos>
-    <app-section-principal-product></app-section-principal-product>
+    <app-section-photos [dataSectionPhotos]="dataSectionPhotos" class="sectionPhotos"></app-section-photos>
+    <app-section-principal-product [dataPrincipalProduct]="dataPrincipalProduct"></app-section-principal-product>
     <app-footer></app-footer>
   </main>
 </div>

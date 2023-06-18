@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-article-principal-product',
@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class ArticlePrincipalProductMolecule {
 
+  @Input() dataPrincipalProduct = {
+    urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
+    textTitle : "",
+    textDescription :"",
+    textValue : "",
+    clickProduct : ()=>{ console.log("SADADAS")}
+  }
+
+
+
 }
+

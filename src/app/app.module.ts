@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HomeTemplate } from './components/templates/home/home.template';
 import { ComponentsModule } from './components/components.module';
 import { HomeModule } from './page/home/home.module';
+import { ProductPage } from './page/product/product.page';
+import { ProductModule } from './page/product/product.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import { HomeModule } from './page/home/home.module';
     BrowserModule,
     AppRoutingModule,
     ComponentsModule,
-    HomeModule
+    HomeModule,
+    ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -29,6 +30,12 @@ export class HeaderOrganism {
     }
   }
 
+  constructor(
+    private router : Router
+  ){
 
-
+  }
+  redirectHome(){
+    this.router.navigate(['/home']);
+  }
 }

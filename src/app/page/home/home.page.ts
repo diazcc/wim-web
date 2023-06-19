@@ -79,17 +79,17 @@ export class HomePage {
   }
 
 
-  showMenu(){
-    if (this.dataHeader.dataNavBar.classMenu=="menu--hidden") {
-      this.dataHeader.dataNavBar.classMenu="menu";
-      this.classMain = "main filterBlur";
-      this.dataHeader.urlIconMenu = "assets/icons/close.svg"
-    }else{
-      this.dataHeader.dataNavBar.classMenu="menu--hidden";
-      this.classMain = "main";
-      this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
-    }
-  }
+showMenu(){
+if (this.dataHeader.dataNavBar.classMenu=="menu--hidden") {
+this.dataHeader.dataNavBar.classMenu="menu";
+this.classMain = "main filterBlur";
+this.dataHeader.urlIconMenu = "assets/icons/close.svg"
+}else{
+this.dataHeader.dataNavBar.classMenu="menu--hidden";
+this.classMain = "main";
+this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
+}
+}
 
   setDataHeader(){
     this.dataHeader = {

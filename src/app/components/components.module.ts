@@ -10,6 +10,7 @@ import { PresentationIndexOrganism } from './organisms/presentation-index/presen
 import { SectionPhotosOrganism } from './organisms/section-photos/section-photos.organism';
 import { SectionPrincipalProductOrganism } from './organisms/section-principal-product/section-principal-product.organism';
 import { ArticlePrincipalProductMolecule } from './molescules/article-principal-product/article-principal-product.molecule';
+import { ProductTemplate } from './templates/product/product.template';
 
 
 
@@ -24,7 +25,8 @@ import { ArticlePrincipalProductMolecule } from './molescules/article-principal-
     PresentationIndexOrganism,
     SectionPhotosOrganism,
     SectionPrincipalProductOrganism,
-    ArticlePrincipalProductMolecule
+    ArticlePrincipalProductMolecule,
+    ProductTemplate
   ],
   imports: [
     CommonModule
@@ -38,7 +40,8 @@ import { ArticlePrincipalProductMolecule } from './molescules/article-principal-
     FooterOrganism,
     PresentationIndexOrganism,
     SectionPhotosOrganism,
-    SectionPrincipalProductOrganism
+    SectionPrincipalProductOrganism,
+    ProductTemplate
   ]
 })
 export class ComponentsModule { }

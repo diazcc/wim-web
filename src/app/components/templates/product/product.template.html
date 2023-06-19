@@ -1,0 +1,24 @@
+
+<div class="wrapper">
+  <app-header [dataHeader]="dataHeader"></app-header>
+  <main class="main">
+    <div class="viewProduct">
+      <ul>
+        <li>d</li>
+        <li>d</li>
+        <li>d</li>
+      </ul>
+      <div class="descriptionProduct">
+        <p class="valueProduct">$233423</p>
+        <p class="nameProduct">Lorem ipsum dolor sit amet consectetur</p>
+        <button>Cotizar</button>
+      </div>
+    </div>
+    <ul class="products">
+      <ng-container *ngFor="let data of dataPrincipalProduct.data; let i = index;">
+        <app-article-principal-product [dataPrincipalProduct]="data" class="cardProduct"></app-article-principal-product>
+      </ng-container>
+    </ul>
+    <app-footer></app-footer>
+  </main>
+</div>

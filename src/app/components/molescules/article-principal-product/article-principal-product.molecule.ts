@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-principal-product',
@@ -12,10 +13,18 @@ export class ArticlePrincipalProductMolecule {
     textTitle : "",
     textDescription :"",
     textValue : "",
-    clickProduct : ()=>{ console.log("SADADAS")}
+
   }
 
+  constructor(
+    private router : Router
+    ){
 
+  }
+
+  clickProduct = ()=>{
+    this.router.navigate(['/product']);
+  }
 
 }
 

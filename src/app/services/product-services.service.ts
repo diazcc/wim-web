@@ -14,6 +14,6 @@ export class ProductServicesService {
   ) { }
 
   getProducts() : Observable<any> {
-    return this.httpClient.get('http://localhost:4200/assets/data/product.json');
+    return this.httpClient.get('/assets/data/product.json');
   }
 }

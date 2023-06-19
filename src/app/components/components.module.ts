@@ -11,7 +11,8 @@ import { SectionPhotosOrganism } from './organisms/section-photos/section-photos
 import { SectionPrincipalProductOrganism } from './organisms/section-principal-product/section-principal-product.organism';
 import { ArticlePrincipalProductMolecule } from './molescules/article-principal-product/article-principal-product.molecule';
 import { ProductTemplate } from './templates/product/product.template';
-
+import { AdministrationTemplate } from './templates/administration/administration.template';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,10 +27,13 @@ import { ProductTemplate } from './templates/product/product.template';
     SectionPhotosOrganism,
     SectionPrincipalProductOrganism,
     ArticlePrincipalProductMolecule,
-    ProductTemplate
+    ProductTemplate,
+    AdministrationTemplate
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     HomeTemplate,
@@ -41,7 +45,8 @@ import { ProductTemplate } from './templates/product/product.template';
     PresentationIndexOrganism,
     SectionPhotosOrganism,
     SectionPrincipalProductOrganism,
-    ProductTemplate
+    ProductTemplate,
+    AdministrationTemplate
   ]
 })
 export class ComponentsModule { }

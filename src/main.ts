@@ -13,7 +13,7 @@ const firebaseConfig = {
   appId: "1:1095543743408:web:465f2263bff22d95cd2c75"
 };
 
-const app = initializeApp(firebaseConfig);
+// const app = initializeApp(firebaseConfig);
 
 
 platformBrowserDynamic().bootstrapModule(AppModule)

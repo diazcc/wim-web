@@ -11,6 +11,8 @@ import { ProductModule } from './page/product/product.module';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { AdminRoutingModule } from './page/adminitration/admin-routing.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,8 +24,11 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     ComponentsModule,
     HomeModule,
     ProductModule,
+    AdminRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

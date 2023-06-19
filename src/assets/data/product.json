@@ -1,40 +1,46 @@
 {
   "products":[
     {
-      "urlImg" : "/assets/img/gorra-principal.jpg",
-      "textTitle" : "Gorra gris Cristan",
-      "textDescription" : "100% algodon, flexible para deportes y frio",
-      "value" : "$100.000"
+      "id" :"",
+      "name": "Gorra gris Cristan",
+      "description": "string",
+      "urlImg": "/assets/img/gorra-principal.jpg",
+      "value": "$100.000"
     },
     {
-      "urlImg" : "/assets/img/gorra-principal.jpg",
-      "textTitle" : "Chameron verde Volcvan",
-      "textDescription" : "100% algodon, flexible para deportes y frio",
-      "value" : "$ 120.000"
+      "id" :"",
+      "name": "Gorra gris Cristan",
+      "description": "string",
+      "urlImg": "/assets/img/gorra-principal.jpg",
+      "value": "$100.000"
     },
     {
-      "urlImg" : "/assets/img/gorra-principal.jpg",
-      "textTitle" : "Sombrero  Cilian",
-      "textDescription" : "100% algodon, flexible para deportes y frio",
-      "value" : "$ 123.000"
+      "id" :"",
+      "name": "Gorra gris Cristan",
+      "description": "string",
+      "urlImg": "/assets/img/gorra-principal.jpg",
+      "value": "$100.000"
     },
     {
-      "urlImg" : "/assets/img/gorra-principal.jpg",
-      "textTitle" : "Bomborra satier",
-      "textDescription" : "100% algodon, flexible para deportes y frio",
-      "value" : "$ 120.000"
+      "id" :"",
+      "name": "Gorra gris Cristan",
+      "description": "string",
+      "urlImg": "/assets/img/gorra-principal.jpg",
+      "value": "$100.000"
     },
     {
-      "urlImg" : "/assets/img/gorra-principal.jpg",
-      "textTitle" : "Gorra gris Cristan",
-      "textDescription" : "100% algodon, flexible para deportes y frio",
-      "value" : "$ 150.000"
+      "id" :"",
+      "name": "Gorra gris Cristan",
+      "description": "string",
+      "urlImg": "/assets/img/gorra-principal.jpg",
+      "value": "$100.000"
     },
     {
-      "urlImg" : "/assets/img/gorra-principal.jpg",
-      "textTitle" : "Bomborra satier",
-      "textDescription" : "100% algodon, flexible para deportes y frio",
-      "value" : "$ 190.000"
+      "id" :"",
+      "name": "Gorra gris Cristan",
+      "description": "string",
+      "urlImg": "/assets/img/gorra-principal.jpg",
+      "value": "$100.000"
     }
   ]
 }

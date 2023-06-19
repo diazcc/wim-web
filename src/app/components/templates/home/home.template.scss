@@ -1,33 +1,81 @@
 
-
-.wrapper{
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(0, 0, 0);
-  display: flex;
-  flex-direction: column;
-  transition: ease-in-out 1s;
-  .main{
-    background: linear-gradient(to bottom, #000000 0%, #000000 25%, #0f0000 50%, #160000 75%, #1f0000 100%);
-    width: 100%;
-    height: 100%;
+@media (max-width: 768px) {
+  .wrapper{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    overflow-y: auto;
-    transition: ease-in-out .2s;
-
-    .sectionPhotos{
+    flex-direction: column;
+    transition: ease-in-out 1s;
+    .main{
+      background: linear-gradient(to bottom, #000000 0%, #000000 25%, #0f0000 50%, #160000 75%, #1f0000 100%);
       width: 100%;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+      transition: ease-in-out .2s;
+      .presentation{
+        width: 100%;
+      }
+      .sectionPhotos{
+        width: 100%;
+      }
+    }
+    app-footer{
+      width: 100%;
+      height: max-content;
     }
   }
-  app-footer{
-    width: 100%;
-    height: max-content;
+  .filterBlur{
+    filter: blur(3px);
   }
 }
-.filterBlur{
-  filter: blur(3px);
+
+
+@media (min-width: 769px) {
+  .wrapper{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    transition: ease-in-out 1s;
+    .main{
+      background: linear-gradient(to bottom, #000000 0%, #000000 25%, #0f0000 50%, #160000 75%, #1f0000 100%);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+      transition: ease-in-out .2s;
+
+      .presentation{
+        width: 100%;
+      }
+      .contentCenter{
+        display: flex;
+        .sectionPhotos{
+          width: 50%;
+          display: flex;
+        }
+        .sectionProduct{
+          width: 50%;
+        }
+      }
+    }
+    app-footer{
+      width: 100%;
+      height: max-content;
+    }
+  }
+  .filterBlur{
+    filter: blur(3px);
+  }
 }

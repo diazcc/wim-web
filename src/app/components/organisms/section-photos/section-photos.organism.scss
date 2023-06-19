@@ -11,43 +11,85 @@
   75%{margin-left: -300%;}
   100%{margin-left: -300%;}
 }
-
-
-.sectionPhotos{
-  width: 100%;
-  max-height: max-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .contentSectionPhotos{
+@media (max-width: 768px) {
+  .sectionPhotos{
     width: 100%;
-    max-width: 30rem;
-    height: max-content;
-    overflow: hidden;
-    text-align: center;
-    max-height: 39.4rem;
-    h1{
-      font-weight: lighter;
-      font-size: 2rem;
-      padding: .5rem;
-    }
-    .containerArticlePhotos{
-      animation: sliderPhotos 16s infinite ease-in-out;
-      display: flex;
-      width: 400%;
-      height: 100%;
-      .articlePhoto{
-        background-color: white;
-        width: 100%;
-        p{
+    max-height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .contentSectionPhotos{
+      width: 100%;
+      max-width: 30rem;
+      height: max-content;
+      overflow: hidden;
+      text-align: center;
+      max-height: 39.4rem;
+      h1{
+        font-weight: lighter;
+        font-size: 2rem;
+        padding: .5rem;
+      }
+      .containerArticlePhotos{
+        animation: sliderPhotos 16s infinite ease-in-out;
+        display: flex;
+        width: 400%;
+        height: 100%;
+        .articlePhoto{
+          background-color: white;
           width: 100%;
-          background-color: rgb(48, 48, 48);
-          height: 10rem;
-          color: white;
+          p{
+            width: 100%;
+            background-color: rgb(48, 48, 48);
+            height: 10rem;
+            color: white;
+          }
+          img{
+            width: 100%;
+            max-width: 40rem;
+          }
         }
-        img{
+      }
+    }
+  }
+}
+
+
+
+@media (min-width: 769px) {
+  .sectionPhotos{
+    width: 100%;
+    max-height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .contentSectionPhotos{
+      width: 100%;
+      height: max-content;
+      overflow: hidden;
+      text-align: center;
+      h1{
+        font-weight: lighter;
+        font-size: 2rem;
+        padding: .5rem;
+      }
+      .containerArticlePhotos{
+        animation: sliderPhotos 16s infinite ease-in-out;
+        display: flex;
+        width: 400%;
+        height: 100%;
+        .articlePhoto{
           width: 100%;
-          max-width: 40rem;
+          p{
+            width: 100%;
+            background-color: rgb(48, 48, 48);
+            height: 10rem;
+            color: white;
+          }
+          img{
+            width: 100%;
+            max-width: 40rem;
+          }
         }
       }
     }

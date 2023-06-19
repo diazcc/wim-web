@@ -17,7 +17,7 @@ export class HomePage {
   }
 
   dataSectionPhotos = {
-    textTitle : "",
+    textTitle : "Nuevos estilos",
     urlImg1 : "",
     urlImg2 : "",
     urlImg3 : "",
@@ -129,8 +129,8 @@ this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
       response.products.map((value : any) => {
         const data =  {
           urlImgPrincipalProduct : value.urlImg,
-          textTitle : value.textTitle,
-          textDescription :value.textDescription,
+          textTitle : value.name,
+          textDescription :value.description,
           textValue : value.value
         }
         arrayData.push(data);
@@ -153,7 +153,7 @@ this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
 
   setDataSectionPhotos(){
     this.dataSectionPhotos = {
-      textTitle : "",
+      textTitle : "Nuevos estilos",
       urlImg1 : "/assets/img/default-photoart.jpg",
       urlImg2 : "/assets/img/default-photoart2.jpg",
       urlImg3 : "/assets/img/default-photoart3.jpg",

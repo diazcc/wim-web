@@ -24,14 +24,25 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        ul{
-          margin-top:6rem ;
-          width: 20rem;
-          height: 20rem;
+        .contentImg{
+          display: flex;
+          overflow: auto;
+          align-items: center;
           background-color: #1f0000;
+          margin-top:6rem ;
+          width: 90%;
+          height: 20rem;
+          li{
+            min-width: 10rem;
+            min-height:10rem;
+            max-width: 15rem;
+            max-height:15rem;
+            img{
+              width: 100%;
+            }
+          }
         }
         .descriptionProduct{
-          width: 20rem;
           display: flex;
           flex-direction: column;
           gap: .5rem;

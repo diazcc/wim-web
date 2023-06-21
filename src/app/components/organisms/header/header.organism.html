@@ -1,4 +1,4 @@
-<header [ngClass]="dataHeader.classHeader">
+<header [ngClass]="'header header--'+dataHeader.classHeader">
   <div [ngClass]="dataHeader.classContentHeader">
     <div [ngClass]="dataHeader.classIconMenu" (click)="dataHeader.clickHeader()">
         <img [src]="dataHeader.urlIconMenu" alt="SVG Image" class="icon">

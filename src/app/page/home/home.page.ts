@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { ProductServicesService } from 'src/app/services/product-services.service';
@@ -10,7 +10,7 @@ import { ProductServicesService } from 'src/app/services/product-services.servic
 })
 export class HomePage {
   classMain = "main";
-
+  previousScrollPosition = 0;
 
   dataPresentation = {
     classPresentation : ""
@@ -62,10 +62,11 @@ export class HomePage {
       classOptionMmenu : ""
     }
   }
-
+  ayaya :string ="";
   constructor(
     private productServices : ProductServicesService,
-    private router : Router
+    private router : Router,
+    private elementRef: ElementRef
   ){}
 
   ngOnInit(){
@@ -76,6 +77,10 @@ export class HomePage {
     this.setDataArticlePresentation();
     this.setDataSectionPhotos();
     this.getPrincipalProducts();
+  }
+
+  scrollMain(){
+    console.log("fddffff");
   }
 
 

@@ -1,7 +1,7 @@
 <app-presentation-index [classPresentation]="dataPresentation.classPresentation"></app-presentation-index>
 <div class="wrapper">
   <app-header [dataHeader]="dataHeader"></app-header>
-  <main [ngClass]="classMain">
+  <main [ngClass]="classMain" #mainElement (scroll)="onScroll()">
     <app-article-presentation [dataArticlePresentation]="dataArticlePresentation" class="presentation"></app-article-presentation>
     <div class="contentCenter">
       <app-section-photos [dataSectionPhotos]="dataSectionPhotos" class="sectionPhotos"></app-section-photos>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'app-home-template',
@@ -7,6 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class HomeTemplate {
   classMain = "main";
+  previousScrollPosition = 0;
+
 
 
   @Input() dataPresentation = {
@@ -58,6 +60,21 @@ export class HomeTemplate {
       classContentMenu : "",
       classOptionMmenu : ""
     }
+  }
+  constructor(private elementRef: ElementRef) {}
+
+
+  onScroll(){
+    const mainElement = this.elementRef.nativeElement.querySelector('main');
+    const scrollPosition = mainElement.scrollTop;
+    console.log(scrollPosition);
+    if (scrollPosition > this.previousScrollPosition) {
+      this.dataHeader.classHeader = "hidde";
+    } else {
+      this.dataHeader.classHeader = "";
+    }
+
+    this.previousScrollPosition = scrollPosition;
   }
 
 }

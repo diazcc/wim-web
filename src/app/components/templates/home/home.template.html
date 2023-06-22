@@ -3,7 +3,7 @@
   <div class="iconMarket">
     <img src="/assets/icons/market.svg" alt="">
   </div>
-  <main [ngClass]="classMain" #mainElement (scroll)="onScroll()">
+  <main [ngClass]="classMain">
     <app-header [dataHeader]="dataHeader"></app-header>
     <app-search></app-search>
     <app-article-presentation [dataArticlePresentation]="dataArticlePresentation" class="presentation"></app-article-presentation>
@@ -11,6 +11,6 @@
       <app-section-photos [dataSectionPhotos]="dataSectionPhotos" class="sectionPhotos"></app-section-photos>
       <app-section-principal-product [dataPrincipalProduct]="dataPrincipalProduct" class="sectionProduct"></app-section-principal-product>
     </div>
-    <app-footer></app-footer>
+    <app-footer class="app-footer"></app-footer>
   </main>
 </div>

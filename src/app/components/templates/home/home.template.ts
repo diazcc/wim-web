@@ -63,19 +63,36 @@ export class HomeTemplate {
   }
   constructor(private elementRef: ElementRef) {}
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: Event) {
+    const scrollPosition = window.scrollY;
 
-  onScroll(){
-    const mainElement = this.elementRef.nativeElement.querySelector('main');
-    const scrollPosition = mainElement.scrollTop;
-    if (scrollPosition > this.previousScrollPosition) {
-      this.dataHeader.classHeader = "hidde";
-    } else{
-      this.dataHeader.classHeader = "";
+    console.log(scrollPosition);
+      if (scrollPosition > this.previousScrollPosition) {
+        this.dataHeader.classHeader = "hidde";
+      } else {
+        this.dataHeader.classHeader = "";
+      }
+
+      if (scrollPosition < 350) {
+        this.dataHeader.classHeader = "";
+      }
+
+      this.previousScrollPosition = scrollPosition;
     }
-    if (scrollPosition<350) {
-      this.dataHeader.classHeader = "";
-    }
-    this.previousScrollPosition = scrollPosition;
-  }
+
+  // onScrolls(){
+  //   const mainElement = this.elementRef.nativeElement.querySelector('main');
+  //   const scrollPosition = mainElement.scrollTop;
+  //   if (scrollPosition > this.previousScrollPosition) {
+  //     this.dataHeader.classHeader = "hidde";
+  //   } else{
+  //     this.dataHeader.classHeader = "";
+  //   }
+  //   if (scrollPosition<350) {
+  //     this.dataHeader.classHeader = "";
+  //   }
+  //   this.previousScrollPosition = scrollPosition;
+  // }
 
 }

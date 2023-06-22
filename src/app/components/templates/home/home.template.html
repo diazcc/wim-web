@@ -1,7 +1,11 @@
 <app-presentation-index [classPresentation]="dataPresentation.classPresentation"></app-presentation-index>
 <div class="wrapper">
+  <div class="iconMarket">
+    <img src="/assets/icons/market.svg" alt="">
+  </div>
   <main [ngClass]="classMain" #mainElement (scroll)="onScroll()">
     <app-header [dataHeader]="dataHeader"></app-header>
+    <app-search></app-search>
     <app-article-presentation [dataArticlePresentation]="dataArticlePresentation" class="presentation"></app-article-presentation>
     <div class="contentCenter">
       <app-section-photos [dataSectionPhotos]="dataSectionPhotos" class="sectionPhotos"></app-section-photos>

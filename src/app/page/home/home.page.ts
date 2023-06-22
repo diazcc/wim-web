@@ -128,10 +128,11 @@ this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
   }
 
   getPrincipalProducts(){
-    this.productServices.getProducts().pipe(map((response)=>{
+    this.productServices.getCaps().pipe(map((response)=>{
+      let arrayData : any = [];
       console.log(response);
-      let arrayData : any[]= [];
-      response.products.map((value : any) => {
+      response.map((value : any) => {
+        console.log(value.urlImg);
         const data =  {
           urlImgPrincipalProduct : value.urlImg,
           textTitle : value.name,
@@ -139,16 +140,36 @@ this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
           textValue : value.value
         }
         arrayData.push(data);
+        console.log(arrayData);
       });
-
       const responseData = arrayData;
       return response = responseData;
-
     })).subscribe((response)=>{
       console.log(response);
       this.setDataPrincipalProduct(response);
-
     });
+    // this.productServices.getProducts().pipe(map((response)=>{
+    //   console.log(response);
+    //   let arrayData : any = [];
+    //   response.products.map((value : any) => {
+    //     console.log(value);
+    //     const data =  {
+    //       urlImgPrincipalProduct : value.urlImg,
+    //       textTitle : value.name,
+    //       textDescription :value.description,
+    //       textValue : value.value
+    //     }
+    //     arrayData.push(data);
+    //   });
+
+    //   const responseData = arrayData;
+    //   return response = responseData;
+
+    // })).subscribe((response)=>{
+    //   console.log(response);
+    //   this.setDataPrincipalProduct(response);
+
+    // });
   }
 
   setDataPrincipalProduct(responseData : any){

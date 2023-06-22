@@ -67,13 +67,14 @@ export class HomeTemplate {
   onScroll(){
     const mainElement = this.elementRef.nativeElement.querySelector('main');
     const scrollPosition = mainElement.scrollTop;
-    console.log(scrollPosition);
     if (scrollPosition > this.previousScrollPosition) {
       this.dataHeader.classHeader = "hidde";
-    } else {
+    } else{
       this.dataHeader.classHeader = "";
     }
-
+    if (scrollPosition<350) {
+      this.dataHeader.classHeader = "";
+    }
     this.previousScrollPosition = scrollPosition;
   }
 

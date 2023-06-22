@@ -24,7 +24,7 @@ export class AdministrationTemplate {
 
   ngOnInit(){
     this.productService.getUser().subscribe((response)=>{
-      console.log(response[0]);
+      console.log(response);
       this.userName = response[0].userName;
       this.password = response[0].password;
     });

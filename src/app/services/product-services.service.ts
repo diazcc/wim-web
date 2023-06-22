@@ -24,4 +24,9 @@ export class ProductServicesService {
     const userRef = collection(this.firestore,'userAdmin');
     return collectionData(userRef);
   }
+
+  getCaps(): Observable <any>{
+    const userRef = collection(this.firestore,'caps');
+    return collectionData(userRef);
+  }
 }

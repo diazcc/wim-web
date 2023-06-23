@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { ProductServicesService } from 'src/app/services/product-services.service';
@@ -9,7 +9,7 @@ import { ProductServicesService } from 'src/app/services/product-services.servic
   styleUrls: ['./home.page.scss']
 })
 export class HomePage {
-  classMain = "main";
+  classMain = "";
   previousScrollPosition = 0;
 
   dataPresentation = {
@@ -66,7 +66,8 @@ export class HomePage {
   constructor(
     private productServices : ProductServicesService,
     private router : Router,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private renderer : Renderer2
   ){}
 
   ngOnInit(){
@@ -79,21 +80,19 @@ export class HomePage {
     this.getPrincipalProducts();
   }
 
-  scrollMain(){
-    console.log("fddffff");
-  }
-
-
 showMenu(){
-if (this.dataHeader.dataNavBar.classMenu=="menu--hidden") {
-this.dataHeader.dataNavBar.classMenu="menu";
-this.classMain = "main filterBlur";
-this.dataHeader.urlIconMenu = "assets/icons/close.svg"
-}else{
-this.dataHeader.dataNavBar.classMenu="menu--hidden";
-this.classMain = "main";
-this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
-}
+
+  if (this.dataHeader.dataNavBar.classMenu=="menu--hidden") {
+  this.dataHeader.dataNavBar.classMenu="menu";
+  this.classMain = "filterBlur";
+  this.dataHeader.urlIconMenu = "assets/icons/close.svg"
+  this.dataHeader.classHeader = "focus";
+  }else{
+  this.dataHeader.dataNavBar.classMenu="menu--hidden";
+  this.classMain = "";
+  this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
+  this.dataHeader.classHeader = "header";
+  }
 }
 
   setDataHeader(){
@@ -132,12 +131,12 @@ this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
       let arrayData : any = [];
       console.log(response);
       response.map((value : any) => {
-        console.log(value.urlImg);
         const data =  {
           urlImgPrincipalProduct : value.urlImg,
           textTitle : value.name,
           textDescription :value.description,
-          textValue : value.value
+          textValue : value.value,
+          clickProduct :()=>{}
         }
         arrayData.push(data);
         console.log(arrayData);
@@ -148,33 +147,10 @@ this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
       console.log(response);
       this.setDataPrincipalProduct(response);
     });
-    // this.productServices.getProducts().pipe(map((response)=>{
-    //   console.log(response);
-    //   let arrayData : any = [];
-    //   response.products.map((value : any) => {
-    //     console.log(value);
-    //     const data =  {
-    //       urlImgPrincipalProduct : value.urlImg,
-    //       textTitle : value.name,
-    //       textDescription :value.description,
-    //       textValue : value.value
-    //     }
-    //     arrayData.push(data);
-    //   });
-
-    //   const responseData = arrayData;
-    //   return response = responseData;
-
-    // })).subscribe((response)=>{
-    //   console.log(response);
-    //   this.setDataPrincipalProduct(response);
-
-    // });
   }
 
   setDataPrincipalProduct(responseData : any){
     this.dataPrincipalProduct.data = responseData;
-    console.log(this.dataPrincipalProduct.data = responseData);
   }
 
   setDataSectionPhotos(){

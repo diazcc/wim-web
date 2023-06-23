@@ -1,15 +1,18 @@
 <app-presentation-index [classPresentation]="dataPresentation.classPresentation"></app-presentation-index>
 <div class="wrapper">
+  <app-header [dataHeader]="dataHeader"></app-header>
   <div class="iconMarket">
     <img src="/assets/icons/market.svg" alt="">
   </div>
-  <main [ngClass]="classMain">
-    <app-header [dataHeader]="dataHeader"></app-header>
+  <main [ngClass]="'main main--'+classMain">
     <app-search></app-search>
     <app-article-presentation [dataArticlePresentation]="dataArticlePresentation" class="presentation"></app-article-presentation>
     <div class="contentCenter">
       <app-section-photos [dataSectionPhotos]="dataSectionPhotos" class="sectionPhotos"></app-section-photos>
-      <app-section-principal-product [dataPrincipalProduct]="dataPrincipalProduct" class="sectionProduct"></app-section-principal-product>
+      <div class="contentPrincipalProduct">
+        <app-section-principal-product [dataPrincipalProduct]="dataPrincipalProduct" class="sectionProduct"></app-section-principal-product>
+        <button>Ver mas</button>
+      </div>
     </div>
     <app-footer class="app-footer"></app-footer>
   </main>

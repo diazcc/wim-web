@@ -7,6 +7,7 @@
     flex-direction: column;
     transition: ease-in-out 1s;
     position: relative;
+
     .iconMarket{
       width: 4rem;
       height: 4rem;
@@ -18,6 +19,7 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
+      z-index: 1;
 
       img{
         width: 2.5rem;
@@ -28,12 +30,38 @@
       display: flex;
       flex-wrap: wrap;
       transition: ease-in-out .2s;
+      position: relative;
 
+      &--filterBlur{
+        filter: blur(3px);
+        pointer-events: none;
+        overflow: hidden;
+        &,
+        & * {
+          pointer-events: none;
+        }
+      }
       .presentation{
         width: 100%;
       }
       .sectionPhotos{
         width: 100%;
+      }
+      .contentPrincipalProduct{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        button{
+          width: 100%;
+          height: 2.5rem;
+          max-width: 15rem;
+          margin: 1rem;
+          font-size: 1.5rem;
+          background-color: #00000000;
+          border-radius: 1rem;
+          border: 1px white solid;
+        }
       }
       .app-footer{
         width: 100%;
@@ -41,9 +69,7 @@
       }
     }
   }
-  .filterBlur{
-    filter: blur(3px);
-  }
+
 }
 
 

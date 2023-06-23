@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Input } from '@angular/core';
+import { Component, ElementRef, HostListener, Input,Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-home-template',
@@ -6,7 +6,9 @@ import { Component, ElementRef, HostListener, Input } from '@angular/core';
   styleUrls: ['./home.template.scss']
 })
 export class HomeTemplate {
-  classMain = "main";
+
+  @Input()  classMain = "";
+
   previousScrollPosition = 0;
 
 
@@ -61,38 +63,35 @@ export class HomeTemplate {
       classOptionMmenu : ""
     }
   }
-  constructor(private elementRef: ElementRef) {}
+  constructor(
+    private elementRef: ElementRef
+    ) {}
+
+
+
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: Event) {
     const scrollPosition = window.scrollY;
 
-    console.log(scrollPosition);
       if (scrollPosition > this.previousScrollPosition) {
         this.dataHeader.classHeader = "hidde";
+        this.dataHeader.dataNavBar.classMenu ="menu--hidden";
+        this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
+        this.classMain ="";
       } else {
         this.dataHeader.classHeader = "";
+        this.dataHeader.dataNavBar.classMenu ="menu--hidden";
+        this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
+        this.classMain ="";
       }
 
-      if (scrollPosition < 350) {
+      if (scrollPosition < 150) {
         this.dataHeader.classHeader = "";
       }
 
       this.previousScrollPosition = scrollPosition;
     }
 
-  // onScrolls(){
-  //   const mainElement = this.elementRef.nativeElement.querySelector('main');
-  //   const scrollPosition = mainElement.scrollTop;
-  //   if (scrollPosition > this.previousScrollPosition) {
-  //     this.dataHeader.classHeader = "hidde";
-  //   } else{
-  //     this.dataHeader.classHeader = "";
-  //   }
-  //   if (scrollPosition<350) {
-  //     this.dataHeader.classHeader = "";
-  //   }
-  //   this.previousScrollPosition = scrollPosition;
-  // }
 
 }

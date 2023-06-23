@@ -1,18 +1,13 @@
 
 <div class="wrapper">
   <app-header [dataHeader]="dataHeader"></app-header>
-  <main class="main">
+  <div class="iconMarket">
+    <img src="/assets/icons/market.svg" alt="">
+  </div>
+  <main [ngClass]="'main main--'+classMain">
     <div class="viewProduct">
       <ul class="contentImg">
-        <li>
-          <img src="/assets/img/default-principalProduct.webp" alt="">
-        </li>
-        <li>
-          <img src="/assets/img/cap2.png" alt="">
-        </li>
-        <li>
           <img src="/assets/img/cap3.png" alt="">
-        </li>
       </ul>
       <div class="descriptionProduct">
         <p class="valueProduct">$233423</p>
@@ -24,6 +19,7 @@
       <ng-container *ngFor="let data of dataPrincipalProduct.data; let i = index;">
         <app-article-principal-product [dataPrincipalProduct]="data" class="cardProduct"></app-article-principal-product>
       </ng-container>
+
     </ul>
     <app-footer></app-footer>
   </main>

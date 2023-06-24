@@ -10,7 +10,13 @@ import { ProductServicesService } from 'src/app/services/product-services.servic
 })
 export class HomePage {
   classMain = "";
+  classSearch = "hidde";
   previousScrollPosition = 0;
+
+  dataSearch = {
+    classSearch : "hidde",
+    closeSearch : () =>{}
+   }
 
   dataPresentation = {
     classPresentation : ""
@@ -52,6 +58,7 @@ export class HomePage {
     classIconMenu2 :"",
     classHeaderTitulo :"",
     clickHeader : () => {},
+    clickSearch : () => {},
     dataNavBar : {
       textOption1 : "",
       textOption2 : "",
@@ -78,7 +85,13 @@ export class HomePage {
     this.setDataArticlePresentation();
     this.setDataSectionPhotos();
     this.getPrincipalProducts();
+
+
   }
+  ngAfterViewInit() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
 
 showMenu(){
 
@@ -105,6 +118,7 @@ showMenu(){
       classIconMenu2 :"classIconMenu",
       classHeaderTitulo :"header-titulo",
       clickHeader : () => {this.showMenu()},
+      clickSearch : () => {this.setSearch()},
       dataNavBar : {
         textOption1 : "Adidas",
         textOption2 : "Nike",
@@ -117,6 +131,30 @@ showMenu(){
     }
   }
 
+  setSearch(){
+    if (this.dataSearch.classSearch == "hidde") {
+      this.dataSearch = {
+        classSearch : "search",
+        closeSearch : () =>{this.closeSearch()}
+      }
+      this.dataHeader.classHeader = "hidde";
+    }else{
+      this.dataSearch = {
+        classSearch : "hidde",
+        closeSearch : () =>{this.closeSearch()}
+      }
+      this.dataHeader.classHeader = "header";
+    }
+  }
+
+  closeSearch(){
+    if (this.dataSearch.classSearch == "search") {
+      this.dataSearch.classSearch = "hidde";
+      this.dataHeader.classHeader = "header";
+    }else{
+      this.dataSearch.classSearch = "search";
+    }
+  }
   setDataArticlePresentation(){
     this.dataArticlePresentation = {
       icon1 : "assets/icons/adidas.svg",

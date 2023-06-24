@@ -1,11 +1,14 @@
-<div [class]="'search search--'+ classSearch">
-  <!-- <input type="text"> -->
+<div [class]="'search search--'+ dataSearch.classSearch">
+  <div class="iconClose" (click)="dataSearch.closeSearch()">
+    <img src="/assets/icons/closeBlack.svg" alt="SVG Image" class="icon">
+  </div>
+  <input type="text">
   <ul class="result">
-    <!-- <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
     <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
     <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
     <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
     <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-    <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product> -->
+    <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
+    <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
   </ul>
 </div>

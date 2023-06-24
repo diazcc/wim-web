@@ -20,6 +20,7 @@ export class HeaderOrganism {
     classIconMenu2 :"",
     classHeaderTitulo :"",
     clickHeader : () => {},
+    clickSearch : () => {},
     dataNavBar : {
       textOption1 : "",
       textOption2 : "",
@@ -42,6 +43,10 @@ export class HeaderOrganism {
   }
   redirectHome(){
     this.router.navigate(['/home']);
+  }
+
+  clickSearch(){
+    console.log("Hysdasdasdagd  ");
   }
 
 

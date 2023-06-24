@@ -1,11 +1,11 @@
 <app-presentation-index [classPresentation]="dataPresentation.classPresentation"></app-presentation-index>
+<app-search [dataSearch]="dataSearch"></app-search>
 <div class="wrapper">
   <app-header [dataHeader]="dataHeader"></app-header>
-  <div class="iconMarket">
+  <!-- <div class="iconMarket">
     <img src="/assets/icons/market.svg" alt="">
-  </div>
+  </div> -->
   <main [ngClass]="'main main--'+classMain">
-    <app-search></app-search>
     <app-article-presentation [dataArticlePresentation]="dataArticlePresentation" class="presentation"></app-article-presentation>
     <div class="contentCenter">
       <app-section-photos [dataSectionPhotos]="dataSectionPhotos" class="sectionPhotos"></app-section-photos>

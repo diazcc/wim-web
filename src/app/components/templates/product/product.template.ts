@@ -9,6 +9,10 @@ import { map } from 'rxjs';
 export class ProductTemplate {
   classMain = "";
   previousScrollPosition = 0;
+  @Input() dataSearch = {
+    classSearch : "hidde",
+    closeSearch : () =>{}
+   }
   @Input() dataHeader = {
     textTitle :"Infinity Industry",
     urlIconMenu: "assets/icons/menu.svg",
@@ -18,6 +22,7 @@ export class ProductTemplate {
     classIconMenu2 :"classIconMenu",
     classHeaderTitulo :"header-titulo",
     clickHeader : () => {this.showMenu()},
+    clickSearch : () => {this.setSearch()},
     dataNavBar : {
       textOption1 : "Adidas",
       textOption2 : "Nike",
@@ -48,6 +53,9 @@ export class ProductTemplate {
   ngOnInit(){
     this.getPrincipalProducts();
   }
+  ngAfterViewInit() {
+    window.scrollTo(0, 0);
+  }
   @HostListener('window:scroll', ['$event'])
   onScroll(event: Event) {
     const scrollPosition = window.scrollY;
@@ -70,6 +78,29 @@ export class ProductTemplate {
       this.previousScrollPosition = scrollPosition;
     }
 
+    setSearch(){
+      if (this.dataSearch.classSearch == "hidde") {
+        this.dataSearch = {
+          classSearch : "search",
+          closeSearch : () =>{this.closeSearch()}
+        }
+        this.dataHeader.classHeader = "hidde";
+      }else{
+        this.dataSearch = {
+          classSearch : "hidde",
+          closeSearch : () =>{this.closeSearch()}
+        }
+        this.dataHeader.classHeader = "header";
+      }
+    }
+    closeSearch(){
+      if (this.dataSearch.classSearch == "search") {
+        this.dataSearch.classSearch = "hidde";
+        this.dataHeader.classHeader = "header";
+      }else{
+        this.dataSearch.classSearch = "search";
+      }
+    }
 
   showMenu(){
 

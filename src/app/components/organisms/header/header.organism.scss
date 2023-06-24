@@ -10,19 +10,17 @@
 
 
   .content-header{
-    background: linear-gradient(to bottom, #000000b8 0%,  #00000060 50%, rgba(0, 0, 0, 0) 100%);
-
+    background: linear-gradient(to bottom, #000000b8 0%,  #00000044 50%, rgba(0, 0, 0, 0) 100%);
     width: 100%;
     height: 3rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     .iconSearch{
-      width: 3rem;
+      width: 2.5rem;
       img{
         width: 100%;
       }
-
     }
     .app-icon{
       display: flex;
@@ -34,27 +32,11 @@
   }
   &--focus{
     display: flex;
-
     .content-header{
       background: rgba(0, 0, 0, 0.614);
-      width: 100%;
-      height: 3rem;
-      display: flex;
-      align-items: center;
-      transition: ease-in-out .3s;
       .iconSearch{
-        width: 3rem;
-        img{
-          width: 100%;
-        }
+        width: 2.5rem;
       }
-      .app-icon{
-        display: flex;
-        justify-content: center;
-      }
-    }
-    .iconMenu{
-      cursor: pointer;
     }
   }
   &--hidde{
@@ -73,8 +55,9 @@
       height: 3rem;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       .iconSearch{
-        width: 3rem;
+        width: 2.5rem;
         img{
           width: 100%;
         }

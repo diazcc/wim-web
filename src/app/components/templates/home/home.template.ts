@@ -8,9 +8,12 @@ import { Component, ElementRef, HostListener, Input,Renderer2 } from '@angular/c
 export class HomeTemplate {
 
   @Input()  classMain = "";
-
   previousScrollPosition = 0;
 
+  @Input() dataSearch = {
+    classSearch : "hidde",
+    closeSearch : () =>{}
+   }
 
 
   @Input() dataPresentation = {
@@ -53,6 +56,7 @@ export class HomeTemplate {
     classIconMenu2 :"",
     classHeaderTitulo :"",
     clickHeader : () => {},
+    clickSearch : () => {},
     dataNavBar : {
       textOption1 : "",
       textOption2 : "",
@@ -64,12 +68,17 @@ export class HomeTemplate {
     }
   }
   constructor(
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private renderer: Renderer2
     ) {}
 
+    ngOnInit(){
+    }
 
 
-
+    ngAfterViewInit(){
+      window.scrollTo(0, 0);
+    }
   @HostListener('window:scroll', ['$event'])
   onScroll(event: Event) {
     const scrollPosition = window.scrollY;

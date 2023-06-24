@@ -7,4 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class SearchOrganism {
  @Input() classSearch ="hidde";
+ @Input() dataSearch = {
+  classSearch : "hidde",
+  closeSearch : () =>{}
+ }
 }

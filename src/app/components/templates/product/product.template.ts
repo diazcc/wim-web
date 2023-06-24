@@ -1,6 +1,11 @@
-import { Component, ElementRef, HostListener, Input,Renderer2 } from '@angular/core';
+import { Component, ElementRef, HostListener, Input,Renderer2, ChangeDetectorRef  } from '@angular/core';
 import { ProductServicesService } from 'src/app/services/product-services.service';
 import { map } from 'rxjs';
+import { collection, onSnapshot, DocumentSnapshot, doc } from 'firebase/firestore';
+import { Firestore } from '@angular/fire/firestore';
+import { NavigationExtras, Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-product-template',
   templateUrl: './product.template.html',
@@ -9,6 +14,8 @@ import { map } from 'rxjs';
 export class ProductTemplate {
   classMain = "";
   previousScrollPosition = 0;
+  idProductState : any;
+  idProduct : any;
   @Input() dataSearch = {
     classSearch : "hidde",
     closeSearch : () =>{}
@@ -33,26 +40,56 @@ export class ProductTemplate {
       classOptionMmenu : "option-menu"
     }
   }
+  @Input() dataViewProduct = {
+    name :"",
+    urlImg : "",
+    value : "",
+    description : ""
+  }
 
-  @Input() dataPrincipalProduct = {
+
+
+  @Input() dataCardProduct = {
     data : [
       {
         urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-        textTitle : "sd",
-        textDescription :"dasddasdasda",
-        textValue : "4234234",
-        clickProduct :()=>{}
+        textTitle : "",
+        textDescription :"",
+        textValue : "",
+        clickProduct : () =>{}
       }
     ]
   }
 
   constructor(
-    private productServices : ProductServicesService
-  ){}
+    private productServices : ProductServicesService,
+    private router : Router,
+    private elementRef: ElementRef,
+    private renderer : Renderer2,
+    private firestore: Firestore,
+    private cdr: ChangeDetectorRef
+  ){
+    const navigation = this.router.getCurrentNavigation();
+    this.idProductState = navigation?.extras.state as any;
+    this.idProduct = this.idProductState.idProduct;
+    console.log(this.idProduct);
+  }
 
   ngOnInit(){
-    this.getPrincipalProducts();
+    this.getProducts();
+    const prodRef = doc(this.firestore,"caps",this.idProduct);
+    const prod = onSnapshot(prodRef, (snap) => {
+      const dataSnap : any = snap.data();
+      console.log(dataSnap);
+      this.dataViewProduct = {
+          name :dataSnap.name,
+          urlImg : dataSnap.urlImg,
+          value : dataSnap.value,
+          description : dataSnap.description
+        }
+    });
   }
+
   ngAfterViewInit() {
     window.scrollTo(0, 0);
   }
@@ -117,30 +154,51 @@ export class ProductTemplate {
     }
   }
 
-  getPrincipalProducts(){
-    this.productServices.getCaps().pipe(map((response)=>{
+
+
+  getProducts(){
+    const prodRef = collection(this.firestore,'caps');
+    const prod = onSnapshot(prodRef, (snap)=>{
+      const product : any[] = [];
       let arrayData : any = [];
-      console.log(response);
-      response.map((value : any) => {
-        console.log(value.urlImg);
+      snap.forEach(snapHijo =>{
+        product.push({
+          id: snapHijo.id,
+          ...snapHijo.data()
+        });
+      })
+      product.map((value : any) => {
         const data =  {
+          id: value.id,
           urlImgPrincipalProduct : value.urlImg,
           textTitle : value.name,
           textDescription :value.description,
-          textValue : value.value
+          textValue : value.value,
+          clickProduct :()=>{this.redirectProducts(value.id)}
         }
         arrayData.push(data);
-        console.log(arrayData);
       });
-      const responseData = arrayData;
-      return response = responseData;
-    })).subscribe((response)=>{
-      console.log(response);
-      this.setDataPrincipalProduct(response);
+      this.setDataPrincipalProduct(arrayData);
+
     });
   }
+
   setDataPrincipalProduct(responseData : any){
-    this.dataPrincipalProduct.data = responseData;
-    console.log(this.dataPrincipalProduct.data = responseData);
+    this.dataCardProduct.data = responseData;
+  }
+
+  redirectProducts(id : any){
+    window.scrollTo(0, 0);
+    const prodRef = doc(this.firestore,"caps",id);
+    const prod = onSnapshot(prodRef, (snap) => {
+      const dataSnap : any = snap.data();
+      console.log(dataSnap);
+      this.dataViewProduct = {
+          name :dataSnap.name,
+          urlImg : dataSnap.urlImg,
+          value : dataSnap.value,
+          description : dataSnap.description
+        }
+    });
   }
 }

@@ -6,21 +6,11 @@
     <img src="/assets/icons/market.svg" alt="">
   </div> -->
   <main [ngClass]="'main main--'+classMain">
-    <div class="viewProduct">
-      <ul class="contentImg">
-          <img src="/assets/img/cap3.png" alt="">
-      </ul>
-      <div class="descriptionProduct">
-        <p class="valueProduct">$233423</p>
-        <p class="nameProduct">Lorem ipsum dolor sit amet consectetur</p>
-        <button>Cotizar</button>
-      </div>
-    </div>
+  <app-view-product [dataViewProduct]="dataViewProduct" class="viewProduct"></app-view-product>
     <ul class="products">
-      <ng-container *ngFor="let data of dataPrincipalProduct.data; let i = index;">
-        <app-article-principal-product [dataPrincipalProduct]="data" class="cardProduct"></app-article-principal-product>
+      <ng-container *ngFor="let data of dataCardProduct.data; let i = index;">
+        <app-card-product [dataCardProduct]="data" class="cardProduct"></app-card-product>
       </ng-container>
-
     </ul>
     <app-footer></app-footer>
   </main>

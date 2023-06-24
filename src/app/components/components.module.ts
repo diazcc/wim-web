@@ -15,6 +15,7 @@ import { AdministrationTemplate } from './templates/administration/administratio
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SearchOrganism } from './organisms/search/search.organism';
 import { CardProductMolecule } from './molescules/card-product/card-product.molecule';
+import { ViewProductOrganism } from './organisms/view-product/view-product.organism';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { CardProductMolecule } from './molescules/card-product/card-product.mole
     ProductTemplate,
     AdministrationTemplate,
     SearchOrganism,
-    CardProductMolecule
+    CardProductMolecule,
+    ViewProductOrganism
   ],
   imports: [
     CommonModule,
@@ -52,7 +54,8 @@ import { CardProductMolecule } from './molescules/card-product/card-product.mole
     ProductTemplate,
     AdministrationTemplate,
     SearchOrganism,
-    CardProductMolecule
+    CardProductMolecule,
+    ViewProductOrganism
   ]
 })
 export class ComponentsModule { }

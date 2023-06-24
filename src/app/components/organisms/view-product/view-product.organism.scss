@@ -20,10 +20,15 @@
         max-width: 30rem;
       }
   }
+
   .descriptionProduct{
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    .title{
+      font-size: 1rem;
+      align-self: center;
+    }
     .valueProduct{
       align-self: center;
     }

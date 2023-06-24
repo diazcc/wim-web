@@ -1,5 +1,5 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { ProductServicesService } from 'src/app/services/product-services.service';
 import { collection, onSnapshot, DocumentSnapshot } from 'firebase/firestore';
@@ -87,7 +87,6 @@ export class HomePage {
     this.setDataHeader();
     this.setDataArticlePresentation();
     this.setDataSectionPhotos();
-    this.getPrincipalProducts();
     this.getProducts();
 
   }
@@ -167,28 +166,7 @@ showMenu(){
     }
   }
 
-  getPrincipalProducts(){
-    this.productServices.getCaps().pipe(map((response)=>{
-      let arrayData : any = [];
-      console.log(response);
-      response.map((value : any) => {
-        const data =  {
-          urlImgPrincipalProduct : value.urlImg,
-          textTitle : value.name,
-          textDescription :value.description,
-          textValue : value.value,
-          clickProduct :()=>{console.log("Aqui va el id")}
-        }
-        arrayData.push(data);
-        console.log(arrayData);
-      });
-      const responseData = arrayData;
-      return response = responseData;
-    })).subscribe((response)=>{
-      console.log(response);
 
-    });
-  }
 
 
   getProducts(){
@@ -212,10 +190,8 @@ showMenu(){
           clickProduct :()=>{this.redirectProducts(value.id)}
         }
         arrayData.push(data);
-        console.log(arrayData);
       });
       this.setDataPrincipalProduct(arrayData);
-      console.log(arrayData);
 
     });
   }
@@ -234,9 +210,16 @@ showMenu(){
     }
   }
 
-  redirectProducts(idProduct : any){
+  redirectProducts(id : any){
     // this.router.navigate(['/product']);
 
-    console.log("Aqui se redirge la pagina con el id "+ idProduct);
+    console.log("Aqui se redirge la pagina con el id "+ id);
+    const data : NavigationExtras = {
+      state : {
+        idProduct : id
+      }
+    }
+    this.router.navigate(['/product'], data );
+
   }
 }

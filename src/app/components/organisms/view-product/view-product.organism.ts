@@ -8,8 +8,10 @@ import { Component, Input } from '@angular/core';
 export class ViewProductOrganism {
 
   @Input() dataViewProduct = {
+    name :"",
     urlImg : "",
     value : "",
     description : ""
   }
+
 }

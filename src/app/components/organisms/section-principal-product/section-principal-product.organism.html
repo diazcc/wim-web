@@ -1,5 +1,6 @@
 <section class="sectionPrincipalProducts">
-  <ng-container *ngFor="let data of dataPrincipalProduct.data; let i = index;">
-    <app-article-principal-product [dataPrincipalProduct]="data" class="articlePrincipalProduct" C></app-article-principal-product>
+  <ng-container *ngFor="let data of dataCardProduct.data; let i = index;">
+    <app-card-product [dataCardProduct]="data"></app-card-product>
+    <!-- <app-article-principal-product [dataPrincipalProduct]="data" class="articlePrincipalProduct" C></app-article-principal-product> -->
   </ng-container>
 </section>

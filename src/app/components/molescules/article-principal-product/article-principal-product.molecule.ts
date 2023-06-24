@@ -13,7 +13,7 @@ export class ArticlePrincipalProductMolecule {
     textTitle : "",
     textDescription :"",
     textValue : "",
-
+    clickProduct : () =>{}
   }
 
   constructor(

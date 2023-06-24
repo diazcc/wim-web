@@ -13,7 +13,19 @@ export class SectionPrincipalProductOrganism {
         textTitle : "",
         textDescription :"",
         textValue : "",
-        clickProduct :()=>{}
+        clickProduct : () =>{console.log("Clciksss")}
+      }
+    ]
+  }
+
+  @Input() dataCardProduct = {
+    data : [
+      {
+        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
+        textTitle : "",
+        textDescription :"",
+        textValue : "",
+        clickProduct : () =>{}
       }
     ]
   }

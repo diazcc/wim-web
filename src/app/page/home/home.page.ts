@@ -2,6 +2,8 @@ import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { ProductServicesService } from 'src/app/services/product-services.service';
+import { collection, onSnapshot, DocumentSnapshot } from 'firebase/firestore';
+import { Firestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-home',
@@ -30,14 +32,14 @@ export class HomePage {
     urlImg4 : "",
   }
 
-  dataPrincipalProduct = {
+  dataCardProduct = {
     data : [
       {
-        urlImgPrincipalProduct : "",
+        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
         textTitle : "",
         textDescription :"",
         textValue : "",
-        clickProduct :()=>{}
+        clickProduct : () =>{}
       }
     ]
   }
@@ -74,7 +76,8 @@ export class HomePage {
     private productServices : ProductServicesService,
     private router : Router,
     private elementRef: ElementRef,
-    private renderer : Renderer2
+    private renderer : Renderer2,
+    private firestore: Firestore
   ){}
 
   ngOnInit(){
@@ -85,7 +88,7 @@ export class HomePage {
     this.setDataArticlePresentation();
     this.setDataSectionPhotos();
     this.getPrincipalProducts();
-
+    this.getProducts();
 
   }
   ngAfterViewInit() {
@@ -174,7 +177,7 @@ showMenu(){
           textTitle : value.name,
           textDescription :value.description,
           textValue : value.value,
-          clickProduct :()=>{}
+          clickProduct :()=>{console.log("Aqui va el id")}
         }
         arrayData.push(data);
         console.log(arrayData);
@@ -183,12 +186,42 @@ showMenu(){
       return response = responseData;
     })).subscribe((response)=>{
       console.log(response);
-      this.setDataPrincipalProduct(response);
+
+    });
+  }
+
+
+  getProducts(){
+    const prodRef = collection(this.firestore,'caps');
+    const prod = onSnapshot(prodRef, (snap)=>{
+      const product : any[] = [];
+      let arrayData : any = [];
+      snap.forEach(snapHijo =>{
+        product.push({
+          id: snapHijo.id,
+          ...snapHijo.data()
+        });
+      })
+      product.map((value : any) => {
+        const data =  {
+          id: value.id,
+          urlImgPrincipalProduct : value.urlImg,
+          textTitle : value.name,
+          textDescription :value.description,
+          textValue : value.value,
+          clickProduct :()=>{this.redirectProducts(value.id)}
+        }
+        arrayData.push(data);
+        console.log(arrayData);
+      });
+      this.setDataPrincipalProduct(arrayData);
+      console.log(arrayData);
+
     });
   }
 
   setDataPrincipalProduct(responseData : any){
-    this.dataPrincipalProduct.data = responseData;
+    this.dataCardProduct.data = responseData;
   }
 
   setDataSectionPhotos(){
@@ -201,8 +234,9 @@ showMenu(){
     }
   }
 
-  redirectProducts(){
-    this.router.navigate(['/product']);
-    console.log("Cliskscs");
+  redirectProducts(idProduct : any){
+    // this.router.navigate(['/product']);
+
+    console.log("Aqui se redirge la pagina con el id "+ idProduct);
   }
 }

@@ -1,0 +1,12 @@
+<article class="articlePrincipalProducts" (click)="dataCardProduct.clickProduct()">
+  <div class="imgPrincipalProducts">
+    <img [src]="dataCardProduct.urlImgPrincipalProduct" alt=""  class="imgPp">
+  </div>
+  <h2>{{dataCardProduct.textTitle}}</h2>
+  <p>{{dataCardProduct.textDescription}}</p>
+  <p>{{dataCardProduct.textValue}}</p>
+  <button class="buttonPrincipalProduct">
+    PEDIR POR WHATSAPP
+    <img src="/assets/icons/wpp.svg" alt="" class="iconWpp">
+  </button>
+</article>

@@ -28,14 +28,14 @@ export class HomeTemplate {
     urlImg4 : "",
   }
 
-  @Input() dataPrincipalProduct = {
+  @Input() dataCardProduct = {
     data : [
       {
-        urlImgPrincipalProduct : "",
+        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
         textTitle : "",
         textDescription :"",
         textValue : "",
-        clickProduct :()=>{}
+        clickProduct : () =>{}
       }
     ]
   }

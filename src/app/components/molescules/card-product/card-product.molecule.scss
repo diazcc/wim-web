@@ -26,9 +26,11 @@
   }
 }
 h2{
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-size: .9rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  font-weight: bolder;
 }
 p{
   margin: .5rem;
@@ -38,12 +40,13 @@ p{
 .buttonPrincipalProduct{
   color: rgb(255, 255, 255);
   font-weight: bold;
-  background-color: rgb(115, 0, 0);
+  background-color: rgb(78, 78, 78);
   border: none;
   padding: .3rem;
   border-radius: .5rem;
   display: flex;
   align-items: center;
+  margin: 1rem;
 }
 .iconWpp{
   width: 1rem;

@@ -1,56 +1,18 @@
-import { Component, ElementRef, HostListener, Input,Renderer2 } from '@angular/core';
+import { Component, ElementRef, HostListener, Input,Renderer2, ChangeDetectorRef  } from '@angular/core';
 
 @Component({
-  selector: 'app-home-template',
-  templateUrl: './home.template.html',
-  styleUrls: ['./home.template.scss']
+  selector: 'app-galery',
+  templateUrl: './galery.template.html',
+  styleUrls: ['./galery.template.scss']
 })
-export class HomeTemplate {
-
-  @Input() dataMain = {
-    classMain : "",
-    clickMore : () =>{}
-  }
+export class GaleryTemplate {
   previousScrollPosition = 0;
-
+  @Input() classMain = "";
   @Input() dataSearch = {
-    classSearch : "hidde",
+    classSearch : "",
     closeSearch : () =>{}
-   }
-
-
-  @Input() dataPresentation = {
-    classPresentation : ""
   }
-
-  @Input() dataSectionPhotos = {
-    textTitle : "",
-    urlImg1 : "",
-    urlImg2 : "",
-    urlImg3 : "",
-    urlImg4 : "",
-  }
-
-  @Input() dataCardProduct = {
-    data : [
-      {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-        textTitle : "",
-        textDescription :"",
-        textValue : "",
-        clickProduct : () =>{}
-      }
-    ]
-  }
-
-  @Input() dataArticlePresentation = {
-    icon1 : "",
-    icon2 : "",
-    icon3 : "",
-    icon4 : "",
-  }
-
-  @Input() dataHeader = {
+   @Input() dataHeader = {
     textTitle :"",
     urlIconMenu: "",
     classHeader :"",
@@ -70,30 +32,34 @@ export class HomeTemplate {
       classOptionMmenu : ""
     }
   }
-  constructor(
-    private elementRef: ElementRef,
-    private renderer: Renderer2
-    ) {}
+  @Input() dataCardProduct = {
+    data : [
+      {
+        urlImgPrincipalProduct : "",
+        textTitle : "",
+        textDescription :"",
+        textValue : "",
+        clickProduct : () =>{}
+      }
+    ]
+  }
 
-    ngOnInit(){
-    }
-
-
-    ngAfterViewInit(){
-      window.scrollTo(0, 0);
-    }
+  ngAfterViewInit() {
+    window.scrollTo(0, 0);
+  }
   @HostListener('window:scroll', ['$event'])
   onScroll(event: Event) {
     const scrollPosition = window.scrollY;
-
       if (scrollPosition > this.previousScrollPosition) {
         this.dataHeader.classHeader = "hidde";
         this.dataHeader.dataNavBar.classMenu ="menu--hidden";
         this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
+        this.classMain ="";
       } else {
         this.dataHeader.classHeader = "";
         this.dataHeader.dataNavBar.classMenu ="menu--hidden";
         this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
+        this.classMain ="";
       }
 
       if (scrollPosition < 150) {

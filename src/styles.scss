@@ -6,7 +6,18 @@
   font-family: 'buvica';
   src: url('/assets/fonts/queensides/Queensides-3z7Ey.ttf') format('truetype');
 }
-
+@font-face{
+  font-family: 'copper-normal';
+  src: url('/assets/fonts/copperplate/OPTICopperplate.otf') format('truetype');
+}
+@font-face{
+  font-family: 'copper-heavy';
+  src: url('/assets/fonts/copperplate/OPTICopperplate-Heavy.otf') format('truetype');
+}
+@font-face{
+  font-family: 'copper-light';
+  src: url('/assets/fonts/copperplate/OPTICopperplate-Light.otf') format('truetype');
+}
 
 *{
   margin: 0;
@@ -16,6 +27,7 @@
 
 body{
   // overflow: hidden;
+  background-color: black;
 }
 
 

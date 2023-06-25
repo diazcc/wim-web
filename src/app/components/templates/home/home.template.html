@@ -5,13 +5,13 @@
   <!-- <div class="iconMarket">
     <img src="/assets/icons/market.svg" alt="">
   </div> -->
-  <main [ngClass]="'main main--'+classMain">
+  <main [ngClass]="'main main--'+dataMain.classMain">
     <app-article-presentation [dataArticlePresentation]="dataArticlePresentation" class="presentation"></app-article-presentation>
     <div class="contentCenter">
       <app-section-photos [dataSectionPhotos]="dataSectionPhotos" class="sectionPhotos"></app-section-photos>
       <div class="contentPrincipalProduct">
         <app-section-principal-product [dataCardProduct]="dataCardProduct" class="sectionProduct"></app-section-principal-product>
-        <button>Ver mas</button>
+        <button (click)="dataMain.clickMore()">Ver mas</button>
       </div>
     </div>
     <app-footer class="app-footer"></app-footer>

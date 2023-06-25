@@ -11,7 +11,10 @@ import { Firestore } from '@angular/fire/firestore';
   styleUrls: ['./home.page.scss']
 })
 export class HomePage {
-  classMain = "";
+  dataMain = {
+    classMain : "",
+    clickMore : () =>{this.seeMoreProducts()}
+  }
   classSearch = "hidde";
   previousScrollPosition = 0;
 
@@ -99,12 +102,12 @@ showMenu(){
 
   if (this.dataHeader.dataNavBar.classMenu=="menu--hidden") {
   this.dataHeader.dataNavBar.classMenu="menu";
-  this.classMain = "filterBlur";
+  this.dataMain.classMain = "filterBlur";
   this.dataHeader.urlIconMenu = "assets/icons/close.svg"
   this.dataHeader.classHeader = "focus";
   }else{
   this.dataHeader.dataNavBar.classMenu="menu--hidden";
-  this.classMain = "";
+  this.dataMain.classMain = "";
   this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
   this.dataHeader.classHeader = "header";
   }
@@ -221,5 +224,9 @@ showMenu(){
     }
     this.router.navigate(['/product'], data );
 
+  }
+
+  seeMoreProducts(){
+    this.router.navigate(['/galery']);
   }
 }

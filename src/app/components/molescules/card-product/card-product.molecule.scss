@@ -38,15 +38,17 @@ p{
   font-size: .9rem;
 }
 .buttonPrincipalProduct{
+  width: 100%;
+  justify-content: center;
   color: rgb(255, 255, 255);
   font-weight: bold;
-  background-color: rgb(78, 78, 78);
-  border: none;
+  background-color: rgba(78, 78, 78, 0);
+  border: 1px gray solid;
   padding: .3rem;
-  border-radius: .5rem;
+  border-radius: .2rem;
   display: flex;
   align-items: center;
-  margin: 1rem;
+  margin:  1rem  0rem;
 }
 .iconWpp{
   width: 1rem;

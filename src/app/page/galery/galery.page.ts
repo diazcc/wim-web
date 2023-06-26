@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-
+import { Component, ElementRef, HostListener, Input,Renderer2, ChangeDetectorRef  } from '@angular/core';
+import { ProductServicesService } from 'src/app/services/product-services.service';
+import { map } from 'rxjs';
+import { collection, onSnapshot, DocumentSnapshot, doc } from 'firebase/firestore';
+import { Firestore } from '@angular/fire/firestore';
+import { NavigationExtras, Router } from '@angular/router';
 @Component({
   selector: 'app-galery-page',
   templateUrl: './galery.page.html',
@@ -39,71 +43,21 @@ export class GaleryPage {
         textDescription :"",
         textValue : "",
         clickProduct : () =>{}
-      },
-      {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-        textTitle : "",
-        textDescription :"",
-        textValue : "",
-        clickProduct : () =>{}
-      },
-      {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-        textTitle : "",
-        textDescription :"",
-        textValue : "",
-        clickProduct : () =>{}
-      },
-      {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-        textTitle : "",
-        textDescription :"",
-        textValue : "",
-        clickProduct : () =>{}
-      },
-      {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-        textTitle : "",
-        textDescription :"",
-        textValue : "",
-        clickProduct : () =>{}
-      },
-      {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-        textTitle : "",
-        textDescription :"",
-        textValue : "",
-        clickProduct : () =>{}
-      },
-      {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-        textTitle : "",
-        textDescription :"",
-        textValue : "",
-        clickProduct : () =>{}
-      },
-      {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-        textTitle : "",
-        textDescription :"",
-        textValue : "",
-        clickProduct : () =>{}
-      },
-      {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-        textTitle : "",
-        textDescription :"",
-        textValue : "",
-        clickProduct : () =>{}
-      },
-      {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-        textTitle : "",
-        textDescription :"",
-        textValue : "",
-        clickProduct : () =>{}
       }
     ]
+  }
+  constructor(
+    private productServices : ProductServicesService,
+    private router : Router,
+    private elementRef: ElementRef,
+    private renderer : Renderer2,
+    private firestore: Firestore,
+    private cdr: ChangeDetectorRef
+  ){}
+
+  ngOnInit(){
+    this.getProducts();
+
   }
 
   setSearch(){
@@ -142,5 +96,43 @@ export class GaleryPage {
     this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
     this.dataHeader.classHeader = "header";
     }
+  }
+  getProducts(){
+    const prodRef = collection(this.firestore,'caps');
+
+    const prod = onSnapshot(prodRef, (snap)=>{
+      const product : any[] = [];
+      let arrayData : any = [];
+      snap.forEach(snapHijo =>{
+        product.push({
+          id: snapHijo.id,
+          ...snapHijo.data()
+        });
+      })
+      product.map((value : any) => {
+        const data =  {
+          id: value.id,
+          urlImgPrincipalProduct : value.urlImg,
+          textTitle : value.name,
+          textDescription :value.description,
+          textValue : value.value,
+          clickProduct :()=>{this.redirectProducts(value.id)}
+        }
+        arrayData.push(data);
+      });
+      this.setDataPrincipalProduct(arrayData);
+
+    });
+  }
+  setDataPrincipalProduct(responseData : any){
+    this.dataCardProduct.data = responseData;
+  }
+  redirectProducts(id : any){
+    const data : NavigationExtras = {
+      state : {
+        idProduct : id
+      }
+    }
+    this.router.navigate(['/product'], data );
   }
 }

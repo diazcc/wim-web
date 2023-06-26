@@ -90,10 +90,12 @@ export class HomeTemplate {
         this.dataHeader.classHeader = "hidde";
         this.dataHeader.dataNavBar.classMenu ="menu--hidden";
         this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
+        this.dataMain.classMain ="";
       } else {
         this.dataHeader.classHeader = "";
         this.dataHeader.dataNavBar.classMenu ="menu--hidden";
         this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
+        this.dataMain.classMain ="";
       }
 
       if (scrollPosition < 150) {

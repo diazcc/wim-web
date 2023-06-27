@@ -25,16 +25,23 @@
       width: 100%;
     }
   }
-  h2{
+  .title{
     color: rgb(255, 255, 255);
     font-size: .9rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
-  p{
+
+  .description{
     margin: .5rem;
     color: rgb(255, 255, 255);
-    font-size: .9rem;
+    font-size: .3rem;
   }
+  .value{
+    margin: .5rem;
+    color: rgb(255, 255, 255);
+    font-size: .2rem;
+  }
+
   .buttonPrincipalProduct{
     color: rgb(255, 255, 255);
     font-weight: bold;

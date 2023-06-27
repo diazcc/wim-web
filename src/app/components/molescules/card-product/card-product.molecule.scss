@@ -25,18 +25,26 @@
     width: 100%;
   }
 }
-h2{
-  color: rgb(0, 0, 0);
-  font-size: .9rem;
-  background-color: rgb(255, 255, 255);
-  width: 100%;
-  font-weight: bolder;
-}
-p{
-  margin: .5rem;
-  color: rgb(255, 255, 255);
-  font-size: .9rem;
-}
+
+  .title{
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    font-weight: bolder;
+  }
+
+  .description{
+    margin: .5rem;
+    color: rgba(255, 255, 255, 0.703);
+    font-size: .9rem;
+  }
+  .value{
+    margin: .5rem;
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+  }
+
 .buttonPrincipalProduct{
   width: 100%;
   justify-content: center;

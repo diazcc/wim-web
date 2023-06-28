@@ -17,6 +17,8 @@ import { SearchOrganism } from './organisms/search/search.organism';
 import { CardProductMolecule } from './molescules/card-product/card-product.molecule';
 import { ViewProductOrganism } from './organisms/view-product/view-product.organism';
 import { GaleryTemplate } from './templates/galery/galery.template';
+import { CategoryOrganism } from './organisms/category/category.organism';
+import { SliderOrganism } from './organisms/slider/slider.organism';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { GaleryTemplate } from './templates/galery/galery.template';
     SearchOrganism,
     CardProductMolecule,
     ViewProductOrganism,
-    GaleryTemplate
+    GaleryTemplate,
+    CategoryOrganism,
+    SliderOrganism
   ],
   imports: [
     CommonModule,
@@ -58,7 +62,9 @@ import { GaleryTemplate } from './templates/galery/galery.template';
     SearchOrganism,
     CardProductMolecule,
     ViewProductOrganism,
-    GaleryTemplate
+    GaleryTemplate,
+    CategoryOrganism,
+    SliderOrganism
   ]
 })
 export class ComponentsModule { }

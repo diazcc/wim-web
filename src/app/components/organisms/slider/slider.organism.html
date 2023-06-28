@@ -1,0 +1,18 @@
+<section class="section">
+  <div class="contentSection">
+    <ng-container *ngIf="getStateLeft()">
+      <i class="arrow" (click)="clickLeft()">
+        <
+      </i>
+    </ng-container>
+
+    <ul class="carrusel">
+      <img *ngFor="let img of dataImg; let i = index" [src]="img.url" alt="" class="contentCard" [ngStyle]="isFirstImage(i) ? {'margin-left': margin +'%'} : null">
+    </ul>
+    <ng-container *ngIf="getStateRight()">
+      <i class="arrow" (click)="clickRight()">
+        >
+      </i>
+    </ng-container>
+  </div>
+</section>

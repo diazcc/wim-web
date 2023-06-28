@@ -46,6 +46,13 @@
       .sectionPhotos{
         width: 100%;
       }
+
+      .slider{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+      }
       .contentPrincipalProduct{
         display: flex;
         flex-direction: column;

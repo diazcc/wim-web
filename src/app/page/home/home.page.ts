@@ -35,23 +35,22 @@ export class HomePage {
     urlImg4 : "",
   }
 
-  dataCardProduct = {
-    data : [
-      {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-        textTitle : "",
-        textDescription :"",
-        textValue : "",
-        clickProduct : () =>{}
-      }
-    ]
-  }
+  // dataCardProduct = {
+  //   data : [
+  //     {
+  //       urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
+  //       textTitle : "",
+  //       textDescription :"",
+  //       textValue : "",
+  //       clickProduct : () =>{}
+  //     }
+  //   ]
+  // }
 
   dataArticlePresentation = {
-    icon1 : "",
-    icon2 : "",
-    icon3 : "",
-    icon4 : "",
+    title: "",
+    description : "",
+    redirect : () =>{}
   }
 
   dataHeader = {
@@ -90,7 +89,7 @@ export class HomePage {
     this.setDataHeader();
     this.setDataArticlePresentation();
     this.setDataSectionPhotos();
-    this.getProducts();
+    // this.getProducts();
 
   }
   ngAfterViewInit() {
@@ -162,46 +161,45 @@ showMenu(){
   }
   setDataArticlePresentation(){
     this.dataArticlePresentation = {
-      icon1 : "assets/icons/adidas.svg",
-      icon2 : "assets/icons/nike.svg",
-      icon3 : "assets/icons/puma.svg",
-      icon4 : "assets/icons/quest.png",
-    }
+      title: "Bienvenidos a Infinity Industry",
+      description : "Conoce mas sobre nosotros!",
+      redirect : () =>{console.log("JUJUUJJU")}
+   }
   }
 
 
 
 
-  getProducts(){
-    const prodRef = collection(this.firestore,'caps');
-    const prod = onSnapshot(prodRef, (snap)=>{
-      const product : any[] = [];
-      let arrayData : any = [];
-      snap.forEach(snapHijo =>{
-        product.push({
-          id: snapHijo.id,
-          ...snapHijo.data()
-        });
-      })
-      product.map((value : any) => {
-        const data =  {
-          id: value.id,
-          urlImgPrincipalProduct : value.urlImg,
-          textTitle : value.name,
-          textDescription :value.description,
-          textValue : value.value,
-          clickProduct :()=>{this.redirectProducts(value.id)}
-        }
-        arrayData.push(data);
-      });
-      this.setDataPrincipalProduct(arrayData);
+  // getProducts(){
+  //   const prodRef = collection(this.firestore,'caps');
+  //   const prod = onSnapshot(prodRef, (snap)=>{
+  //     const product : any[] = [];
+  //     let arrayData : any = [];
+  //     snap.forEach(snapHijo =>{
+  //       product.push({
+  //         id: snapHijo.id,
+  //         ...snapHijo.data()
+  //       });
+  //     })
+  //     product.map((value : any) => {
+  //       const data =  {
+  //         id: value.id,
+  //         urlImgPrincipalProduct : value.urlImg,
+  //         textTitle : value.name,
+  //         textDescription :value.description,
+  //         textValue : value.value,
+  //         clickProduct :()=>{this.redirectProducts(value.id)}
+  //       }
+  //       arrayData.push(data);
+  //     });
+  //     this.setDataPrincipalProduct(arrayData);
 
-    });
-  }
+  //   });
+  // }
 
-  setDataPrincipalProduct(responseData : any){
-    this.dataCardProduct.data = responseData;
-  }
+  // setDataPrincipalProduct(responseData : any){
+  //   this.dataCardProduct.data = responseData;
+  // }
 
   setDataSectionPhotos(){
     this.dataSectionPhotos = {

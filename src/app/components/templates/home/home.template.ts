@@ -31,24 +31,23 @@ export class HomeTemplate {
     urlImg4 : "",
   }
 
-  @Input() dataCardProduct = {
-    data : [
-      {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-        textTitle : "",
-        textDescription :"",
-        textValue : "",
-        clickProduct : () =>{}
-      }
-    ]
-  }
+  // @Input() dataCardProduct = {
+  //   data : [
+  //     {
+  //       urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
+  //       textTitle : "",
+  //       textDescription :"",
+  //       textValue : "",
+  //       clickProduct : () =>{}
+  //     }
+  //   ]
+  // }
 
   @Input() dataArticlePresentation = {
-    icon1 : "",
-    icon2 : "",
-    icon3 : "",
-    icon4 : "",
-  }
+    title: "",
+    description : "",
+    redirect : () =>{}
+ }
 
   @Input() dataHeader = {
     textTitle :"",

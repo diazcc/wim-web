@@ -8,12 +8,17 @@
   <main [ngClass]="'main main--'+dataMain.classMain">
     <app-article-presentation [dataArticlePresentation]="dataArticlePresentation" class="presentation"></app-article-presentation>
     <div class="contentCenter">
-      <app-section-photos [dataSectionPhotos]="dataSectionPhotos" class="sectionPhotos"></app-section-photos>
-      <app-slider class="slider"></app-slider>
-      <div class="contentPrincipalProduct">
-        <app-section-principal-product [dataCardProduct]="dataCardProduct" class="sectionProduct"></app-section-principal-product>
-        <button (click)="dataMain.clickMore()">Ver mas</button>
+      <!-- <app-section-photos [dataSectionPhotos]="dataSectionPhotos" class="sectionPhotos"></app-section-photos> -->
+      <div class="sectionVideo">
+        <video src="/assets/mp4/videoPresentation.mp4" type="video/mp4" muted autoplay>
+        </video>
       </div>
+      <app-slider class="slider"></app-slider>
+      <app-category></app-category>
+      <!-- <div class="contentPrincipalProduct">
+        <app-section-principal-product [dataCardProduct]="dataCardProduct" class="sectionProduct"></app-section-principal-product>
+      </div> -->
+      <button (click)="dataMain.clickMore()" class="buttonSeeMore">Ver mas</button>
     </div>
     <app-footer class="app-footer"></app-footer>
   </main>

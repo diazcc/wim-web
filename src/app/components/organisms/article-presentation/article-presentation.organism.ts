@@ -7,10 +7,8 @@ import { Component,Input } from '@angular/core';
 })
 export class ArticlePresentationOrganism {
  @Input() dataArticlePresentation = {
-  icon1 : "",
-  icon2 : "",
-  icon3 : "",
-  icon4 : "",
+    title: "",
+    description : "",
+    redirect : () =>{}
  }
-
 }

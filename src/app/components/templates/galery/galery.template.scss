@@ -26,6 +26,7 @@
       transition: ease-in-out .2s;
       position: relative;
       padding-top: 4rem;
+      gap: 1rem;
       &--filterBlur{
         filter: blur(3px);
         pointer-events: none;

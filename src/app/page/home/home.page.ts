@@ -235,7 +235,7 @@ showMenu(){
         const data =  {
           nameMarc : value.marc,
           urlImg : value.urlImg,
-          redirect : () => {this.redirectProducts(value.id)}
+          redirect : () => {this.redirectProducts(value.marc)}
         }
         arrayData.push(data);
       });
@@ -255,10 +255,10 @@ showMenu(){
     console.log("Aqui se redirge la pagina con el id "+ id);
     const data : NavigationExtras = {
       state : {
-        idProduct : id
+        nameMarc : id
       }
     }
-    this.router.navigate(['/product'], data );
+    this.router.navigate(['/galery'], data );
 
   }
 

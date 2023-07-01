@@ -7,6 +7,17 @@ import { Component, ElementRef, HostListener, Input,Renderer2, ChangeDetectorRef
 })
 export class GaleryTemplate {
   previousScrollPosition = 0;
+  @Input() selectedOption : any ="Todo";
+
+
+  @Input() dataOption = {
+    setFilter : () =>{},
+    data : [
+      {
+        marc :"Marcas"
+      }
+    ]
+  };
   @Input() classMain = "";
   @Input() dataSearch = {
     classSearch : "",
@@ -68,5 +79,10 @@ export class GaleryTemplate {
 
       this.previousScrollPosition = scrollPosition;
     }
+
+    onOptionSelected() {
+
+    }
+
 
 }

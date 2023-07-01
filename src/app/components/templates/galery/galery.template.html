@@ -12,11 +12,9 @@
       <ul class="filters">
         <li class="contentFilter">
           <h3 class="titleFilter">Categoria</h3>
-          <select class="selectFilter">
+          <select class="selectFilter" [(ngModel)]="selectedOption" (change)="dataOption.setFilter()">
             <option selected>Todo</option>
-            <option>Gorras</option>
-            <option>Zapatillas</option>
-            <option>Camisas</option>
+              <option *ngFor="let data of dataOption.data; let i = index;">{{data.marc}}</option>
           </select>
         </li>
         <li class="contentFilter">

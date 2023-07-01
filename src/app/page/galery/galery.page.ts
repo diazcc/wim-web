@@ -10,6 +10,17 @@ import { NavigationExtras, Router } from '@angular/router';
   styleUrls: ['./galery.page.scss']
 })
 export class GaleryPage {
+  @Input() idNameMarcState : any;
+  dataOption = {
+    setFilter : () =>{console.log()},
+    data : [
+      {
+        marc :"Marcas"
+      }
+    ]
+  };
+
+  @Input() idNameMarc : any;
   classMain = "";
   dataSearch = {
     classSearch : "hidde",
@@ -53,7 +64,12 @@ export class GaleryPage {
     private renderer : Renderer2,
     private firestore: Firestore,
     private cdr: ChangeDetectorRef
-  ){}
+  ){
+    const navigation = this.router.getCurrentNavigation();
+    this.idNameMarcState = navigation?.extras.state as any;
+    this.idNameMarc = this.idNameMarcState?.nameMarc;
+    console.log(this.idNameMarc);
+  }
 
   ngOnInit(){
     this.getProducts();
@@ -104,26 +120,50 @@ export class GaleryPage {
       const product : any[] = [];
       let arrayData : any = [];
       snap.forEach(snapHijo =>{
+        console.log(snapHijo.data());
         product.push({
           id: snapHijo.id,
           ...snapHijo.data()
         });
       })
       product.map((value : any) => {
-        const data =  {
-          id: value.id,
-          urlImgPrincipalProduct : value.urlImg,
-          textTitle : value.name,
-          textDescription :value.description,
-          textValue : value.value,
-          clickProduct :()=>{this.redirectProducts(value.id)}
+        if (value.marc == this.idNameMarc) {
+          console.log("sisas perro este es el service: "+value.marc+ "y el id: "+this.idNameMarc);
+          const data =  {
+            id: value.id,
+            urlImgPrincipalProduct : value.urlImg,
+            textTitle : value.name,
+            textDescription :value.description,
+            textValue : value.value,
+            clickProduct :()=>{this.redirectProducts(value.id)}
+          }
+          console.log("entro");
+
+
+          arrayData.push(data);
+          console.log(arrayData.length);
+
+        }else if(value.marc==""){
+          const data =  {
+            id: value.id,
+            urlImgPrincipalProduct : value.urlImg,
+            textTitle : value.name,
+            textDescription :value.description,
+            textValue : value.value,
+            clickProduct :()=>{this.redirectProducts(value.id)}
+          }
+          arrayData.push(data);
         }
-        arrayData.push(data);
       });
       this.setDataPrincipalProduct(arrayData);
 
     });
   }
+
+setFilter(){
+
+}
+
   setDataPrincipalProduct(responseData : any){
     this.dataCardProduct.data = responseData;
   }

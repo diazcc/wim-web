@@ -1,4 +1,4 @@
-<section class="section">
+<!-- <section class="section">
   <h1>Productos Destacados</h1>
   <div class="contentSection">
     <ng-container *ngIf="getStateLeft()">
@@ -10,6 +10,35 @@
     <ul class="carrusel">
       <img *ngFor="let img of dataImg; let i = index" [src]="img.url" alt="" class="contentCard" [ngStyle]="isFirstImage(i) ? {'margin-left': margin +'%'} : null">
     </ul>
+    <ng-container *ngIf="getStateRight()">
+      <i class="arrow" (click)="clickRight()">
+        <img src="/assets/icons/arrowRight.svg" alt="">
+      </i>
+    </ng-container>
+  </div>
+</section> -->
+
+<section class="section">
+  <h1>Productos Destacados</h1>
+  <div class="contentSection">
+    <ng-container *ngIf="getStateLeft()">
+      <i class="arrow" (click)="clickLeft()">
+        <img src="/assets/icons/arrowLeft.svg" alt="">
+      </i>
+    </ng-container>
+
+    <ul class="carrusel">
+      <li *ngFor="let data of dataSlider; let i = index" class="contentCarrusel" [ngStyle]="isFirstImage(i) ? {'margin-left': margin +'%'} : null">
+        <div class="contentCard">
+          <span class="descriptionCard">
+            <h2 class="nameCard">{{data.name}}</h2>
+            <p  class="valueCard">{{data.value}}</p>
+          </span>
+        </div>
+        <img [src]="data.urlImg" alt="">
+      </li>
+    </ul>
+
     <ng-container *ngIf="getStateRight()">
       <i class="arrow" (click)="clickRight()">
         <img src="/assets/icons/arrowRight.svg" alt="">

@@ -10,10 +10,9 @@
     display: flex;
     overflow: hidden;
     align-items: center;
-    background-color: #1f0000;
-    margin-top:6rem ;
-    width: 90%;
-    height: 20rem;
+    // margin-top:3rem ;
+    width: 100%;
+    // max-width: 22rem;
     justify-content: center;
       img{
         width: 100%;
@@ -34,10 +33,14 @@
     }
     button{
       border-radius: 1rem;
-      color: black;
+      color: rgb(255, 255, 255);
       font-weight: bolder;
       width: 10rem;
       align-self: center;
+      font-size: 1rem;
+      padding: .4rem;
+      background-color: rgb(36, 36, 36);
+      border: 1px white solid;
     }
   }
 }

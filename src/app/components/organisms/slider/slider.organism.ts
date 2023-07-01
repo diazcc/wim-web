@@ -12,23 +12,21 @@ export class SliderOrganism {
   stateArrowLeft : boolean = true;
   stateArrowRight : boolean = true;
 
-  dataImg = [
+  dataSlider = [
     {
-      url: "/assets/img/logodragonsolo.svg",
+      urlImg: "/assets/img/gorra-principal.jpg",
+      name : "Nombre",
+      value : "48484"
     },
     {
-      url: "/assets/img/logodragonsolo.svg",
+      urlImg: "/assets/img/logoconletra.svg",
+      name : "Nombre",
+      value : "48484"
     },
     {
-      url: "/assets/img/logodragonsolo.svg",
-    }
-  ]
-  dataCarrusel = [
-    {
-      url: "/assets/img/logodragonsolo.svg",
-    },
-    {
-      url: "/assets/img/logodragonsolo.svg",
+      urlImg: "/assets/img/logodragonsolo.svg",
+      name : "Nombre",
+      value : "48484"
     }
   ]
 

@@ -49,10 +49,17 @@ export class GaleryPage {
   dataCardProduct = {
     data : [
       {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-        textTitle : "",
-        textDescription :"",
-        textValue : "",
+        urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+        textTitle : "- - -",
+        textDescription :"- - -",
+        textValue : "- - -",
+        clickProduct : () =>{}
+      },
+      {
+        urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+        textTitle : "- - -",
+        textDescription :"- - -",
+        textValue : "- - -",
         clickProduct : () =>{}
       }
     ]

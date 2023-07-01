@@ -52,7 +52,7 @@ export class ProductPage {
   @Input() dataCardProduct = {
     data : [
       {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
+        urlImgPrincipalProduct : "",
         textTitle : "",
         textDescription :"",
         textValue : "",

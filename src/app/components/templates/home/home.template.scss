@@ -62,6 +62,11 @@
           }
         }
 
+        img{
+          height: 100%;
+          object-fit: cover;
+        }
+
         .sectionPhotos{
           width: 100%;
         }

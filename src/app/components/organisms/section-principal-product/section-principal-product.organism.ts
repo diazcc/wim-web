@@ -9,7 +9,7 @@ export class SectionPrincipalProductOrganism {
   @Input() dataPrincipalProduct = {
     data : [
       {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
+        urlImgPrincipalProduct : "",
         textTitle : "",
         textDescription :"",
         textValue : "",
@@ -21,7 +21,7 @@ export class SectionPrincipalProductOrganism {
   @Input() dataCardProduct = {
     data : [
       {
-        urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
+        urlImgPrincipalProduct : "",
         textTitle : "",
         textDescription :"",
         textValue : "",

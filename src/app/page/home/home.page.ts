@@ -16,7 +16,7 @@ export class HomePage {
     data : [
       {
         nameMarc : "Marca",
-        urlImg : "/assets/img/cap2.png",
+        urlImg : "/assets/img/cap.png",
         redirect : () => {}
       }
 
@@ -45,19 +45,6 @@ export class HomePage {
     urlImg3 : "",
     urlImg4 : "",
   }
-
-  // dataCardProduct = {
-  //   data : [
-  //     {
-  //       urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-  //       textTitle : "",
-  //       textDescription :"",
-  //       textValue : "",
-  //       clickProduct : () =>{}
-  //     }
-  //   ]
-  // }
-
   dataArticlePresentation = {
     title: "",
     description : "",
@@ -101,6 +88,7 @@ export class HomePage {
     this.setDataArticlePresentation();
     this.setDataSectionPhotos();
     // this.getProducts();
+    this.getCategories();
 
   }
   ngAfterViewInit() {
@@ -174,8 +162,16 @@ showMenu(){
     this.dataArticlePresentation = {
       title: "Bienvenidos a Infinity Industry",
       description : "Conoce mas sobre nosotros!",
-      redirect : () =>{console.log("JUJUUJJU")}
+      redirect : () =>{
+        this.scrollToTitle();
+      }
    }
+  }
+  scrollToTitle() {
+    const titleMarc = document.getElementById('titleCategory');
+    if (titleMarc) {
+      titleMarc.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
 
@@ -220,6 +216,36 @@ showMenu(){
       urlImg3 : "/assets/img/default-photoart3.jpg",
       urlImg4 : "/assets/img/default-photoart4.jpg",
     }
+  }
+
+  getCategories(){
+    const categoryRef = collection(this.firestore,'category');
+    const prod = onSnapshot(categoryRef, (snap)=>{
+      const category : any[] = [];
+      let arrayData : any = [];
+      snap.forEach(snapHijo =>{
+        category.push({
+          id: snapHijo.id,
+          ...snapHijo.data()
+        });
+      })
+      console.log(category);
+      category.map((value : any) => {
+        const data =  {
+          nameMarc : value.marc,
+          urlImg : value.urlImg,
+          redirect : () => {this.redirectProducts(value.id)}
+        }
+        arrayData.push(data);
+      });
+      console.log(arrayData);
+      this.setDataCategory(arrayData);
+    });
+
+  }
+
+  setDataCategory(responseData : any){
+    this.dataCategory.data= responseData;
   }
 
   redirectProducts(id : any){

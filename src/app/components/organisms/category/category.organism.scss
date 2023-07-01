@@ -2,11 +2,11 @@
   height: max-content;
   display: flex;
   flex-wrap: wrap;
-  gap: 5rem;
+  gap: 2.5rem;
   justify-content: center;
   .titleCategory{
     width: 100%;
-    font-size: 2rem;
+    font-size: 2.5rem;
     text-align: center;
     font-family: opensans-regular;
   }
@@ -17,6 +17,7 @@
     height: 20rem;
     background-color: rgb(255, 255, 255);
     position: relative;
+    overflow: hidden;
     .before{
       background-color: rgba(0, 0, 0, 0.41);
       width: 100%;

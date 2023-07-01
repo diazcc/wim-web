@@ -11,6 +11,7 @@ import { Firestore } from '@angular/fire/firestore';
   styleUrls: ['./home.page.scss']
 })
 export class HomePage {
+  nameMarc : any;
   dataCategory ={
     titleCategory : "Marcas",
     data : [

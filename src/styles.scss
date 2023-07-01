@@ -19,6 +19,16 @@
   src: url('/assets/fonts/copperplate/OPTICopperplate-Light.otf') format('truetype');
 }
 
+@font-face{
+  font-family: 'opensans-regular';
+  src: url('/assets/fonts/opensans/OpenSans-Regular.ttf') format('truetype');
+}
+
+@font-face{
+  // src: url('/src/assets/fonts/opensans/OpenSans-Bold.ttf') format('truetype');
+  font-family: 'opensans-bold';
+  src: url('/assets/fonts/opensans/OpenSans-Bold.ttf') format('truetype');
+}
 *{
   margin: 0;
   color: white;

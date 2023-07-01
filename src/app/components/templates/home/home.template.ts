@@ -6,6 +6,16 @@ import { Component, ElementRef, HostListener, Input,Renderer2 } from '@angular/c
   styleUrls: ['./home.template.scss']
 })
 export class HomeTemplate {
+  @Input() dataCategory ={
+    titleCategory : "Marcas",
+    data : [
+      {
+        nameMarc : "",
+        urlImg : "",
+        redirect : () => {}
+      }
+    ]
+  }
 
   @Input() dataMain = {
     classMain : "",

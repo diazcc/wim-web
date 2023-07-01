@@ -1,22 +1,11 @@
 <section class="sectionCategory">
-  <h1 class="titleCategory">Marcas</h1>
-  <div class="cardCategory">
-    <div class="before">
-      <h1>Title</h1>
+  <h1 class="titleCategory">{{dataCategory.titleCategory}}</h1>
+  <ng-container *ngFor="let data of dataCategory.data; let i = index;">
+    <div class="cardCategory" (click)="data.redirect()">
+      <div class="before">
+        <h1>{{data.nameMarc}}</h1>
+      </div>
+      <img [src]="data.urlImg" alt="" class="imgContent">
     </div>
-    <img src="/assets/img/cap.png" alt="" class="imgContent">
-  </div>
-
-  <div class="cardCategory">
-    <div class="before">
-      <h1>Title</h1>
-    </div>
-    <img src="/assets/img/cap.png" alt="" class="imgContent">
-  </div>
-  <div class="cardCategory">
-    <div class="before">
-      <h1>Title</h1>
-    </div>
-    <img src="/assets/img/cap.png" alt="" class="imgContent">
-  </div>
+  </ng-container>
 </section>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 
 @Component({
   selector: 'app-category',
@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./category.organism.scss']
 })
 export class CategoryOrganism {
-
+  @Input() dataCategory ={
+    titleCategory : "Marcas",
+    data : [
+      {
+        nameMarc : "Marca",
+        urlImg : "/assets/img/cap2.png",
+        redirect : () => {}
+      }
+    ]
+  }
 }

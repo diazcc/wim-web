@@ -23,6 +23,14 @@ export class SliderOrganism {
       url: "/assets/img/logodragonsolo.svg",
     }
   ]
+  dataCarrusel = [
+    {
+      url: "/assets/img/logodragonsolo.svg",
+    },
+    {
+      url: "/assets/img/logodragonsolo.svg",
+    }
+  ]
 
   arrowLeft : any;
   arrowRight : any;

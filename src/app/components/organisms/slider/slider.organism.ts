@@ -12,17 +12,7 @@ export class SliderOrganism {
   stateArrowLeft : boolean = true;
   stateArrowRight : boolean = true;
 
-  dataSlider = [
-    {
-      urlImg: "/assets/img/gorra-principal.jpg",
-      name : "Nombre",
-      value : "48484"
-    },
-    {
-      urlImg: "/assets/img/logoconletra.svg",
-      name : "Nombre",
-      value : "48484"
-    },
+  @Input() dataSlider = [
     {
       urlImg: "/assets/img/logodragonsolo.svg",
       name : "Nombre",

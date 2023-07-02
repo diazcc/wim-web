@@ -9,6 +9,25 @@ export class SearchOrganism {
  @Input() classSearch ="hidde";
  @Input() dataSearch = {
   classSearch : "hidde",
-  closeSearch : () =>{}
+  closeSearch : () =>{},
+  dataCardProduct : [
+    {
+      urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+      textTitle : "--",
+      textDescription :"--",
+      textValue : "--",
+      clickProduct : () =>{}
+    },
+    {
+      urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+      textTitle : "--",
+      textDescription :"--",
+      textValue : "--",
+      clickProduct : () =>{}
+    }
+  ]
  }
+  @Input() dataCardProduct = {
+
+  }
 }

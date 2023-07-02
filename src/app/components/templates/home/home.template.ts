@@ -6,6 +6,23 @@ import { Component, ElementRef, HostListener, Input,Renderer2 } from '@angular/c
   styleUrls: ['./home.template.scss']
 })
 export class HomeTemplate {
+  @Input() dataSlider = [
+    {
+      urlImg: "/assets/img/cap.png",
+      name : "Jamaicana",
+      value : "3500"
+    },
+    {
+      urlImg: "/assets/img/logoconletra.svg",
+      name : "Sisors",
+      value : "5800"
+    },
+    {
+      urlImg: "/assets/img/gorra-principal.jpg",
+      name : "Gorra nike",
+      value : "700"
+    }
+  ]
   @Input() dataCategory ={
     titleCategory : "Marcas",
     data : [
@@ -25,8 +42,25 @@ export class HomeTemplate {
 
   @Input() dataSearch = {
     classSearch : "hidde",
-    closeSearch : () =>{}
+    closeSearch : () =>{},
+    dataCardProduct : [
+      {
+        urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+        textTitle : "--",
+        textDescription :"--",
+        textValue : "--",
+        clickProduct : () =>{}
+      },
+      {
+        urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+        textTitle : "--",
+        textDescription :"--",
+        textValue : "--",
+        clickProduct : () =>{}
+      }
+    ]
    }
+
 
 
   @Input() dataPresentation = {

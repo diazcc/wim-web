@@ -18,7 +18,23 @@ export class ProductPage {
   @Input() idProduct : any;
   @Input() dataSearch = {
     classSearch : "hidde",
-    closeSearch : () =>{}
+    closeSearch : () =>{},
+    dataCardProduct : [
+      {
+        urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+        textTitle : "--",
+        textDescription :"--",
+        textValue : "--",
+        clickProduct : () =>{}
+      },
+      {
+        urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+        textTitle : "--",
+        textDescription :"--",
+        textValue : "--",
+        clickProduct : () =>{}
+      }
+    ]
    }
   @Input() dataHeader = {
     textTitle :"Infinity Industry",
@@ -91,16 +107,13 @@ export class ProductPage {
   }
   setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
-      this.dataSearch = {
-        classSearch : "search",
-        closeSearch : () =>{this.closeSearch()}
-      }
+      this.dataSearch.classSearch = "search";
+      this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "hidde";
     }else{
-      this.dataSearch = {
-        classSearch : "hidde",
-        closeSearch : () =>{this.closeSearch()}
-      }
+      this.dataSearch.classSearch = "hidde";
+      this.dataSearch.closeSearch = () =>{this.closeSearch()}
+
       this.dataHeader.classHeader = "header";
     }
   }

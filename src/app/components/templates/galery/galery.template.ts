@@ -20,9 +20,25 @@ export class GaleryTemplate {
   };
   @Input() classMain = "";
   @Input() dataSearch = {
-    classSearch : "",
-    closeSearch : () =>{}
-  }
+    classSearch : "hidde",
+    closeSearch : () =>{},
+    dataCardProduct : [
+      {
+        urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+        textTitle : "--",
+        textDescription :"--",
+        textValue : "--",
+        clickProduct : () =>{}
+      },
+      {
+        urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+        textTitle : "--",
+        textDescription :"--",
+        textValue : "--",
+        clickProduct : () =>{}
+      }
+    ]
+   }
    @Input() dataHeader = {
     textTitle :"",
     urlIconMenu: "",

@@ -30,9 +30,25 @@ export class HomePage {
   classSearch = "hidde";
   previousScrollPosition = 0;
 
-  dataSearch = {
+   dataSearch = {
     classSearch : "hidde",
-    closeSearch : () =>{}
+    closeSearch : () =>{},
+    dataCardProduct : [
+      {
+        urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+        textTitle : "--",
+        textDescription :"--",
+        textValue : "--",
+        clickProduct : () =>{}
+      },
+      {
+        urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+        textTitle : "--",
+        textDescription :"--",
+        textValue : "--",
+        clickProduct : () =>{}
+      }
+    ]
    }
 
   dataPresentation = {
@@ -137,16 +153,12 @@ showMenu(){
 
   setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
-      this.dataSearch = {
-        classSearch : "search",
-        closeSearch : () =>{this.closeSearch()}
-      }
+      this.dataSearch.classSearch = "search";
+      this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "hidde";
     }else{
-      this.dataSearch = {
-        classSearch : "hidde",
-        closeSearch : () =>{this.closeSearch()}
-      }
+      this.dataSearch.classSearch = "hidde";
+      this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "header";
     }
   }

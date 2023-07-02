@@ -5,11 +5,8 @@
   <h1 class="title">Buscar producto</h1>
   <input type="text">
   <ul class="result">
-    <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-    <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-    <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-    <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-    <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
-    <app-article-principal-product class="articlePrincipalProduct"></app-article-principal-product>
+    <ng-container *ngFor="let data of dataSearch.dataCardProduct; let i = index;">
+      <app-card-product [dataCardProduct]="data" class="card"></app-card-product>
+    </ng-container>
   </ul>
 </div>

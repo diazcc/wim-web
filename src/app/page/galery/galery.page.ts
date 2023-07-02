@@ -12,7 +12,7 @@ import { NavigationExtras, Router } from '@angular/router';
 export class GaleryPage {
   @Input() idNameMarcState : any;
   dataOption = {
-    setFilter : () =>{console.log()},
+    setFilter : () =>{},
     data : [
       {
         marc :"Marcas"
@@ -22,10 +22,26 @@ export class GaleryPage {
 
   @Input() idNameMarc : any;
   classMain = "";
-  dataSearch = {
+   dataSearch = {
     classSearch : "hidde",
-    closeSearch : () =>{}
-  }
+    closeSearch : () =>{},
+    dataCardProduct : [
+      {
+        urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+        textTitle : "--",
+        textDescription :"--",
+        textValue : "--",
+        clickProduct : () =>{}
+      },
+      {
+        urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+        textTitle : "--",
+        textDescription :"--",
+        textValue : "--",
+        clickProduct : () =>{}
+      }
+    ]
+   }
    dataHeader = {
     textTitle :"Infinity Industry",
     urlIconMenu: "assets/icons/menu.svg",
@@ -75,7 +91,7 @@ export class GaleryPage {
     const navigation = this.router.getCurrentNavigation();
     this.idNameMarcState = navigation?.extras.state as any;
     this.idNameMarc = this.idNameMarcState?.nameMarc;
-    console.log(this.idNameMarc);
+
   }
 
   ngOnInit(){
@@ -85,16 +101,12 @@ export class GaleryPage {
 
   setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
-      this.dataSearch = {
-        classSearch : "search",
-        closeSearch : () =>{this.closeSearch()}
-      }
+      this.dataSearch.classSearch = "search";
+      this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "hidde";
     }else{
-      this.dataSearch = {
-        classSearch : "hidde",
-        closeSearch : () =>{this.closeSearch()}
-      }
+      this.dataSearch.classSearch = "hidde";
+      this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "header";
     }
   }
@@ -127,15 +139,17 @@ export class GaleryPage {
       const product : any[] = [];
       let arrayData : any = [];
       snap.forEach(snapHijo =>{
-        console.log(snapHijo.data());
+
         product.push({
           id: snapHijo.id,
           ...snapHijo.data()
         });
       })
       product.map((value : any) => {
+
+
         if (value.marc == this.idNameMarc) {
-          console.log("sisas perro este es el service: "+value.marc+ "y el id: "+this.idNameMarc);
+
           const data =  {
             id: value.id,
             urlImgPrincipalProduct : value.urlImg,
@@ -144,13 +158,13 @@ export class GaleryPage {
             textValue : value.value,
             clickProduct :()=>{this.redirectProducts(value.id)}
           }
-          console.log("entro");
+
 
 
           arrayData.push(data);
-          console.log(arrayData.length);
 
-        }else if(value.marc==""){
+
+        }else if(value.marc=="" || this.idNameMarc == undefined){
           const data =  {
             id: value.id,
             urlImgPrincipalProduct : value.urlImg,
@@ -159,6 +173,7 @@ export class GaleryPage {
             textValue : value.value,
             clickProduct :()=>{this.redirectProducts(value.id)}
           }
+
           arrayData.push(data);
         }
       });

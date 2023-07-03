@@ -154,7 +154,6 @@ export class GaleryPage {
     this.dataOption.data = value;
   }
   detectChange(dataMarc : string){
-    console.log('Categoria seleccionada:', dataMarc);
     const prodRef = collection(this.firestore,'caps');
     const prod = onSnapshot(prodRef, (snap)=>{
       const product : any[] = [];

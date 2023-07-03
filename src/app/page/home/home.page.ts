@@ -186,41 +186,6 @@ showMenu(){
       titleMarc.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
-
-
-
-  // getProducts(){
-  //   const prodRef = collection(this.firestore,'caps');
-  //   const prod = onSnapshot(prodRef, (snap)=>{
-  //     const product : any[] = [];
-  //     let arrayData : any = [];
-  //     snap.forEach(snapHijo =>{
-  //       product.push({
-  //         id: snapHijo.id,
-  //         ...snapHijo.data()
-  //       });
-  //     })
-  //     product.map((value : any) => {
-  //       const data =  {
-  //         id: value.id,
-  //         urlImgPrincipalProduct : value.urlImg,
-  //         textTitle : value.name,
-  //         textDescription :value.description,
-  //         textValue : value.value,
-  //         clickProduct :()=>{this.redirectProducts(value.id)}
-  //       }
-  //       arrayData.push(data);
-  //     });
-  //     this.setDataPrincipalProduct(arrayData);
-
-  //   });
-  // }
-
-  // setDataPrincipalProduct(responseData : any){
-  //   this.dataCardProduct.data = responseData;
-  // }
-
   setDataSectionPhotos(){
     this.dataSectionPhotos = {
       textTitle : "Nuevos estilos",
@@ -230,7 +195,6 @@ showMenu(){
       urlImg4 : "/assets/img/default-photoart4.jpg",
     }
   }
-
   getCategories(){
     const categoryRef = collection(this.firestore,'category');
     const prod = onSnapshot(categoryRef, (snap)=>{
@@ -252,26 +216,18 @@ showMenu(){
       });
       this.setDataCategory(arrayData);
     });
-
   }
-
   setDataCategory(responseData : any){
     this.dataCategory.data= responseData;
   }
-
   redirectProducts(id : any){
-    // this.router.navigate(['/product']);
-
-    console.log("Aqui se redirge la pagina con el id "+ id);
     const data : NavigationExtras = {
       state : {
         nameMarc : id
       }
     }
     this.router.navigate(['/galery'], data );
-
   }
-
   seeMoreProducts(){
     this.router.navigate(['/galery']);
   }

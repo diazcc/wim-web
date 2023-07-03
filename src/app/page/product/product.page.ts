@@ -13,7 +13,6 @@ import { NavigationExtras, Router } from '@angular/router';
 })
 export class ProductPage {
   @Input() classMain = "";
-
   @Input() idProductState : any;
   @Input() idProduct : any;
   @Input() dataSearch = {
@@ -62,9 +61,6 @@ export class ProductPage {
     value : "",
     description : ""
   }
-
-
-
   @Input() dataCardProduct = {
     data : [
       {
@@ -76,7 +72,6 @@ export class ProductPage {
       }
     ]
   }
-
   constructor(
     private productServices : ProductServicesService,
     private router : Router,
@@ -125,9 +120,7 @@ export class ProductPage {
       this.dataSearch.classSearch = "search";
     }
   }
-
   showMenu(){
-
     if (this.dataHeader.dataNavBar.classMenu=="menu--hidden") {
     this.dataHeader.dataNavBar.classMenu="menu";
     this.classMain = "filterBlur";
@@ -140,8 +133,6 @@ export class ProductPage {
     this.dataHeader.classHeader = "header";
     }
   }
-
-
   getProducts(){
     const prodRef = collection(this.firestore,'caps');
     const prod = onSnapshot(prodRef, (snap)=>{
@@ -165,21 +156,16 @@ export class ProductPage {
         arrayData.push(data);
       });
       this.setDataPrincipalProduct(arrayData);
-
     });
-
   }
-
   setDataPrincipalProduct(responseData : any){
     this.dataCardProduct.data = responseData;
   }
-
   redirectProducts(id : any){
     window.scrollTo(0, 0);
     const prodRef = doc(this.firestore,"caps",id);
     const prod = onSnapshot(prodRef, (snap) => {
       const dataSnap : any = snap.data();
-      console.log(dataSnap);
       this.dataViewProduct = {
           name :dataSnap.name,
           urlImg : dataSnap.urlImg,

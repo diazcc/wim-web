@@ -101,7 +101,6 @@ export class GaleryTemplate {
     }
 
     @Input() detectChange(){
-      console.log(this.selectedOption);
       this.selectionOptionChanged.emit(this.selectedOption);
     }
 }

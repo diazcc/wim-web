@@ -4,6 +4,7 @@ import { map } from 'rxjs';
 import { collection, onSnapshot, DocumentSnapshot, doc } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { NavigationExtras, Router } from '@angular/router';
+import { GaleryTemplate } from 'src/app/components/templates/galery/galery.template';
 @Component({
   selector: 'app-galery-page',
   templateUrl: './galery.page.html',
@@ -11,8 +12,9 @@ import { NavigationExtras, Router } from '@angular/router';
 })
 export class GaleryPage {
   @Input() idNameMarcState : any;
+  setFilter = ()=>{}
   dataOption = {
-    setFilter : () =>{},
+    onChange : () =>{console.log(this.dataSelectOption.selectedOption)},
     data : [
       {
         marc :"Marcas"
@@ -86,7 +88,8 @@ export class GaleryPage {
     private elementRef: ElementRef,
     private renderer : Renderer2,
     private firestore: Firestore,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private dataSelectOption : GaleryTemplate
   ){
     const navigation = this.router.getCurrentNavigation();
     this.idNameMarcState = navigation?.extras.state as any;
@@ -96,6 +99,7 @@ export class GaleryPage {
 
   ngOnInit(){
     this.getProducts();
+    this.getCategories();
 
   }
 
@@ -132,24 +136,47 @@ export class GaleryPage {
     this.dataHeader.classHeader = "header";
     }
   }
-  getProducts(){
-    const prodRef = collection(this.firestore,'caps');
 
+  getCategories(){
+    const categoryRef = collection(this.firestore,'category');
+    const prod = onSnapshot(categoryRef, (snap)=>{
+      const category : any[] = [];
+      let arrayData : any = [];
+      snap.forEach(snapHijo =>{
+        category.push({
+          id: snapHijo.id,
+          ...snapHijo.data()
+        });
+      })
+      category.map((value : any) => {
+        const data =  {
+          marc : value.marc
+        }
+        arrayData.push(data);
+      });
+      this.setDataCateogories(arrayData);
+    });
+  }
+
+  setDataCateogories(value : any){
+    this.dataOption.data = value;
+  }
+
+  detectChange(dataMarc : string){
+    console.log('Categoria seleccionada:', dataMarc);
+    const prodRef = collection(this.firestore,'caps');
     const prod = onSnapshot(prodRef, (snap)=>{
       const product : any[] = [];
       let arrayData : any = [];
       snap.forEach(snapHijo =>{
-
         product.push({
           id: snapHijo.id,
           ...snapHijo.data()
         });
       })
+      console.log(product);
       product.map((value : any) => {
-
-
-        if (value.marc == this.idNameMarc) {
-
+        if (value.marc == dataMarc) {
           const data =  {
             id: value.id,
             urlImgPrincipalProduct : value.urlImg,
@@ -158,12 +185,50 @@ export class GaleryPage {
             textValue : value.value,
             clickProduct :()=>{this.redirectProducts(value.id)}
           }
-
-
-
           arrayData.push(data);
+          console.log(arrayData);
+
+        }else if(value.marc=="" || dataMarc == "Todo"){
+          const data =  {
+            id: value.id,
+            urlImgPrincipalProduct : value.urlImg,
+            textTitle : value.name,
+            textDescription :value.description,
+            textValue : value.value,
+            clickProduct :()=>{this.redirectProducts(value.id)}
+          }
+          arrayData.push(data);
+          console.log(arrayData);
+        }
+      });
+      this.setDataPrincipalProduct(arrayData);
+    });
+
+  }
 
 
+  getProducts(){
+    const prodRef = collection(this.firestore,'caps');
+    const prod = onSnapshot(prodRef, (snap)=>{
+      const product : any[] = [];
+      let arrayData : any = [];
+      snap.forEach(snapHijo =>{
+        product.push({
+          id: snapHijo.id,
+          ...snapHijo.data()
+        });
+      })
+      product.map((value : any) => {
+        if (value.marc == this.idNameMarc) {
+          const data =  {
+            id: value.id,
+            urlImgPrincipalProduct : value.urlImg,
+            textTitle : value.name,
+            textDescription :value.description,
+            textValue : value.value,
+            clickProduct :()=>{this.redirectProducts(value.id)}
+          }
+          arrayData.push(data);
         }else if(value.marc=="" || this.idNameMarc == undefined){
           const data =  {
             id: value.id,
@@ -173,18 +238,13 @@ export class GaleryPage {
             textValue : value.value,
             clickProduct :()=>{this.redirectProducts(value.id)}
           }
-
           arrayData.push(data);
         }
       });
       this.setDataPrincipalProduct(arrayData);
-
     });
   }
 
-setFilter(){
-
-}
 
   setDataPrincipalProduct(responseData : any){
     this.dataCardProduct.data = responseData;

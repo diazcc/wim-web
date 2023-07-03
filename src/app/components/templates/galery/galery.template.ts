@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Input,Renderer2, ChangeDetectorRef  } from '@angular/core';
+import { Component,Output, ElementRef, HostListener, Input,Renderer2, ChangeDetectorRef, EventEmitter  } from '@angular/core';
 
 @Component({
   selector: 'app-galery',
@@ -7,11 +7,11 @@ import { Component, ElementRef, HostListener, Input,Renderer2, ChangeDetectorRef
 })
 export class GaleryTemplate {
   previousScrollPosition = 0;
-  @Input() selectedOption : any ="Todo";
-
+  @Input() selectedOption : any;
+  @Output() selectionOptionChanged = new EventEmitter<string>();
 
   @Input() dataOption = {
-    setFilter : () =>{},
+    onChange : () =>{},
     data : [
       {
         marc :"Marcas"
@@ -71,6 +71,7 @@ export class GaleryTemplate {
     ]
   }
 
+
   ngAfterViewInit() {
     window.scrollTo(0, 0);
   }
@@ -96,9 +97,11 @@ export class GaleryTemplate {
       this.previousScrollPosition = scrollPosition;
     }
 
-    onOptionSelected() {
-
+    @Input() setFilter = ()=>{
     }
 
-
+    @Input() detectChange(){
+      console.log(this.selectedOption);
+      this.selectionOptionChanged.emit(this.selectedOption);
+    }
 }

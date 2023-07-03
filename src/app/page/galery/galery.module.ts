@@ -4,6 +4,8 @@ import { GaleryPage } from './galery.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { GaleryRoutingModule } from './galery-routing.module';
+import { GaleryTemplate } from 'src/app/components/templates/galery/galery.template';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +17,9 @@ import { GaleryRoutingModule } from './galery-routing.module';
     CommonModule,
     ComponentsModule,
     HttpClientModule,
-    GaleryRoutingModule
-  ]
+    GaleryRoutingModule,
+    FormsModule
+  ],
+  providers: [GaleryTemplate],
 })
 export class GaleryModule { }

@@ -242,7 +242,6 @@ showMenu(){
           ...snapHijo.data()
         });
       })
-      console.log(category);
       category.map((value : any) => {
         const data =  {
           nameMarc : value.marc,
@@ -251,7 +250,6 @@ showMenu(){
         }
         arrayData.push(data);
       });
-      console.log(arrayData);
       this.setDataCategory(arrayData);
     });
 

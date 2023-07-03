@@ -1,5 +1,6 @@
 <app-galery
-
+  (selectionOptionChanged) = "detectChange($event)"
+  [setFilter]="setFilter"
   [dataOption]="dataOption"
   [classMain]="classMain"
   [dataSearch]="dataSearch"

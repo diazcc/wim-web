@@ -32,7 +32,6 @@ export class SliderOrganism {
     const carruselElement = event.target as HTMLElement;
     const scrollLeft = carruselElement.scrollLeft;
 
-    console.log(scrollLeft);
   }
 
   clickLeft(){
@@ -41,11 +40,8 @@ export class SliderOrganism {
       this.stateArrowRight  = true;
       console.log("Left");
       this.margin = this.margin + 100;
-      console.log(this.margin);
     }else{
      this.stateArrowLeft  = false;
-     console.log(this.stateArrowLeft);
-     console.log(this.margin);
     }
   }
 

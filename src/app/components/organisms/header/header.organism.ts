@@ -25,7 +25,6 @@ export class HeaderOrganism {
       textOption1 : "",
       textOption2 : "",
       textOption3 : "",
-      textOption4 : "",
       classMenu : "",
       classContentMenu : "",
       classOptionMmenu : ""

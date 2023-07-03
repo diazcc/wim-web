@@ -1,4 +1,5 @@
 import { Component,Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +11,33 @@ export class NavbarMolecule {
     textOption1 : "",
     textOption2 : "",
     textOption3 : "",
-    textOption4 : "",
     classMenu : "",
     classContentMenu : "",
     classOptionMmenu : ""
+  }
+
+  constructor(
+    private router : Router
+  ){}
+
+  redirectHome(){
+    this.router.navigate(['/home']);
+  }
+
+  redirectGalery(){
+    this.router.navigate(['/galery']);
+  }
+
+  redirectMarcs(){
+    this.dataNavBar.classMenu = "menu--hidden"
+    const titleMarc = document.getElementById('titleCategory');
+    if (titleMarc) {
+    console.log("se encontro el id")
+
+      titleMarc.scrollIntoView({ behavior: 'smooth' });
+    }else{
+      this.router.navigate(['/home']);
+    }
   }
 }
 

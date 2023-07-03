@@ -48,7 +48,6 @@ export class ProductTemplate {
       textOption1 : "",
       textOption2 : "",
       textOption3 : "",
-      textOption4 : "",
       classMenu : "",
       classContentMenu : "",
       classOptionMmenu : ""

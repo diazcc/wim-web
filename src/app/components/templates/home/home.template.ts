@@ -75,17 +75,6 @@ export class HomeTemplate {
     urlImg4 : "",
   }
 
-  // @Input() dataCardProduct = {
-  //   data : [
-  //     {
-  //       urlImgPrincipalProduct : "/assets/img/gorra-principal.jpg",
-  //       textTitle : "",
-  //       textDescription :"",
-  //       textValue : "",
-  //       clickProduct : () =>{}
-  //     }
-  //   ]
-  // }
 
   @Input() dataArticlePresentation = {
     title: "",
@@ -107,7 +96,6 @@ export class HomeTemplate {
       textOption1 : "",
       textOption2 : "",
       textOption3 : "",
-      textOption4 : "",
       classMenu : "",
       classContentMenu : "",
       classOptionMmenu : ""

@@ -46,10 +46,9 @@ export class ProductPage {
     clickHeader : () => {this.showMenu()},
     clickSearch : () => {this.setSearch()},
     dataNavBar : {
-      textOption1 : "Adidas",
-      textOption2 : "Nike",
-      textOption3 : "Quest",
-      textOption4 : "Puma",
+      textOption1 : "Todos los productos",
+      textOption2 : "Marcas",
+      textOption3 : "Contactanos",
       classMenu : "menu--hidden",
       classContentMenu : "content-menu",
       classOptionMmenu : "option-menu"

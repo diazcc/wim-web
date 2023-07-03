@@ -82,7 +82,6 @@ export class HomePage {
       textOption1 : "",
       textOption2 : "",
       textOption3 : "",
-      textOption4 : "",
       classMenu : "",
       classContentMenu : "",
       classOptionMmenu : ""
@@ -140,16 +139,16 @@ showMenu(){
       clickHeader : () => {this.showMenu()},
       clickSearch : () => {this.setSearch()},
       dataNavBar : {
-        textOption1 : "Adidas",
-        textOption2 : "Nike",
-        textOption3 : "Quest",
-        textOption4 : "Puma",
+        textOption1 : "Todos los productos",
+        textOption2 : "Marcas",
+        textOption3 : "Contactanos",
         classMenu : "menu--hidden",
         classContentMenu : "content-menu",
         classOptionMmenu : "option-menu"
       }
     }
   }
+
 
   setSearch(){
     if (this.dataSearch.classSearch == "hidde") {

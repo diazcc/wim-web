@@ -21,7 +21,6 @@ export class GaleryPage {
       }
     ]
   };
-
   @Input() idNameMarc : any;
   classMain = "";
    dataSearch = {
@@ -94,15 +93,11 @@ export class GaleryPage {
     const navigation = this.router.getCurrentNavigation();
     this.idNameMarcState = navigation?.extras.state as any;
     this.idNameMarc = this.idNameMarcState?.nameMarc;
-
   }
-
   ngOnInit(){
     this.getProducts();
     this.getCategories();
-
   }
-
   setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
       this.dataSearch.classSearch = "search";
@@ -123,7 +118,6 @@ export class GaleryPage {
     }
   }
   showMenu(){
-
     if (this.dataHeader.dataNavBar.classMenu=="menu--hidden") {
     this.dataHeader.dataNavBar.classMenu="menu";
     this.classMain = "filterBlur";
@@ -136,7 +130,6 @@ export class GaleryPage {
     this.dataHeader.classHeader = "header";
     }
   }
-
   getCategories(){
     const categoryRef = collection(this.firestore,'category');
     const prod = onSnapshot(categoryRef, (snap)=>{
@@ -157,11 +150,9 @@ export class GaleryPage {
       this.setDataCateogories(arrayData);
     });
   }
-
   setDataCateogories(value : any){
     this.dataOption.data = value;
   }
-
   detectChange(dataMarc : string){
     console.log('Categoria seleccionada:', dataMarc);
     const prodRef = collection(this.firestore,'caps');
@@ -174,7 +165,6 @@ export class GaleryPage {
           ...snapHijo.data()
         });
       })
-      console.log(product);
       product.map((value : any) => {
         if (value.marc == dataMarc) {
           const data =  {
@@ -186,8 +176,6 @@ export class GaleryPage {
             clickProduct :()=>{this.redirectProducts(value.id)}
           }
           arrayData.push(data);
-          console.log(arrayData);
-
         }else if(value.marc=="" || dataMarc == "Todo"){
           const data =  {
             id: value.id,
@@ -198,15 +186,11 @@ export class GaleryPage {
             clickProduct :()=>{this.redirectProducts(value.id)}
           }
           arrayData.push(data);
-          console.log(arrayData);
         }
       });
       this.setDataPrincipalProduct(arrayData);
     });
-
   }
-
-
   getProducts(){
     const prodRef = collection(this.firestore,'caps');
     const prod = onSnapshot(prodRef, (snap)=>{
@@ -244,8 +228,6 @@ export class GaleryPage {
       this.setDataPrincipalProduct(arrayData);
     });
   }
-
-
   setDataPrincipalProduct(responseData : any){
     this.dataCardProduct.data = responseData;
   }

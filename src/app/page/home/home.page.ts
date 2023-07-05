@@ -1,8 +1,8 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ElementRef, Query, Renderer2 } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { ProductServicesService } from 'src/app/services/product-services.service';
-import { collection, onSnapshot, DocumentSnapshot } from 'firebase/firestore';
+import { collection, onSnapshot, query, where , DocumentSnapshot } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 
 @Component({
@@ -103,8 +103,8 @@ export class HomePage {
     this.setDataHeader();
     this.setDataArticlePresentation();
     this.setDataSectionPhotos();
-    // this.getProducts();
     this.getCategories();
+    //
 
   }
   ngAfterViewInit() {
@@ -216,6 +216,9 @@ showMenu(){
       this.setDataCategory(arrayData);
     });
   }
+
+
+
   setDataCategory(responseData : any){
     this.dataCategory.data= responseData;
   }

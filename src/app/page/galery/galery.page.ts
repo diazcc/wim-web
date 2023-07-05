@@ -1,7 +1,7 @@
 import { Component, ElementRef, HostListener, Input,Renderer2, ChangeDetectorRef  } from '@angular/core';
 import { ProductServicesService } from 'src/app/services/product-services.service';
 import { map } from 'rxjs';
-import { collection, onSnapshot, DocumentSnapshot, doc } from 'firebase/firestore';
+import { collection,doc, onSnapshot, query, where , DocumentSnapshot } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { NavigationExtras, Router } from '@angular/router';
 import { GaleryTemplate } from 'src/app/components/templates/galery/galery.template';
@@ -96,7 +96,64 @@ export class GaleryPage {
   ngOnInit(){
     this.getProducts();
     this.getCategories();
+
+    this.testCategory();
+    this.testMarc();
+    this.testColor();
+    this.testPrice();
   }
+
+  async testCategory(){
+    console.log("Hola");
+    const categoryRef = collection(this.firestore,'caps');
+    const q  = query(categoryRef, where('marc', '==', 'Adidas'));
+    const unsubscribe = await onSnapshot(q, (querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // Accede a los datos del documento filtrado
+        console.log( doc.data());
+      });
+    });
+  }
+
+  async testMarc(){
+    console.log("Hola");
+    const categoryRef = collection(this.firestore,'caps');
+    const q  = query(categoryRef, where('marc', '==', 'Adidas'));
+    const unsubscribe = await onSnapshot(q, (querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // Accede a los datos del documento filtrado
+        console.log( doc.data());
+      });
+    });
+  }
+  async testColor(){
+    console.log("Hola");
+    const categoryRef = collection(this.firestore,'caps');
+    const q  = query(categoryRef, where('color', '==', 'red'));
+    const unsubscribe = await onSnapshot(q, (querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // Accede a los datos del documento filtrado
+        console.log( doc.data());
+      });
+    });
+  }
+  async testPrice(){
+    console.log("Hola");
+    const categoryRef = collection(this.firestore,'caps');
+    const q  = query(categoryRef, where('value', '>=', 50000), where('value', '<=', 100000));
+    const querySnapshot = await onSnapshot(q, (snapshot) => {
+      const products :any = [];
+      snapshot.forEach((doc) => {
+
+        const product = doc.data();
+        products.push(product);
+      });
+
+      console.log(products);
+    });
+  }
+
+
   setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
       this.dataSearch.classSearch = "search";

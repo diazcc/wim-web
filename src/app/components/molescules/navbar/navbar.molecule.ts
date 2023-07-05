@@ -37,6 +37,7 @@ export class NavbarMolecule {
       titleMarc.scrollIntoView({ behavior: 'smooth' });
     }else{
       this.router.navigate(['/home']);
+
     }
   }
 }

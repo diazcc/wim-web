@@ -1,9 +1,10 @@
 import { Component, ElementRef, HostListener, Input,Renderer2, ChangeDetectorRef  } from '@angular/core';
 import { ProductServicesService } from 'src/app/services/product-services.service';
 import { map } from 'rxjs';
-import { collection, onSnapshot, DocumentSnapshot, doc } from 'firebase/firestore';
+import { collection,doc, onSnapshot, query, where , DocumentSnapshot } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { NavigationExtras, Router } from '@angular/router';
+
 
 
 @Component({
@@ -99,6 +100,8 @@ export class ProductPage {
         }
     });
   }
+
+
   setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
       this.dataSearch.classSearch = "search";

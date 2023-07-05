@@ -27,7 +27,9 @@ export class HeaderOrganism {
       textOption3 : "",
       classMenu : "",
       classContentMenu : "",
-      classOptionMmenu : ""
+      classOptionMmenu : "",
+      redirectContact : () =>{},
+      redirectMarcs : () =>{}
     }
   }
 

@@ -50,7 +50,9 @@ export class ProductTemplate {
       textOption3 : "",
       classMenu : "",
       classContentMenu : "",
-      classOptionMmenu : ""
+      classOptionMmenu : "",
+      redirectContact : () =>{},
+      redirectMarcs : () =>{}
     }
   }
   @Input() dataViewProduct = {

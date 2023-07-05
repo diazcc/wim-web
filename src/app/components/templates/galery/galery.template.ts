@@ -55,7 +55,9 @@ export class GaleryTemplate {
       textOption3 : "",
       classMenu : "",
       classContentMenu : "",
-      classOptionMmenu : ""
+      classOptionMmenu : "",
+      redirectContact : () =>{},
+      redirectMarcs : () =>{}
     }
   }
   @Input() dataCardProduct = {

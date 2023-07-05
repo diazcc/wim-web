@@ -52,7 +52,9 @@ export class ProductPage {
       textOption3 : "Contactanos",
       classMenu : "menu--hidden",
       classContentMenu : "content-menu",
-      classOptionMmenu : "option-menu"
+      classOptionMmenu : "option-menu",
+      redirectContact : () =>{},
+      redirectMarcs : () =>{}
     }
   }
   @Input() dataViewProduct = {
@@ -107,19 +109,26 @@ export class ProductPage {
       this.dataSearch.classSearch = "search";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "hidde";
+      this.renderer.addClass(document.body, 'bodyBlock');
+
+
     }else{
       this.dataSearch.classSearch = "hidde";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
-
       this.dataHeader.classHeader = "header";
+      this.renderer.removeClass(document.body, 'bodyBlock');
     }
   }
   closeSearch(){
     if (this.dataSearch.classSearch == "search") {
       this.dataSearch.classSearch = "hidde";
       this.dataHeader.classHeader = "header";
+      this.renderer.removeClass(document.body, 'bodyBlock');
+
     }else{
       this.dataSearch.classSearch = "search";
+      this.renderer.addClass(document.body, 'bodyBlock');
+
     }
   }
   showMenu(){

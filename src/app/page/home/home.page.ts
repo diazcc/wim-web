@@ -84,7 +84,9 @@ export class HomePage {
       textOption3 : "",
       classMenu : "",
       classContentMenu : "",
-      classOptionMmenu : ""
+      classOptionMmenu : "",
+      redirectContact : () =>{},
+      redirectMarcs : () =>{}
     }
   }
   ayaya :string ="";
@@ -144,7 +146,9 @@ showMenu(){
         textOption3 : "Contactanos",
         classMenu : "menu--hidden",
         classContentMenu : "content-menu",
-        classOptionMmenu : "option-menu"
+        classOptionMmenu : "option-menu",
+        redirectContact : () =>{this.redirectContact()},
+        redirectMarcs : () =>{this.redirectCategory()}
       }
     }
   }
@@ -155,10 +159,14 @@ showMenu(){
       this.dataSearch.classSearch = "search";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "hidde";
+      this.renderer.addClass(document.body, 'bodyBlock');
+
+
     }else{
       this.dataSearch.classSearch = "hidde";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "header";
+      this.renderer.removeClass(document.body, 'bodyBlock');
     }
   }
 
@@ -166,8 +174,12 @@ showMenu(){
     if (this.dataSearch.classSearch == "search") {
       this.dataSearch.classSearch = "hidde";
       this.dataHeader.classHeader = "header";
+      this.renderer.removeClass(document.body, 'bodyBlock');
+
     }else{
       this.dataSearch.classSearch = "search";
+      this.renderer.addClass(document.body, 'bodyBlock');
+
     }
   }
   setDataArticlePresentation(){
@@ -229,6 +241,32 @@ showMenu(){
       }
     }
     this.router.navigate(['/galery'], data );
+  }
+  redirectContact(){
+    this.dataHeader.dataNavBar.classMenu="menu--hidden";
+    this.dataMain.classMain = "";
+    this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
+    this.dataHeader.classHeader = "header";
+    const titleContacts = document.getElementById('contacts');
+    setTimeout(() => {
+      if (titleContacts) {
+        titleContacts.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 400);
+
+  }
+  redirectCategory(){
+    this.dataHeader.dataNavBar.classMenu="menu--hidden";
+    this.dataMain.classMain = "";
+    this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
+    this.dataHeader.classHeader = "header";
+    const titleContacts = document.getElementById('titleCategory');
+    setTimeout(() => {
+      if (titleContacts) {
+        titleContacts.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 400);
+
   }
   seeMoreProducts(){
     this.router.navigate(['/galery']);

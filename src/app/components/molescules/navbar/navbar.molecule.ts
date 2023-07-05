@@ -13,7 +13,9 @@ export class NavbarMolecule {
     textOption3 : "",
     classMenu : "",
     classContentMenu : "",
-    classOptionMmenu : ""
+    classOptionMmenu : "",
+    redirectContact : () =>{},
+    redirectMarcs : () =>{}
   }
 
   constructor(
@@ -39,6 +41,10 @@ export class NavbarMolecule {
       this.router.navigate(['/home']);
 
     }
+  }
+
+  redirectContact(){
+
   }
 }
 

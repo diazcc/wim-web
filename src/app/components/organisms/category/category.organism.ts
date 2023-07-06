@@ -7,10 +7,10 @@ import { Component,Input } from '@angular/core';
 })
 export class CategoryOrganism {
   @Input() dataCategory ={
-    titleCategory : "Marcas",
+    titleCategory : "Categorias",
     data : [
       {
-        nameMarc : "Marca",
+        name : "Marca",
         urlImg : "/assets/img/cap2.png",
         redirect : () => {}
       }

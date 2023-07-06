@@ -11,23 +11,13 @@ export class HomeTemplate {
       urlImg: "/assets/img/cap.png",
       name : "Jamaicana",
       value : "3500"
-    },
-    {
-      urlImg: "/assets/img/logoconletra.svg",
-      name : "Sisors",
-      value : "5800"
-    },
-    {
-      urlImg: "/assets/img/gorra-principal.jpg",
-      name : "Gorra nike",
-      value : "700"
     }
   ]
   @Input() dataCategory ={
-    titleCategory : "Marcas",
+    titleCategory : "Categorias",
     data : [
       {
-        nameMarc : "",
+        name : "",
         urlImg : "",
         redirect : () => {}
       }

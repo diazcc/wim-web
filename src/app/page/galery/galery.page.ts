@@ -11,7 +11,7 @@ import { GaleryTemplate } from 'src/app/components/templates/galery/galery.templ
   styleUrls: ['./galery.page.scss']
 })
 export class GaleryPage {
-  @Input() idNameMarcState : any;
+  @Input() idNameCategoryState : any;
   setFilter = ()=>{}
   dataOption = {
     onChange : () =>{console.log(this.dataSelectOption.selectedOption)},
@@ -21,7 +21,7 @@ export class GaleryPage {
       }
     ]
   };
-  @Input() idNameMarc : any;
+  @Input() idNameCategory : any;
   classMain = "";
    dataSearch = {
     classSearch : "hidde",
@@ -92,8 +92,8 @@ export class GaleryPage {
     private dataSelectOption : GaleryTemplate
   ){
     const navigation = this.router.getCurrentNavigation();
-    this.idNameMarcState = navigation?.extras.state as any;
-    this.idNameMarc = this.idNameMarcState?.nameMarc;
+    this.idNameCategoryState = navigation?.extras.state as any;
+    this.idNameCategory = this.idNameCategoryState?.nameCategory;
   }
   ngOnInit(){
     this.getProducts();
@@ -106,41 +106,34 @@ export class GaleryPage {
   }
 
   async testCategory(){
-    console.log("Hola");
     const categoryRef = collection(this.firestore,'caps');
     const q  = query(categoryRef, where('marc', '==', 'Adidas'));
     const unsubscribe = await onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {
         // Accede a los datos del documento filtrado
-        console.log( doc.data());
       });
     });
   }
 
   async testMarc(){
-    console.log("Hola");
     const categoryRef = collection(this.firestore,'caps');
     const q  = query(categoryRef, where('marc', '==', 'Adidas'));
     const unsubscribe = await onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {
         // Accede a los datos del documento filtrado
-        console.log( doc.data());
       });
     });
   }
   async testColor(){
-    console.log("Hola");
     const categoryRef = collection(this.firestore,'caps');
     const q  = query(categoryRef, where('color', '==', 'red'));
     const unsubscribe = await onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {
         // Accede a los datos del documento filtrado
-        console.log( doc.data());
       });
     });
   }
   async testPrice(){
-    console.log("Hola");
     const categoryRef = collection(this.firestore,'caps');
     const q  = query(categoryRef, where('value', '>=', 50000), where('value', '<=', 100000));
     const querySnapshot = await onSnapshot(q, (snapshot) => {
@@ -151,7 +144,6 @@ export class GaleryPage {
         products.push(product);
       });
 
-      console.log(products);
     });
   }
 
@@ -209,7 +201,7 @@ export class GaleryPage {
       })
       category.map((value : any) => {
         const data =  {
-          marc : value.marc
+          marc : value.name
         }
         arrayData.push(data);
       });
@@ -267,8 +259,10 @@ export class GaleryPage {
           ...snapHijo.data()
         });
       })
+      console.log(product);
       product.map((value : any) => {
-        if (value.marc == this.idNameMarc) {
+
+        if (value.type == this.idNameCategory) {
           const data =  {
             id: value.id,
             urlImgPrincipalProduct : value.urlImg,
@@ -278,7 +272,8 @@ export class GaleryPage {
             clickProduct :()=>{this.redirectProducts(value.id)}
           }
           arrayData.push(data);
-        }else if(value.marc=="" || this.idNameMarc == undefined){
+        }else if(value.marc=="" || this.idNameCategory == undefined){
+
           const data =  {
             id: value.id,
             urlImgPrincipalProduct : value.urlImg,

@@ -13,10 +13,10 @@ import { Firestore } from '@angular/fire/firestore';
 export class HomePage {
   nameMarc : any;
   dataCategory ={
-    titleCategory : "Marcas",
+    titleCategory : "Categorias",
     data : [
       {
-        nameMarc : "Marca",
+        name : "Marca",
         urlImg : "/assets/img/cap.png",
         redirect : () => {}
       }
@@ -55,6 +55,7 @@ export class HomePage {
     classPresentation : ""
   }
 
+
   dataSectionPhotos = {
     textTitle : "Nuevos estilos",
     urlImg1 : "",
@@ -62,6 +63,26 @@ export class HomePage {
     urlImg3 : "",
     urlImg4 : "",
   }
+
+  dataSlider = [
+    {
+      urlImg: "/assets/img/cap.png",
+      name : "Jamaicana",
+      value : "3500"
+    },
+    {
+      urlImg: "/assets/img/logoconletra.svg",
+      name : "Sisors",
+      value : "5800"
+    },
+    {
+      urlImg: "/assets/img/gorra-principal.jpg",
+      name : "Gorra nike",
+      value : "700"
+    }
+  ]
+
+
   dataArticlePresentation = {
     title: "",
     description : "",
@@ -106,7 +127,7 @@ export class HomePage {
     this.setDataArticlePresentation();
     this.setDataSectionPhotos();
     this.getCategories();
-    //
+    this.getFeaturedProducts()
 
   }
   ngAfterViewInit() {
@@ -206,6 +227,38 @@ showMenu(){
       urlImg4 : "/assets/img/default-photoart4.jpg",
     }
   }
+
+  getFeaturedProducts(){
+    const featProdRef = collection(this.firestore,'featuredProducts');
+    const prod = onSnapshot(featProdRef, (snap)=>{
+      const featProd : any[] = [];
+      let arrayData : any = [];
+      snap.forEach(snapHijo =>{
+
+        featProd.push({
+          id: snapHijo.id,
+          ...snapHijo.data()
+        });
+      })
+
+      featProd.map((value : any) => {
+        const data =  {
+          name : value.name,
+          urlImg : value.urlImg,
+          value : value.value
+        }
+        arrayData.push(data);
+
+      });
+      this.setDataSlider(arrayData);
+    });
+  }
+
+  setDataSlider(data : any){
+    this.dataSlider = data;
+  }
+
+
   getCategories(){
     const categoryRef = collection(this.firestore,'category');
     const prod = onSnapshot(categoryRef, (snap)=>{
@@ -219,9 +272,9 @@ showMenu(){
       })
       category.map((value : any) => {
         const data =  {
-          nameMarc : value.marc,
+          name : value.name,
           urlImg : value.urlImg,
-          redirect : () => {this.redirectProducts(value.marc)}
+          redirect : () => {this.redirectProducts(value.type)}
         }
         arrayData.push(data);
       });
@@ -237,7 +290,7 @@ showMenu(){
   redirectProducts(id : any){
     const data : NavigationExtras = {
       state : {
-        nameMarc : id
+        nameCategory : id
       }
     }
     this.router.navigate(['/galery'], data );

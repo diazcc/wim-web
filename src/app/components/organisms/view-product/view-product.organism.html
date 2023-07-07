@@ -1,7 +1,8 @@
 <div class="viewProduct">
-  <ul class="contentImg">
+  <!-- <ul class="contentImg">
       <img [src]="dataViewProduct.urlImg" alt="">
-  </ul>
+  </ul> -->
+  <app-slider [dataSlider]="dataSlider" class="slider"></app-slider>
   <div class="descriptionProduct">
     <h1 class="title">{{dataViewProduct.name}}</h1>
     <p class="valueProduct">$ {{dataViewProduct.value}} COP</p>

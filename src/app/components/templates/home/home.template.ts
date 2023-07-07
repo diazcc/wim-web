@@ -6,13 +6,18 @@ import { Component, ElementRef, HostListener, Input,Renderer2 } from '@angular/c
   styleUrls: ['./home.template.scss']
 })
 export class HomeTemplate {
-  @Input() dataSlider = [
-    {
-      urlImg: "/assets/img/cap.png",
-      name : "Jamaicana",
-      value : "3500"
-    }
-  ]
+  @Input() dataSlider = {
+    classSlider : "",
+    classDescription : "",
+    data :[
+      {
+        urlImg: "/assets/img/logodragonsolo.svg",
+        name : "Nombre",
+        value : "48484",
+        redirectProduct : () =>{}
+      }
+    ]
+  }
   @Input() dataCategory ={
     titleCategory : "Categorias",
     data : [

@@ -10,20 +10,28 @@
     display: flex;
     overflow: hidden;
     align-items: center;
-    // margin-top:3rem ;
     width: 100%;
-    // max-width: 22rem;
     justify-content: center;
-      img{
-        width: 100%;
-        max-width: 30rem;
-      }
+    img{
+      width: 100%;
+      max-width: 30rem;
+    }
+
+  }
+  .slider{
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
   }
 
   .descriptionProduct{
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    gap: 1.5rem;
+    padding: 1rem;
+    align-items: center;
     .title{
       font-size: 1rem;
       align-self: center;

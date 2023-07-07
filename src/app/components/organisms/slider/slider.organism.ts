@@ -12,13 +12,18 @@ export class SliderOrganism {
   stateArrowLeft : boolean = true;
   stateArrowRight : boolean = true;
 
-  @Input() dataSlider = [
-    {
-      urlImg: "/assets/img/logodragonsolo.svg",
-      name : "Nombre",
-      value : "48484"
-    }
-  ]
+  @Input() dataSlider = {
+    classSlider : "",
+    classDescription : "",
+    data :[
+      {
+        urlImg: "/assets/img/logodragonsolo.svg",
+        name : "Nombre",
+        value : "48484",
+        redirectProduct : () =>{}
+      }
+    ]
+  }
 
   arrowLeft : any;
   arrowRight : any;
@@ -38,7 +43,6 @@ export class SliderOrganism {
     if (this.margin != 0) {
 
       this.stateArrowRight  = true;
-      console.log("Left");
       this.margin = this.margin + 100;
     }else{
      this.stateArrowLeft  = false;
@@ -49,13 +53,9 @@ export class SliderOrganism {
 
     if (this.margin >= -100) {
       this.stateArrowLeft  = true;
-      console.log("Right");
       this.margin = this.margin - 100;
-      console.log(this.margin);
     }else{
       this.stateArrowRight  = false;
-      console.log(this.stateArrowRight);
-      console.log(this.margin);
      }
   }
 
@@ -76,5 +76,9 @@ export class SliderOrganism {
       this.stateArrowLeft = false;
     }
     return this.stateArrowLeft;
+  }
+
+  redirectProduct(){
+    console.log("Añañai");
   }
 }

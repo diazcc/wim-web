@@ -45,11 +45,11 @@
         display: flex;
         flex-wrap: wrap;
         gap: .2rem;
-        justify-content: center;
         .cardProduct{
           width: 49%;
           max-width: 15rem;
           min-height: 15rem;
+          min-width: 11rem;
         }
       }
     }

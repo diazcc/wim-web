@@ -1,15 +1,15 @@
 <section class="section">
-  <h1>Productos Destacados</h1>
+
   <div class="contentSection">
     <ng-container *ngIf="getStateLeft()">
-      <i class="arrow" (click)="clickLeft()">
+      <i [class]="'arrow arrow--'+dataSlider.classSlider" (click)="clickLeft()">
         <img src="/assets/icons/arrowLeft.svg" alt="">
       </i>
     </ng-container>
 
     <ul class="carrusel">
-      <li *ngFor="let data of dataSlider; let i = index" class="contentCarrusel" [ngStyle]="isFirstImage(i) ? {'margin-left': margin +'%'} : null">
-        <div class="contentCard">
+      <li *ngFor="let data of dataSlider.data; let i = index" class="contentCarrusel" (click)="data.redirectProduct()" [ngStyle]="isFirstImage(i) ? {'margin-left': margin +'%'} : null">
+        <div [class]="'contentCard contentCard--'+dataSlider.classSlider">
           <span class="descriptionCard">
             <h2 class="nameCard">{{data.name}}</h2>
             <p  class="valueCard">$ {{data.value}}</p>
@@ -20,7 +20,7 @@
     </ul>
 
     <ng-container *ngIf="getStateRight()">
-      <i class="arrow" (click)="clickRight()">
+      <i [class]="'arrow arrow--'+dataSlider.classSlider" (click)="clickRight()">
         <img src="/assets/icons/arrowRight.svg" alt="">
       </i>
     </ng-container>

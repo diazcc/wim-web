@@ -211,7 +211,7 @@ export class GaleryPage {
   setDataCateogories(value : any){
     this.dataOption.data = value;
   }
-  detectChange(dataMarc : string){
+  detectChange(optionSelect : string){
     const prodRef = collection(this.firestore,'caps');
     const prod = onSnapshot(prodRef, (snap)=>{
       const product : any[] = [];
@@ -223,24 +223,24 @@ export class GaleryPage {
         });
       })
       product.map((value : any) => {
-        if (value.marc == dataMarc) {
+        if (value.marc == optionSelect) {
           const data =  {
             id: value.id,
             urlImgPrincipalProduct : value.urlImg,
             textTitle : value.name,
             textDescription :value.description,
             textValue : value.value,
-            clickProduct :()=>{this.redirectProducts(value.id)}
+            clickProduct :()=>{this.redirectProducts(value.id,value.type)}
           }
           arrayData.push(data);
-        }else if(value.marc=="" || dataMarc == "Todo"){
+        }else if(value.marc=="" || optionSelect == "Todo"){
           const data =  {
             id: value.id,
             urlImgPrincipalProduct : value.urlImg,
             textTitle : value.name,
             textDescription :value.description,
             textValue : value.value,
-            clickProduct :()=>{this.redirectProducts(value.id)}
+            clickProduct :()=>{this.redirectProducts(value.id,value.type)}
           }
           arrayData.push(data);
         }
@@ -249,54 +249,87 @@ export class GaleryPage {
     });
   }
   getProducts(){
-    const prodRef = collection(this.firestore,'caps');
-    const prod = onSnapshot(prodRef, (snap)=>{
-      const product : any[] = [];
-      let arrayData : any = [];
-      snap.forEach(snapHijo =>{
-        product.push({
-          id: snapHijo.id,
-          ...snapHijo.data()
+
+    if (this.idNameCategory != undefined) {
+      const prodRef = collection(this.firestore,this.idNameCategory);
+      const prod = onSnapshot(prodRef, (snap)=>{
+        const product : any[] = [];
+        let arrayData : any = [];
+        snap.forEach(snapHijo =>{
+          product.push({
+            id: snapHijo.id,
+            ...snapHijo.data()
+          });
+        })
+        console.log(product);
+        product.map((value : any) => {
+
+          if (value.type == this.idNameCategory) {
+            const data =  {
+              id: value.id,
+              urlImgPrincipalProduct : value.urlImg,
+              textTitle : value.name,
+              textDescription :value.description,
+              textValue : value.value,
+              clickProduct :()=>{this.redirectProducts(value.id,value.type)}
+            }
+            arrayData.push(data);
+          }else if(value.marc=="" || this.idNameCategory == undefined){
+
+            const data =  {
+              id: value.id,
+              urlImgPrincipalProduct : value.urlImg,
+              textTitle : value.name,
+              textDescription :value.description,
+              textValue : value.value,
+              clickProduct :()=>{this.redirectProducts(value.id,value.type)}
+            }
+            arrayData.push(data);
+          }
         });
-      })
-      console.log(product);
-      product.map((value : any) => {
-
-        if (value.type == this.idNameCategory) {
-          const data =  {
-            id: value.id,
-            urlImgPrincipalProduct : value.urlImg,
-            textTitle : value.name,
-            textDescription :value.description,
-            textValue : value.value,
-            clickProduct :()=>{this.redirectProducts(value.id)}
-          }
-          arrayData.push(data);
-        }else if(value.marc=="" || this.idNameCategory == undefined){
-
-          const data =  {
-            id: value.id,
-            urlImgPrincipalProduct : value.urlImg,
-            textTitle : value.name,
-            textDescription :value.description,
-            textValue : value.value,
-            clickProduct :()=>{this.redirectProducts(value.id)}
-          }
-          arrayData.push(data);
-        }
+        this.setDataPrincipalProduct(arrayData);
       });
-      this.setDataPrincipalProduct(arrayData);
-    });
+    } else {
+      const prodRef = collection(this.firestore,'caps');
+      const prod = onSnapshot(prodRef, (snap)=>{
+        const product : any[] = [];
+        let arrayData : any = [];
+        snap.forEach(snapHijo =>{
+          product.push({
+            id: snapHijo.id,
+            ...snapHijo.data()
+          });
+        })
+        console.log(product);
+        product.map((value : any) => {
+
+          const data =  {
+            id: value.id,
+            urlImgPrincipalProduct : value.urlImg,
+            textTitle : value.name,
+            textDescription :value.description,
+            textValue : value.value,
+            clickProduct :()=>{this.redirectProducts(value.id,value.type)}
+          }
+          arrayData.push(data);
+        });
+        this.setDataPrincipalProduct(arrayData);
+      });
+    }
   }
   setDataPrincipalProduct(responseData : any){
     this.dataCardProduct.data = responseData;
   }
-  redirectProducts(id : any){
+  redirectProducts(id : any, category : any){
+    console.log(id,category);
+
     const data : NavigationExtras = {
       state : {
-        idProduct : id
+        idProduct : id,
+        typeCategorie : category
       }
     }
     this.router.navigate(['/product'], data );
   }
+
 }

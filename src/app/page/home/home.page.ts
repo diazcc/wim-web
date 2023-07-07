@@ -63,24 +63,31 @@ export class HomePage {
     urlImg3 : "",
     urlImg4 : "",
   }
+  dataSlider = {
+    classSlider : "",
+    classDescription : "",
+    data :[
+      {
+        urlImg: "/assets/img/cap.png",
+        name : "Jamaicana",
+        value : "3500",
+        redirectProduct : () =>{}
+      },
+      {
+        urlImg: "/assets/img/logoconletra.svg",
+        name : "Sisors",
+        value : "5800",
+        redirectProduct : () =>{}
+      },
+      {
+        urlImg: "/assets/img/gorra-principal.jpg",
+        name : "Gorra nike",
+        value : "700",
+        redirectProduct : () =>{}
+      }
+    ]
+  }
 
-  dataSlider = [
-    {
-      urlImg: "/assets/img/cap.png",
-      name : "Jamaicana",
-      value : "3500"
-    },
-    {
-      urlImg: "/assets/img/logoconletra.svg",
-      name : "Sisors",
-      value : "5800"
-    },
-    {
-      urlImg: "/assets/img/gorra-principal.jpg",
-      name : "Gorra nike",
-      value : "700"
-    }
-  ]
 
 
   dataArticlePresentation = {
@@ -236,7 +243,7 @@ showMenu(){
       snap.forEach(snapHijo =>{
 
         featProd.push({
-          id: snapHijo.id,
+          idFeat: snapHijo.id,
           ...snapHijo.data()
         });
       })
@@ -245,7 +252,8 @@ showMenu(){
         const data =  {
           name : value.name,
           urlImg : value.urlImg,
-          value : value.value
+          value : value.value,
+          redirectProduct : () =>{this.redirectProducts(value.id, value.type)}
         }
         arrayData.push(data);
 
@@ -255,7 +263,7 @@ showMenu(){
   }
 
   setDataSlider(data : any){
-    this.dataSlider = data;
+    this.dataSlider.data = data;
   }
 
 
@@ -274,7 +282,7 @@ showMenu(){
         const data =  {
           name : value.name,
           urlImg : value.urlImg,
-          redirect : () => {this.redirectProducts(value.type)}
+          redirect : () => {this.redirectCategoryProducts(value.type)}
         }
         arrayData.push(data);
       });
@@ -287,7 +295,18 @@ showMenu(){
   setDataCategory(responseData : any){
     this.dataCategory.data= responseData;
   }
-  redirectProducts(id : any){
+  redirectProducts(id : any, category : any){
+    console.log(id,category);
+
+    const data : NavigationExtras = {
+      state : {
+        idProduct : id,
+        typeCategorie : category
+      }
+    }
+    this.router.navigate(['/product'], data );
+  }
+  redirectCategoryProducts(id : any){
     const data : NavigationExtras = {
       state : {
         nameCategory : id

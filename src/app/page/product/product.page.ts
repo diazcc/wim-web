@@ -16,6 +16,8 @@ export class ProductPage {
   @Input() classMain = "";
   @Input() idProductState : any;
   @Input() idProduct : any;
+  @Input() category : any;
+
   @Input() dataSearch = {
     classSearch : "hidde",
     closeSearch : () =>{},
@@ -57,6 +59,18 @@ export class ProductPage {
       redirectMarcs : () =>{}
     }
   }
+  @Input() dataSlider = {
+    classSlider : "product",
+    classDescription : "",
+    data :[
+      {
+        urlImg: "/assets/img/logodragonsolo.svg",
+        name : "Nombre",
+        value : "48484",
+        redirectProduct : () =>{}
+      }
+    ]
+  }
   @Input() dataViewProduct = {
     name :"",
     urlImg : "",
@@ -85,22 +99,58 @@ export class ProductPage {
     const navigation = this.router.getCurrentNavigation();
     this.idProductState = navigation?.extras.state as any;
     this.idProduct = this.idProductState.idProduct;
-    console.log(this.idProduct);
+    this.category = navigation?.extras.state as any;
+    this.category = this.category.typeCategorie;
+
+    console.log(this.idProduct, this.category);
   }
 
   ngOnInit(){
     this.getProducts();
-    const prodRef = doc(this.firestore,"caps",this.idProduct);
-    const prod = onSnapshot(prodRef, (snap) => {
-      const dataSnap : any = snap.data();
-      console.log(dataSnap);
-      this.dataViewProduct = {
-          name :dataSnap.name,
-          urlImg : dataSnap.urlImg,
-          value : dataSnap.value,
-          description : dataSnap.description
+    this.setProduct();
+  }
+
+  setProduct(){
+    if(this.category != undefined){
+      console.log(this.category);
+      console.log(this.idProduct);
+
+      const prodRef = doc(this.firestore,this.category,this.idProduct);
+      console.log(prodRef);
+
+      const prod = onSnapshot(prodRef, (snap) => {
+        console.log(snap.data());
+
+        const dataSnap : any = snap.data();
+        console.log(dataSnap);
+        this.dataViewProduct =  {
+          name :dataSnap?.name,
+          urlImg : dataSnap?.urlImg,
+          value : dataSnap?.value,
+          description : dataSnap?.description
         }
-    });
+        this.dataSlider.data = [
+          {
+            urlImg: dataSnap?.urlImg,
+            name : "",
+            value : "",
+            redirectProduct : () =>{}
+          },
+          {
+            urlImg: dataSnap?.urlImgSecond,
+            name : "",
+            value : "",
+            redirectProduct : () =>{}
+          },
+          {
+            urlImg:dataSnap?.urlImgThree,
+            name : "",
+            value : "",
+            redirectProduct : () =>{}
+          }
+        ]
+      });
+    }
   }
 
 
@@ -145,7 +195,7 @@ export class ProductPage {
     }
   }
   getProducts(){
-    const prodRef = collection(this.firestore,'caps');
+    const prodRef = collection(this.firestore,this.category);
     const prod = onSnapshot(prodRef, (snap)=>{
       const product : any[] = [];
       let arrayData : any = [];
@@ -174,7 +224,7 @@ export class ProductPage {
   }
   redirectProducts(id : any){
     window.scrollTo(0, 0);
-    const prodRef = doc(this.firestore,"caps",id);
+    const prodRef = doc(this.firestore,this.category,id);
     const prod = onSnapshot(prodRef, (snap) => {
       const dataSnap : any = snap.data();
       this.dataViewProduct = {
@@ -183,6 +233,27 @@ export class ProductPage {
           value : dataSnap.value,
           description : dataSnap.description
         }
+        console.log(dataSnap);
+        this.dataSlider.data = [
+          {
+            urlImg: dataSnap.urlImg,
+            name : "",
+            value : "",
+            redirectProduct : () =>{}
+          },
+          {
+            urlImg: dataSnap.urlImgSecond,
+            name : "",
+            value : "",
+            redirectProduct : () =>{}
+          },
+          {
+            urlImg:dataSnap.urlImgThree,
+            name : "",
+            value : "",
+            redirectProduct : () =>{}
+          }
+        ]
     });
   }
 

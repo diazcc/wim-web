@@ -9,7 +9,6 @@ import { FooterOrganism } from './organisms/footer/footer.organism';
 import { PresentationIndexOrganism } from './organisms/presentation-index/presentation-index.organism';
 import { SectionPhotosOrganism } from './organisms/section-photos/section-photos.organism';
 import { SectionPrincipalProductOrganism } from './organisms/section-principal-product/section-principal-product.organism';
-import { ArticlePrincipalProductMolecule } from './molescules/article-principal-product/article-principal-product.molecule';
 import { ProductTemplate } from './templates/product/product.template';
 import { AdministrationTemplate } from './templates/administration/administration.template';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -20,6 +19,8 @@ import { GaleryTemplate } from './templates/galery/galery.template';
 import { CategoryOrganism } from './organisms/category/category.organism';
 import { SliderOrganism } from './organisms/slider/slider.organism';
 import { LoginTemplate } from './templates/login/login.template';
+import { AdmHomeTemplate } from './templates/adm-home/adm-home.template';
+import { AdmProductTemplate } from './templates/adm-product/adm-product.template';
 
 
 @NgModule({
@@ -33,7 +34,6 @@ import { LoginTemplate } from './templates/login/login.template';
     PresentationIndexOrganism,
     SectionPhotosOrganism,
     SectionPrincipalProductOrganism,
-    ArticlePrincipalProductMolecule,
     ProductTemplate,
     AdministrationTemplate,
     SearchOrganism,
@@ -42,7 +42,9 @@ import { LoginTemplate } from './templates/login/login.template';
     GaleryTemplate,
     CategoryOrganism,
     SliderOrganism,
-    LoginTemplate
+    LoginTemplate,
+    AdmHomeTemplate,
+    AdmProductTemplate
   ],
   imports: [
     CommonModule,
@@ -67,7 +69,9 @@ import { LoginTemplate } from './templates/login/login.template';
     GaleryTemplate,
     CategoryOrganism,
     SliderOrganism,
-    LoginTemplate
+    LoginTemplate,
+    AdmHomeTemplate,
+    AdmProductTemplate
   ]
 })
 export class ComponentsModule { }

@@ -1,0 +1,24 @@
+<app-search [dataSearch]="dataSearch"></app-search>
+<div class="wrapper">
+  <app-header [dataHeader]="dataHeader"></app-header>
+  <main class="main">
+    <h1>Home</h1>
+    <p>Aqui se editara los datos de la pagina principal</p>
+    <form class="form"  [formGroup]="formulario">
+      <p class="alertForm"></p>
+      <label for="title">Titulo*</label>
+      <input type="text" formControlName="title" class="text">
+      <label for="description">Descripcion*</label>
+      <input type="text" formControlName="description" class="text">
+      <label for="documentMedia">Imagen*</label>
+      <input type="file" formControlName="documentMedia" class="file">
+      <label for="urlFacebook">Facebook*</label>
+      <input type="text" formControlName="urlFacebook" class="text">
+      <label for="urlInstagram">Instagram*</label>
+      <input type="text" formControlName="urlInstagram" class="text">
+      <label for="documentTC">Terminos y Condiciones : PDF*</label>
+      <input type="file" formControlName="documentTC" class="file">
+      <input type="submit" value="Guardar" class="buttonSubmit">
+    </form>
+  </main>
+</div>

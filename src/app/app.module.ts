@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
@@ -13,6 +12,9 @@ import { AdminRoutingModule } from './page/adminitration/admin-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GaleryModule } from './page/galery/galery.module';
 import { LoginModule } from './page/login/login.module';
+import { AdmHomeModule } from './page/adm-home/adm-home.module';
+import { AdmProductPage } from './page/adm-product/adm-product.page';
+import { AdmProductModule } from './page/adm-product/adm-product.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { LoginModule } from './page/login/login.module';
     ProductModule,
     GaleryModule,
     LoginModule,
-    AdminRoutingModule,
+    AdmHomeModule,
+    AdmProductModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     ReactiveFormsModule,

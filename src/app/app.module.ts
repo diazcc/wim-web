@@ -12,6 +12,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AdminRoutingModule } from './page/adminitration/admin-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GaleryModule } from './page/galery/galery.module';
+import { LoginModule } from './page/login/login.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { GaleryModule } from './page/galery/galery.module';
     HomeModule,
     ProductModule,
     GaleryModule,
+    LoginModule,
     AdminRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),

@@ -19,6 +19,7 @@ import { ViewProductOrganism } from './organisms/view-product/view-product.organ
 import { GaleryTemplate } from './templates/galery/galery.template';
 import { CategoryOrganism } from './organisms/category/category.organism';
 import { SliderOrganism } from './organisms/slider/slider.organism';
+import { LoginTemplate } from './templates/login/login.template';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { SliderOrganism } from './organisms/slider/slider.organism';
     ViewProductOrganism,
     GaleryTemplate,
     CategoryOrganism,
-    SliderOrganism
+    SliderOrganism,
+    LoginTemplate
   ],
   imports: [
     CommonModule,
@@ -64,7 +66,8 @@ import { SliderOrganism } from './organisms/slider/slider.organism';
     ViewProductOrganism,
     GaleryTemplate,
     CategoryOrganism,
-    SliderOrganism
+    SliderOrganism,
+    LoginTemplate
   ]
 })
 export class ComponentsModule { }

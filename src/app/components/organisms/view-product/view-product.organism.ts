@@ -13,17 +13,17 @@ export class ViewProductOrganism {
     value : "",
     description : ""
   }
-  @Input() dataSlider = {
-    classSlider : "",
-    classDescription : "",
-    data :[
-      {
-        urlImg: "/assets/img/logodragonsolo.svg",
-        name : "Nombre",
-        value : "48484",
-        redirectProduct : () =>{}
-      }
-    ]
-  }
+  // @Input() dataSlider = {
+  //   classSlider : "",
+  //   classDescription : "",
+  //   data :[
+  //     {
+  //       urlImg: "/assets/img/logodragonsolo.svg",
+  //       name : "Nombre",
+  //       value : "48484",
+  //       redirectProduct : () =>{}
+  //     }
+  //   ]
+  // }
 
 }

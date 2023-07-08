@@ -59,18 +59,18 @@ export class ProductPage {
       redirectMarcs : () =>{}
     }
   }
-  @Input() dataSlider = {
-    classSlider : "product",
-    classDescription : "",
-    data :[
-      {
-        urlImg: "/assets/img/logodragonsolo.svg",
-        name : "Nombre",
-        value : "48484",
-        redirectProduct : () =>{}
-      }
-    ]
-  }
+  // @Input() dataSlider = {
+  //   classSlider : "product",
+  //   classDescription : "",
+  //   data :[
+  //     {
+  //       urlImg: "/assets/img/logodragonsolo.svg",
+  //       name : "Nombre",
+  //       value : "48484",
+  //       redirectProduct : () =>{}
+  //     }
+  //   ]
+  // }
   @Input() dataViewProduct = {
     name :"",
     urlImg : "",
@@ -129,26 +129,26 @@ export class ProductPage {
           value : dataSnap?.value,
           description : dataSnap?.description
         }
-        this.dataSlider.data = [
-          {
-            urlImg: dataSnap?.urlImg,
-            name : "",
-            value : "",
-            redirectProduct : () =>{}
-          },
-          {
-            urlImg: dataSnap?.urlImgSecond,
-            name : "",
-            value : "",
-            redirectProduct : () =>{}
-          },
-          {
-            urlImg:dataSnap?.urlImgThree,
-            name : "",
-            value : "",
-            redirectProduct : () =>{}
-          }
-        ]
+        // this.dataSlider.data = [
+        //   {
+        //     urlImg: dataSnap?.urlImg,
+        //     name : "",
+        //     value : "",
+        //     redirectProduct : () =>{}
+        //   },
+        //   {
+        //     urlImg: dataSnap?.urlImgSecond,
+        //     name : "",
+        //     value : "",
+        //     redirectProduct : () =>{}
+        //   },
+        //   {
+        //     urlImg:dataSnap?.urlImgThree,
+        //     name : "",
+        //     value : "",
+        //     redirectProduct : () =>{}
+        //   }
+        // ]
       });
     }
   }
@@ -234,26 +234,26 @@ export class ProductPage {
           description : dataSnap.description
         }
         console.log(dataSnap);
-        this.dataSlider.data = [
-          {
-            urlImg: dataSnap.urlImg,
-            name : "",
-            value : "",
-            redirectProduct : () =>{}
-          },
-          {
-            urlImg: dataSnap.urlImgSecond,
-            name : "",
-            value : "",
-            redirectProduct : () =>{}
-          },
-          {
-            urlImg:dataSnap.urlImgThree,
-            name : "",
-            value : "",
-            redirectProduct : () =>{}
-          }
-        ]
+        // this.dataSlider.data = [
+        //   {
+        //     urlImg: dataSnap.urlImg,
+        //     name : "",
+        //     value : "",
+        //     redirectProduct : () =>{}
+        //   },
+        //   {
+        //     urlImg: dataSnap.urlImgSecond,
+        //     name : "",
+        //     value : "",
+        //     redirectProduct : () =>{}
+        //   },
+        //   {
+        //     urlImg:dataSnap.urlImgThree,
+        //     name : "",
+        //     value : "",
+        //     redirectProduct : () =>{}
+        //   }
+        // ]
     });
   }
 

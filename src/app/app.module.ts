@@ -15,6 +15,7 @@ import { LoginModule } from './page/login/login.module';
 import { AdmHomeModule } from './page/adm-home/adm-home.module';
 import { AdmProductPage } from './page/adm-product/adm-product.page';
 import { AdmProductModule } from './page/adm-product/adm-product.module';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AdmProductModule } from './page/adm-product/adm-product.module';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    provideStorage(() => getStorage())
   ],
   providers: [],
   bootstrap: [AppComponent]

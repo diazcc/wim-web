@@ -6,6 +6,11 @@
     flex-direction: column;
     position: relative;
 
+    select, option{
+      color: black;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
     .main{
       width: 100%;
       display: flex;

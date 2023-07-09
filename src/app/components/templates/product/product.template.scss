@@ -45,9 +45,9 @@
         display: flex;
         flex-wrap: wrap;
         gap: .2rem;
+        min-height:35rem;
         .cardProduct{
           width: 49%;
-          max-width: 15rem;
           min-height: 15rem;
           min-width: 11rem;
         }

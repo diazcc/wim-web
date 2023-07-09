@@ -1,5 +1,11 @@
 import { Component, Input, Renderer2 } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { finalize } from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
+import { collection, onSnapshot, query, where , DocumentSnapshot, addDoc } from 'firebase/firestore';
+import { Firestore } from '@angular/fire/firestore';
+import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
+
 
 @Component({
   selector: 'app-adm-product-template',
@@ -7,14 +13,18 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./adm-product.template.scss']
 })
 export class AdmProductTemplate {
-  formulario: FormGroup;
+  fileImg  :any;
+  urlImage : any;
+  categorySelect : any;
   alertForm = "";
   classForm = "";
+  formulario: FormGroup;
   private name : string ="";
   private description : string ="";
-  private price : string ="";
+  private value : string ="";
   private marc : string ="";
-  private documentMedia : string ="";
+  private type : string ="";
+  private urlImg : string ="";
   @Input() dataHeader = {
     textTitle :"Infinity Industry",
     urlIconMenu: "assets/icons/menu.svg",
@@ -58,16 +68,86 @@ export class AdmProductTemplate {
    }
 
    constructor(
-    private renderer : Renderer2
+    private renderer : Renderer2,
+    private firestore: Firestore,
+    private storage : Storage
+
    ){
     this.formulario = new FormGroup({
       name : new FormControl(),
       description : new FormControl(),
-      price : new FormControl(),
+      value : new FormControl(),
       marc : new FormControl(),
-      documentMedia : new FormControl()
+      type : new FormControl(),
+      urlImg : new FormControl()
     })
    }
+   getCategorySelect($event : any){
+    console.log($event.target.value);
+    const selectedIndex = $event.target.selectedIndex;
+    const selectedOption = $event.target.options[selectedIndex];
+    const selectedText = selectedOption.textContent;
+    console.log('Texto seleccionado:', selectedText);
+    this.categorySelect = selectedText;
+   }
+
+  uploadImage($event: any) {
+    this.fileImg = $event.target.files[0];
+    console.log(this.fileImg);
+    console.log(this.formulario.get('category')?.value);
+  }
+
+  onSubmit(){
+    this.setImg();
+    console.log(this.urlImage);
+    this.getUrlImg();
+
+    console.log(this.formulario.value);
+  }
+
+  setImg(){
+    if (this.fileImg!= undefined) {
+      const filePath = this.fileImg.name;
+      const fileRef = ref(this.storage, filePath);
+      uploadBytes(fileRef, this.fileImg)
+      .then(response => getDownloadURL(fileRef))
+      .then((url:any) =>{
+        this.urlImage = url;
+        console.log(url);
+        console.log(this.urlImage);
+        this.setUrlImg(url);
+      })
+      .catch(error => console.log(error))
+    }else{
+      console.log(false)
+    }
+  }
+
+  setDataProduct(url : any){
+    const productRef = collection(this.firestore,'backpacks');
+    this.formulario.value.urlImg = url;
+    this.formulario.value.type = this.categorySelect;
+    console.log(url);
+    return addDoc(productRef,this.formulario.value);
+  }
+
+  async setUrlImg(url : any){
+    this.urlImage = await url;
+    console.log(this.urlImage);
+    this.setDataProduct(url);
+  }
+
+
+
+  async getUrlImg(){
+    if (this.urlImage==undefined) {
+       console.log( await this.urlImage);
+    }
+    console.log( this.urlImage);
+    return this.urlImage;
+  }
+
+
 
    setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
@@ -100,4 +180,6 @@ export class AdmProductTemplate {
   showMenu(){
     console.log("Menuuu")
   }
+
+
 }

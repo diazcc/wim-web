@@ -34,19 +34,6 @@ export class ProductTemplate {
       }
     ]
    }
-
-  //  @Input() dataSlider = {
-  //   classSlider : "",
-  //   classDescription : "",
-  //   data :[
-  //     {
-  //       urlImg: "/assets/img/logodragonsolo.svg",
-  //       name : "Nombre",
-  //       value : "48484",
-  //       redirectProduct : () =>{}
-  //     }
-  //   ]
-  // }
   @Input() dataHeader = {
     textTitle :"",
     urlIconMenu: "",

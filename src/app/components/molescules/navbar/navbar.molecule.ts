@@ -12,7 +12,7 @@ export class NavbarMolecule {
     textOption2 : "",
     textOption3 : "",
     classMenu : "",
-    classContentMenu : "s",
+    classContentMenu : "",
     classOptionMmenu : "",
     redirectContact : () =>{},
     redirectMarcs : () =>{}

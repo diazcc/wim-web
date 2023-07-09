@@ -94,6 +94,7 @@ export class GaleryPage {
     const navigation = this.router.getCurrentNavigation();
     this.idNameCategoryState = navigation?.extras.state as any;
     this.idNameCategory = this.idNameCategoryState?.nameCategory;
+    console.log(this.idNameCategory);
   }
   ngOnInit(){
     this.getProducts();
@@ -249,6 +250,7 @@ export class GaleryPage {
     });
   }
   getProducts(){
+    console.log(this.idNameCategory);
 
     if (this.idNameCategory != undefined) {
       const prodRef = collection(this.firestore,this.idNameCategory);

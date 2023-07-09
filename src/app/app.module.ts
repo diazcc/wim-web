@@ -16,6 +16,10 @@ import { AdmHomeModule } from './page/adm-home/adm-home.module';
 import { AdmProductPage } from './page/adm-product/adm-product.page';
 import { AdmProductModule } from './page/adm-product/adm-product.module';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { AdmCategoryPage } from './page/adm-category/adm-category.page';
+import { AdmCategoryModule } from './page/adm-category/adm-category.module';
+import { NewCategoryPage } from './page/new-category/new-category.page';
+import { NewCategoryModule } from './page/new-category/new-category.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     LoginModule,
     AdmHomeModule,
     AdmProductModule,
+    AdmCategoryModule,
+    NewCategoryModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     ReactiveFormsModule,

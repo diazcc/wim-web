@@ -21,6 +21,7 @@ import { SliderOrganism } from './organisms/slider/slider.organism';
 import { LoginTemplate } from './templates/login/login.template';
 import { AdmHomeTemplate } from './templates/adm-home/adm-home.template';
 import { AdmProductTemplate } from './templates/adm-product/adm-product.template';
+import { NewCategoryTemplate } from './templates/new-category/new-category.template';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { AdmProductTemplate } from './templates/adm-product/adm-product.template
     SliderOrganism,
     LoginTemplate,
     AdmHomeTemplate,
-    AdmProductTemplate
+    AdmProductTemplate,
+    NewCategoryTemplate
   ],
   imports: [
     CommonModule,
@@ -71,7 +73,8 @@ import { AdmProductTemplate } from './templates/adm-product/adm-product.template
     SliderOrganism,
     LoginTemplate,
     AdmHomeTemplate,
-    AdmProductTemplate
+    AdmProductTemplate,
+    NewCategoryTemplate
   ]
 })
 export class ComponentsModule { }

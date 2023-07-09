@@ -9,6 +9,8 @@ const routes: Routes = [
   {path:'galery', loadChildren: () => import('./page/galery/galery.module').then(m => m.GaleryModule)},
   {path:'login', loadChildren: () => import('./page/login/login.module').then(m => m.LoginModule)},
   {path:'admProduct', loadChildren: () => import('./page/adm-product/adm-product.module').then(m => m.AdmProductModule)},
+  {path:'admCategory', loadChildren: () => import('./page/adm-category/adm-category.module').then(m => m.AdmCategoryModule)},
+  {path:'newCategory', loadChildren: () => import('./page/new-category/new-category.module').then(m => m.NewCategoryModule)},
   {path:'admHome', loadChildren: () => import('./page/adm-home/adm-home.module').then(m => m.AdmHomeModule)},
   {path:'administration', loadChildren: () => import('./page/adminitration/administration.module').then(m => m.AdministrationModule)},
   {path:'**', pathMatch:'full', redirectTo:'home'}

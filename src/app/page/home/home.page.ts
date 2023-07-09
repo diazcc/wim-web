@@ -282,7 +282,7 @@ showMenu(){
         const data =  {
           name : value.name,
           urlImg : value.urlImg,
-          redirect : () => {this.redirectCategoryProducts(value.type)}
+          redirect : () => {this.redirectCategoryProducts(value.name)}
         }
         arrayData.push(data);
       });

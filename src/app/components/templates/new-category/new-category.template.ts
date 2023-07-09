@@ -8,11 +8,11 @@ import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storag
 
 
 @Component({
-  selector: 'app-adm-product-template',
-  templateUrl: './adm-product.template.html',
-  styleUrls: ['./adm-product.template.scss']
+  selector: 'app-new-category-template',
+  templateUrl: './new-category.template.html',
+  styleUrls: ['./new-category.template.scss']
 })
-export class AdmProductTemplate {
+export class NewCategoryTemplate {
   fileImg  :any;
   urlImage : any;
   categorySelect : any;
@@ -21,10 +21,6 @@ export class AdmProductTemplate {
   dataCategory : any;
   formulario: FormGroup;
   private name : string ="";
-  private description : string ="";
-  private value : string ="";
-  private marc : string ="";
-  private type : string ="";
   private urlImg : string ="";
   @Input() dataHeader = {
     textTitle :"Infinity Industry",
@@ -76,67 +72,25 @@ export class AdmProductTemplate {
    ){
     this.formulario = new FormGroup({
       name : new FormControl(),
-      description : new FormControl(),
-      value : new FormControl(),
-      marc : new FormControl(),
-      type : new FormControl(),
       urlImg : new FormControl()
     })
    }
 
    ngOnInit(){
-    this.getCategories();
    }
 
-
-   getCategorySelect($event : any){
-    console.log($event.target.value);
-    const selectedIndex = $event.target.selectedIndex;
-    const selectedOption = $event.target.options[selectedIndex];
-    const selectedText = selectedOption.textContent;
-    console.log('Texto seleccionado:', selectedText);
-    this.categorySelect = selectedText;
-   }
-   getCategories(){
-    const categoryRef = collection(this.firestore,'category');
-    const prod = onSnapshot(categoryRef, (snap)=>{
-      const category : any[] = [];
-      let arrayData : any = [];
-      snap.forEach(snapHijo =>{
-        category.push({
-          id: snapHijo.id,
-          ...snapHijo.data()
-        });
-      })
-      category.map((value : any) => {
-        const data =  {
-          name : value.name,
-          urlImg : value.urlImg,
-          // redirect : () => {this.redirectCategoryProducts(value.type)}
-        }
-        arrayData.push(data);
-
-      });
-      console.log(arrayData);
-      this.dataCategory = arrayData;
-      // this.setDataCategory(arrayData);
-    });
-  }
-
-  uploadImage($event: any) {
+   uploadImage($event: any) {
     this.fileImg = $event.target.files[0];
     console.log(this.fileImg);
     console.log(this.formulario.get('category')?.value);
   }
 
+
   onSubmit(){
-    this.setImg();
     console.log(this.urlImage);
-    this.getUrlImg();
-
     console.log(this.formulario.value);
+    this.setImg();
   }
-
   setImg(){
     if (this.fileImg!= undefined) {
       const filePath = this.fileImg.name;
@@ -155,10 +109,9 @@ export class AdmProductTemplate {
     }
   }
 
-  setDataProduct(url : any){
-    const productRef = collection(this.firestore,this.categorySelect);
+  setNewCategory(url : any){
+    const productRef = collection(this.firestore,'category');
     this.formulario.value.urlImg = url;
-    this.formulario.value.type = this.categorySelect;
     console.log(url);
     return addDoc(productRef,this.formulario.value);
   }
@@ -166,20 +119,8 @@ export class AdmProductTemplate {
   async setUrlImg(url : any){
     this.urlImage = await url;
     console.log(this.urlImage);
-    this.setDataProduct(url);
+    this.setNewCategory(url);
   }
-
-
-
-  async getUrlImg(){
-    if (this.urlImage==undefined) {
-       console.log( await this.urlImage);
-    }
-    console.log( this.urlImage);
-    return this.urlImage;
-  }
-
-
 
    setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
@@ -212,6 +153,5 @@ export class AdmProductTemplate {
   showMenu(){
     console.log("Menuuu")
   }
-
 
 }

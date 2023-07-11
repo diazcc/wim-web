@@ -22,6 +22,8 @@ import { LoginTemplate } from './templates/login/login.template';
 import { AdmHomeTemplate } from './templates/adm-home/adm-home.template';
 import { AdmProductTemplate } from './templates/adm-product/adm-product.template';
 import { NewCategoryTemplate } from './templates/new-category/new-category.template';
+import { NewProductTemplate } from './templates/new-product/new-product.template';
+import { AlertMolecule } from './molescules/alert/alert.molecule';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { NewCategoryTemplate } from './templates/new-category/new-category.templ
     LoginTemplate,
     AdmHomeTemplate,
     AdmProductTemplate,
-    NewCategoryTemplate
+    NewCategoryTemplate,
+    NewProductTemplate,
+    AlertMolecule
   ],
   imports: [
     CommonModule,
@@ -74,7 +78,9 @@ import { NewCategoryTemplate } from './templates/new-category/new-category.templ
     LoginTemplate,
     AdmHomeTemplate,
     AdmProductTemplate,
-    NewCategoryTemplate
+    NewCategoryTemplate,
+    NewProductTemplate,
+    AlertMolecule
   ]
 })
 export class ComponentsModule { }

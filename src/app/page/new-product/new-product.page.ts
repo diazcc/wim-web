@@ -6,13 +6,25 @@ import { collection, onSnapshot, query, where , DocumentSnapshot, addDoc } from 
 import { Firestore } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
 
+
 @Component({
-  selector: 'app-adm-product',
-  templateUrl: './adm-product.page.html',
-  styleUrls: ['./adm-product.page.scss']
+  selector: 'app-new-product',
+  templateUrl: './new-product.page.html',
+  styleUrls: ['./new-product.page.scss']
 })
-export class AdmProductPage {
-  fileImg  :any;
+export class NewProductPage {
+  dataForm = {
+    name :" ",
+    description : "",
+    value : "",
+    marc : "",
+    file : ""
+  }
+  dataAlert = {
+    classAlert : "hidden",
+    text : "Se ha creado correctamente"
+  }
+fileImg  :any;
   urlImage : any;
   categorySelect : any;
   alertForm = "";
@@ -85,6 +97,7 @@ export class AdmProductPage {
 
    ngOnInit(){
     this.getCategories();
+
    }
 
 
@@ -159,7 +172,13 @@ export class AdmProductPage {
     this.formulario.value.urlImg = url;
     this.formulario.value.type = this.categorySelect;
     console.log(url);
-    return addDoc(productRef,this.formulario.value);
+    addDoc(productRef,this.formulario.value);
+    this.dataAlert = {
+      classAlert : "save",
+      text : "Se ha creado correctamente"
+    }
+    return this.formulario.reset();
+
   }
 
   async setUrlImg(url : any){
@@ -211,4 +230,5 @@ export class AdmProductPage {
   showMenu(){
     console.log("Menuuu")
   }
+
 }

@@ -34,32 +34,47 @@
   color: white;
   font-family: buvica;
 }
-
 body{
   // overflow: hidden;
-  background-color: rgb(106, 106, 106);
-
+  background-color: rgb(165, 165, 165);
 
 }
-
 .bodyBlock{
   overflow: hidden;
 }
 
-
-
 li{
   list-style: none;
 }
-
 ul{
   display: flex;
   padding: 0;
 }
-
-
-
 p{
   margin: 0;
 
+}
+.delete{
+  font-size: 1rem;
+  font-weight: bold;
+  border: 1px rgb(0, 0, 0) solid;
+  background-color: red;
+  color: white;
+  border-radius: .5rem;
+  max-width: 10rem;
+  align-self: center;
+  display: flex;
+  padding: .5rem;
+}
+
+.save{
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 1px rgb(0, 0, 0) solid;
+  color: black;
+  border-radius: .5rem;
+  max-width: 10rem;
+  align-self: center;
+  display: flex;
+  padding: .5rem;
 }

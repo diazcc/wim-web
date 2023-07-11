@@ -1,0 +1,42 @@
+
+@keyframes desaparecer {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
+
+
+.alert{
+  background-color: rgb(127, 127, 127);
+  padding: 1rem;
+  border-radius: 1rem;
+  color:  black;
+
+  &--save{
+    background-color: green;
+    padding: 1rem;
+    border-radius: 1rem;
+    color: white;
+    animation: desaparecer 3s forwards;
+  }
+  &--hidden{
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
+

@@ -20,6 +20,8 @@ import { AdmCategoryPage } from './page/adm-category/adm-category.page';
 import { AdmCategoryModule } from './page/adm-category/adm-category.module';
 import { NewCategoryPage } from './page/new-category/new-category.page';
 import { NewCategoryModule } from './page/new-category/new-category.module';
+import { NewProductPage } from './page/new-product/new-product.page';
+import { NewProductModule } from './page/new-product/new-product.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { NewCategoryModule } from './page/new-category/new-category.module';
     AdmProductModule,
     AdmCategoryModule,
     NewCategoryModule,
+    NewProductModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     ReactiveFormsModule,

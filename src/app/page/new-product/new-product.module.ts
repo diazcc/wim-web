@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdmProductPage } from './adm-product.page';
+import { NewProductPage } from './new-product.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { HttpClientModule } from '@angular/common/http';
-import { AdmProductRoutingModule } from './adm-product-routing.module';
+import { NewProductRoutingModule } from './new-product-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    AdmProductPage
+    NewProductPage
   ],
   imports: [
     CommonModule,
     ComponentsModule,
-    AdmProductRoutingModule,
+    NewProductRoutingModule,
     HttpClientModule,
     ReactiveFormsModule
   ]
 })
-export class AdmProductModule { }
+export class NewProductModule { }

@@ -3,6 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 2.5rem;
+  padding: 1rem;
   justify-content: center;
   .titleCategory{
     width: 100%;
@@ -27,11 +28,11 @@
       h1{
         padding: 0.5rem;
         position: absolute;
-        border: 1px rgb(85, 85, 85) solid;
         height: min-content;
         border-radius: 0.3rem;
         left: 5%;
         top: 80%;
+        font-size: 1.8rem;
       }
     }
     .imgContent{

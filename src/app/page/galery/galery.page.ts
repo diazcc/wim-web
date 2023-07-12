@@ -12,7 +12,6 @@ import { GaleryTemplate } from 'src/app/components/templates/galery/galery.templ
 })
 export class GaleryPage {
   @Input() idNameCategoryState : any;
-  setFilter = ()=>{}
   dataOption = {
     onChange : () =>{console.log(this.dataSelectOption.selectedOption)},
     data : [

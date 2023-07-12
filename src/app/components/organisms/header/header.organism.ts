@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderOrganism {
 
-  @Input() urlIcon ="assets/img/logoconletra.svg";
+  @Input() urlIcon ="assets/img/dragoncontitulo.svg";
   @Input() classIconContent ="logoTitle";
   @Input() dataHeader = {
     textTitle :"",

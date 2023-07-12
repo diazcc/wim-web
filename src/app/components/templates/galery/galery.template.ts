@@ -98,8 +98,6 @@ export class GaleryTemplate {
       this.previousScrollPosition = scrollPosition;
     }
 
-    @Input() setFilter = ()=>{
-    }
 
     @Input() detectChange(){
       this.selectionOptionChanged.emit(this.selectedOption);

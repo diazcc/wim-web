@@ -13,6 +13,11 @@ import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storag
   styleUrls: ['./new-product.page.scss']
 })
 export class NewProductPage {
+  dataMenu  = {
+    classMenu : "close",
+    closeMenu : ()=>{ this.closeMenu()},
+    closeSesion :()=>{}
+  }
   dataForm = {
     name :" ",
     description : "",
@@ -99,6 +104,15 @@ fileImg  :any;
     this.getCategories();
 
    }
+
+  showMenu(){
+    console.log("mmene");
+    this.dataMenu.classMenu = ""
+  }
+  closeMenu(){
+    console.log("cerrrar");
+    this.dataMenu.classMenu = "close"
+  }
 
 
    getCategorySelect($event : any){
@@ -227,8 +241,6 @@ fileImg  :any;
     }
   }
 
-  showMenu(){
-    console.log("Menuuu")
-  }
+
 
 }

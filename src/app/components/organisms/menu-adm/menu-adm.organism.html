@@ -1,0 +1,12 @@
+<section [class]="'menu menu--'+dataMenu.classMenu">
+  <div class="iconClose" (click)="dataMenu.closeMenu()">
+    <img src="/assets/icons/closeBlack.svg" alt="" class="icon">
+  </div>
+  <ul class="contentOption">
+    <li class="buttonMenu" (click)="redirectHome()">Ir a la pagina web</li>
+    <li class="buttonMenu" (click)="redirectContentHome()">Contenido del inicio</li>
+    <li class="buttonMenu" (click)="redirectNewCategory()">Crear nueva categoria</li>
+    <li class="buttonMenu" (click)="redirectHome()">Modificar Categoria</li>
+  </ul>
+  <button class="closeSesion" (click)="dataMenu.closeSesion()">Cerrar sesion</button>
+</section>

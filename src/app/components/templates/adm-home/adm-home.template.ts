@@ -1,5 +1,6 @@
 import { Component, Input, Renderer2 } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,6 +9,11 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./adm-home.template.scss']
 })
 export class AdmHomeTemplate {
+  dataMenu  = {
+    classMenu : "close",
+    closeMenu : ()=>{ this.closeMenu()},
+    closeSesion :()=>{}
+  }
   formulario: FormGroup;
   alertForm = "";
   classForm = "";
@@ -60,7 +66,8 @@ export class AdmHomeTemplate {
    }
 
    constructor(
-    private renderer : Renderer2
+    private renderer : Renderer2,
+    private router : Router
    ){
     this.formulario = new FormGroup({
       title : new FormControl(),
@@ -71,6 +78,14 @@ export class AdmHomeTemplate {
       documentTC : new FormControl()
     })
    }
+   showMenu(){
+    console.log("mmene");
+    this.dataMenu.classMenu = ""
+  }
+  closeMenu(){
+    console.log("cerrrar");
+    this.dataMenu.classMenu = "close"
+  }
 
    setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
@@ -99,8 +114,7 @@ export class AdmHomeTemplate {
 
     }
   }
-
-  showMenu(){
-    console.log("Menuuu")
+  redirectNewProduct(){
+    this.router.navigate(['/newProduct']);
   }
 }

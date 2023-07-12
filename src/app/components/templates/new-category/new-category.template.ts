@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { collection, onSnapshot, query, where , DocumentSnapshot, addDoc } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,6 +14,11 @@ import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storag
   styleUrls: ['./new-category.template.scss']
 })
 export class NewCategoryTemplate {
+  dataMenu  = {
+    classMenu : "close",
+    closeMenu : ()=>{ this.closeMenu()},
+    closeSesion :()=>{}
+  }
   fileImg  :any;
   urlImage : any;
   categorySelect : any;
@@ -67,7 +73,8 @@ export class NewCategoryTemplate {
    constructor(
     private renderer : Renderer2,
     private firestore: Firestore,
-    private storage : Storage
+    private storage : Storage,
+    private router : Router
 
    ){
     this.formulario = new FormGroup({
@@ -78,6 +85,14 @@ export class NewCategoryTemplate {
 
    ngOnInit(){
    }
+   showMenu(){
+    console.log("mmene");
+    this.dataMenu.classMenu = ""
+  }
+  closeMenu(){
+    console.log("cerrrar");
+    this.dataMenu.classMenu = "close"
+  }
 
    uploadImage($event: any) {
     this.fileImg = $event.target.files[0];
@@ -149,9 +164,7 @@ export class NewCategoryTemplate {
 
     }
   }
-
-  showMenu(){
-    console.log("Menuuu")
+  redirectNewProduct(){
+    this.router.navigate(['/newProduct']);
   }
-
 }

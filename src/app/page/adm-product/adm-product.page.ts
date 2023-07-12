@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { collection, onSnapshot, query, where , DocumentSnapshot, addDoc } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adm-product',
@@ -12,6 +13,11 @@ import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storag
   styleUrls: ['./adm-product.page.scss']
 })
 export class AdmProductPage {
+  dataMenu  = {
+    classMenu : "close",
+    closeMenu : ()=>{ this.closeMenu()},
+    closeSesion :()=>{}
+  }
   fileImg  :any;
   urlImage : any;
   categorySelect : any;
@@ -70,7 +76,8 @@ export class AdmProductPage {
    constructor(
     private renderer : Renderer2,
     private firestore: Firestore,
-    private storage : Storage
+    private storage : Storage,
+    private router : Router
 
    ){
     this.formulario = new FormGroup({
@@ -86,6 +93,15 @@ export class AdmProductPage {
    ngOnInit(){
     this.getCategories();
    }
+   showMenu(){
+    console.log("mmene");
+    this.dataMenu.classMenu = ""
+  }
+  closeMenu(){
+    console.log("cerrrar");
+    this.dataMenu.classMenu = "close"
+  }
+
 
 
    getCategorySelect($event : any){
@@ -111,14 +127,12 @@ export class AdmProductPage {
         const data =  {
           name : value.name,
           urlImg : value.urlImg,
-          // redirect : () => {this.redirectCategoryProducts(value.type)}
         }
         arrayData.push(data);
 
       });
       console.log(arrayData);
       this.dataCategory = arrayData;
-      // this.setDataCategory(arrayData);
     });
   }
 
@@ -207,8 +221,8 @@ export class AdmProductPage {
 
     }
   }
-
-  showMenu(){
-    console.log("Menuuu")
+  redirectNewProduct(){
+    this.router.navigate(['/newProduct']);
   }
+
 }

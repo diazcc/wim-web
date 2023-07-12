@@ -1,33 +1,6 @@
 @font-face{
-  font-family: 'bulone';
-  src: url('/assets/fonts/bulone/Bulone.ttf') format('truetype');
-}
-@font-face{
   font-family: 'buvica';
-  src: url('/assets/fonts/queensides/Queensides-3z7Ey.ttf') format('truetype');
-}
-@font-face{
-  font-family: 'copper-normal';
-  src: url('/assets/fonts/copperplate/OPTICopperplate.otf') format('truetype');
-}
-@font-face{
-  font-family: 'copper-heavy';
-  src: url('/assets/fonts/copperplate/OPTICopperplate-Heavy.otf') format('truetype');
-}
-@font-face{
-  font-family: 'copper-light';
-  src: url('/assets/fonts/copperplate/OPTICopperplate-Light.otf') format('truetype');
-}
-
-@font-face{
-  font-family: 'opensans-regular';
-  src: url('/assets/fonts/opensans/OpenSans-Regular.ttf') format('truetype');
-}
-
-@font-face{
-  // src: url('/src/assets/fonts/opensans/OpenSans-Bold.ttf') format('truetype');
-  font-family: 'opensans-bold';
-  src: url('/assets/fonts/opensans/OpenSans-Bold.ttf') format('truetype');
+  src: url('/assets/fonts/queenside/Queensides-3z7Ey.ttf') format('truetype');
 }
 *{
   margin: 0;
@@ -35,14 +8,11 @@
   font-family: buvica;
 }
 body{
-  // overflow: hidden;
   background-color: rgb(165, 165, 165);
-
 }
 .bodyBlock{
   overflow: hidden;
 }
-
 li{
   list-style: none;
 }
@@ -52,7 +22,6 @@ ul{
 }
 p{
   margin: 0;
-
 }
 .delete{
   font-size: 1rem;
@@ -66,7 +35,6 @@ p{
   display: flex;
   padding: .5rem;
 }
-
 .save{
   font-size: 1.5rem;
   font-weight: bold;

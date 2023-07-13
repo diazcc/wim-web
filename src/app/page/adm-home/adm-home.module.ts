@@ -5,6 +5,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductServicesService } from 'src/app/services/product-services.service';
 import { AdmHomeRoutingModule } from './adm-home-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -16,7 +17,9 @@ import { AdmHomeRoutingModule } from './adm-home-routing.module';
     CommonModule,
     ComponentsModule,
     AdmHomeRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers:[
     ProductServicesService

@@ -1,1 +1,30 @@
-<app-adm-home-template></app-adm-home-template>
+<app-menu-adm [dataMenu]="dataMenu"></app-menu-adm>
+<app-search [dataSearch]="dataSearch"></app-search>
+<button class="newProduct" (click)="redirectNewProduct()">
+  <img src="/assets/icons/mas.svg" alt="">
+</button>
+<div class="wrapper">
+  <app-header [dataHeader]="dataHeader"></app-header>
+  <main class="main">
+    <h1>Home</h1>
+    <p>Aqui se editara los datos de la pagina principal</p>
+    <form class="form" (ngSubmit)="onSubmit()"  [formGroup]="formulario">
+      <p class="alertForm"></p>
+      <label for="title">Titulo*</label>
+      <input type="text" formControlName="titlePresentation" class="text">
+      <label for="description">Descripcion*</label>
+      <input type="text" formControlName="descriptionPresentation" class="text">
+      <label for="documentMedia">Imagen*</label>
+      <input type="file" formControlName="urlImg" class="file">
+      <label for="urlFacebook">Facebook*</label>
+      <input type="text" formControlName="linkFacebook" class="text">
+      <label for="urlFacebook">Numero Whatsapp*</label>
+      <input type="number" formControlName="linkWhatsapp" class="text">
+      <label for="urlInstagram">Instagram*</label>
+      <input type="text" formControlName="linkInstagram" class="text">
+      <label for="documentTC">Terminos y Condiciones : PDF*</label>
+      <input type="file" formControlName="fileTC" class="file">
+      <input type="submit" value="Guardar" class="buttonSubmit">
+    </form>
+  </main>
+</div>

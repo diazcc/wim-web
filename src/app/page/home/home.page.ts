@@ -117,7 +117,28 @@ export class HomePage {
       redirectMarcs : () =>{}
     }
   }
-  ayaya :string ="";
+
+  dataFooter = {
+    linkWhatsapp : "",
+    linkFacebook : "",
+    linkInstagram : "",
+    urlTC : ""
+  }
+
+  dataHome = {
+    dataArticlePresentation : {
+      title: "",
+      description : "",
+      redirect : () =>{}
+    },
+    dataFooter : {
+      linkWhatsapp : "",
+      linkFacebook : "",
+      linkInstagram : "",
+      urlTC : ""
+    }
+  }
+
   constructor(
     private productServices : ProductServicesService,
     private router : Router,
@@ -131,15 +152,18 @@ export class HomePage {
       this.dataPresentation.classPresentation = "close";
     }, 1500);
     this.setDataHeader();
-    this.setDataArticlePresentation();
+    // this.setDataArticlePresentation();
     this.setDataSectionPhotos();
     this.getCategories();
     this.getFeaturedProducts()
+    this.getDataHome();
 
   }
   ngAfterViewInit() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+
 
 
 showMenu(){
@@ -210,15 +234,72 @@ showMenu(){
 
     }
   }
-  setDataArticlePresentation(){
-    this.dataArticlePresentation = {
-      title: "Bienvenidos a Infinity Industry",
-      description : "Conoce mas sobre nosotros!",
-      redirect : () =>{
-        this.scrollToTitle();
-      }
-   }
+
+  getDataHome(){
+    console.log("Init getData");
+    const principalDataRef = collection(this.firestore,'home');
+    console.log(principalDataRef);
+
+    const prod = onSnapshot(principalDataRef, (snap)=>{
+    console.log(snap);
+
+      const featProd : any[] = [];
+      let arrayData : any = [];
+      snap.forEach(snapHijo =>{
+        console.log(snapHijo.data());
+
+        featProd.push({
+          idFeat: snapHijo.id,
+          ...snapHijo.data()
+        });
+      })
+      console.log(featProd);
+
+
+      featProd.map((value : any) => {
+        const data =  {
+          dataArticlePresentation : {
+            title: value?.titlePresentation,
+            description : value.descriptionPresentation,
+            redirect : () =>{this.scrollToTitle();}
+          },
+          dataFooter : {
+            linkWhatsapp : value.linkWhatsapp,
+            linkFacebook : value.linkFacebook,
+            linkInstagram : value.linkInstagram,
+            urlTC : value.fileTC
+          }
+        }
+        arrayData?.push(data);
+
+      });
+      console.log(arrayData);
+      console.log(arrayData[0]);
+
+      // this.setDataSlider(arrayData);
+      this.setDataHome(arrayData[0]);
+    });
   }
+
+  setDataHome(data : any){
+    console.log(this.dataHome);
+    console.log(data);
+
+    this.dataHome = data;
+    console.log(this.dataHome);
+
+
+  }
+
+  // setDataArticlePresentation(){
+  //   this.dataHome.dataArticlePresentation = {
+  //     title: "Bienvenidos a Infinity Industry",
+  //     description : "Conoce mas sobre nosotros!",
+  //     redirect : () =>{
+  //       this.scrollToTitle();
+  //     }
+  //  }
+  // }
   scrollToTitle() {
     const titleMarc = document.getElementById('titleCategory');
     if (titleMarc) {

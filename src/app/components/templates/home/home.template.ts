@@ -97,6 +97,13 @@ export class HomeTemplate {
       redirectContact : () =>{},
       redirectMarcs : () =>{}
     }
+
+  }
+  @Input() dataFooter = {
+    linkWhatsapp : "",
+    linkFacebook : "",
+    linkInstagram : "",
+    urlTC : ""
   }
   constructor(
     private elementRef: ElementRef,

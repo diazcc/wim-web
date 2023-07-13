@@ -34,6 +34,11 @@
             left: 10%;
             top: 70%;
             gap: 1rem;
+            .nameCard{
+              border-bottom: 1px solid white;
+              padding-bottom: .5rem;
+              border-radius: .5rem;
+            }
           }
           &--product{
             visibility: hidden;

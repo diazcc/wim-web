@@ -4,19 +4,19 @@
   <section class="sectionFooter">
     <div class="whatsApp">
       <p>Tambien puedes escribirnos por whatsapp a este link</p>
-      <a href="" class="buttonWhatsapp">Whatsapp</a>
+      <a [href]="dataFooter.linkWhatsapp" class="buttonWhatsapp">Whatsapp</a>
     </div>
   </section>
   <nav class="navContactFooter">
     <ul class="contentContactFooter">
-      <li class="contactFooter"><img src="/assets/icons/instagram.svg" alt=""></li>
-      <li class="contactFooter"><img src="/assets/icons/whatsapp.svg" alt=""></li>
-      <li class="contactFooter"><img src="/assets/icons/facebook.svg" alt=""></li>
+      <li class="contactFooter"><a [href]="dataFooter.linkInstagram"><img src="/assets/icons/instagram.svg" alt=""></a></li>
+      <li class="contactFooter"><a [href]="dataFooter.linkWhatsapp"><img src="/assets/icons/whatsapp.svg" alt=""></a></li>
+      <li class="contactFooter"><a [href]="dataFooter.linkFacebook"><img src="/assets/icons/facebook.svg" alt=""></a></li>
     </ul>
   </nav>
   <nav class="navbarFooter">
     <ul class="content-navbarFooter">
-      <li class="option-navbarFooter">Terminos y Condiciones</li>
+      <li class="option-navbarFooter"><a [href]="dataFooter.urlTC">Terminos y Condiciones</a></li>
     </ul>
   </nav>
 </footer>

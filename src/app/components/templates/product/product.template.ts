@@ -59,7 +59,8 @@ export class ProductTemplate {
     name :"",
     urlImg : "",
     value : "",
-    description : ""
+    description : "",
+    redirectWpp : () =>{}
   }
 
 

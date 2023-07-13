@@ -59,23 +59,12 @@ export class ProductPage {
       redirectMarcs : () =>{}
     }
   }
-  // @Input() dataSlider = {
-  //   classSlider : "product",
-  //   classDescription : "",
-  //   data :[
-  //     {
-  //       urlImg: "/assets/img/logodragonsolo.svg",
-  //       name : "Nombre",
-  //       value : "48484",
-  //       redirectProduct : () =>{}
-  //     }
-  //   ]
-  // }
   @Input() dataViewProduct = {
     name :"",
     urlImg : "",
     value : "",
-    description : ""
+    description : "",
+    redirectWpp : () =>{}
   }
   @Input() dataCardProduct = {
     data : [
@@ -110,6 +99,11 @@ export class ProductPage {
     this.setProduct();
   }
 
+  redirecWhatsapp(product : any, description :any, value : any){
+    const url = "https://wa.me/+573146724568?text=Hola,%20estoy%20interesado%20en%20"+product+" "+description+" que tiene un valor de: $"+value;
+    window.location.href = url;
+  }
+
   setProduct(){
     if(this.category != undefined){
       console.log(this.category);
@@ -127,28 +121,9 @@ export class ProductPage {
           name :dataSnap?.name,
           urlImg : dataSnap?.urlImg,
           value : dataSnap?.value,
-          description : dataSnap?.description
+          description : dataSnap?.description,
+          redirectWpp : () =>{ this.redirecWhatsapp(dataSnap?.name,dataSnap?.description,dataSnap?.value)}
         }
-        // this.dataSlider.data = [
-        //   {
-        //     urlImg: dataSnap?.urlImg,
-        //     name : "",
-        //     value : "",
-        //     redirectProduct : () =>{}
-        //   },
-        //   {
-        //     urlImg: dataSnap?.urlImgSecond,
-        //     name : "",
-        //     value : "",
-        //     redirectProduct : () =>{}
-        //   },
-        //   {
-        //     urlImg:dataSnap?.urlImgThree,
-        //     name : "",
-        //     value : "",
-        //     redirectProduct : () =>{}
-        //   }
-        // ]
       });
     }
   }
@@ -231,29 +206,10 @@ export class ProductPage {
           name :dataSnap.name,
           urlImg : dataSnap.urlImg,
           value : dataSnap.value,
-          description : dataSnap.description
+          description : dataSnap.description,
+          redirectWpp : () =>{this.redirecWhatsapp(dataSnap?.name,dataSnap?.description,dataSnap?.value)}
         }
         console.log(dataSnap);
-        // this.dataSlider.data = [
-        //   {
-        //     urlImg: dataSnap.urlImg,
-        //     name : "",
-        //     value : "",
-        //     redirectProduct : () =>{}
-        //   },
-        //   {
-        //     urlImg: dataSnap.urlImgSecond,
-        //     name : "",
-        //     value : "",
-        //     redirectProduct : () =>{}
-        //   },
-        //   {
-        //     urlImg:dataSnap.urlImgThree,
-        //     name : "",
-        //     value : "",
-        //     redirectProduct : () =>{}
-        //   }
-        // ]
     });
   }
 

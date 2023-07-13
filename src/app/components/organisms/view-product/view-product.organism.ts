@@ -11,7 +11,8 @@ export class ViewProductOrganism {
     name :"",
     urlImg : "",
     value : "",
-    description : ""
+    description : "",
+    redirectWpp : () =>{}
   }
   // @Input() dataSlider = {
   //   classSlider : "",

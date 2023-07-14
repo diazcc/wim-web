@@ -76,6 +76,12 @@ export class ProductTemplate {
       }
     ]
   }
+  @Input() dataFooter = {
+    linkWhatsapp : "",
+    linkFacebook : "",
+    linkInstagram : "",
+    urlTC : ""
+  }
 
 
 

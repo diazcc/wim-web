@@ -59,7 +59,7 @@ export class GaleryPage {
       classMenu : "menu--hidden",
       classContentMenu : "content-menu",
       classOptionMmenu : "option-menu",
-      redirectContact : () =>{},
+      redirectContact : () =>{this.redirectCategory()},
       redirectMarcs : () =>{}
     }
   }
@@ -81,6 +81,12 @@ export class GaleryPage {
       }
     ]
   }
+  dataFooter = {
+    linkWhatsapp : "",
+    linkFacebook : "",
+    linkInstagram : "",
+    urlTC : ""
+  }
   constructor(
     private productServices : ProductServicesService,
     private router : Router,
@@ -96,6 +102,7 @@ export class GaleryPage {
     console.log(this.idNameCategory);
   }
   ngOnInit(){
+    this.getDataFooter();
     this.getProducts();
     this.getCategories();
 
@@ -145,6 +152,19 @@ export class GaleryPage {
       });
 
     });
+  }
+  redirectCategory(){
+    this.dataHeader.dataNavBar.classMenu="menu--hidden";
+    this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
+    this.dataHeader.classHeader = "header";
+    this.classMain = "";
+    const titleContacts = document.getElementById('contacts');
+    setTimeout(() => {
+      if (titleContacts) {
+        titleContacts.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 400);
+
   }
 
 
@@ -333,4 +353,53 @@ export class GaleryPage {
     this.router.navigate(['/product'], data );
   }
 
+  //------------Footer----------------------------------------
+  getDataFooter(){
+    console.log(this.dataFooter);
+
+    console.log("Init getData");
+    const principalDataRef = collection(this.firestore,'home');
+    console.log(principalDataRef);
+
+    const prod = onSnapshot(principalDataRef, (snap)=>{
+    console.log(snap);
+
+      const featProd : any[] = [];
+      let arrayData : any = [];
+      snap.forEach(snapHijo =>{
+        console.log(snapHijo.data());
+
+        featProd.push({
+          idFeat: snapHijo.id,
+          ...snapHijo.data()
+        });
+      })
+      console.log(featProd);
+
+
+      featProd.map((value : any) => {
+        const data =  {
+            linkWhatsapp : value.linkWhatsapp,
+            linkFacebook : value.linkFacebook,
+            linkInstagram : value.linkInstagram,
+            urlTC : value.fileTC
+        }
+        arrayData?.push(data);
+
+      });
+      console.log(arrayData);
+      console.log(arrayData[0]);
+
+      // this.setDataSlider(arrayData);
+      this.setDataFooter(arrayData[0]);
+    });
+  }
+
+  async setDataFooter(data : any){
+    console.log(this.dataFooter);
+    console.log(data);
+
+    this.dataFooter = await data;
+    console.log(this.dataFooter);
+  }
 }

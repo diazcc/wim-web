@@ -55,7 +55,7 @@ export class ProductPage {
       classMenu : "menu--hidden",
       classContentMenu : "content-menu",
       classOptionMmenu : "option-menu",
-      redirectContact : () =>{},
+      redirectContact : () =>{this.redirectCategory()},
       redirectMarcs : () =>{}
     }
   }
@@ -77,6 +77,12 @@ export class ProductPage {
       }
     ]
   }
+  @Input() dataFooter = {
+    linkWhatsapp : "",
+    linkFacebook : "",
+    linkInstagram : "",
+    urlTC : ""
+  }
   constructor(
     private productServices : ProductServicesService,
     private router : Router,
@@ -96,7 +102,9 @@ export class ProductPage {
 
   ngOnInit(){
     this.getProducts();
+    this.getDataFooter();
     this.setProduct();
+
   }
 
   redirecWhatsapp(product : any, description :any, value : any){
@@ -169,6 +177,19 @@ export class ProductPage {
     this.dataHeader.classHeader = "header";
     }
   }
+  redirectCategory(){
+    this.dataHeader.dataNavBar.classMenu="menu--hidden";
+    this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
+    this.dataHeader.classHeader = "header";
+    this.classMain = "";
+    const titleContacts = document.getElementById('contacts');
+    setTimeout(() => {
+      if (titleContacts) {
+        titleContacts.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 400);
+
+  }
   getProducts(){
     const prodRef = collection(this.firestore,this.category);
     const prod = onSnapshot(prodRef, (snap)=>{
@@ -211,6 +232,60 @@ export class ProductPage {
         }
         console.log(dataSnap);
     });
+  }
+
+  getDataFooter(){
+    let dataFooter = {
+      linkWhatsapp : "https://www.facebook.com/Andres.DiasCastillo/",
+      linkFacebook : "",
+      linkInstagram : "",
+      urlTC : ""
+    }
+    console.log("Init getData");
+    const principalDataRef = collection(this.firestore,'home');
+    console.log(principalDataRef);
+
+    const prod = onSnapshot(principalDataRef, (snap)=>{
+    console.log(snap);
+
+      const featProd : any[] = [];
+      let arrayData : any = [];
+      snap.forEach(snapHijo =>{
+        console.log(snapHijo.data());
+
+        featProd.push({
+          idFeat: snapHijo.id,
+          ...snapHijo.data()
+        });
+      })
+      console.log(featProd);
+
+
+      featProd.map((value : any) => {
+        const data =  {
+            linkWhatsapp : value.linkWhatsapp,
+            linkFacebook : value.linkFacebook,
+            linkInstagram : value.linkInstagram,
+            urlTC : ""
+        }
+        arrayData?.push(data);
+
+      });
+      console.log(arrayData);
+      console.log(arrayData[0]);
+      dataFooter = arrayData[0];
+      console.log(dataFooter);
+
+      this.setDataFooter(dataFooter);
+    });
+
+  }
+
+
+  setDataFooter(data : any){
+    console.log(data);
+
+    this.dataFooter = data;
   }
 
 }

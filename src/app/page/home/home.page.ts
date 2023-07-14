@@ -291,15 +291,6 @@ showMenu(){
 
   }
 
-  // setDataArticlePresentation(){
-  //   this.dataHome.dataArticlePresentation = {
-  //     title: "Bienvenidos a Infinity Industry",
-  //     description : "Conoce mas sobre nosotros!",
-  //     redirect : () =>{
-  //       this.scrollToTitle();
-  //     }
-  //  }
-  // }
   scrollToTitle() {
     const titleMarc = document.getElementById('titleCategory');
     if (titleMarc) {

@@ -60,6 +60,12 @@ export class GaleryTemplate {
       redirectMarcs : () =>{}
     }
   }
+  @Input() dataFooter = {
+    linkWhatsapp : "",
+    linkFacebook : "",
+    linkInstagram : "",
+    urlTC : ""
+  }
   @Input() dataCardProduct = {
     data : [
       {
@@ -72,6 +78,9 @@ export class GaleryTemplate {
     ]
   }
 
+  ngOnInit(){
+    console.log(this.dataFooter);
+  }
 
   ngAfterViewInit() {
     window.scrollTo(0, 0);

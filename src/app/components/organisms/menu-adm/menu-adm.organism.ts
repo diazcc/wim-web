@@ -28,7 +28,9 @@ export class MenuAdmOrganism {
   redirectNewCategory(){
     this.router.navigate(['/newCategory']);
   }
-
+  redirectModifyCategory(){
+    this.router.navigate(['/modifyCategory']);
+  }
 
 
 

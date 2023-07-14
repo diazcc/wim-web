@@ -8,20 +8,16 @@ import { ProductModule } from './page/product/product.module';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { AdminRoutingModule } from './page/adminitration/admin-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GaleryModule } from './page/galery/galery.module';
 import { LoginModule } from './page/login/login.module';
 import { AdmHomeModule } from './page/adm-home/adm-home.module';
-import { AdmProductPage } from './page/adm-product/adm-product.page';
 import { AdmProductModule } from './page/adm-product/adm-product.module';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-import { AdmCategoryPage } from './page/adm-category/adm-category.page';
 import { AdmCategoryModule } from './page/adm-category/adm-category.module';
-import { NewCategoryPage } from './page/new-category/new-category.page';
 import { NewCategoryModule } from './page/new-category/new-category.module';
-import { NewProductPage } from './page/new-product/new-product.page';
 import { NewProductModule } from './page/new-product/new-product.module';
+import { ModifyCategoryModule } from './page/modify-category/modify-category.module';
 
 @NgModule({
   declarations: [
@@ -40,6 +36,7 @@ import { NewProductModule } from './page/new-product/new-product.module';
     AdmCategoryModule,
     NewCategoryModule,
     NewProductModule,
+    ModifyCategoryModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     ReactiveFormsModule,

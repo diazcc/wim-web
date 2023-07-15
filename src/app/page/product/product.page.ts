@@ -112,12 +112,13 @@ export class ProductPage {
     window.location.href = url;
   }
 
-  setProduct(){
+  async setProduct(){
     if(this.category != undefined){
       console.log(this.category);
       console.log(this.idProduct);
 
-      const prodRef = doc(this.firestore,this.category,this.idProduct);
+      const prodRef = await doc(this.firestore,this.category,this.idProduct);
+
       console.log(prodRef);
 
       const prod = onSnapshot(prodRef, (snap) => {

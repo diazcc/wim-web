@@ -192,16 +192,12 @@ fileImg  :any;
       text : "Se ha creado correctamente"
     }
     return this.formulario.reset();
-
   }
-
   async setUrlImg(url : any){
     this.urlImage = await url;
     console.log(this.urlImage);
     this.setDataProduct(url);
   }
-
-
 
   async getUrlImg(){
     if (this.urlImage==undefined) {

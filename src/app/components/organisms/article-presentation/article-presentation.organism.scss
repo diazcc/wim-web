@@ -1,24 +1,3 @@
-.img-presentation{
-  display: flex;
-  width: 100%;
-  height: 41rem;
-  background-image: url('/assets/img/c2.jpg');
-  background-position: center;
-  background-size: cover;
-  align-items: center;
-  justify-content: center;
-  .optionContentPresentation{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    height: 100%;
-    width: 100%;
-    transition: ease-in-out .2s;
-    gap: 1rem;
-  }
-}
 
 .articlePresentation{
   display: flex;
@@ -43,5 +22,27 @@
     font-family: Helvetica;
     width: 14rem;
     background-color: black;
+  }
+}
+
+
+@media (min-width: 769px) {
+  .articlePresentation{
+    .titlePresentation{
+      font-size: 3.5rem;
+    }
+    .descriptionPresentation{
+      font-size: 2.5rem;
+    }
+    .buttonRedirect{
+      border-radius: 0.5rem;
+      font-size: 1.3rem;
+      border: 2px red solid;
+      padding: 0.5rem;
+      font-family: Helvetica;
+      width: 14rem;
+      background-color: black;
+      cursor: pointer;
+    }
   }
 }

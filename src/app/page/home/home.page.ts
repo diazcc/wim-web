@@ -1,8 +1,6 @@
 import { Component, ElementRef, Query, Renderer2 } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { map } from 'rxjs';
 import { ProductServicesService } from 'src/app/services/product-services.service';
-import { collection, onSnapshot, query, where , DocumentSnapshot } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 
 @Component({
@@ -29,39 +27,28 @@ export class HomePage {
   }
   classSearch = "hidde";
   previousScrollPosition = 0;
-
-   dataSearch = {
-    classSearch : "hidde",
-    closeSearch : () =>{},
-    dataCardProduct : [
-      {
-        urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
-        textTitle : "--",
-        textDescription :"--",
-        textValue : "--",
-        clickProduct : () =>{}
-      },
-      {
-        urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
-        textTitle : "--",
-        textDescription :"--",
-        textValue : "--",
-        clickProduct : () =>{}
-      }
-    ]
-   }
-
+  dataSearch = {
+  classSearch : "hidde",
+  closeSearch : () =>{},
+  dataCardProduct : [
+    {
+      urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+      textTitle : "--",
+      textDescription :"--",
+      textValue : "--",
+      clickProduct : () =>{}
+    },
+    {
+      urlImgPrincipalProduct : "/assets/img/logodragonsolo.svg",
+      textTitle : "--",
+      textDescription :"--",
+      textValue : "--",
+      clickProduct : () =>{}
+    }
+  ]
+  }
   dataPresentation = {
     classPresentation : ""
-  }
-
-
-  dataSectionPhotos = {
-    textTitle : "Nuevos estilos",
-    urlImg1 : "",
-    urlImg2 : "",
-    urlImg3 : "",
-    urlImg4 : "",
   }
   dataSlider = {
     classSlider : "",
@@ -87,15 +74,6 @@ export class HomePage {
       }
     ]
   }
-
-
-
-  dataArticlePresentation = {
-    title: "",
-    description : "",
-    redirect : () =>{}
-  }
-
   dataHeader = {
     textTitle :"",
     urlIconMenu: "",
@@ -117,14 +95,6 @@ export class HomePage {
       redirectMarcs : () =>{}
     }
   }
-
-  dataFooter = {
-    linkWhatsapp : "",
-    linkFacebook : "",
-    linkInstagram : "",
-    urlTC : ""
-  }
-
   dataHome = {
     dataArticlePresentation : {
       title: "",
@@ -138,7 +108,6 @@ export class HomePage {
       urlTC : ""
     }
   }
-
   constructor(
     private productServices : ProductServicesService,
     private router : Router,
@@ -146,149 +115,40 @@ export class HomePage {
     private renderer : Renderer2,
     private firestore: Firestore
   ){}
-
   ngOnInit(){
     setTimeout(() => {
       this.dataPresentation.classPresentation = "close";
     }, 1500);
     this.setDataHeader();
-    // this.setDataArticlePresentation();
-    this.setDataSectionPhotos();
     this.getCategories();
-    this.getFeaturedProducts()
     this.getDataHome();
-
+    this.getFeaturedProducts();
   }
   ngAfterViewInit() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
-
-
-
-showMenu(){
-
-  if (this.dataHeader.dataNavBar.classMenu=="menu--hidden") {
-  this.dataHeader.dataNavBar.classMenu="menu";
-  this.dataMain.classMain = "filterBlur";
-  this.dataHeader.urlIconMenu = "assets/icons/close.svg"
-  this.dataHeader.classHeader = "focus";
-  }else{
-  this.dataHeader.dataNavBar.classMenu="menu--hidden";
-  this.dataMain.classMain = "";
-  this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
-  this.dataHeader.classHeader = "header";
-  }
-}
-
-  setDataHeader(){
-    this.dataHeader = {
-      textTitle :"Infinity Industry",
-      urlIconMenu: "assets/icons/menu.svg",
-      classHeader :"header",
-      classContentHeader :"content-header",
-      classIconMenu :"icon-Menu",
-      classIconMenu2 :"classIconMenu",
-      classHeaderTitulo :"header-titulo",
-      clickHeader : () => {this.showMenu()},
-      clickSearch : () => {this.setSearch()},
-      dataNavBar : {
-        textOption1 : "Todos los productos",
-        textOption2 : "Marcas",
-        textOption3 : "Contactanos",
-        classMenu : "menu--hidden",
-        classContentMenu : "content-menu",
-        classOptionMmenu : "option-menu",
-        redirectContact : () =>{this.redirectContact()},
-        redirectMarcs : () =>{this.redirectCategory()}
-      }
-    }
-  }
-
-
-  setSearch(){
-    if (this.dataSearch.classSearch == "hidde") {
-      this.dataSearch.classSearch = "search";
-      this.dataSearch.closeSearch = () =>{this.closeSearch()}
-      this.dataHeader.classHeader = "hidde";
-      this.renderer.addClass(document.body, 'bodyBlock');
-
-
+  showMenu(){
+    if (this.dataHeader.dataNavBar.classMenu=="menu--hidden") {
+    this.dataHeader.dataNavBar.classMenu="menu";
+    this.dataMain.classMain = "filterBlur";
+    this.dataHeader.urlIconMenu = "assets/icons/close.svg"
+    this.dataHeader.classHeader = "focus";
     }else{
-      this.dataSearch.classSearch = "hidde";
-      this.dataSearch.closeSearch = () =>{this.closeSearch()}
-      this.dataHeader.classHeader = "header";
-      this.renderer.removeClass(document.body, 'bodyBlock');
+    this.dataHeader.dataNavBar.classMenu="menu--hidden";
+    this.dataMain.classMain = "";
+    this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
+    this.dataHeader.classHeader = "header";
     }
   }
-
   closeSearch(){
     if (this.dataSearch.classSearch == "search") {
       this.dataSearch.classSearch = "hidde";
       this.dataHeader.classHeader = "header";
       this.renderer.removeClass(document.body, 'bodyBlock');
-
     }else{
       this.dataSearch.classSearch = "search";
       this.renderer.addClass(document.body, 'bodyBlock');
-
     }
-  }
-
-  getDataHome(){
-    console.log("Init getData");
-    const principalDataRef = collection(this.firestore,'home');
-    console.log(principalDataRef);
-
-    const prod = onSnapshot(principalDataRef, (snap)=>{
-    console.log(snap);
-
-      const featProd : any[] = [];
-      let arrayData : any = [];
-      snap.forEach(snapHijo =>{
-        console.log(snapHijo.data());
-
-        featProd.push({
-          idFeat: snapHijo.id,
-          ...snapHijo.data()
-        });
-      })
-      console.log(featProd);
-
-
-      featProd.map((value : any) => {
-        const data =  {
-          dataArticlePresentation : {
-            title: value?.titlePresentation,
-            description : value.descriptionPresentation,
-            redirect : () =>{this.scrollToTitle();}
-          },
-          dataFooter : {
-            linkWhatsapp : value.linkWhatsapp,
-            linkFacebook : value.linkFacebook,
-            linkInstagram : value.linkInstagram,
-            urlTC : value.fileTC
-          }
-        }
-        arrayData?.push(data);
-
-      });
-      console.log(arrayData);
-      console.log(arrayData[0]);
-
-      // this.setDataSlider(arrayData);
-      this.setDataHome(arrayData[0]);
-    });
-  }
-
-  setDataHome(data : any){
-    console.log(this.dataHome);
-    console.log(data);
-
-    this.dataHome = data;
-    console.log(this.dataHome);
-
-
   }
 
   scrollToTitle() {
@@ -297,79 +157,11 @@ showMenu(){
       titleMarc.scrollIntoView({ behavior: 'smooth' });
     }
   }
-  setDataSectionPhotos(){
-    this.dataSectionPhotos = {
-      textTitle : "Nuevos estilos",
-      urlImg1 : "/assets/img/default-photoart.jpg",
-      urlImg2 : "/assets/img/default-photoart2.jpg",
-      urlImg3 : "/assets/img/default-photoart3.jpg",
-      urlImg4 : "/assets/img/default-photoart4.jpg",
-    }
-  }
-
-  getFeaturedProducts(){
-    const featProdRef = collection(this.firestore,'featuredProducts');
-    const prod = onSnapshot(featProdRef, (snap)=>{
-      const featProd : any[] = [];
-      let arrayData : any = [];
-      snap.forEach(snapHijo =>{
-
-        featProd.push({
-          idFeat: snapHijo.id,
-          ...snapHijo.data()
-        });
-      })
-
-      featProd.map((value : any) => {
-        const data =  {
-          name : value.name,
-          urlImg : value.urlImg,
-          value : value.value,
-          redirectProduct : () =>{this.redirectProducts(value.id, value.type)}
-        }
-        arrayData.push(data);
-
-      });
-      this.setDataSlider(arrayData);
-    });
-  }
-
-  setDataSlider(data : any){
-    this.dataSlider.data = data;
-  }
-
-
-  getCategories(){
-    const categoryRef = collection(this.firestore,'category');
-    const prod = onSnapshot(categoryRef, (snap)=>{
-      const category : any[] = [];
-      let arrayData : any = [];
-      snap.forEach(snapHijo =>{
-        category.push({
-          id: snapHijo.id,
-          ...snapHijo.data()
-        });
-      })
-      category.map((value : any) => {
-        const data =  {
-          name : value.name,
-          urlImg : value.urlImg,
-          redirect : () => {this.redirectCategoryProducts(value.name)}
-        }
-        arrayData.push(data);
-      });
-      this.setDataCategory(arrayData);
-    });
-  }
-
-
 
   setDataCategory(responseData : any){
     this.dataCategory.data= responseData;
   }
   redirectProducts(id : any, category : any){
-    console.log(id,category);
-
     const data : NavigationExtras = {
       state : {
         idProduct : id,
@@ -414,5 +206,104 @@ showMenu(){
   }
   seeMoreProducts(){
     this.router.navigate(['/galery']);
+  }
+
+//----------------set data
+setDataHeader(){
+  this.dataHeader = {
+    textTitle :"Infinity Industry",
+    urlIconMenu: "assets/icons/menu.svg",
+    classHeader :"header",
+    classContentHeader :"content-header",
+    classIconMenu :"icon-Menu",
+    classIconMenu2 :"classIconMenu",
+    classHeaderTitulo :"header-titulo",
+    clickHeader : () => {this.showMenu()},
+    clickSearch : () => {this.setSearch()},
+    dataNavBar : {
+      textOption1 : "Todos los productos",
+      textOption2 : "Marcas",
+      textOption3 : "Contactanos",
+      classMenu : "menu--hidden",
+      classContentMenu : "content-menu",
+      classOptionMmenu : "option-menu",
+      redirectContact : () =>{this.redirectContact()},
+      redirectMarcs : () =>{this.redirectCategory()}
+    }
+  }
+}
+setSearch(){
+  if (this.dataSearch.classSearch == "hidde") {
+    this.dataSearch.classSearch = "search";
+    this.dataSearch.closeSearch = () =>{this.closeSearch()}
+    this.dataHeader.classHeader = "hidde";
+    this.renderer.addClass(document.body, 'bodyBlock');
+  }else{
+    this.dataSearch.classSearch = "hidde";
+    this.dataSearch.closeSearch = () =>{this.closeSearch()}
+    this.dataHeader.classHeader = "header";
+    this.renderer.removeClass(document.body, 'bodyBlock');
+  }
+}
+setDataSlider(data : any){
+  this.dataSlider.data = data;
+}
+setDataHome(data : any){
+  this.dataHome = data;
+}
+//----------------------services get
+  getCategories(){
+    this.productServices.getCategories().subscribe((category) => {
+      const arrayData : any = [];
+      category.map((value : any) =>{
+        const data = {
+          name: value.name,
+          urlImg : value.urlImg,
+          redirect : () => {this.redirectCategoryProducts(value.name)}
+        }
+        arrayData.push(data);
+      });
+      this.setDataCategory(arrayData);
+    });
+  }
+  getDataHome(){
+    this.productServices.getDataHome().subscribe(product=>{
+      const arrayData : any = [];
+      product.map((value : any) => {
+        const data =  {
+          dataArticlePresentation : {
+            title: value?.titlePresentation,
+            description : value.descriptionPresentation,
+            redirect : () =>{this.scrollToTitle();}
+          },
+          dataFooter : {
+            linkWhatsapp : value.linkWhatsapp,
+            linkFacebook : value.linkFacebook,
+            linkInstagram : value.linkInstagram,
+            urlTC : value.fileTC
+          }
+        }
+        arrayData?.push(data);
+      });
+      this.setDataHome(arrayData[0]);
+    });
+  }
+  getFeaturedProducts(){
+    this.productServices.getFeaturedProducts().subscribe(product=>{
+      console.log(product);
+      const arrayData : any = [];
+      product.map((value : any) => {
+        const data =  {
+          name : value.name,
+          urlImg : value.urlImg,
+          value : value.value,
+          redirectProduct : () =>{this.redirectProducts(value.id, value.type)}
+        }
+        arrayData.push(data);
+
+      });
+      console.log(arrayData);
+      this.setDataSlider(arrayData);
+    });
   }
 }

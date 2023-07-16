@@ -17,16 +17,38 @@ export class ProductServicesService {
   ) { }
 
   getProducts() : Observable<any> {
-    return this.httpClient.get('/assets/data/product.json');
+    const productRef = collection(this.firestore,'Maletines');
+    return collectionData(productRef, {idField : 'id'}) as Observable<any>;
+  }
+
+
+  getCategories() : Observable<any> {
+    const productRef = collection(this.firestore,'category');
+    return collectionData(productRef, {idField : 'id'}) as Observable<any>;
+  }
+
+
+  getDataHome() : Observable<any> {
+    const productRef = collection(this.firestore,'home');
+    return collectionData(productRef, {idField : 'id'}) as Observable<any>;
   }
 
   getUser() : Observable <any>{
-    const userRef = collection(this.firestore,'userAdmin');
-    return collectionData(userRef);
+    const productRef = collection(this.firestore,'userAdmin');
+    return collectionData(productRef);
   }
+
+  getFeaturedProducts() : Observable <any>{
+    const productRef = collection(this.firestore,'featuredProducts');
+    return collectionData(productRef);
+  }
+
+
+  //_--------------------delete
 
   getCaps(): Observable <any>{
     const userRef = collection(this.firestore,'caps');
     return collectionData(userRef);
   }
+
 }

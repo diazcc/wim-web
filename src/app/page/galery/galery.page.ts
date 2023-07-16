@@ -100,7 +100,7 @@ export class GaleryPage {
     const navigation = this.router.getCurrentNavigation();
     this.idNameCategoryState = navigation?.extras.state as any;
     this.idNameCategory = this.idNameCategoryState?.nameCategory;
-    console.log(this.idNameCategory,this.idNameCategoryState);
+    console.log(this.idNameCategory);
   }
   ngOnInit(){
     this.validateRefData();
@@ -166,45 +166,32 @@ export class GaleryPage {
   }
 
   detectChange(optionSelect : string){
-  //   const prodRef = collection(this.firestore,'caps');
-  //   const prod = onSnapshot(prodRef, (snap)=>{
-  //     const product : any[] = [];
-  //     let arrayData : any = [];
-  //     snap.forEach(snapHijo =>{
-  //       product.push({
-  //         id: snapHijo.id,
-  //         ...snapHijo.data()
-  //       });
-  //     })
-  //     product.map((value : any) => {
-  //       if (value.marc == optionSelect) {
-  //         const data =  {
-  //           id: value.id,
-  //           urlImgPrincipalProduct : value.urlImg,
-  //           textTitle : value.name,
-  //           textDescription :value.description,
-  //           textValue : value.value,
-  //           clickProduct :()=>{this.redirectProducts(value.id,value.type)}
-  //         }
-  //         arrayData.push(data);
-  //       }else if(value.marc=="" || optionSelect == "Todo"){
-  //         const data =  {
-  //           id: value.id,
-  //           urlImgPrincipalProduct : value.urlImg,
-  //           textTitle : value.name,
-  //           textDescription :value.description,
-  //           textValue : value.value,
-  //           clickProduct :()=>{this.redirectProducts(value.id,value.type)}
-  //         }
-  //         arrayData.push(data);
-  //       }
-  //     });
-  //     this.setProduct(arrayData);
-  //   });
+    if (optionSelect=="Todo") {
+      this.diversProduct = []
+      this.getAllProducts();
+    }
+    console.log(optionSelect);
+    this.productServices.getProducts(optionSelect).subscribe((value:any)=>{
+      const arrayData : any = [];
+      value.map((value :any) =>{
+        console.log(value);
+
+        const data =  {
+          id: value.id,
+          urlImgPrincipalProduct : value.urlImg,
+          textTitle : value.name,
+          textDescription :value.description,
+          textValue : value.value,
+          clickProduct :()=>{this.redirectProducts(value.id,value.type)}
+        }
+        arrayData.push(data);
+      })
+      console.log(arrayData);
+      this.setProduct(arrayData);
+    });
   }
 
   redirectProducts(id : any, category : any){
-    console.log(id,category);
     const data : NavigationExtras = {
       state : {
         idProduct : id,
@@ -216,10 +203,8 @@ export class GaleryPage {
 
   validateRefData(){
     if (this.idNameCategory == " " ||this.idNameCategory ==undefined) {
-      console.log("Se muestra todo los productos");
       this.getAllProducts();
     }else{
-      console.log("Se muestra el producto de la categoria");
       this.getProducts(this.idNameCategory);
     }
   }
@@ -239,7 +224,6 @@ export class GaleryPage {
         }
         arrayData.push(data);
       });
-      console.log(arrayData[0]);
       this.setDataFooter(arrayData[0]);
     });
   }
@@ -260,7 +244,6 @@ export class GaleryPage {
   getProducts(category : any){
     this.productServices.getProducts(category).subscribe((products) => {
       const arrayData : any = [];
-      console.log(products);
       products.map((value : any) =>{
         const data =  {
           id: value.id,
@@ -272,13 +255,10 @@ export class GaleryPage {
         }
         arrayData.push(data);
       });
-      console.log(arrayData);
       // this.setDataCategories(arrayData);
       this.setProduct(arrayData);
     });
   }
-
-  //----------- set
   getAllProducts(){
     this.productServices.getCategories().subscribe((category) => {
       const arrayData : any = [];
@@ -288,10 +268,8 @@ export class GaleryPage {
         }
         arrayData.push(data);
       });
-      console.log(arrayData);
       arrayData.map((value : any) =>{
         const allProduct: any = [];
-      console.log(value);
         this.productServices.getProducts(value.marc).subscribe((product =>{
           product.map((value:any)=>{
             const data =  {
@@ -305,23 +283,21 @@ export class GaleryPage {
             this.setAllProducts(data)
           });
         }));
-        console.log(allProduct);
       })
-      console.log(this.diversProduct);
     });
   }
 
+  //----------- set
+
+
   async setAllProducts(value : any){
-    console.log(value);
     await this.diversProduct?.push(value);
-    console.log(this.diversProduct);
     this.setProduct( await this.diversProduct);
   }
 
 
   setProduct(responseData : any){
     this.dataCardProduct.data = responseData;
-    console.log(this.dataCardProduct.data);
   }
   setDataCategories(value : any){
     this.dataOption.data = value;

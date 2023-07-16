@@ -1,7 +1,6 @@
 import { Component, ElementRef, HostListener, Input,Renderer2, ChangeDetectorRef  } from '@angular/core';
 import { ProductServicesService } from 'src/app/services/product-services.service';
-import { map } from 'rxjs';
-import { collection,doc, onSnapshot, query, where , DocumentSnapshot } from 'firebase/firestore';
+// import { collection,doc, onSnapshot, query, where , DocumentSnapshot } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { NavigationExtras, Router } from '@angular/router';
 import { GaleryTemplate } from 'src/app/components/templates/galery/galery.template';
@@ -12,6 +11,8 @@ import { GaleryTemplate } from 'src/app/components/templates/galery/galery.templ
 })
 export class GaleryPage {
   @Input() idNameCategoryState : any;
+  diversProduct : any = [];
+
   dataOption = {
     onChange : () =>{console.log(this.dataSelectOption.selectedOption)},
     data : [
@@ -99,60 +100,15 @@ export class GaleryPage {
     const navigation = this.router.getCurrentNavigation();
     this.idNameCategoryState = navigation?.extras.state as any;
     this.idNameCategory = this.idNameCategoryState?.nameCategory;
-    console.log(this.idNameCategory);
+    console.log(this.idNameCategory,this.idNameCategoryState);
   }
   ngOnInit(){
-    this.getDataFooter();
-    this.getProducts();
+    this.validateRefData();
+    this.getFooter();
     this.getCategories();
-
-    this.testCategory();
-    this.testMarc();
-    this.testColor();
-    this.testPrice();
   }
 
-  async testCategory(){
-    const categoryRef = collection(this.firestore,'caps');
-    const q  = query(categoryRef, where('marc', '==', 'Adidas'));
-    const unsubscribe = await onSnapshot(q, (querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        // Accede a los datos del documento filtrado
-      });
-    });
-  }
 
-  async testMarc(){
-    const categoryRef = collection(this.firestore,'caps');
-    const q  = query(categoryRef, where('marc', '==', 'Adidas'));
-    const unsubscribe = await onSnapshot(q, (querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        // Accede a los datos del documento filtrado
-      });
-    });
-  }
-  async testColor(){
-    const categoryRef = collection(this.firestore,'caps');
-    const q  = query(categoryRef, where('color', '==', 'red'));
-    const unsubscribe = await onSnapshot(q, (querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        // Accede a los datos del documento filtrado
-      });
-    });
-  }
-  async testPrice(){
-    const categoryRef = collection(this.firestore,'caps');
-    const q  = query(categoryRef, where('value', '>=', 50000), where('value', '<=', 100000));
-    const querySnapshot = await onSnapshot(q, (snapshot) => {
-      const products :any = [];
-      snapshot.forEach((doc) => {
-
-        const product = doc.data();
-        products.push(product);
-      });
-
-    });
-  }
   redirectCategory(){
     this.dataHeader.dataNavBar.classMenu="menu--hidden";
     this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
@@ -208,142 +164,47 @@ export class GaleryPage {
     this.dataHeader.classHeader = "header";
     }
   }
-  getCategories(){
-    const categoryRef = collection(this.firestore,'category');
-    const prod = onSnapshot(categoryRef, (snap)=>{
-      const category : any[] = [];
-      let arrayData : any = [];
-      snap.forEach(snapHijo =>{
-        category.push({
-          id: snapHijo.id,
-          ...snapHijo.data()
-        });
-      })
-      category.map((value : any) => {
-        const data =  {
-          marc : value.name
-        }
-        arrayData.push(data);
-      });
-      this.setDataCateogories(arrayData);
-    });
-  }
-  setDataCateogories(value : any){
-    this.dataOption.data = value;
-  }
+
   detectChange(optionSelect : string){
-    const prodRef = collection(this.firestore,'caps');
-    const prod = onSnapshot(prodRef, (snap)=>{
-      const product : any[] = [];
-      let arrayData : any = [];
-      snap.forEach(snapHijo =>{
-        product.push({
-          id: snapHijo.id,
-          ...snapHijo.data()
-        });
-      })
-      product.map((value : any) => {
-        if (value.marc == optionSelect) {
-          const data =  {
-            id: value.id,
-            urlImgPrincipalProduct : value.urlImg,
-            textTitle : value.name,
-            textDescription :value.description,
-            textValue : value.value,
-            clickProduct :()=>{this.redirectProducts(value.id,value.type)}
-          }
-          arrayData.push(data);
-        }else if(value.marc=="" || optionSelect == "Todo"){
-          const data =  {
-            id: value.id,
-            urlImgPrincipalProduct : value.urlImg,
-            textTitle : value.name,
-            textDescription :value.description,
-            textValue : value.value,
-            clickProduct :()=>{this.redirectProducts(value.id,value.type)}
-          }
-          arrayData.push(data);
-        }
-      });
-      this.setDataPrincipalProduct(arrayData);
-    });
+  //   const prodRef = collection(this.firestore,'caps');
+  //   const prod = onSnapshot(prodRef, (snap)=>{
+  //     const product : any[] = [];
+  //     let arrayData : any = [];
+  //     snap.forEach(snapHijo =>{
+  //       product.push({
+  //         id: snapHijo.id,
+  //         ...snapHijo.data()
+  //       });
+  //     })
+  //     product.map((value : any) => {
+  //       if (value.marc == optionSelect) {
+  //         const data =  {
+  //           id: value.id,
+  //           urlImgPrincipalProduct : value.urlImg,
+  //           textTitle : value.name,
+  //           textDescription :value.description,
+  //           textValue : value.value,
+  //           clickProduct :()=>{this.redirectProducts(value.id,value.type)}
+  //         }
+  //         arrayData.push(data);
+  //       }else if(value.marc=="" || optionSelect == "Todo"){
+  //         const data =  {
+  //           id: value.id,
+  //           urlImgPrincipalProduct : value.urlImg,
+  //           textTitle : value.name,
+  //           textDescription :value.description,
+  //           textValue : value.value,
+  //           clickProduct :()=>{this.redirectProducts(value.id,value.type)}
+  //         }
+  //         arrayData.push(data);
+  //       }
+  //     });
+  //     this.setProduct(arrayData);
+  //   });
   }
-  getProducts(){
-    console.log(this.idNameCategory);
 
-    if (this.idNameCategory != undefined) {
-      const prodRef = collection(this.firestore,this.idNameCategory);
-      const prod = onSnapshot(prodRef, (snap)=>{
-        const product : any[] = [];
-        let arrayData : any = [];
-        snap.forEach(snapHijo =>{
-          product.push({
-            id: snapHijo.id,
-            ...snapHijo.data()
-          });
-        })
-        console.log(product);
-        product.map((value : any) => {
-
-          if (value.type == this.idNameCategory) {
-            const data =  {
-              id: value.id,
-              urlImgPrincipalProduct : value.urlImg,
-              textTitle : value.name,
-              textDescription :value.description,
-              textValue : value.value,
-              clickProduct :()=>{this.redirectProducts(value.id,value.type)}
-            }
-            arrayData.push(data);
-          }else if(value.marc=="" || this.idNameCategory == undefined){
-
-            const data =  {
-              id: value.id,
-              urlImgPrincipalProduct : value.urlImg,
-              textTitle : value.name,
-              textDescription :value.description,
-              textValue : value.value,
-              clickProduct :()=>{this.redirectProducts(value.id,value.type)}
-            }
-            arrayData.push(data);
-          }
-        });
-        this.setDataPrincipalProduct(arrayData);
-      });
-    } else {
-      const prodRef = collection(this.firestore,'caps');
-      const prod = onSnapshot(prodRef, (snap)=>{
-        const product : any[] = [];
-        let arrayData : any = [];
-        snap.forEach(snapHijo =>{
-          product.push({
-            id: snapHijo.id,
-            ...snapHijo.data()
-          });
-        })
-        console.log(product);
-        product.map((value : any) => {
-
-          const data =  {
-            id: value.id,
-            urlImgPrincipalProduct : value.urlImg,
-            textTitle : value.name,
-            textDescription :value.description,
-            textValue : value.value,
-            clickProduct :()=>{this.redirectProducts(value.id,value.type)}
-          }
-          arrayData.push(data);
-        });
-        this.setDataPrincipalProduct(arrayData);
-      });
-    }
-  }
-  setDataPrincipalProduct(responseData : any){
-    this.dataCardProduct.data = responseData;
-  }
   redirectProducts(id : any, category : any){
     console.log(id,category);
-
     const data : NavigationExtras = {
       state : {
         idProduct : id,
@@ -353,53 +214,119 @@ export class GaleryPage {
     this.router.navigate(['/product'], data );
   }
 
-  //------------Footer----------------------------------------
-  getDataFooter(){
-    console.log(this.dataFooter);
+  validateRefData(){
+    if (this.idNameCategory == " " ||this.idNameCategory ==undefined) {
+      console.log("Se muestra todo los productos");
+      this.getAllProducts();
+    }else{
+      console.log("Se muestra el producto de la categoria");
+      this.getProducts(this.idNameCategory);
+    }
+  }
 
-    console.log("Init getData");
-    const principalDataRef = collection(this.firestore,'home');
-    console.log(principalDataRef);
-
-    const prod = onSnapshot(principalDataRef, (snap)=>{
-    console.log(snap);
-
-      const featProd : any[] = [];
-      let arrayData : any = [];
-      snap.forEach(snapHijo =>{
-        console.log(snapHijo.data());
-
-        featProd.push({
-          idFeat: snapHijo.id,
-          ...snapHijo.data()
-        });
-      })
-      console.log(featProd);
+  //-----------get services
 
 
-      featProd.map((value : any) => {
-        const data =  {
-            linkWhatsapp : value.linkWhatsapp,
-            linkFacebook : value.linkFacebook,
-            linkInstagram : value.linkInstagram,
-            urlTC : value.fileTC
+  getFooter(){
+    this.productServices.getDataHome().subscribe((dataHome) => {
+      const arrayData : any = [];
+      dataHome.map((value : any) =>{
+        const data = {
+          linkWhatsapp : value.linkWhatsapp,
+          linkFacebook : value.linkFacebook,
+          linkInstagram : value.linkInstagram,
+          urlTC : value.fileTC
         }
-        arrayData?.push(data);
-
+        arrayData.push(data);
       });
-      console.log(arrayData);
       console.log(arrayData[0]);
-
-      // this.setDataSlider(arrayData);
       this.setDataFooter(arrayData[0]);
     });
   }
 
-  async setDataFooter(data : any){
-    console.log(this.dataFooter);
-    console.log(data);
+  getCategories(){
+    this.productServices.getCategories().subscribe((category) => {
+      const arrayData : any = [];
+      category.map((value : any) =>{
+        const data = {
+          marc: value.name
+        }
+        arrayData.push(data);
+      });
+      this.setDataCategories(arrayData);
+    });
+  }
 
+  getProducts(category : any){
+    this.productServices.getProducts(category).subscribe((products) => {
+      const arrayData : any = [];
+      console.log(products);
+      products.map((value : any) =>{
+        const data =  {
+          id: value.id,
+          urlImgPrincipalProduct : value.urlImg,
+          textTitle : value.name,
+          textDescription :value.description,
+          textValue : value.value,
+          clickProduct :()=>{this.redirectProducts(value.id,value.type)}
+        }
+        arrayData.push(data);
+      });
+      console.log(arrayData);
+      // this.setDataCategories(arrayData);
+      this.setProduct(arrayData);
+    });
+  }
+
+  //----------- set
+  getAllProducts(){
+    this.productServices.getCategories().subscribe((category) => {
+      const arrayData : any = [];
+      category.map((value : any) =>{
+        const data = {
+          marc: value.name
+        }
+        arrayData.push(data);
+      });
+      console.log(arrayData);
+      arrayData.map((value : any) =>{
+        const allProduct: any = [];
+      console.log(value);
+        this.productServices.getProducts(value.marc).subscribe((product =>{
+          product.map((value:any)=>{
+            const data =  {
+              id: value.id,
+              urlImgPrincipalProduct : value?.urlImg,
+              textTitle : value?.name,
+              textDescription :value?.description,
+              textValue : value?.value,
+              clickProduct :()=>{this.redirectProducts(value?.id,value?.type)}
+            }
+            this.setAllProducts(data)
+          });
+        }));
+        console.log(allProduct);
+      })
+      console.log(this.diversProduct);
+    });
+  }
+
+  async setAllProducts(value : any){
+    console.log(value);
+    await this.diversProduct?.push(value);
+    console.log(this.diversProduct);
+    this.setProduct( await this.diversProduct);
+  }
+
+
+  setProduct(responseData : any){
+    this.dataCardProduct.data = responseData;
+    console.log(this.dataCardProduct.data);
+  }
+  setDataCategories(value : any){
+    this.dataOption.data = value;
+  }
+  async setDataFooter(data : any){
     this.dataFooter = await data;
-    console.log(this.dataFooter);
   }
 }

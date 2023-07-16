@@ -209,48 +209,48 @@ export class HomePage {
   }
 
 //----------------set data
-setDataHeader(){
-  this.dataHeader = {
-    textTitle :"Infinity Industry",
-    urlIconMenu: "assets/icons/menu.svg",
-    classHeader :"header",
-    classContentHeader :"content-header",
-    classIconMenu :"icon-Menu",
-    classIconMenu2 :"classIconMenu",
-    classHeaderTitulo :"header-titulo",
-    clickHeader : () => {this.showMenu()},
-    clickSearch : () => {this.setSearch()},
-    dataNavBar : {
-      textOption1 : "Todos los productos",
-      textOption2 : "Marcas",
-      textOption3 : "Contactanos",
-      classMenu : "menu--hidden",
-      classContentMenu : "content-menu",
-      classOptionMmenu : "option-menu",
-      redirectContact : () =>{this.redirectContact()},
-      redirectMarcs : () =>{this.redirectCategory()}
+  setDataHeader(){
+    this.dataHeader = {
+      textTitle :"Infinity Industry",
+      urlIconMenu: "assets/icons/menu.svg",
+      classHeader :"header",
+      classContentHeader :"content-header",
+      classIconMenu :"icon-Menu",
+      classIconMenu2 :"classIconMenu",
+      classHeaderTitulo :"header-titulo",
+      clickHeader : () => {this.showMenu()},
+      clickSearch : () => {this.setSearch()},
+      dataNavBar : {
+        textOption1 : "Todos los productos",
+        textOption2 : "Marcas",
+        textOption3 : "Contactanos",
+        classMenu : "menu--hidden",
+        classContentMenu : "content-menu",
+        classOptionMmenu : "option-menu",
+        redirectContact : () =>{this.redirectContact()},
+        redirectMarcs : () =>{this.redirectCategory()}
+      }
     }
   }
-}
-setSearch(){
-  if (this.dataSearch.classSearch == "hidde") {
-    this.dataSearch.classSearch = "search";
-    this.dataSearch.closeSearch = () =>{this.closeSearch()}
-    this.dataHeader.classHeader = "hidde";
-    this.renderer.addClass(document.body, 'bodyBlock');
-  }else{
-    this.dataSearch.classSearch = "hidde";
-    this.dataSearch.closeSearch = () =>{this.closeSearch()}
-    this.dataHeader.classHeader = "header";
-    this.renderer.removeClass(document.body, 'bodyBlock');
+  setSearch(){
+    if (this.dataSearch.classSearch == "hidde") {
+      this.dataSearch.classSearch = "search";
+      this.dataSearch.closeSearch = () =>{this.closeSearch()}
+      this.dataHeader.classHeader = "hidde";
+      this.renderer.addClass(document.body, 'bodyBlock');
+    }else{
+      this.dataSearch.classSearch = "hidde";
+      this.dataSearch.closeSearch = () =>{this.closeSearch()}
+      this.dataHeader.classHeader = "header";
+      this.renderer.removeClass(document.body, 'bodyBlock');
+    }
   }
-}
-setDataSlider(data : any){
-  this.dataSlider.data = data;
-}
-setDataHome(data : any){
-  this.dataHome = data;
-}
+  setDataSlider(data : any){
+    this.dataSlider.data = data;
+  }
+  setDataHome(data : any){
+    this.dataHome = data;
+  }
 //----------------------services get
   getCategories(){
     this.productServices.getCategories().subscribe((category) => {

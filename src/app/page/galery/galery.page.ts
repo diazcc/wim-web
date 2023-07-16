@@ -1,6 +1,5 @@
 import { Component, ElementRef, HostListener, Input,Renderer2, ChangeDetectorRef  } from '@angular/core';
 import { ProductServicesService } from 'src/app/services/product-services.service';
-// import { collection,doc, onSnapshot, query, where , DocumentSnapshot } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { NavigationExtras, Router } from '@angular/router';
 import { GaleryTemplate } from 'src/app/components/templates/galery/galery.template';

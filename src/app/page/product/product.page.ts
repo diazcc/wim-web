@@ -55,7 +55,7 @@ export class ProductPage {
       classMenu : "menu--hidden",
       classContentMenu : "content-menu",
       classOptionMmenu : "option-menu",
-      redirectContact : () =>{this.redirectCategory()},
+      redirectContact : () =>{this.redirectContact()},
       redirectMarcs : () =>{}
     }
   }
@@ -178,7 +178,7 @@ export class ProductPage {
     this.dataHeader.classHeader = "header";
     }
   }
-  redirectCategory(){
+  redirectContact(){
     this.dataHeader.dataNavBar.classMenu="menu--hidden";
     this.dataHeader.urlIconMenu = "assets/icons/menu.svg"
     this.dataHeader.classHeader = "header";
@@ -245,23 +245,18 @@ export class ProductPage {
     console.log("Init getData");
     const principalDataRef = collection(this.firestore,'home');
     console.log(principalDataRef);
-
     const prod = onSnapshot(principalDataRef, (snap)=>{
     console.log(snap);
-
       const featProd : any[] = [];
       let arrayData : any = [];
       snap.forEach(snapHijo =>{
         console.log(snapHijo.data());
-
         featProd.push({
           idFeat: snapHijo.id,
           ...snapHijo.data()
         });
       })
       console.log(featProd);
-
-
       featProd.map((value : any) => {
         const data =  {
             linkWhatsapp : value.linkWhatsapp,
@@ -270,23 +265,16 @@ export class ProductPage {
             urlTC : ""
         }
         arrayData?.push(data);
-
       });
       console.log(arrayData);
       console.log(arrayData[0]);
       dataFooter = arrayData[0];
       console.log(dataFooter);
-
       this.setDataFooter(dataFooter);
     });
-
   }
-
-
   setDataFooter(data : any){
     console.log(data);
-
     this.dataFooter = data;
   }
-
 }

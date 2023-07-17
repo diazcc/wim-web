@@ -107,7 +107,9 @@ export class GaleryPage {
     this.getCategories();
   }
 
-
+  ngOnChanges(){
+    console.log("Algo se movio");
+  }
   redirectCategory(){
     this.dataHeader.dataNavBar.classMenu="menu--hidden";
     this.dataHeader.urlIconMenu = "assets/icons/menu.svg"

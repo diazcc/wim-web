@@ -124,6 +124,8 @@ export class HomePage {
     this.getDataHome();
     this.getFeaturedProducts();
   }
+
+
   ngAfterViewInit() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }

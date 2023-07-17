@@ -4,6 +4,7 @@ import { NewCategoryPage } from './new-category.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NewCategoryRoutingModule } from './new-category-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,8 @@ import { NewCategoryRoutingModule } from './new-category-routing.module';
     CommonModule,
     ComponentsModule,
     NewCategoryRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ]
 })
 export class NewCategoryModule { }

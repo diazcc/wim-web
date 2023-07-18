@@ -1,25 +1,17 @@
 <app-menu-adm [dataMenu]="dataMenu"></app-menu-adm>
 <app-search [dataSearch]="dataSearch"></app-search>
-<button class="newProduct" (click)="redirectNewProduct()">
+<div class="newProduct" (click)="redirectNewProduct()">
   <img src="/assets/icons/mas.svg" alt="">
-</button>
+</div>
 <div class="wrapper">
   <app-header [dataHeader]="dataHeader"></app-header>
   <main class="main">
     <h1>Productos destacados</h1>
     <p class="description">Productos seleccionados</p>
     <section class="productsSelectedContent">
-      <article class="cardProduct">
-        <p class="nameProduct">Producto</p>
-        <button class="deleteButton">x</button>
-      </article>
-      <article class="cardProduct">
-        <p class="nameProduct">Producto</p>
-        <button class="deleteButton">x</button>
-      </article>
-      <article class="cardProduct">
-        <p class="nameProduct">Producto</p>
-        <button class="deleteButton">x</button>
+      <article class="cardProduct" *ngFor="let product of dataProductsSelected ; let i = index">
+        <p class="nameProduct">{{product.name}}</p>
+        <button class="deleteButton" (click)="deleteProduct(i)">x</button>
       </article>
     </section>
     <section class="searchProduct">
@@ -27,18 +19,11 @@
       <input type="text" class="text">
     </section>
     <section class="resultSearchContent">
-      <article class="cardProduct">
-        <p class="nameProduct">Producto</p>
-      </article>
-      <article class="cardProduct">
-        <p class="nameProduct">Producto</p>
-      </article>
-      <article class="cardProduct">
-        <p class="nameProduct">Producto</p>
-      </article>
-      <article class="cardProduct">
-        <p class="nameProduct">Producto</p>
+      <article class="cardProduct" *ngFor="let product of dataProducts ; let i = index">
+        <p class="nameProduct">{{product.name}}</p>
+        <button class="deleteButton" (click)="addProduct(product)">+</button>
       </article>
     </section>
+    <button class="save" (click)="save()">Guardar</button>
   </main>
 </div>

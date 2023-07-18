@@ -13,6 +13,18 @@ import { ProductServicesService } from 'src/app/services/product-services.servic
 export class FeaturedProductsPage {
   selectedOption : any = "";
 
+  dataProductsSelected : any =[
+    {
+      id : "",
+      name :"Producto"
+    }
+  ]
+  dataProducts : any = [
+    {
+      id : "",
+      name :"Producto"
+    }
+  ]
 
   dataMenu  = {
     classMenu : "close",
@@ -80,6 +92,8 @@ export class FeaturedProductsPage {
    ){}
 
    ngOnInit(){
+    this.setDataProductsSelected()
+    this.setProducts();
    }
    showMenu(){
     console.log("mmene");
@@ -89,6 +103,68 @@ export class FeaturedProductsPage {
     console.log("cerrrar");
     this.dataMenu.classMenu = "close"
   }
+
+
+setDataProductsSelected(){
+  this.dataProductsSelected = [
+    {
+      id : "adadq33d",
+      name : "Gorras Beisbolera 1"
+    },{
+      id : "adadq33d",
+      name : "Gorras Beisbolera 2"
+    }
+    ,{
+      id : "adadq33d",
+      name : "Gorras Beisbolera 3"
+    }
+  ]
+}
+
+setProducts(){
+  this.dataProducts = [
+    {
+      id : "adadq33d",
+      name : "PLanas Beisbolera 3"
+    },
+    {
+      id : "adadq33d",
+      name : "Firmes Beisbolera 3"
+    },
+    {
+      id : "adadq33d",
+      name : "Pruebas Beisbolera 3"
+    },
+    {
+      id : "adadq33d",
+      name : "Blancas Beisbolera 3"
+    },
+    {
+      id : "adadq33d",
+      name : "PLanas Beisbolera 3"
+    },
+    {
+      id : "adadq33d",
+      name : "Negras Beisbolera 3"
+    }
+  ]
+}
+
+save(){
+  console.log(this.dataProductsSelected);
+}
+deleteProduct(index: number){
+  if (index >= 0 && index < this.dataProductsSelected.length) {
+    this.dataProductsSelected.splice(index,1);
+  }
+  console.log(this.dataProductsSelected);
+}
+
+
+addProduct(data : any){
+  console.log(data);
+  this.dataProductsSelected.push(data);
+}
 
 
 

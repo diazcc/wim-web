@@ -94,6 +94,7 @@ export class FeaturedProductsPage {
    ngOnInit(){
     this.setDataProductsSelected()
     this.setProducts();
+    this.getProducts();
    }
    showMenu(){
     console.log("mmene");
@@ -187,6 +188,26 @@ addProduct(data : any){
       this.renderer.removeClass(document.body, 'bodyBlock');
     }
   }
+
+  getProducts(){
+    this.productServices.getProducts("Collares").subscribe((data:any)=>{
+      console.log(data);
+      const arrayData :any  = [];
+      data.map((value:any)=>{
+        const data = {
+          id: value.id,
+          name: value.name,
+          type: value.type,
+          urlImg: value.urlImg,
+          value: value.value
+        }
+        arrayData.push(data);
+      });
+      console.log(arrayData);
+    });
+  }
+
+
   closeSearch(){
     if (this.dataSearch.classSearch == "search") {
       this.dataSearch.classSearch = "hidde";

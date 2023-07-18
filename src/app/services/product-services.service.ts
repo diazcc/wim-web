@@ -16,8 +16,8 @@ export class ProductServicesService {
 
   ) { }
 
-  getProducts(ref : any) : Observable<any> {
-    const productRef = collection(this.firestore,ref);
+  getProducts(category : any) : Observable<any> {
+    const productRef = collection(this.firestore,category);
     return collectionData(productRef, {idField : 'id'}) as Observable<any>;
   }
 

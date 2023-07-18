@@ -1,17 +1,18 @@
 import { Component, Input, Renderer2 } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { finalize } from 'rxjs/operators';
-import { NgForm } from '@angular/forms';
-import { collection, onSnapshot, query, where , DocumentSnapshot, addDoc } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
 import { Router } from '@angular/router';
+import { ProductServicesService } from 'src/app/services/product-services.service';
 @Component({
   selector: 'app-modify-category',
   templateUrl: './modify-category.page.html',
   styleUrls: ['./modify-category.page.scss']
 })
 export class ModifyCategoryPage {
+  selectedOption : any = "";
+
+
   dataMenu  = {
     classMenu : "close",
     closeMenu : ()=>{ this.closeMenu()},
@@ -22,9 +23,16 @@ export class ModifyCategoryPage {
   categorySelect : any;
   alertForm = "";
   classForm = "";
-  dataCategory : any;
+  dataCategory =[
+    {
+      id : "",
+      name : "",
+      urlImg : "",
+    }
+  ];
   formulario: FormGroup;
   private name : string ="";
+  private newName : string ="";
   private urlImg : string ="";
   @Input() dataHeader = {
     textTitle :"Infinity Industry",
@@ -70,18 +78,20 @@ export class ModifyCategoryPage {
 
    constructor(
     private renderer : Renderer2,
-    private firestore: Firestore,
     private storage : Storage,
-    private router : Router
+    private router : Router,
+    private productServices : ProductServicesService
 
    ){
     this.formulario = new FormGroup({
       name : new FormControl(),
+      newName : new FormControl(),
       urlImg : new FormControl()
     })
    }
 
    ngOnInit(){
+    this.getDataCategories()
    }
    showMenu(){
     console.log("mmene");
@@ -103,6 +113,7 @@ export class ModifyCategoryPage {
     console.log(this.urlImage);
     console.log(this.formulario.value);
     this.setImg();
+
   }
   setImg(){
     if (this.fileImg!= undefined) {
@@ -122,20 +133,12 @@ export class ModifyCategoryPage {
     }
   }
 
-  setNewCategory(url : any){
-    const productRef = collection(this.firestore,'category');
-    this.formulario.value.urlImg = url;
-    console.log(url);
-    return addDoc(productRef,this.formulario.value);
-  }
-
   async setUrlImg(url : any){
     this.urlImage = await url;
     console.log(this.urlImage);
-    this.setNewCategory(url);
+    this.validate();
   }
-
-   setSearch(){
+  setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
       this.dataSearch.classSearch = "search";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
@@ -165,4 +168,56 @@ export class ModifyCategoryPage {
   redirectNewProduct(){
     this.router.navigate(['/newProduct']);
   }
+
+
+  //_-------get
+
+  validate(){
+    console.log(this.selectedOption);
+    let modifyCategory : any;
+    let id : any = "";
+    if (this.selectedOption != "") {
+      this.dataCategory.map((value:any)=>{
+        if (value.name == this.formulario.value.name) {
+          id = value.id;
+          modifyCategory = {
+            name : this.formulario.value.newName,
+            urlImg : this.urlImage
+          }
+        }
+      });
+    }else{
+      console.log("Vacio");
+    }
+    console.log(modifyCategory);
+    this.setCategory(id, modifyCategory);
+  }
+
+
+
+
+
+  getDataCategories(){
+    this.productServices.getCategories().subscribe((category:any)=>{
+      const arrayData : any = [];
+      category.map((value :any)=>{
+        const data = {
+          id : value.id,
+          name : value.name
+        }
+        arrayData.push(data);
+      });
+      this.setDataCategorySelect(arrayData);
+    });
+  }
+
+  setCategory(id : string, data : any){
+    this.productServices.modifyCategory(id,data);
+  }
+
+  setDataCategorySelect(data : any ){
+    this.dataCategory = data;
+    console.log(this.dataCategory);
+  }
+
 }

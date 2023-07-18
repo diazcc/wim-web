@@ -14,7 +14,6 @@ import { LoginModule } from './page/login/login.module';
 import { AdmHomeModule } from './page/adm-home/adm-home.module';
 import { AdmProductModule } from './page/adm-product/adm-product.module';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-import { AdmCategoryModule } from './page/adm-category/adm-category.module';
 import { NewCategoryModule } from './page/new-category/new-category.module';
 import { NewProductModule } from './page/new-product/new-product.module';
 import { ModifyCategoryModule } from './page/modify-category/modify-category.module';
@@ -33,7 +32,6 @@ import { ModifyCategoryModule } from './page/modify-category/modify-category.mod
     LoginModule,
     AdmHomeModule,
     AdmProductModule,
-    AdmCategoryModule,
     NewCategoryModule,
     NewProductModule,
     ModifyCategoryModule,

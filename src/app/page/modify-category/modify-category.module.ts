@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ModifyCategoryPage } from './modify-category.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { ModifyCategoryRoutingModule } from './modify-category-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ComponentsModule,
     ModifyCategoryRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ModifyCategoryModule { }

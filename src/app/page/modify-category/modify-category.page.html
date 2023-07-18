@@ -10,14 +10,14 @@
     <p>Aqui se editara los datos de la pagina principal</p>
     <form class="form" (ngSubmit)="onSubmit()"  [formGroup]="formulario">
       <p class="alertForm"></p>
-      <label for="name">Seleccione la categoria*</label>
-      <select name="" id="">
-        <option value="">Categoria</option>
-        <option value="">Categoria</option>
-        <option value="">Categoria</option>
-        <option value="">Categoria</option>
+      <label for="name">Seleccione la categoria a editar*</label>
+      <select name="" id=""  [(ngModel)]="selectedOption" formControlName="name">
+        <option value="" selected disabled>Seleccionar</option>
+        <option [value]="data.name" *ngFor="let data  of dataCategory">{{data.name}}</option>
       </select>
-      <label for="documentMedia">Imagen*</label>
+      <label for="newName">Escribe el nuevo nombre</label>
+      <input type="text" formControlName="newName" class="text">
+      <label for="documentMedia">Selecciona la nueva imagen*</label>
       <input type="file" formControlName="urlImg" (change)="uploadImage($event)" class="file" required>
       <input type="submit" value="Guardar" class="buttonSubmit">
     </form>

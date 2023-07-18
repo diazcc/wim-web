@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable} from 'rxjs';
-import { collection,doc, onSnapshot, query, where , DocumentSnapshot } from 'firebase/firestore';
-import { Firestore, collectionData } from '@angular/fire/firestore';
+import { collection, onSnapshot, query, where , doc , DocumentSnapshot, addDoc, updateDoc } from 'firebase/firestore';
+import { Firestore, collectionData, docData } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -42,7 +42,18 @@ export class ProductServicesService {
     const productRef = collection(this.firestore,'featuredProducts');
     return collectionData(productRef);
   }
+//_----------------set
 
+  async modifyCategory(id : string, data :any){
+    console.log("hola");
+    const categoryDoc = doc(this.firestore,"category",id);
+    try {
+      await updateDoc(categoryDoc, data);
+      console.log('Documento actualizado exitosamente!');
+    } catch (error) {
+      console.error('Error al actualizar el documento:', error);
+    }
+  }
 
 
   //_--------------------delete services- unused

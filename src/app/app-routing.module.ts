@@ -9,7 +9,6 @@ const routes: Routes = [
   {path:'galery', loadChildren: () => import('./page/galery/galery.module').then(m => m.GaleryModule)},
   {path:'login', loadChildren: () => import('./page/login/login.module').then(m => m.LoginModule)},
   {path:'admProduct', loadChildren: () => import('./page/adm-product/adm-product.module').then(m => m.AdmProductModule)},
-  {path:'admCategory', loadChildren: () => import('./page/adm-category/adm-category.module').then(m => m.AdmCategoryModule)},
   {path:'newCategory', loadChildren: () => import('./page/new-category/new-category.module').then(m => m.NewCategoryModule)},
   {path:'modifyCategory', loadChildren: () => import('./page/modify-category/modify-category.module').then(m => m.ModifyCategoryModule)},
   {path:'newProduct', loadChildren: () => import('./page/new-product/new-product.module').then(m => m.NewProductModule)},

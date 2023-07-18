@@ -56,8 +56,7 @@ import { MenuAdmOrganism } from './organisms/menu-adm/menu-adm.organism';
   ],
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   exports:[
     HomeTemplate,

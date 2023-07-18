@@ -6,6 +6,7 @@ import { ProductServicesService } from 'src/app/services/product-services.servic
 import { HttpClientModule } from '@angular/common/http';
 import { LoginPage } from './login.page';
 import { LoginRoutingModule } from './login-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,9 @@ import { LoginRoutingModule } from './login-routing.module';
     CommonModule,
     ComponentsModule,
     LoginRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers:[
     ProductServicesService

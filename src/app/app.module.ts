@@ -17,6 +17,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { NewCategoryModule } from './page/new-category/new-category.module';
 import { NewProductModule } from './page/new-product/new-product.module';
 import { ModifyCategoryModule } from './page/modify-category/modify-category.module';
+import { FeaturedProductsModule } from './page/featured-products/featured-products.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ModifyCategoryModule } from './page/modify-category/modify-category.mod
     NewCategoryModule,
     NewProductModule,
     ModifyCategoryModule,
+    FeaturedProductsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     ReactiveFormsModule,

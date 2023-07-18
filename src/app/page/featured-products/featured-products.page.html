@@ -1,0 +1,44 @@
+<app-menu-adm [dataMenu]="dataMenu"></app-menu-adm>
+<app-search [dataSearch]="dataSearch"></app-search>
+<button class="newProduct" (click)="redirectNewProduct()">
+  <img src="/assets/icons/mas.svg" alt="">
+</button>
+<div class="wrapper">
+  <app-header [dataHeader]="dataHeader"></app-header>
+  <main class="main">
+    <h1>Productos destacados</h1>
+    <p class="description">Productos seleccionados</p>
+    <section class="productsSelectedContent">
+      <article class="cardProduct">
+        <p class="nameProduct">Producto</p>
+        <button class="deleteButton">x</button>
+      </article>
+      <article class="cardProduct">
+        <p class="nameProduct">Producto</p>
+        <button class="deleteButton">x</button>
+      </article>
+      <article class="cardProduct">
+        <p class="nameProduct">Producto</p>
+        <button class="deleteButton">x</button>
+      </article>
+    </section>
+    <section class="searchProduct">
+      <label for="searchProduct" class="titleSearchProduct">Busca tu producto y seleccionalo</label>
+      <input type="text" class="text">
+    </section>
+    <section class="resultSearchContent">
+      <article class="cardProduct">
+        <p class="nameProduct">Producto</p>
+      </article>
+      <article class="cardProduct">
+        <p class="nameProduct">Producto</p>
+      </article>
+      <article class="cardProduct">
+        <p class="nameProduct">Producto</p>
+      </article>
+      <article class="cardProduct">
+        <p class="nameProduct">Producto</p>
+      </article>
+    </section>
+  </main>
+</div>

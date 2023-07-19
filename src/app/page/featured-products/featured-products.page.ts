@@ -12,7 +12,7 @@ import { ProductServicesService } from 'src/app/services/product-services.servic
 })
 export class FeaturedProductsPage {
   selectedOption : any = "";
-
+  diversProduct : any = [];
   dataProductsSelected : any =[
     {
       id : "",
@@ -92,9 +92,11 @@ export class FeaturedProductsPage {
    ){}
 
    ngOnInit(){
-    this.setDataProductsSelected()
+
     this.setProducts();
     this.getProducts();
+    this.getFeaturedProducts();
+    this.getAllProducts();
    }
    showMenu(){
     console.log("mmene");
@@ -106,72 +108,31 @@ export class FeaturedProductsPage {
   }
 
 
-setDataProductsSelected(){
-  this.dataProductsSelected = [
-    {
-      id : "adadq33d",
-      name : "Gorras Beisbolera 1"
-    },{
-      id : "adadq33d",
-      name : "Gorras Beisbolera 2"
-    }
-    ,{
-      id : "adadq33d",
-      name : "Gorras Beisbolera 3"
-    }
-  ]
-}
-
-setProducts(){
-  this.dataProducts = [
-    {
-      id : "adadq33d",
-      name : "PLanas Beisbolera 3"
-    },
-    {
-      id : "adadq33d",
-      name : "Firmes Beisbolera 3"
-    },
-    {
-      id : "adadq33d",
-      name : "Pruebas Beisbolera 3"
-    },
-    {
-      id : "adadq33d",
-      name : "Blancas Beisbolera 3"
-    },
-    {
-      id : "adadq33d",
-      name : "PLanas Beisbolera 3"
-    },
-    {
-      id : "adadq33d",
-      name : "Negras Beisbolera 3"
-    }
-  ]
-}
-
-save(){
-  console.log(this.dataProductsSelected);
-}
-deleteProduct(index: number){
-  if (index >= 0 && index < this.dataProductsSelected.length) {
-    this.dataProductsSelected.splice(index,1);
+  setDataProductsSelected(data : any){
+    this.dataProductsSelected = data;
   }
-  console.log(this.dataProductsSelected);
-}
+
+  setProducts(){
+    this.dataProducts = this.diversProduct;
+  }
+
+  save(){
+    console.log(this.dataProductsSelected);
+    console.log(this.diversProduct);
+    this.productServices.updateFeaturedProducts(this.dataProductsSelected);
+  }
+  deleteProduct(index: number){
+    if (index >= 0 && index < this.dataProductsSelected.length) {
+      this.dataProductsSelected.splice(index,1);
+    }
+    console.log(this.dataProductsSelected);
+  }
 
 
-addProduct(data : any){
-  console.log(data);
-  this.dataProductsSelected.push(data);
-}
-
-
-
-
-
-
+  addProduct(data : any){
+    console.log(data);
+    this.dataProductsSelected.push(data);
+  }
 
   setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
@@ -207,6 +168,44 @@ addProduct(data : any){
     });
   }
 
+  getFeaturedProducts(){
+    this.productServices.getFeaturedProducts().subscribe((product:any)=>{
+      console.log(product);
+      this.setDataProductsSelected(product);
+    });
+  }
+
+  getAllProducts(){
+    this.productServices.getCategories().subscribe((category) => {
+      const arrayData : any = [];
+      category.map((value : any) =>{
+        const data = {
+          marc: value.name
+        }
+        arrayData.push(data);
+      });
+      arrayData.map((value : any) =>{
+        const allProduct: any = [];
+        this.productServices.getProducts(value.marc).subscribe((product =>{
+          product.map((value:any)=>{
+            const data =  {
+              id: value.id,
+              urlImg : value?.urlImg,
+              name : value?.name,
+              type: value.type,
+              value : value.value
+            }
+            this.addAllProducts(data)
+          });
+        }));
+      })
+    });
+  }
+
+  async addAllProducts(value : any){
+    await this.diversProduct?.push(value);
+  }
+
 
   closeSearch(){
     if (this.dataSearch.classSearch == "search") {
@@ -220,20 +219,13 @@ addProduct(data : any){
 
     }
   }
+
   redirectNewProduct(){
     this.router.navigate(['/newProduct']);
   }
 
 
   //_-------get
-
-
-
-
-
-
-
-
 
 
 

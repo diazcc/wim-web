@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable} from 'rxjs';
-import { collection, onSnapshot, query, where , doc , DocumentSnapshot, addDoc, updateDoc } from 'firebase/firestore';
+import { collection, onSnapshot, query, where , doc , addDoc, updateDoc, getDocs, deleteDoc } from 'firebase/firestore';
 import { Firestore, collectionData, docData } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 
@@ -54,6 +54,37 @@ export class ProductServicesService {
       console.error('Error al actualizar el documento:', error);
     }
   }
+
+//_------update
+
+  async updateFeaturedProducts(data : any){
+    await this.deleteFeaturedProducts();
+    const docRef : any = collection(this.firestore,"featuredProducts");
+    try {
+      data.map((products:any)=>{
+        console.log(products);
+        addDoc(docRef, products);
+      });
+      console.log(data);
+      console.log('Documento actualizado correctamente');
+    } catch (error) {
+      console.error('Error al actualizar el documento:', error);
+    }
+  }
+  //_--------------------delete
+  async deleteFeaturedProducts(){
+    const collectionRef : any = collection(this.firestore,"featuredProducts");
+    try {
+      const querySnapshot = await getDocs(collectionRef);
+      querySnapshot.forEach((doc) => {
+        deleteDoc(doc.ref);
+      });
+      console.log('Colección eliminada exitosamente!');
+    } catch (error) {
+      console.error('Error al eliminar la colección:', error);
+    }
+  }
+
 
 
   //_--------------------delete services- unused

@@ -170,26 +170,28 @@ export class GaleryPage {
     if (optionSelect=="Todo") {
       this.diversProduct = []
       this.getAllProducts();
-    }
-    console.log(optionSelect);
-    this.productServices.getProducts(optionSelect).subscribe((value:any)=>{
-      const arrayData : any = [];
-      value.map((value :any) =>{
-        console.log(value);
+      this.setAllProducts();
+    }else{
+      console.log(optionSelect);
+      this.productServices.getProducts(optionSelect).subscribe((value:any)=>{
+        const arrayData : any = [];
+        value.map((value :any) =>{
+          console.log(value);
 
-        const data =  {
-          id: value.id,
-          urlImgPrincipalProduct : value.urlImg,
-          textTitle : value.name,
-          textDescription :value.description,
-          textValue : value.value,
-          clickProduct :()=>{this.redirectProducts(value.id,value.type)}
-        }
-        arrayData.push(data);
-      })
-      console.log(arrayData);
-      this.setProduct(arrayData);
-    });
+          const data =  {
+            id: value.id,
+            urlImgPrincipalProduct : value.urlImg,
+            textTitle : value.name,
+            textDescription :value.description,
+            textValue : value.value,
+            clickProduct :()=>{this.redirectProducts(value.id,value.type)}
+          }
+          arrayData.push(data);
+        })
+        console.log(arrayData);
+        this.setProduct(arrayData);
+      });
+    }
   }
 
   redirectProducts(id : any, category : any){
@@ -205,6 +207,7 @@ export class GaleryPage {
   validateRefData(){
     if (this.idNameCategory == " " ||this.idNameCategory ==undefined) {
       this.getAllProducts();
+      this.setAllProducts();
     }else{
       this.getProducts(this.idNameCategory);
     }
@@ -256,7 +259,6 @@ export class GaleryPage {
         }
         arrayData.push(data);
       });
-      // this.setDataCategories(arrayData);
       this.setProduct(arrayData);
     });
   }
@@ -281,7 +283,7 @@ export class GaleryPage {
               textValue : value?.value,
               clickProduct :()=>{this.redirectProducts(value?.id,value?.type)}
             }
-            this.setAllProducts(data)
+            this.addAllProducts(data)
           });
         }));
       })
@@ -291,15 +293,19 @@ export class GaleryPage {
   //----------- set
 
 
-  async setAllProducts(value : any){
+  async addAllProducts(value : any){
     await this.diversProduct?.push(value);
-    this.setProduct( await this.diversProduct);
   }
 
+  async setAllProducts(){
+    this.dataCardProduct.data = await this.diversProduct;
+    console.log(this.diversProduct);
+  }
 
   setProduct(responseData : any){
     this.dataCardProduct.data = responseData;
   }
+
   setDataCategories(value : any){
     this.dataOption.data = value;
   }

@@ -78,7 +78,10 @@ export class AdmHomePage {
     fileTC : "",
     urlImg : ""
   }
-
+  dataAlert = {
+    classAlert : "hidden",
+    text : ""
+  }
    constructor(
     private renderer : Renderer2,
     private router : Router,
@@ -101,6 +104,10 @@ export class AdmHomePage {
     console.log(this.formulario.value)
     this.updateData();
     this.formulario.reset();
+    this.dataAlert =  {
+      classAlert : "save",
+      text : "Se ha guardado correctamente los cambios"
+    }
   }
 
   async updateData(){

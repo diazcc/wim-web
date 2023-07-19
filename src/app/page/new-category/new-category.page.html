@@ -8,6 +8,7 @@
   <main class="main">
     <h1>Nueva categoria</h1>
     <p>Aqui se editara los datos de la pagina principal</p>
+    <app-alert class="alert" [dataAlert]="dataAlert"></app-alert>
     <form class="form" (ngSubmit)="onSubmit()"  [formGroup]="formulario">
       <p class="alertForm"></p>
       <label for="name">Nombre*</label>

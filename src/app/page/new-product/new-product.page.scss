@@ -1,72 +1,77 @@
-@media (max-width: 768px) {
-  .wrapper{
-    width: 100vw;
-    background-color: rgb(165, 165, 165);
-    display: flex;
-    flex-direction: column;
-    position: relative;
+*{
+  color: black;
+  font-family: Helvetica;
+}
 
-    select, option{
-      color: black;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    .main{
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      transition: ease-in-out .2s;
-      position: relative;
-      justify-content: center;
-      margin-top: 4rem;
-      gap: 1rem;
-      &--filterBlur{
-        filter: blur(3px);
+.wrapper{
+  width: 100vw;
+  background-color: rgb(165, 165, 165);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  select, option{
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    transition: ease-in-out .2s;
+    position: relative;
+    justify-content: center;
+    margin-top: 4rem;
+    gap: 1rem;
+    &--filterBlur{
+      filter: blur(3px);
+      pointer-events: none;
+      overflow: hidden;
+      &,
+      & * {
         pointer-events: none;
-        overflow: hidden;
-        &,
-        & * {
-          pointer-events: none;
-        }
       }
-      h1{
-        width: 100%;
-        text-align: center;
+    }
+    h1{
+      width: 100%;
+      text-align: center;
+      color: black;
+    }
+    p{
+      color: black;
+    }
+    .form{
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      font-size: 1.5rem;
+      height: 100%;
+      padding: .4rem;
+      label{
         color: black;
+        font-weight: bold;
       }
-      p{
+      .text{
+        border-radius: 1rem;
         color: black;
+        font-weight: bold;
+        border: none;
       }
-      .form{
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+      .text{
+        min-height: 2rem;
+        font-size: 1rem;
+        max-width: 20rem;
+      }
+      .buttonSubmit{
         font-size: 1.5rem;
-        height: 100%;
-        padding: .4rem;
-        label{
-          color: black;
-          font-weight: bold;
-        }
-        .text{
-          border-radius: 1rem;
-          color: black;
-          font-weight: bold;
-          border: none;
-        }
-        .text{
-          min-height: 2rem;
-          font-size: 1rem;
-          max-width: 20rem;
-        }
-        .buttonSubmit{
-          font-size: 1.5rem;
-          font-weight: bold;
-          border: 1px black solid;
-          background-color: white;
-        }
+        font-weight: bold;
+        border: 1px black solid;
+        background-color: white;
       }
     }
   }
+}
+@media (max-width: 768px) {
 
 }

@@ -1,5 +1,6 @@
 *{
   color: black;
+  font-family: Helvetica;
 }
 .newProduct{
   position: fixed;
@@ -55,6 +56,10 @@
     h1{
       width: 100%;
       text-align: center;
+    }
+    .alert{
+      display: flex;
+      justify-content: center;
     }
     .description{
       text-align: center;

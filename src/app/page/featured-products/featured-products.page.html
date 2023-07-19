@@ -7,6 +7,7 @@
   <app-header [dataHeader]="dataHeader"></app-header>
   <main class="main">
     <h1>Productos destacados</h1>
+    <app-alert class="alert" [dataAlert]="dataAlert"></app-alert>
     <p class="description">Productos seleccionados</p>
     <section class="productsSelectedContent">
       <article class="cardProduct" *ngFor="let product of dataProductsSelected ; let i = index">
@@ -16,7 +17,7 @@
     </section>
     <section class="searchProduct">
       <label for="searchProduct" class="titleSearchProduct">Busca tu producto y seleccionalo</label>
-      <input type="text" class="text">
+      <!-- <input type="text" class="text"> -->
     </section>
     <section class="resultSearchContent">
       <article class="cardProduct" *ngFor="let product of dataProducts ; let i = index">

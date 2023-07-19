@@ -40,6 +40,10 @@ export class FeaturedProductsPage {
       urlImg : "",
     }
   ];
+  dataAlert = {
+    classAlert : "hidden",
+    text : ""
+  }
 
   @Input() dataHeader = {
     textTitle :"Infinity Industry",
@@ -120,6 +124,10 @@ export class FeaturedProductsPage {
     console.log(this.dataProductsSelected);
     console.log(this.diversProduct);
     this.productServices.updateFeaturedProducts(this.dataProductsSelected);
+    this.dataAlert =  {
+      classAlert : "save",
+      text : "Se ha guardado correctamente los cambios"
+    }
   }
   deleteProduct(index: number){
     if (index >= 0 && index < this.dataProductsSelected.length) {

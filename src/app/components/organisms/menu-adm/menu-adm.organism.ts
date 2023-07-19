@@ -32,6 +32,8 @@ export class MenuAdmOrganism {
     this.router.navigate(['/modifyCategory']);
   }
 
-
+  redirectFeaturedProducts(){
+    this.router.navigate(['/featuredProducts']);
+  }
 
 }

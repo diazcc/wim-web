@@ -25,6 +25,8 @@
   padding: 1rem;
   border-radius: 1rem;
   color:  black;
+  width: max-content;
+  max-width: 15rem;
 
   &--save{
     background-color: green;

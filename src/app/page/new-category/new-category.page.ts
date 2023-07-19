@@ -69,6 +69,10 @@ export class NewCategoryPage {
       }
     ]
    }
+   dataAlert = {
+    classAlert : "save",
+    text : "sssssssss"
+  }
 
    constructor(
     private renderer : Renderer2,
@@ -105,6 +109,10 @@ export class NewCategoryPage {
     console.log(this.urlImage);
     console.log(this.formulario.value);
     this.setImg();
+    this.dataAlert =  {
+      classAlert : "save",
+      text : "Se ha guardado correctamente los cambios"
+    }
   }
   setImg(){
     if (this.fileImg!= undefined) {

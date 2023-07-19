@@ -11,17 +11,17 @@
     <form class="form" (ngSubmit)="onSubmit()"  [formGroup]="formulario">
       <p class="alertForm"></p>
       <label for="name">Nombre*</label>
-      <input type="text" formControlName="name" class="text">
+      <input type="text" formControlName="name" class="text" [placeholder]="product.name">
       <label for="description">Descripcion*</label>
-      <input type="text" formControlName="description" class="text">
+      <input type="text" formControlName="description" class="text" [placeholder]="product.description">
       <label for="value">Precio*</label>
-      <input type="text" formControlName="value" class="text">
+      <input type="text" formControlName="value" class="text" [placeholder]="product.value">
       <select name="category" id="category" formControlName="type" (change)="getCategorySelect($event)">
         <option value="" selected disabled>Todo</option>
         <option [value]="value.name" *ngFor="let value of dataCategory">{{value.name}}</option>
       </select>
       <label for="marc">Marca*</label>
-      <input type="text" formControlName="marc" class="text">
+      <input type="text" formControlName="marc" class="text" [placeholder]="product.name">
       <label for="documentMedia">Imagen*</label>
       <input type="file" formControlName="urlImg" (change)="uploadImage($event)" class="file" required>
       <input type="submit" value="Borrar producto" class="delete">

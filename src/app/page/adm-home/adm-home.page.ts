@@ -5,7 +5,8 @@ import { NgForm } from '@angular/forms';
 import { collection, onSnapshot, query, where , DocumentSnapshot, addDoc, updateDoc, doc } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
+import { ProductServicesService } from 'src/app/services/product-services.service';
 
 @Component({
   selector: 'app-adm-home',
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./adm-home.page.scss']
 })
 export class AdmHomePage {
+  diversProduct : any = [];
   dataMenu  = {
     classMenu : "close",
     closeMenu : ()=>{ this.closeMenu()},
@@ -86,7 +88,8 @@ export class AdmHomePage {
     private renderer : Renderer2,
     private router : Router,
     private firestore: Firestore,
-    private storage : Storage
+    private storage : Storage,
+    private productService : ProductServicesService
    ){
     this.formulario = new FormGroup({
       descriptionPresentation : new FormControl(),
@@ -97,6 +100,11 @@ export class AdmHomePage {
       fileTC : new FormControl(),
       urlImg : new FormControl()
     })
+  }
+
+  ngOnInit(){
+    this.getAllProducts();
+    this.setDataProduct();
   }
 
   onSubmit(){
@@ -185,6 +193,54 @@ export class AdmHomePage {
       fileTC : "",
       urlImg : ""
     }
+  }
+
+  getAllProducts(){
+    this.productService.getCategories().subscribe((category) => {
+      const arrayData : any = [];
+      category.map((value : any) =>{
+        const data = {
+          marc: value.name
+        }
+        arrayData.push(data);
+      });
+      arrayData.map((value : any) =>{
+        const allProduct: any = [];
+        this.productService.getProducts(value.marc).subscribe((product =>{
+          product.map((value:any)=>{
+            const data =  {
+              id: value.id,
+              urlImgPrincipalProduct : value?.urlImg,
+              textTitle : value?.name,
+              textDescription :value?.description,
+              textValue : value.value,
+              clickProduct : () =>{
+                this.redirectUpdateProduct(value.id, value.type);
+              }
+            }
+            this.addAllProducts(data)
+          });
+        }));
+      })
+    });
+  }
+  async addAllProducts(value : any){
+    await this.diversProduct?.push(value);
+  }
+
+  setDataProduct(){
+    this.dataSearch.dataCardProduct = this.diversProduct;
+    console.log(this.diversProduct);
+  }
+  redirectUpdateProduct(id : any, type : any){
+    const data : NavigationExtras = {
+      state : {
+        idProduct : id,
+        category : type
+      }
+    }
+    console.log(type);
+    this.router.navigate(['/admProduct'], data );
   }
 
 }

@@ -6,6 +6,7 @@ import { collection, onSnapshot, query, where , DocumentSnapshot, addDoc } from 
 import { Firestore } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
 import { Router } from '@angular/router';
+import { ProductServicesService } from 'src/app/services/product-services.service';
 
 @Component({
   selector: 'app-adm-product',
@@ -13,6 +14,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./adm-product.page.scss']
 })
 export class AdmProductPage {
+  @Input() idProductStateNav : any;
+  @Input() idProducNavigate : any;
+
+  @Input() idTypeStateNav : any;
+  @Input() idTypeNavigate : any;
+
+  product : any = {};
+
   dataMenu  = {
     classMenu : "close",
     closeMenu : ()=>{ this.closeMenu()},
@@ -77,8 +86,8 @@ export class AdmProductPage {
     private renderer : Renderer2,
     private firestore: Firestore,
     private storage : Storage,
-    private router : Router
-
+    private router : Router,
+    private productServices : ProductServicesService
    ){
     this.formulario = new FormGroup({
       name : new FormControl(),
@@ -88,10 +97,19 @@ export class AdmProductPage {
       type : new FormControl(),
       urlImg : new FormControl()
     })
+    const navigation = this.router.getCurrentNavigation();
+    this.idProductStateNav = navigation?.extras.state as any;
+    this.idProducNavigate = this.idProductStateNav?.idProduct;
+    this.idTypeNavigate = this.idProductStateNav?.category;
+    console.log(this.idProducNavigate);
+    console.log(this.idTypeNavigate);
+    this.renderer.removeClass(document.body, 'bodyBlock');
+
    }
 
    ngOnInit(){
     this.getCategories();
+    this.getProduct();
    }
    showMenu(){
     console.log("mmene");
@@ -102,38 +120,58 @@ export class AdmProductPage {
     this.dataMenu.classMenu = "close"
   }
 
-
-
-   getCategorySelect($event : any){
-    console.log($event.target.value);
-    const selectedIndex = $event.target.selectedIndex;
-    const selectedOption = $event.target.options[selectedIndex];
-    const selectedText = selectedOption.textContent;
-    console.log('Texto seleccionado:', selectedText);
-    this.categorySelect = selectedText;
-   }
-   getCategories(){
-    const categoryRef = collection(this.firestore,'category');
-    const prod = onSnapshot(categoryRef, (snap)=>{
-      const category : any[] = [];
-      let arrayData : any = [];
-      snap.forEach(snapHijo =>{
-        category.push({
-          id: snapHijo.id,
-          ...snapHijo.data()
-        });
-      })
-      category.map((value : any) => {
-        const data =  {
-          name : value.name,
-          urlImg : value.urlImg,
-        }
-        arrayData.push(data);
-
-      });
-      console.log(arrayData);
-      this.dataCategory = arrayData;
+  getProduct(){
+    this.productServices.getProduct(this.idProducNavigate,this.idTypeNavigate).subscribe((product:any)=>{
+      console.log(product);
+      const data : any = {
+        id : product.id,
+        name : product.name,
+        type : product.type,
+        value :product.value,
+        urlImg : product.urlImg,
+        description : product.description,
+        marc :product.marc
+      }
+      this.setProduct(data);
     });
+  }
+
+  setProduct(data :any){
+    this.product = data;
+    console.log(this.product);
+  }
+
+  getCategorySelect($event : any){
+  console.log($event.target.value);
+  const selectedIndex = $event.target.selectedIndex;
+  const selectedOption = $event.target.options[selectedIndex];
+  const selectedText = selectedOption.textContent;
+  console.log('Texto seleccionado:', selectedText);
+  this.categorySelect = selectedText;
+  }
+
+  getCategories(){
+  const categoryRef = collection(this.firestore,'category');
+  const prod = onSnapshot(categoryRef, (snap)=>{
+    const category : any[] = [];
+    let arrayData : any = [];
+    snap.forEach(snapHijo =>{
+      category.push({
+        id: snapHijo.id,
+        ...snapHijo.data()
+      });
+    })
+    category.map((value : any) => {
+      const data =  {
+        name : value.name,
+        urlImg : value.urlImg,
+      }
+      arrayData.push(data);
+
+    });
+    console.log(arrayData);
+    this.dataCategory = arrayData;
+  });
   }
 
   uploadImage($event: any) {

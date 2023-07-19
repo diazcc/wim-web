@@ -14,13 +14,19 @@ export class ProductServicesService {
     private httpClient: HttpClient,
     private firestore : Firestore
 
-  ) { }
+  ) {
+  }
+
 
   getProducts(category : any) : Observable<any> {
     const productRef = collection(this.firestore,category);
     return collectionData(productRef, {idField : 'id'}) as Observable<any>;
   }
 
+  getProduct(id:any, category:any){
+    const docRef = doc(this.firestore, category, id);
+    return docData(docRef, {idField : 'id'}) as Observable<any>;
+  }
 
   getCategories() : Observable<any> {
     const productRef = collection(this.firestore,'category');
@@ -42,6 +48,7 @@ export class ProductServicesService {
     const productRef = collection(this.firestore,'featuredProducts');
     return collectionData(productRef);
   }
+
 //_----------------set
 
   async modifyCategory(id : string, data :any){

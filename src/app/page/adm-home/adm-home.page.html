@@ -1,5 +1,5 @@
 <app-menu-adm [dataMenu]="dataMenu"></app-menu-adm>
-<app-search [dataSearch]="dataSearch"></app-search>
+<app-search [dataSearch]="dataSearch"  (textInputModel)="detectChange($event)"></app-search>
 <div class="newProduct" (click)="redirectNewProduct()">
   <img src="/assets/icons/mas.svg" alt="">
 </div>

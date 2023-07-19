@@ -3,7 +3,7 @@
     <img src="/assets/icons/closeBlack.svg" alt="SVG Image" class="icon">
   </div>
   <h1 class="title">Buscar producto</h1>
-  <input type="text">
+  <input type="text" [(ngModel)]="textInput" (change)="detectChange()">
   <ul class="result">
     <ng-container *ngFor="let data of dataSearch.dataCardProduct; let i = index;">
       <app-card-product [dataCardProduct]="data" class="card"></app-card-product>

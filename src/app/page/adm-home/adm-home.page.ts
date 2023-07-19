@@ -1,4 +1,4 @@
-import { Component, Input, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, Input, Renderer2 } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
@@ -15,6 +15,7 @@ import { ProductServicesService } from 'src/app/services/product-services.servic
 })
 export class AdmHomePage {
   diversProduct : any = [];
+  textSearch : any = "";
   dataMenu  = {
     classMenu : "close",
     closeMenu : ()=>{ this.closeMenu()},
@@ -241,6 +242,25 @@ export class AdmHomePage {
     }
     console.log(type);
     this.router.navigate(['/admProduct'], data );
+  }
+
+  detectChange($event : any){
+    console.log($event);
+    this.textSearch = $event;
+    this.searchProduct();
+  }
+
+  searchProduct(){
+    if (!this.textSearch) {
+      // this.zapatillas = this.zapatillasService.getZapatillas();
+      console.log("Se muestra todos los productos");
+    } else {
+      this.dataSearch.dataCardProduct = this.dataSearch.dataCardProduct.filter((z:any) =>{
+        // z.textTitle.toLowerCase().includes(this.textSearch.toLowerCase());
+        return z.textTitle.toLowerCase().includes(this.textSearch.toLowerCase());
+        // console.log(z.textTitle.toLowerCase().includes(this.textSearch.toLowerCase()));
+      } );
+    }
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -6,6 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./search.organism.scss']
 })
 export class SearchOrganism {
+textInput :any ="";
+@Output() textInputModel = new EventEmitter<string>();
  @Input() classSearch ="hidde";
  @Input() dataSearch = {
   classSearch : "hidde",
@@ -29,5 +31,8 @@ export class SearchOrganism {
  }
   @Input() dataCardProduct = {
 
+  }
+  @Input() detectChange(){
+    this.textInputModel.emit(this.textInput);
   }
 }

@@ -18,6 +18,8 @@ import { NewCategoryModule } from './page/new-category/new-category.module';
 import { NewProductModule } from './page/new-product/new-product.module';
 import { ModifyCategoryModule } from './page/modify-category/modify-category.module';
 import { FeaturedProductsModule } from './page/featured-products/featured-products.module';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { ProductServicesService } from './services/product-services.service';
 
 @NgModule({
   declarations: [
@@ -41,9 +43,12 @@ import { FeaturedProductsModule } from './page/featured-products/featured-produc
     provideFirestore(() => getFirestore()),
     ReactiveFormsModule,
     FormsModule,
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    provideAuth(() => getAuth())
   ],
-  providers: [],
+  providers: [
+    ProductServicesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

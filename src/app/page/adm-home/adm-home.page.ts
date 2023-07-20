@@ -110,7 +110,6 @@ export class AdmHomePage {
 
   ngOnInit(){
     this.getAllProducts();
-
   }
 
   onSubmit(){

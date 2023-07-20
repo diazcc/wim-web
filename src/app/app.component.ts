@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductServicesService } from './services/product-services.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'infinityindustry';
+  constructor(
+    private productService :ProductServicesService
+  ){}
+  ngOnInit(){
+    this.productService.loginWithEmailPassword().then(response =>{console.log(response)}).catch(error =>{console.log(error)});;
+  }
 }

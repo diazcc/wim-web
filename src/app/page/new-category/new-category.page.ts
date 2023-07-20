@@ -70,8 +70,8 @@ export class NewCategoryPage {
     ]
    }
    dataAlert = {
-    classAlert : "save",
-    text : "sssssssss"
+    classAlert : "hidden",
+    text : ""
   }
 
    constructor(

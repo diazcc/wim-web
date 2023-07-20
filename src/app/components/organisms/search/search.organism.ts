@@ -32,7 +32,15 @@ textInput :any ="";
   @Input() dataCardProduct = {
 
   }
+
+  constructor(){
+  }
+
   @Input() detectChange(){
     this.textInputModel.emit(this.textInput);
+  }
+
+  @Input() clearInput(){
+    this.textInput = "";
   }
 }

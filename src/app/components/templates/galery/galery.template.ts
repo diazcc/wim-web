@@ -8,7 +8,12 @@ import { Component,Output, ElementRef, HostListener, Input,Renderer2, ChangeDete
 export class GaleryTemplate {
   previousScrollPosition = 0;
   @Input() selectedOption : any;
+  @Input() textInput : any;
+  @Input() textSearch : any;
   @Output() selectionOptionChanged = new EventEmitter<string>();
+  @Output() textInputOptionChanged = new EventEmitter<string>();
+  @Output() textSearchChanged = new EventEmitter<string>();
+
 
   @Input() dataOption = {
     onChange : () =>{},
@@ -110,5 +115,11 @@ export class GaleryTemplate {
 
     @Input() detectChange(){
       this.selectionOptionChanged.emit(this.selectedOption);
+    }
+    @Input() detectChangeInput(){
+      this.textInputOptionChanged.emit(this.textInput);
+    }
+    @Input() detectChangeSearch($event :any){
+      this.textSearchChanged.emit($event);
     }
 }

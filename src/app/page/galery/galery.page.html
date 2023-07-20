@@ -1,4 +1,6 @@
 <app-galery
+  (textSearchChanged) = "detectChangeInputSearch($event)"
+  (textInputOptionChanged) = "detectChangeInput($event)"
   [dataFooter]="dataFooter"
   (selectionOptionChanged) = "detectChange($event)"
   [dataOption]="dataOption"

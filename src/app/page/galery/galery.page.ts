@@ -11,7 +11,8 @@ import { GaleryTemplate } from 'src/app/components/templates/galery/galery.templ
 export class GaleryPage {
   @Input() idNameCategoryState : any;
   diversProduct : any = [];
-
+  textInput : any;
+  textInputSearch : any;
   dataOption = {
     onChange : () =>{console.log(this.dataSelectOption.selectedOption)},
     data : [
@@ -127,6 +128,7 @@ export class GaleryPage {
 
   setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
+      this.setDataSearch();
       this.dataSearch.classSearch = "search";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "hidde";
@@ -145,7 +147,7 @@ export class GaleryPage {
       this.dataSearch.classSearch = "hidde";
       this.dataHeader.classHeader = "header";
       this.renderer.removeClass(document.body, 'bodyBlock');
-
+      console.log("Cerro");
     }else{
       this.dataSearch.classSearch = "search";
       this.renderer.addClass(document.body, 'bodyBlock');
@@ -166,18 +168,21 @@ export class GaleryPage {
     }
   }
 
+  setDataSearch(){
+    this.dataSearch.dataCardProduct = this.diversProduct;
+    console.log("Se setea");
+    console.log(this.diversProduct);
+  }
+
   detectChange(optionSelect : string){
     if (optionSelect=="Todo") {
       this.diversProduct = []
       this.getAllProducts();
       this.setAllProducts();
     }else{
-      console.log(optionSelect);
       this.productServices.getProducts(optionSelect).subscribe((value:any)=>{
         const arrayData : any = [];
         value.map((value :any) =>{
-          console.log(value);
-
           const data =  {
             id: value.id,
             urlImgPrincipalProduct : value.urlImg,
@@ -191,6 +196,44 @@ export class GaleryPage {
         console.log(arrayData);
         this.setProduct(arrayData);
       });
+    }
+  }
+
+  detectChangeInput(textInput : string){
+    console.log(textInput);
+    this.textInput = textInput;
+    this.searchProductPrincipal();
+  }
+  detectChangeInputSearch($event : any){
+    console.log($event);
+    this.textInputSearch = $event;
+    this.searchProduct();
+  }
+  searchProduct(){
+    if (!this.textInputSearch) {
+      this.dataSearch.dataCardProduct = this.diversProduct;
+      console.log("Se setea");
+      console.log("Se muestra todos los productos");
+    } else {
+      this.dataSearch.dataCardProduct = this.dataSearch.dataCardProduct.filter((z:any) =>{
+        return z.textTitle.toLowerCase().includes(this.textInputSearch.toLowerCase())
+      });
+      console.log("Se setea");
+      console.log(this.dataSearch.dataCardProduct);
+    }
+  }
+
+  searchProductPrincipal(){
+    if (!this.textInput) {
+      this.dataCardProduct.data = this.diversProduct;
+      console.log("Se setea");
+      console.log("Se muestra todos los productos");
+    } else {
+      this.dataCardProduct.data = this.dataCardProduct.data.filter((z:any) =>{
+        return z.textTitle.toLowerCase().includes(this.textInput.toLowerCase())
+      });
+      console.log("Se setea");
+      console.log(this.dataSearch.dataCardProduct);
     }
   }
 

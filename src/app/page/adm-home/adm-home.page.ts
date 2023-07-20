@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, Input, Renderer2, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
@@ -7,6 +7,7 @@ import { Firestore } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
 import { NavigationExtras, Router } from '@angular/router';
 import { ProductServicesService } from 'src/app/services/product-services.service';
+import { SearchOrganism } from 'src/app/components/organisms/search/search.organism';
 
 @Component({
   selector: 'app-adm-home',
@@ -14,6 +15,7 @@ import { ProductServicesService } from 'src/app/services/product-services.servic
   styleUrls: ['./adm-home.page.scss']
 })
 export class AdmHomePage {
+  @ViewChild(SearchOrganism) search!: SearchOrganism;
   diversProduct : any = [];
   textSearch : any = "";
   dataMenu  = {
@@ -101,11 +103,12 @@ export class AdmHomePage {
       fileTC : new FormControl(),
       urlImg : new FormControl()
     })
+
   }
 
   ngOnInit(){
     this.getAllProducts();
-    this.setDataProduct();
+
   }
 
   onSubmit(){
@@ -152,13 +155,13 @@ export class AdmHomePage {
 
    setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
+      this.setDataProduct();
       this.dataSearch.classSearch = "search";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "hidde";
       this.renderer.addClass(document.body, 'bodyBlock');
-
-
     }else{
+      this.dataSearch.dataCardProduct.splice(0,this.dataSearch.dataCardProduct.length);
       this.dataSearch.classSearch = "hidde";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "header";
@@ -170,11 +173,11 @@ export class AdmHomePage {
       this.dataSearch.classSearch = "hidde";
       this.dataHeader.classHeader = "header";
       this.renderer.removeClass(document.body, 'bodyBlock');
-
+      console.log("Se cierra");
+      this.search.clearInput();
     }else{
       this.dataSearch.classSearch = "search";
       this.renderer.addClass(document.body, 'bodyBlock');
-
     }
   }
   redirectNewProduct(){
@@ -231,6 +234,7 @@ export class AdmHomePage {
 
   setDataProduct(){
     this.dataSearch.dataCardProduct = this.diversProduct;
+    console.log("Se setea");
     console.log(this.diversProduct);
   }
   redirectUpdateProduct(id : any, type : any){
@@ -253,13 +257,15 @@ export class AdmHomePage {
   searchProduct(){
     if (!this.textSearch) {
       // this.zapatillas = this.zapatillasService.getZapatillas();
+      this.dataSearch.dataCardProduct = this.diversProduct;
+      console.log("Se setea");
       console.log("Se muestra todos los productos");
     } else {
       this.dataSearch.dataCardProduct = this.dataSearch.dataCardProduct.filter((z:any) =>{
-        // z.textTitle.toLowerCase().includes(this.textSearch.toLowerCase());
-        return z.textTitle.toLowerCase().includes(this.textSearch.toLowerCase());
-        // console.log(z.textTitle.toLowerCase().includes(this.textSearch.toLowerCase()));
-      } );
+        return z.textTitle.toLowerCase().includes(this.textSearch.toLowerCase())
+      });
+      console.log("Se setea");
+      console.log(this.dataSearch.dataCardProduct);
     }
   }
 

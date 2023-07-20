@@ -1,6 +1,6 @@
 
 <div class="wrapper">
-  <app-search [dataSearch]="dataSearch"></app-search>
+  <app-search [dataSearch]="dataSearch" (textInputModel)="detectChangeSearch($event)"></app-search>
   <app-header [dataHeader]="dataHeader"></app-header>
   <!-- <div class="iconMarket">
     <img src="/assets/icons/market.svg" alt="">
@@ -8,7 +8,7 @@
   <main [ngClass]="'main main--'+classMain">
     <nav class="nav">
       <h2 class="titleNav">Buscar producto</h2>
-      <input type="text" class="inputSearch">
+      <input type="text" class="inputSearch" [(ngModel)]="textInput" (change)="detectChangeInput()">
       <ul class="filters">
         <li class="contentFilter">
           <h3 class="titleFilter">Categoria</h3>

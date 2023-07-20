@@ -76,8 +76,8 @@ export class ModifyCategoryPage {
     ]
    }
   dataAlert = {
-    classAlert : "save",
-    text : "sssssssss"
+    classAlert : "hidden",
+    text : ""
   }
 
    constructor(

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { collection, onSnapshot, query, where , doc , addDoc, updateDoc, getDocs, deleteDoc } from 'firebase/firestore';
+import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
 import { Firestore, collectionData, docData } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 
@@ -12,8 +13,8 @@ export class ProductServicesService {
 
   constructor(
     private httpClient: HttpClient,
-    private firestore : Firestore
-
+    private firestore : Firestore,
+    private storage : Storage
   ) {
   }
 
@@ -60,6 +61,18 @@ export class ProductServicesService {
     } catch (error) {
       console.error('Error al actualizar el documento:', error);
     }
+  }
+
+  async setFile(data : any){
+      const fileRef = ref(this.storage, '/pdf/' + data.name);
+      try {
+        await uploadBytes(fileRef, data);
+        const downloadURL = await getDownloadURL(fileRef);
+        return downloadURL;
+      } catch (error) {
+        console.error('Error al subir el archivo:', error);
+        return null;
+      }
   }
 
 //_------update

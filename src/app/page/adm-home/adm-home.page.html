@@ -24,7 +24,7 @@
       <label for="urlInstagram">Instagram*</label>
       <input type="text" formControlName="linkInstagram" class="text">
       <label for="documentTC">Terminos y Condiciones : PDF*</label>
-      <input type="file" formControlName="fileTC" class="file">
+      <input type="file" formControlName="fileTC" class="file" (change)="getFileChanged($event)">
       <input type="submit" value="Guardar" class="buttonSubmit">
     </form>
   </main>

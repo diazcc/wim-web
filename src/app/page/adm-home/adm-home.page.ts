@@ -16,6 +16,8 @@ import { SearchOrganism } from 'src/app/components/organisms/search/search.organ
 })
 export class AdmHomePage {
   @ViewChild(SearchOrganism) search!: SearchOrganism;
+  fileDoc  :any;
+  urlFile  :any;
   diversProduct : any = [];
   textSearch : any = "";
   dataMenu  = {
@@ -112,38 +114,66 @@ export class AdmHomePage {
   }
 
   onSubmit(){
-    console.log("Se guardo")
-    console.log(this.formulario.value)
-    this.updateData();
-    this.formulario.reset();
+    this.setFile();
+    console.log("Se guardo");
+    console.log(this.formulario.value);
+    //
     this.dataAlert =  {
       classAlert : "save",
       text : "Se ha guardado correctamente los cambios"
     }
   }
 
-  async updateData(){
+  getFileChanged($event: any){
+    this.fileDoc = $event.target.files[0];
+    console.log(this.fileDoc);
+    console.log(this.formulario.value)
+
+  }
+  setFile(){
+    if (this.fileDoc!= undefined) {
+      console.log(this.fileDoc);
+      this.productService.setFile(this.fileDoc).then((downloadURL:any) => {
+        console.log('URL de descarga del archivo:', downloadURL);
+        this.setUrlFile(downloadURL);
+      });
+    }else{
+      console.log(false)
+    }
+  }
+  setUrlFile(url : any){
+    console.log(url)
+    this.urlFile = url;
+    console.log(this.urlFile);
+    console.log(this.formulario.value);
+    this.updateData(this.urlFile);
+  }
+
+
+  async updateData(urlFile : string){
     const collectionRef : any = collection(this.firestore,"home");
     const docRef = doc(collectionRef,'dataHome');
+    console.log(this.urlFile)
+    console.log(this.formulario.value)
     const data = {
       descriptionPresentation : this.formulario.get('descriptionPresentation')?.value,
       titlePresentation : this.formulario.get('titlePresentation')?.value,
       linkWhatsapp : "https://wa.me/+57"+this.formulario.get('linkWhatsapp')?.value+"?text=Hola,%20estoy%20interesado%20en%20uno%20de%20sus%20productos",
       linkInstagram : this.formulario.get('linkInstagram')?.value,
       linkFacebook : this.formulario.get('linkFacebook')?.value,
-      fileTC : this.formulario.get('fileTC')?.value,
+      fileTC : urlFile,
       urlImg : this.formulario.get('urlImg')?.value
     }
-
+    console.log(data);
     try {
       await updateDoc(docRef, data);
       console.log('Documento actualizado correctamente');
+    this.formulario.reset();
     } catch (error) {
       console.error('Error al actualizar el documento:', error);
     }
-
-
   }
+
   showMenu(){
     console.log("mmene");
     this.dataMenu.classMenu = ""

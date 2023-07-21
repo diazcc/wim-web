@@ -5,7 +5,7 @@ import { collection, onSnapshot, query, where , doc , addDoc, updateDoc, getDocs
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
 import { Firestore, collectionData, docData } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, EmailAuthCredential, signInWithEmailAndPassword } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +23,6 @@ export class ProductServicesService {
     this.user= "client@inin.com";
     this.password= "jp5689";
   }
-
-  loginWithEmailPassword() {
-    return signInWithEmailAndPassword(this.auth,this.user,this.password);
-  }
-
-
 
   getProducts(category : any) : Observable<any> {
     const productRef = collection(this.firestore,category);

@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginPage } from './login.page';
 import { LoginRoutingModule } from './login-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminService } from 'src/app/services/admin.service';
 
 
 
@@ -23,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule
   ],
   providers:[
-    ProductServicesService
+    ProductServicesService,
+    AdminService
   ]
 })
 export class LoginModule { }

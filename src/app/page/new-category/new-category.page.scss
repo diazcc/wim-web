@@ -28,6 +28,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  height: 100vh;
 
   select, option{
     color: black;
@@ -67,7 +68,6 @@
       flex-direction: column;
       gap: 1rem;
       font-size: 1.5rem;
-      height: 100%;
       padding: .4rem;
       label{
         color: black;

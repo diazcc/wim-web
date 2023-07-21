@@ -11,7 +11,5 @@ export class AppComponent {
   constructor(
     private productService :ProductServicesService
   ){}
-  ngOnInit(){
-    this.productService.loginWithEmailPassword().then(response =>{console.log(response)}).catch(error =>{console.log(error)});;
-  }
+  ngOnInit(){}
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, UntypedFormArray } from '@angular/forms';
+import {  Router } from '@angular/router';
+import { AdminService } from 'src/app/services/admin.service';
 import { ProductServicesService } from 'src/app/services/product-services.service';
 
 
@@ -16,6 +18,8 @@ export class LoginPage {
   private password : string ="";
   constructor(
     private productService : ProductServicesService,
+    private adminService : AdminService,
+    private router : Router
   ){
     this.formulario = new FormGroup({
       name : new FormControl(),
@@ -24,11 +28,6 @@ export class LoginPage {
   }
 
   ngOnInit(){
-    this.productService.getUser().subscribe((response)=>{
-      console.log(response);
-      this.userName = response[0].userName;
-      this.password = response[0].password;
-    });
 
   }
 
@@ -37,13 +36,26 @@ export class LoginPage {
     console.log(this.formulario.value);
     console.log(this.userName);
     console.log(this.password);
-    if (this.formulario.value.name == this.userName && this.formulario.value.password == this.password) {
-      this.classForm = "";
-      this.alertForm = "";
-    }else{
+    if (this.formulario.value.name == null  && this.formulario.value.password == null) {
       this.classForm = "error";
       this.alertForm = "Datos incorrectos";
       console.log("erorrrr");
+    }else{
+      this.validateUser();
+      this.classForm = "";
+      this.alertForm = "";
     }
   }
+
+  validateUser(){
+    this.adminService.loginAdmin(this.formulario.value.name,this.formulario.value.password).then(response=>{
+      this.router.navigate(['/admHome']);
+      console.log(response);
+    }).catch(error=>{
+      this.classForm = "error";
+      this.alertForm = "Datos incorrectos";
+      console.log(error);
+    });
+  }
+
 }

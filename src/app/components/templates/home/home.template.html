@@ -1,5 +1,5 @@
 <app-presentation-index [classPresentation]="dataPresentation.classPresentation"></app-presentation-index>
-<app-search [dataSearch]="dataSearch"></app-search>
+<app-search [dataSearch]="dataSearch" (textInputModel)="detectChange($event)"></app-search>
 <div class="wrapper">
   <app-header [dataHeader]="dataHeader"></app-header>
   <!-- <div class="iconMarket">

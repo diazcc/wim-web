@@ -9,6 +9,8 @@ import { Firestore } from '@angular/fire/firestore';
   styleUrls: ['./home.page.scss']
 })
 export class HomePage {
+  textSearch : any = "";
+  diversProduct : any = [];
   nameMarc : any;
   dataCategory ={
     titleCategory : "Categorias",
@@ -123,6 +125,7 @@ export class HomePage {
     this.getCategories();
     this.getDataHome();
     this.getFeaturedProducts();
+    this.renderer.removeClass(document.body, 'bodyBlock');
   }
 
 
@@ -147,6 +150,8 @@ export class HomePage {
       this.dataSearch.classSearch = "hidde";
       this.dataHeader.classHeader = "header";
       this.renderer.removeClass(document.body, 'bodyBlock');
+      this.diversProduct.splice(0,this.diversProduct.length);
+      this.dataSearch.dataCardProduct.splice(0,this.dataSearch.dataCardProduct.length)
     }else{
       this.dataSearch.classSearch = "search";
       this.renderer.addClass(document.body, 'bodyBlock');
@@ -157,6 +162,25 @@ export class HomePage {
     const titleMarc = document.getElementById('titleCategory');
     if (titleMarc) {
       titleMarc.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  detectChange($event : any){
+    console.log($event);
+    this.textSearch = $event;
+    this.searchProduct();
+  }
+  searchProduct(){
+    if (!this.textSearch) {
+      this.dataSearch.dataCardProduct = this.diversProduct;
+      console.log("Se setea");
+      console.log("Se muestra todos los productos");
+    } else {
+      this.dataSearch.dataCardProduct = this.dataSearch.dataCardProduct.filter((z:any) =>{
+        return z.textTitle.toLowerCase().includes(this.textSearch.toLowerCase())
+      });
+      console.log("Se setea");
+      console.log(this.dataSearch.dataCardProduct);
     }
   }
 
@@ -240,7 +264,12 @@ export class HomePage {
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "hidde";
       this.renderer.addClass(document.body, 'bodyBlock');
+      console.log("Entro");
+      this.getAllProducts();
+      this.setAllProducts();
     }else{
+
+
       this.dataSearch.classSearch = "hidde";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "header";
@@ -253,6 +282,14 @@ export class HomePage {
   setDataHome(data : any){
     this.dataHome = data;
   }
+  async setAllProducts(){
+    this.dataSearch.dataCardProduct = await this.diversProduct;
+  }
+  async addAllProducts(value : any){
+    await this.diversProduct?.push(value);
+  }
+
+
 //----------------------services get
   getCategories(){
     this.productServices.getCategories().subscribe((category) => {
@@ -308,4 +345,33 @@ export class HomePage {
       this.setDataSlider(arrayData);
     });
   }
+
+  getAllProducts(){
+    this.productServices.getCategories().subscribe((category) => {
+      const arrayData : any = [];
+      category.map((value : any) =>{
+        const data = {
+          marc: value.name
+        }
+        arrayData.push(data);
+      });
+      arrayData.map((value : any) =>{
+        const allProduct: any = [];
+        this.productServices.getProducts(value.marc).subscribe((product =>{
+          product.map((value:any)=>{
+            const data =  {
+              id: value.id,
+              urlImgPrincipalProduct : value?.urlImg,
+              textTitle : value?.name,
+              textDescription :value?.description,
+              textValue : value?.value,
+              clickProduct :()=>{this.redirectProducts(value?.id,value?.type)}
+            }
+            this.addAllProducts(data)
+          });
+        }));
+      })
+    });
+  }
+
 }

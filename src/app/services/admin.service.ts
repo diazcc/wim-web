@@ -6,6 +6,7 @@ import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storag
 import { Firestore, collectionData, docData } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { Auth, authState, EmailAuthCredential, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { signOut } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +37,7 @@ export class AdminService {
   }
 
 
-
+  logOut(){
+    return signOut(this.auth);
+  }
 }

@@ -8,6 +8,7 @@ import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storag
 import { NavigationExtras, Router } from '@angular/router';
 import { ProductServicesService } from 'src/app/services/product-services.service';
 import { SearchOrganism } from 'src/app/components/organisms/search/search.organism';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-adm-home',
@@ -23,7 +24,7 @@ export class AdmHomePage {
   dataMenu  = {
     classMenu : "close",
     closeMenu : ()=>{ this.closeMenu()},
-    closeSesion :()=>{}
+    closeSesion :()=>{this.adminService.logOut();}
   }
   formulario: FormGroup;
   alertForm = "";
@@ -94,7 +95,8 @@ export class AdmHomePage {
     private router : Router,
     private firestore: Firestore,
     private storage : Storage,
-    private productService : ProductServicesService
+    private productService : ProductServicesService,
+    private adminService : AdminService
    ){
     this.formulario = new FormGroup({
       descriptionPresentation : new FormControl(),
@@ -110,6 +112,7 @@ export class AdmHomePage {
 
   ngOnInit(){
     this.getAllProducts();
+    this.setDataMenu();
   }
 
   onSubmit(){
@@ -128,6 +131,19 @@ export class AdmHomePage {
     console.log(this.fileDoc);
     console.log(this.formulario.value)
 
+  }
+
+  setDataMenu(){
+    this.dataMenu  = {
+      classMenu : "close",
+      closeMenu : ()=>{ this.closeMenu()},
+      closeSesion :()=>{this.adminService.logOut()
+        .then(()=>{
+          this.router.navigate(['/login']);
+        })
+        .catch(error=>{console.log(error)})
+      }
+    }
   }
   setFile(){
     if (this.fileDoc!= undefined) {

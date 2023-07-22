@@ -4,6 +4,7 @@ import { Firestore } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { ProductServicesService } from 'src/app/services/product-services.service';
+import { AdminService } from 'src/app/services/admin.service';
 @Component({
   selector: 'app-modify-category',
   templateUrl: './modify-category.page.html',
@@ -84,7 +85,8 @@ export class ModifyCategoryPage {
     private renderer : Renderer2,
     private storage : Storage,
     private router : Router,
-    private productServices : ProductServicesService
+    private productServices : ProductServicesService,
+    private adminService : AdminService
 
    ){
     this.formulario = new FormGroup({
@@ -96,6 +98,7 @@ export class ModifyCategoryPage {
 
    ngOnInit(){
     this.getDataCategories()
+    this.setDataMenu();
    }
    showMenu(){
     console.log("mmene");
@@ -144,6 +147,18 @@ export class ModifyCategoryPage {
     this.urlImage = await url;
     console.log(this.urlImage);
     this.validate();
+  }
+  setDataMenu(){
+    this.dataMenu  = {
+      classMenu : "close",
+      closeMenu : ()=>{ this.closeMenu()},
+      closeSesion :()=>{this.adminService.logOut()
+        .then(()=>{
+          this.router.navigate(['/login']);
+        })
+        .catch(error=>{console.log(error)})
+      }
+    }
   }
   setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
@@ -225,6 +240,22 @@ export class ModifyCategoryPage {
   setDataCategorySelect(data : any ){
     this.dataCategory = data;
     console.log(this.dataCategory);
+  }
+
+  deleteCategory(){
+    console.log(this.selectedOption);
+    let modifyCategory : any;
+    let id : any = "";
+    if (this.selectedOption != "") {
+      this.dataCategory.map((value:any)=>{
+        if (value.name == this.formulario.value.name) {
+          id = value.id;
+          this.productServices.deleteCategory(id);
+        }
+      });
+    }else{
+      console.log("Vacio");
+    }
   }
 
 }

@@ -6,6 +6,8 @@ import { collection, onSnapshot, query, where , DocumentSnapshot, addDoc } from 
 import { Firestore } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
 import { Router } from '@angular/router';
+import { AdminRoutingModule } from '../adminitration/admin-routing.module';
+import { AdminService } from 'src/app/services/admin.service';
 
 
 @Component({
@@ -78,7 +80,8 @@ export class NewCategoryPage {
     private renderer : Renderer2,
     private firestore: Firestore,
     private storage : Storage,
-    private router : Router
+    private router : Router,
+    private adminService : AdminService
 
    ){
     this.formulario = new FormGroup({
@@ -88,6 +91,7 @@ export class NewCategoryPage {
    }
 
    ngOnInit(){
+    this.setDataMenu();
    }
    showMenu(){
     console.log("mmene");
@@ -131,7 +135,18 @@ export class NewCategoryPage {
       console.log(false)
     }
   }
-
+  setDataMenu(){
+    this.dataMenu  = {
+      classMenu : "close",
+      closeMenu : ()=>{ this.closeMenu()},
+      closeSesion :()=>{this.adminService.logOut()
+        .then(()=>{
+          this.router.navigate(['/login']);
+        })
+        .catch(error=>{console.log(error)})
+      }
+    }
+  }
   setNewCategory(url : any){
     const productRef = collection(this.firestore,'category');
     this.formulario.value.urlImg = url;

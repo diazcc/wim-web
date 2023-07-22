@@ -7,6 +7,7 @@ import { Firestore } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { ProductServicesService } from 'src/app/services/product-services.service';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-adm-product',
@@ -87,7 +88,8 @@ export class AdmProductPage {
     private firestore: Firestore,
     private storage : Storage,
     private router : Router,
-    private productServices : ProductServicesService
+    private productServices : ProductServicesService,
+    private adminService : AdminService
    ){
     this.formulario = new FormGroup({
       name : new FormControl(),
@@ -120,6 +122,18 @@ export class AdmProductPage {
     this.dataMenu.classMenu = "close"
   }
 
+  setDataMenu(){
+    this.dataMenu  = {
+      classMenu : "close",
+      closeMenu : ()=>{ this.closeMenu()},
+      closeSesion :()=>{this.adminService.logOut()
+        .then(()=>{
+          this.router.navigate(['/login']);
+        })
+        .catch(error=>{console.log(error)})
+      }
+    }
+  }
   getProduct(){
     this.productServices.getProduct(this.idProducNavigate,this.idTypeNavigate).subscribe((product:any)=>{
       console.log(product);

@@ -1,5 +1,4 @@
 *{
-  color: black;
   font-family: Helvetica;
 }
 .newProduct{
@@ -29,6 +28,7 @@
   flex-direction: column;
   position: relative;
 
+
   select, option{
     color: black;
     font-size: 1.5rem;
@@ -53,8 +53,12 @@
       }
     }
     h1{
+    color: black;
       width: 100%;
       text-align: center;
+    }
+    p{
+      color: black;
     }
     .alert{
       display: flex;

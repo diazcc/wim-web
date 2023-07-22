@@ -109,6 +109,10 @@ export class ProductServicesService {
       console.error('Error al eliminar la colección:', error);
     }
   }
+  deleteCategory(id : any){
+    const catRef : any =  doc(this.firestore, `category`, id);
+    deleteDoc(catRef);
+  }
 
 
 

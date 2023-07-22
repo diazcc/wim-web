@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Input,Renderer2, ChangeDetectorRef  } from '@angular/core';
+import { Component, ElementRef, HostListener, Input,Renderer2, ChangeDetectorRef, Output, EventEmitter  } from '@angular/core';
 import { ProductServicesService } from 'src/app/services/product-services.service';
 import { map } from 'rxjs';
 import { collection, onSnapshot, DocumentSnapshot, doc } from 'firebase/firestore';
@@ -12,6 +12,7 @@ import { NavigationExtras, Router } from '@angular/router';
   styleUrls: ['./product.template.scss']
 })
 export class ProductTemplate {
+  @Output() textInputModel  = new EventEmitter<string>();
   previousScrollPosition = 0;
   @Input() classMain = "";
   @Input() dataSearch = {
@@ -111,7 +112,9 @@ export class ProductTemplate {
     }
 
 
-
+    detectChange($event : any){
+      this.textInputModel.emit($event);
+    }
 
 
 }

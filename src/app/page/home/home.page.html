@@ -1,1 +1,11 @@
-<app-home-template [dataSlider]="dataSlider" [dataCategory]="dataCategory" [dataMain]="dataMain" [dataSearch]="dataSearch"   [dataPresentation]="dataPresentation" [dataFooter]="dataHome.dataFooter"  [dataHeader]="dataHeader" [dataArticlePresentation]="dataHome.dataArticlePresentation" ></app-home-template>
+<app-home-template
+ (textInputModel)="detectChange($event)"
+  [dataSlider]="dataSlider"
+  [dataCategory]="dataCategory"
+  [dataMain]="dataMain"
+  [dataSearch]="dataSearch"
+  [dataPresentation]="dataPresentation"
+  [dataFooter]="dataHome.dataFooter"
+  [dataHeader]="dataHeader"
+  [dataArticlePresentation]="dataHome.dataArticlePresentation"
+></app-home-template>

@@ -1,1 +1,9 @@
-<app-product-template [dataFooter]="dataFooter" [classMain]="classMain" [dataSearch]="dataSearch" [dataHeader]="dataHeader" [dataViewProduct]="dataViewProduct" [dataCardProduct]="dataCardProduct"></app-product-template>
+<app-product-template
+(textInputModel)="detectChange($event)"
+[dataFooter]="dataFooter"
+[classMain]="classMain"
+[dataSearch]="dataSearch"
+[dataHeader]="dataHeader"
+[dataViewProduct]="dataViewProduct"
+[dataCardProduct]="dataCardProduct"
+></app-product-template>

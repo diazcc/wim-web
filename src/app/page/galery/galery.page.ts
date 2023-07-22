@@ -106,6 +106,7 @@ export class GaleryPage {
     this.validateRefData();
     this.getFooter();
     this.getCategories();
+    this.renderer.removeClass(document.body, 'bodyBlock');
   }
 
   ngOnChanges(){

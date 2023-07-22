@@ -1,11 +1,11 @@
 <div class="wrapper">
   <form [class]="'form form--' + classForm" [formGroup]="formulario" (ngSubmit)="onSubmit()">
     <h1>INFINITY INDUSTRY</h1>
-    <h2>Login</h2>
+    <h2>Iniciar sesion</h2>
     <p class="alertForm">{{alertForm}}</p>
-    <label for="userName">User name</label>
+    <label for="userName">Correo</label>
     <input type="text" formControlName="name">
-    <label for="password">Password</label>
+    <label for="password">Contraseña</label>
     <input type="password" formControlName="password">
     <input type="submit" value="Iniciar Sesion" class="buttonSubmit">
   </form>

@@ -13,6 +13,8 @@ import { NavigationExtras, Router } from '@angular/router';
   styleUrls: ['./product.page.scss']
 })
 export class ProductPage {
+  diversProduct : any = [];
+  textSearch : any = "";
   @Input() classMain = "";
   @Input() idProductState : any;
   @Input() idProduct : any;
@@ -104,12 +106,18 @@ export class ProductPage {
     this.getProducts();
     this.getDataFooter();
     this.setProduct();
-
+    this.renderer.removeClass(document.body, 'bodyBlock');
   }
 
   redirecWhatsapp(product : any, description :any, value : any){
     const url = "https://wa.me/+573146724568?text=Hola,%20estoy%20interesado%20en%20"+product+" "+description+" que tiene un valor de: $"+value;
     window.location.href = url;
+  }
+  async setAllProducts(){
+    this.dataSearch.dataCardProduct = await this.diversProduct;
+  }
+  async addAllProducts(value : any){
+    await this.diversProduct?.push(value);
   }
 
   async setProduct(){
@@ -144,8 +152,8 @@ export class ProductPage {
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "hidde";
       this.renderer.addClass(document.body, 'bodyBlock');
-
-
+      this.getAllProducts();
+      this.setAllProducts();
     }else{
       this.dataSearch.classSearch = "hidde";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
@@ -158,6 +166,8 @@ export class ProductPage {
       this.dataSearch.classSearch = "hidde";
       this.dataHeader.classHeader = "header";
       this.renderer.removeClass(document.body, 'bodyBlock');
+      this.diversProduct.splice(0,this.diversProduct.length);
+      this.dataSearch.dataCardProduct.splice(0,this.dataSearch.dataCardProduct.length)
 
     }else{
       this.dataSearch.classSearch = "search";
@@ -191,6 +201,54 @@ export class ProductPage {
     }, 400);
 
   }
+
+  detectChange($event : any){
+    this.textSearch = $event;
+    console.log($event);
+    this.searchProduct();
+  }
+  searchProduct(){
+    if (!this.textSearch) {
+      this.dataSearch.dataCardProduct = this.diversProduct;
+      console.log("Se setea");
+      console.log("Se muestra todos los productos");
+    } else {
+      this.dataSearch.dataCardProduct = this.dataSearch.dataCardProduct.filter((z:any) =>{
+        return z.textTitle.toLowerCase().includes(this.textSearch.toLowerCase())
+      });
+      console.log("Se setea");
+      console.log(this.dataSearch.dataCardProduct);
+    }
+  }
+
+  getAllProducts(){
+    this.productServices.getCategories().subscribe((category) => {
+      const arrayData : any = [];
+      category.map((value : any) =>{
+        const data = {
+          marc: value.name
+        }
+        arrayData.push(data);
+      });
+      arrayData.map((value : any) =>{
+        const allProduct: any = [];
+        this.productServices.getProducts(value.marc).subscribe((product =>{
+          product.map((value:any)=>{
+            const data =  {
+              id: value.id,
+              urlImgPrincipalProduct : value?.urlImg,
+              textTitle : value?.name,
+              textDescription :value?.description,
+              textValue : value?.value,
+              clickProduct :()=>{this.redirectProducts(value?.id)}
+            }
+            this.addAllProducts(data)
+          });
+        }));
+      })
+    });
+  }
+
   getProducts(){
     const prodRef = collection(this.firestore,this.category);
     const prod = onSnapshot(prodRef, (snap)=>{

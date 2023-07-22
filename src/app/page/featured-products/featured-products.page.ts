@@ -4,6 +4,7 @@ import { Firestore } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { ProductServicesService } from 'src/app/services/product-services.service';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-featured-products',
@@ -91,7 +92,8 @@ export class FeaturedProductsPage {
     private renderer : Renderer2,
     private storage : Storage,
     private router : Router,
-    private productServices : ProductServicesService
+    private productServices : ProductServicesService,
+    private adminService : AdminService
 
    ){}
 
@@ -101,6 +103,7 @@ export class FeaturedProductsPage {
     this.getProducts();
     this.getFeaturedProducts();
     this.getAllProducts();
+    this.setDataMenu();
    }
    showMenu(){
     console.log("mmene");
@@ -118,6 +121,18 @@ export class FeaturedProductsPage {
 
   setProducts(){
     this.dataProducts = this.diversProduct;
+  }
+  setDataMenu(){
+    this.dataMenu  = {
+      classMenu : "close",
+      closeMenu : ()=>{ this.closeMenu()},
+      closeSesion :()=>{this.adminService.logOut()
+        .then(()=>{
+          this.router.navigate(['/login']);
+        })
+        .catch(error=>{console.log(error)})
+      }
+    }
   }
 
   save(){

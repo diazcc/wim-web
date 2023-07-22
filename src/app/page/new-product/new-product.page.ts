@@ -5,6 +5,8 @@ import { NgForm } from '@angular/forms';
 import { collection, onSnapshot, query, where , DocumentSnapshot, addDoc } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
+import { AdminService } from 'src/app/services/admin.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -87,7 +89,9 @@ fileImg  :any;
    constructor(
     private renderer : Renderer2,
     private firestore: Firestore,
-    private storage : Storage
+    private storage : Storage,
+    private adminService : AdminService,
+    private router : Router
 
    ){
     this.formulario = new FormGroup({
@@ -102,7 +106,7 @@ fileImg  :any;
 
    ngOnInit(){
     this.getCategories();
-
+    this.setDataMenu();
    }
 
   showMenu(){
@@ -112,6 +116,18 @@ fileImg  :any;
   closeMenu(){
     console.log("cerrrar");
     this.dataMenu.classMenu = "close"
+  }
+  setDataMenu(){
+    this.dataMenu  = {
+      classMenu : "close",
+      closeMenu : ()=>{ this.closeMenu()},
+      closeSesion :()=>{this.adminService.logOut()
+        .then(()=>{
+          this.router.navigate(['/login']);
+        })
+        .catch(error=>{console.log(error)})
+      }
+    }
   }
 
 

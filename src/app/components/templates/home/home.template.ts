@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Input,Renderer2 } from '@angular/core';
+import { Component,Output, ElementRef, HostListener, Input,Renderer2, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-home-template',
@@ -6,6 +6,7 @@ import { Component, ElementRef, HostListener, Input,Renderer2 } from '@angular/c
   styleUrls: ['./home.template.scss']
 })
 export class HomeTemplate {
+  @Output() textInputModel = new EventEmitter<string>();
   @Input() dataSlider = {
     classSlider : "",
     classDescription : "",
@@ -138,6 +139,10 @@ export class HomeTemplate {
       }
 
       this.previousScrollPosition = scrollPosition;
+    }
+
+    detectChange($event : any){
+      this.textInputModel.emit($event);
     }
 
 }

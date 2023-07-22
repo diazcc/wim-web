@@ -1,6 +1,6 @@
 
 <div class="wrapper">
-  <app-search [dataSearch]="dataSearch"></app-search>
+  <app-search [dataSearch]="dataSearch" (textInputModel)="detectChange($event)"></app-search>
   <app-header [dataHeader]="dataHeader"></app-header>
   <!-- <div class="iconMarket">
     <img src="/assets/icons/market.svg" alt="">

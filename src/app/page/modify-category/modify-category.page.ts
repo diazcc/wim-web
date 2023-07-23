@@ -11,9 +11,9 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./modify-category.page.scss']
 })
 export class ModifyCategoryPage {
+
+  validateState : boolean = false;
   selectedOption : any = "";
-
-
   dataMenu  = {
     classMenu : "close",
     closeMenu : ()=>{ this.closeMenu()},
@@ -109,7 +109,7 @@ export class ModifyCategoryPage {
     this.dataMenu.classMenu = "close"
   }
 
-   uploadImage($event: any) {
+  uploadImage($event: any) {
     this.fileImg = $event.target.files[0];
     console.log(this.fileImg);
     console.log(this.formulario.get('category')?.value);
@@ -125,6 +125,8 @@ export class ModifyCategoryPage {
       text : "Se ha guardado correctamente los cambios"
     }
   }
+
+
   setImg(){
     if (this.fileImg!= undefined) {
       const filePath = this.fileImg.name;
@@ -166,8 +168,6 @@ export class ModifyCategoryPage {
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "hidde";
       this.renderer.addClass(document.body, 'bodyBlock');
-
-
     }else{
       this.dataSearch.classSearch = "hidde";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
@@ -180,11 +180,9 @@ export class ModifyCategoryPage {
       this.dataSearch.classSearch = "hidde";
       this.dataHeader.classHeader = "header";
       this.renderer.removeClass(document.body, 'bodyBlock');
-
     }else{
       this.dataSearch.classSearch = "search";
       this.renderer.addClass(document.body, 'bodyBlock');
-
     }
   }
   redirectNewProduct(){
@@ -192,7 +190,7 @@ export class ModifyCategoryPage {
   }
 
 
-  //_-------get
+  //-------get
 
   validate(){
     console.log(this.selectedOption);

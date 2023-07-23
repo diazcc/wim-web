@@ -5,27 +5,35 @@
 </div>
 <div class="wrapper">
   <app-header [dataHeader]="dataHeader"></app-header>
+  <div class="validate" *ngIf="validateStateView">
+    <h1>{{textStateView}}</h1>
+  </div>
+  <div *ngIf="validateState" class="alertComent">
+    <h2>{{textAlert}}</h2>
+  </div>
   <main class="main">
     <h1>Datos del producto</h1>
-    <p>Aqui se editara los datos de la pagina principal</p>
-    <form class="form" (ngSubmit)="onSubmit()"  [formGroup]="formulario">
+    <p>Aqui se editara los datos de la pagina principal: Si no se edita alguno de los campos se queda los valores o foto anterior</p>
+    <form class="form" [formGroup]="formulario">
       <p class="alertForm"></p>
       <label for="name">Nombre*</label>
-      <input type="text" formControlName="name" class="text" [placeholder]="product.name">
+      <input type="text" formControlName="name" class="text" [value]="product.name">
       <label for="description">Descripcion*</label>
-      <input type="text" formControlName="description" class="text" [placeholder]="product.description">
+      <input type="text" formControlName="description" class="text" [value]="product.description">
       <label for="value">Precio*</label>
-      <input type="text" formControlName="value" class="text" [placeholder]="product.value">
-      <select name="category" id="category" formControlName="type" (change)="getCategorySelect($event)">
+      <input type="text" formControlName="value" class="text" [value]="product.value">
+      <!-- <select name="category" id="category" formControlName="type" (change)="getCategorySelect($event)">
         <option value="" selected disabled>Todo</option>
         <option [value]="value.name" *ngFor="let value of dataCategory">{{value.name}}</option>
-      </select>
+      </select> -->
+      <label for="marc">Categoria* no se puede cambiar</label>
+      <input type="text" formControlName="type" class="text disable" [value]="product.type" >
       <label for="marc">Marca*</label>
-      <input type="text" formControlName="marc" class="text" [placeholder]="product.name">
+      <input type="text" formControlName="marc" class="text" [value]="product.marc">
       <label for="documentMedia">Imagen*</label>
       <input type="file" formControlName="urlImg" (change)="uploadImage($event)" class="file" required>
-      <input type="submit" value="Borrar producto" class="delete">
-      <input type="submit" value="Guardar" class="save">
+      <input type="submit" value="Borrar producto" class="delete" (click)="deleteProduct();">
+      <input type="submit" value="Guardar" class="save" (click)="onSubmit()">
     </form>
   </main>
 </div>

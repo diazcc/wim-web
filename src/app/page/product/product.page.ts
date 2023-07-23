@@ -240,7 +240,10 @@ export class ProductPage {
               textTitle : value?.name,
               textDescription :value?.description,
               textValue : value?.value,
-              clickProduct :()=>{this.redirectProducts(value?.id)}
+              clickProduct :()=>{
+                this.redirectProducts(value?.id);
+                this.closeSearch();
+              }
             }
             this.addAllProducts(data)
           });
@@ -248,6 +251,7 @@ export class ProductPage {
       })
     });
   }
+
 
   getProducts(){
     const prodRef = collection(this.firestore,this.category);

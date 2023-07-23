@@ -15,6 +15,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-product.page.scss']
 })
 export class NewProductPage {
+  validateState :  boolean = false;
+  textAlert : string = "";
   dataMenu  = {
     classMenu : "close",
     closeMenu : ()=>{ this.closeMenu()},
@@ -172,11 +174,33 @@ fileImg  :any;
   }
 
   onSubmit(){
-    this.setImg();
-    console.log(this.urlImage);
-    this.getUrlImg();
 
     console.log(this.formulario.value);
+    console.log(this.formulario.valid);
+    if (this.validate()) {
+      this.setImg();
+      console.log(this.urlImage);
+      this.getUrlImg();
+    }
+  }
+
+  validate(): boolean{
+    let formValid = true;
+    Object.keys(this.formulario.controls).forEach(key => {
+      const control = this.formulario.controls[key];
+      if (control.value === null || control.value.trim() === '') {
+        formValid = false;
+      }
+    });
+    if (formValid) {
+      this.validateState = false;
+      console.log('Todos los campos tienen datos. Puedes continuar con la lógica.');
+    } else {
+      console.log('Al menos uno de los campos está vacío.');
+        this.textAlert = "No se ha completado todos los campos";
+        this.validateState = true;
+    }
+    return formValid;
   }
 
   setImg(){

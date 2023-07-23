@@ -5,6 +5,9 @@
   <main class="main">
     <h1>Nuevo producto</h1>
     <p>Revisa los datos correctamente antes de guardar</p>
+    <div *ngIf="validateState" class="alertComent">
+      <h2>{{textAlert}}</h2>
+    </div>
     <app-alert [dataAlert]="dataAlert"></app-alert>
     <form class="form" (ngSubmit)="onSubmit()"  [formGroup]="formulario">
       <p class="alertForm"></p>

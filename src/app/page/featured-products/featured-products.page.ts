@@ -12,6 +12,8 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./featured-products.page.scss']
 })
 export class FeaturedProductsPage {
+  validateState :  boolean = false;
+  textAlert : string = "";
   selectedOption : any = "";
   diversProduct : any = [];
   dataProductsSelected : any =[
@@ -136,12 +138,32 @@ export class FeaturedProductsPage {
   }
 
   save(){
-    console.log(this.dataProductsSelected);
-    console.log(this.diversProduct);
-    this.productServices.updateFeaturedProducts(this.dataProductsSelected);
-    this.dataAlert =  {
-      classAlert : "save",
-      text : "Se ha guardado correctamente los cambios"
+
+    if (this.validate()) {
+      console.log(this.dataProductsSelected);
+      console.log(this.diversProduct);
+      console.log("Se guarda");
+      this.productServices.updateFeaturedProducts(this.dataProductsSelected);
+      this.dataAlert =  {
+        classAlert : "save",
+        text : "Se ha guardado correctamente los cambios"
+      }
+    }else{
+      console.log(" no Se guarda");
+
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+
+  validate() : boolean{
+    if (this.dataProductsSelected.length < 3 ) {
+      this.textAlert = "Se debe añadir 3 productos";
+      this.validateState = true;
+      return false;
+    }else {
+      this.validateState = false;
+      return true;
     }
   }
   deleteProduct(index: number){
@@ -153,8 +175,16 @@ export class FeaturedProductsPage {
 
 
   addProduct(data : any){
-    console.log(data);
-    this.dataProductsSelected.push(data);
+    if (this.dataProductsSelected.length < 3 ) {
+      console.log(data);
+      this.dataProductsSelected.push(data);
+      this.validateState = false;
+      console.log("se puede");
+    }else {
+      console.log("no se puede");
+      this.validateState = true;
+      this.textAlert = "Limite de productos alcanzado, elemina un producto para reemplazarlo";
+    }
   }
 
   setSearch(){

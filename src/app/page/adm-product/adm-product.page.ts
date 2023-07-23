@@ -2,7 +2,7 @@ import { Component, Input, Renderer2 } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
-import { collection, onSnapshot, query, where , DocumentSnapshot, addDoc } from 'firebase/firestore';
+import { collection, onSnapshot, query, where , DocumentSnapshot, addDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
 import { Router } from '@angular/router';
@@ -15,6 +15,11 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./adm-product.page.scss']
 })
 export class AdmProductPage {
+  textAlert : string = "";
+  textStateView : string = "";
+  validateStateView : boolean = false;
+  validateState : boolean = false;
+  stateView : boolean = false;
   @Input() idProductStateNav : any;
   @Input() idProducNavigate : any;
 
@@ -107,13 +112,46 @@ export class AdmProductPage {
     console.log(this.idTypeNavigate);
     this.renderer.removeClass(document.body, 'bodyBlock');
 
-   }
+  }
 
-   ngOnInit(){
-    this.getCategories();
-    this.getProduct();
-   }
-   showMenu(){
+  ngOnInit(){
+     if (this.validateEntry()) {
+       this.getCategories();
+       this.getProduct();
+       this.validateStateView = false;
+      } else {
+        this.validateStateView = true;
+        this.textStateView= "Escoge un producto en el buscador para poder acceder.";
+      }
+  }
+
+
+  validateEntry() : boolean{
+      if (this.idProducNavigate != undefined) {
+        return true;
+      } else {
+        return false;
+      }
+  }
+  validate(): boolean{
+    let formValid = true;
+    Object.keys(this.formulario.controls).forEach(key => {
+      const control = this.formulario.controls[key];
+      if (control.value === null || control.value.trim() === '') {
+        formValid = false;
+      }
+    });
+    if (formValid) {
+      this.validateState = false;
+      console.log('Todos los campos tienen datos. Puedes continuar con la lógica.');
+    } else {
+      console.log('Al menos uno de los campos está vacío.');
+        this.textAlert = "No se ha completado todos los campos";
+        this.validateState = true;
+    }
+    return formValid;
+  }
+  showMenu(){
     console.log("mmene");
     this.dataMenu.classMenu = ""
   }
@@ -152,6 +190,7 @@ export class AdmProductPage {
 
   setProduct(data :any){
     this.product = data;
+    this.setPredeterminadeForm();
     console.log(this.product);
   }
 
@@ -195,11 +234,18 @@ export class AdmProductPage {
   }
 
   onSubmit(){
-    this.setImg();
-    console.log(this.urlImage);
-    this.getUrlImg();
 
+    this.setImg();
     console.log(this.formulario.value);
+    console.log(this.formulario.valid);
+    console.log(this.formulario.value.urlImg);
+  }
+  deleteProduct(){
+    const refProduct =doc(this.firestore,this.product.type, this.product.id);
+    deleteDoc(refProduct);
+    console.log("Hola");
+    this.validateStateView = true;
+    this.textStateView = "Producto eliminado! Cambia de vista"
   }
 
   setImg(){
@@ -216,16 +262,34 @@ export class AdmProductPage {
       })
       .catch(error => console.log(error))
     }else{
-      console.log(false)
+      console.log(this.product.urlImg);
+      this.setUrlImg(this.product.urlImg);
     }
   }
 
-  setDataProduct(url : any){
-    const productRef = collection(this.firestore,this.categorySelect);
+  setPredeterminadeForm(){
+    console.log(this.product.urlImg);
+
+    this.formulario.patchValue({
+      name: this.product.name,
+      description: this.product.description,
+      value: this.product.value,
+      marc: this.product.marc
+    });
+    console.log(this.formulario.value);
+  }
+
+  async setDataProduct(url : any){
+    const categoryDoc = doc(this.firestore,this.product.type,this.product.id);
     this.formulario.value.urlImg = url;
-    this.formulario.value.type = this.categorySelect;
-    console.log(url);
-    return addDoc(productRef,this.formulario.value);
+    this.formulario.value.type = this.product.type;
+    console.log(this.formulario.value);
+    try {
+      await updateDoc(categoryDoc, this.formulario.value);
+      console.log('Documento actualizado exitosamente!');
+    } catch (error) {
+      console.error('Error al actualizar el documento:', error);
+    }
   }
 
   async setUrlImg(url : any){

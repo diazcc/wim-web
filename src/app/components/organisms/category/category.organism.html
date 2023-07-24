@@ -3,7 +3,7 @@
   <ng-container *ngFor="let data of dataCategory.data; let i = index;">
     <div class="cardCategory" (click)="data.redirect()">
       <div class="before">
-        <h1>{{data.name}}</h1>
+        <p>{{data.name}}</p>
       </div>
       <img [src]="data.urlImg" alt="" class="imgContent">
     </div>

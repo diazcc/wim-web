@@ -129,12 +129,12 @@ export class GaleryPage {
 
   setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
-      this.setDataSearch();
+      this.getAllProducts();
       this.dataSearch.classSearch = "search";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "hidde";
       this.renderer.addClass(document.body, 'bodyBlock');
-
+      this.setDataSearch();
 
     }else{
       this.dataSearch.classSearch = "hidde";
@@ -250,10 +250,13 @@ export class GaleryPage {
 
   validateRefData(){
     if (this.idNameCategory == " " ||this.idNameCategory ==undefined) {
+    console.log("enter");
       this.getAllProducts();
       this.setAllProducts();
     }else{
       this.getProducts(this.idNameCategory);
+    console.log("exit");
+
     }
   }
 

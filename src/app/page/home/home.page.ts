@@ -296,7 +296,7 @@ export class HomePage {
       const arrayData : any = [];
       category.map((value : any) =>{
         const data = {
-          name: value.name,
+          name: value.name.toUpperCase(),
           urlImg : value.urlImg,
           redirect : () => {this.redirectCategoryProducts(value.name)}
         }

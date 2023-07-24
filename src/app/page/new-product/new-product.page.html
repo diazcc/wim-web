@@ -19,7 +19,7 @@
       <input type="text" formControlName="value" class="text">
       <label for="select">Categoria*</label>
       <select name="category" id="category" formControlName="type" (change)="getCategorySelect($event)">
-        <option value="Todo" selected disabled>Todo</option>
+        <option value="Todo" selected >Seleccionar</option>
         <option [value]="value.name" *ngFor="let value of dataCategory">{{value.name}}</option>
       </select>
       <label for="marc">Marca*</label>

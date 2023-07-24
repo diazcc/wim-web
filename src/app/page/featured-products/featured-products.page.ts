@@ -121,6 +121,7 @@ export class FeaturedProductsPage {
     this.dataProductsSelected = data;
   }
 
+
   setProducts(){
     this.dataProducts = this.diversProduct;
   }
@@ -188,19 +189,19 @@ export class FeaturedProductsPage {
   }
 
   setSearch(){
-    if (this.dataSearch.classSearch == "hidde") {
-      this.dataSearch.classSearch = "search";
-      this.dataSearch.closeSearch = () =>{this.closeSearch()}
-      this.dataHeader.classHeader = "hidde";
-      this.renderer.addClass(document.body, 'bodyBlock');
+    // if (this.dataSearch.classSearch == "hidde") {
+    //   this.dataSearch.classSearch = "search";
+    //   this.dataSearch.closeSearch = () =>{this.closeSearch()}
+    //   this.dataHeader.classHeader = "hidde";
+    //   this.renderer.addClass(document.body, 'bodyBlock');
 
 
-    }else{
-      this.dataSearch.classSearch = "hidde";
-      this.dataSearch.closeSearch = () =>{this.closeSearch()}
-      this.dataHeader.classHeader = "header";
-      this.renderer.removeClass(document.body, 'bodyBlock');
-    }
+    // }else{
+    //   this.dataSearch.classSearch = "hidde";
+    //   this.dataSearch.closeSearch = () =>{this.closeSearch()}
+    //   this.dataHeader.classHeader = "header";
+    //   this.renderer.removeClass(document.body, 'bodyBlock');
+    // }
   }
 
   getProducts(){

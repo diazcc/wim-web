@@ -83,8 +83,7 @@ export class AdmHomePage {
     linkWhatsapp :" ",
     linkInstagram :"",
     linkFacebook : "",
-    fileTC : "",
-    urlImg : ""
+    fileTC : ""
   }
   dataAlert = {
     classAlert : "hidden",
@@ -104,8 +103,7 @@ export class AdmHomePage {
       linkWhatsapp : new FormControl(),
       linkInstagram : new FormControl(),
       linkFacebook : new FormControl(),
-      fileTC : new FormControl(),
-      urlImg : new FormControl()
+      fileTC : new FormControl()
     })
 
   }
@@ -116,14 +114,12 @@ export class AdmHomePage {
   }
 
   onSubmit(){
-    this.setFile();
+    if (this.validate()) {
+        this.setFile();
+    }
     console.log("Se guardo");
     console.log(this.formulario.value);
-    //
-    this.dataAlert =  {
-      classAlert : "save",
-      text : "Se ha guardado correctamente los cambios"
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   getFileChanged($event: any){
@@ -154,6 +150,10 @@ export class AdmHomePage {
       });
     }else{
       console.log(false)
+      this.dataAlert ={
+        classAlert : "error",
+        text : "No se ha seleccionado el documento"
+      }
     }
   }
   setUrlFile(url : any){
@@ -177,12 +177,16 @@ export class AdmHomePage {
       linkInstagram : this.formulario.get('linkInstagram')?.value,
       linkFacebook : this.formulario.get('linkFacebook')?.value,
       fileTC : urlFile,
-      urlImg : this.formulario.get('urlImg')?.value
+      whatsApp : this.formulario.get('linkWhatsapp')?.value
     }
     console.log(data);
     try {
       await updateDoc(docRef, data);
       console.log('Documento actualizado correctamente');
+      this.dataAlert =  {
+        classAlert : "save",
+        text : "Se ha guardado correctamente los cambios"
+      }
     this.formulario.reset();
     } catch (error) {
       console.error('Error al actualizar el documento:', error);
@@ -228,6 +232,25 @@ export class AdmHomePage {
   redirectNewProduct(){
     this.router.navigate(['/newProduct']);
   }
+  validate(): boolean{
+    let formValid = true;
+    Object.keys(this.formulario.controls).forEach(key => {
+      const control = this.formulario.controls[key];
+      if (control.value === null) {
+        formValid = false;
+      }
+    });
+    if (formValid) {
+      console.log('Todos los campos tienen datos. Puedes continuar con la lógica.');
+    } else {
+      console.log('Al menos uno de los campos está vacío.');
+      this.dataAlert =  {
+        classAlert : "error",
+        text : "Uno o dos campos estan vacios"
+      }
+    }
+    return formValid;
+  }
 
   //FUNCIONES GET Y SET
 
@@ -239,8 +262,7 @@ export class AdmHomePage {
       linkWhatsapp :" ",
       linkInstagram :"",
       linkFacebook : "",
-      fileTC : "",
-      urlImg : ""
+      fileTC : ""
     }
   }
 
@@ -282,6 +304,21 @@ export class AdmHomePage {
     console.log("Se setea");
     console.log(this.diversProduct);
   }
+
+  searchProduct(){
+    if (!this.textSearch) {
+      // this.zapatillas = this.zapatillasService.getZapatillas();
+      this.dataSearch.dataCardProduct = this.diversProduct;
+      console.log("Se setea");
+      console.log("Se muestra todos los productos");
+    } else {
+      this.dataSearch.dataCardProduct = this.dataSearch.dataCardProduct.filter((z:any) =>{
+        return z.textTitle.toLowerCase().includes(this.textSearch.toLowerCase())
+      });
+      console.log("Se setea");
+      console.log(this.dataSearch.dataCardProduct);
+    }
+  }
   redirectUpdateProduct(id : any, type : any){
     const data : NavigationExtras = {
       state : {
@@ -299,19 +336,6 @@ export class AdmHomePage {
     this.searchProduct();
   }
 
-  searchProduct(){
-    if (!this.textSearch) {
-      // this.zapatillas = this.zapatillasService.getZapatillas();
-      this.dataSearch.dataCardProduct = this.diversProduct;
-      console.log("Se setea");
-      console.log("Se muestra todos los productos");
-    } else {
-      this.dataSearch.dataCardProduct = this.dataSearch.dataCardProduct.filter((z:any) =>{
-        return z.textTitle.toLowerCase().includes(this.textSearch.toLowerCase())
-      });
-      console.log("Se setea");
-      console.log(this.dataSearch.dataCardProduct);
-    }
-  }
+
 
 }

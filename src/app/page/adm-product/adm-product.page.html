@@ -8,12 +8,11 @@
   <div class="validate" *ngIf="validateStateView">
     <h1>{{textStateView}}</h1>
   </div>
-  <div *ngIf="validateState" class="alertComent">
-    <h2>{{textAlert}}</h2>
-  </div>
+
   <main class="main">
     <h1>Datos del producto</h1>
     <p>Aqui se editara los datos de la pagina principal: Si no se edita alguno de los campos se queda los valores o foto anterior</p>
+    <app-alert class="alert" [dataAlert]="dataAlert"></app-alert>
     <form class="form" [formGroup]="formulario">
       <p class="alertForm"></p>
       <label for="name">Nombre*</label>
@@ -22,10 +21,6 @@
       <input type="text" formControlName="description" class="text" [value]="product.description">
       <label for="value">Precio*</label>
       <input type="text" formControlName="value" class="text" [value]="product.value">
-      <!-- <select name="category" id="category" formControlName="type" (change)="getCategorySelect($event)">
-        <option value="" selected disabled>Todo</option>
-        <option [value]="value.name" *ngFor="let value of dataCategory">{{value.name}}</option>
-      </select> -->
       <label for="marc">Categoria* no se puede cambiar</label>
       <input type="text" formControlName="type" class="text disable" [value]="product.type" >
       <label for="marc">Marca*</label>

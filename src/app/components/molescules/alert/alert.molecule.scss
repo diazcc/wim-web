@@ -40,5 +40,12 @@
     visibility: hidden;
     display: none;
   }
+  &--error{
+    background-color: rgb(128, 0, 0);
+    padding: 1rem;
+    border-radius: 1rem;
+    color: white;
+    animation: desaparecer 3s forwards;
+  }
 }
 

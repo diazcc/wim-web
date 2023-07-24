@@ -6,7 +6,8 @@ import { collection, onSnapshot, query, where , DocumentSnapshot, addDoc } from 
 import { Firestore } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
 import { AdminService } from 'src/app/services/admin.service';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
+import { ProductServicesService } from 'src/app/services/product-services.service';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-product.page.scss']
 })
 export class NewProductPage {
+  diversProduct : any = [];
   validateState :  boolean = false;
   textAlert : string = "";
   dataMenu  = {
@@ -93,7 +95,8 @@ fileImg  :any;
     private firestore: Firestore,
     private storage : Storage,
     private adminService : AdminService,
-    private router : Router
+    private router : Router,
+    private productService : ProductServicesService
 
    ){
     this.formulario = new FormGroup({
@@ -110,6 +113,7 @@ fileImg  :any;
     this.getCategories();
     this.setDataMenu();
    }
+
 
   showMenu(){
     console.log("mmene");
@@ -132,7 +136,53 @@ fileImg  :any;
     }
   }
 
-
+  getAllProducts(){
+    this.productService.getCategories().subscribe((category) => {
+      const arrayData : any = [];
+      category.map((value : any) =>{
+        const data = {
+          marc: value.name
+        }
+        arrayData.push(data);
+      });
+      arrayData.map((value : any) =>{
+        const allProduct: any = [];
+        this.productService.getProducts(value.marc).subscribe((product =>{
+          product.map((value:any)=>{
+            const data =  {
+              id: value.id,
+              urlImgPrincipalProduct : value?.urlImg,
+              textTitle : value?.name,
+              textDescription :value?.description,
+              textValue : value.value,
+              clickProduct : () =>{
+                this.redirectUpdateProduct(value.id, value.type);
+              }
+            }
+            this.addAllProducts(data)
+          });
+        }));
+      })
+    });
+  }
+  async addAllProducts(value : any){
+    await this.diversProduct?.push(value);
+  }
+  redirectUpdateProduct(id : any, type : any){
+    const data : NavigationExtras = {
+      state : {
+        idProduct : id,
+        category : type
+      }
+    }
+    console.log(type);
+    this.router.navigate(['/admProduct'], data );
+  }
+  setDataProduct(){
+    this.dataSearch.dataCardProduct = this.diversProduct;
+    console.log("Se setea");
+    console.log(this.diversProduct);
+  }
    getCategorySelect($event : any){
     console.log($event.target.value);
     const selectedIndex = $event.target.selectedIndex;
@@ -197,8 +247,10 @@ fileImg  :any;
       console.log('Todos los campos tienen datos. Puedes continuar con la lógica.');
     } else {
       console.log('Al menos uno de los campos está vacío.');
-        this.textAlert = "No se ha completado todos los campos";
-        this.validateState = true;
+      this.dataAlert = {
+        classAlert : "error",
+        text : "Uno o varios campos estan vacios"
+      }
     }
     return formValid;
   }
@@ -221,7 +273,7 @@ fileImg  :any;
     }
   }
 
-  setDataProduct(url : any){
+  setProduct(url : any){
     const productRef = collection(this.firestore,this.categorySelect);
     this.formulario.value.urlImg = url;
     this.formulario.value.type = this.categorySelect;
@@ -236,7 +288,7 @@ fileImg  :any;
   async setUrlImg(url : any){
     this.urlImage = await url;
     console.log(this.urlImage);
-    this.setDataProduct(url);
+    this.setProduct(url);
   }
 
   async getUrlImg(){
@@ -251,11 +303,12 @@ fileImg  :any;
 
    setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
+      this.getAllProducts();
       this.dataSearch.classSearch = "search";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "hidde";
       this.renderer.addClass(document.body, 'bodyBlock');
-
+      this.setDataProduct();
 
     }else{
       this.dataSearch.classSearch = "hidde";
@@ -269,7 +322,7 @@ fileImg  :any;
       this.dataSearch.classSearch = "hidde";
       this.dataHeader.classHeader = "header";
       this.renderer.removeClass(document.body, 'bodyBlock');
-
+      this.dataSearch.dataCardProduct.splice(0,this.dataSearch.dataCardProduct.length);
     }else{
       this.dataSearch.classSearch = "search";
       this.renderer.addClass(document.body, 'bodyBlock');

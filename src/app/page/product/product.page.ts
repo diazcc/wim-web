@@ -13,6 +13,7 @@ import { NavigationExtras, Router } from '@angular/router';
   styleUrls: ['./product.page.scss']
 })
 export class ProductPage {
+  whatsApp : string = "";
   diversProduct : any = [];
   textSearch : any = "";
   @Input() classMain = "";
@@ -106,11 +107,19 @@ export class ProductPage {
     this.getProducts();
     this.getDataFooter();
     this.setProduct();
+    this.getWhatsapp();
     this.renderer.removeClass(document.body, 'bodyBlock');
+  }
+  getWhatsapp(){
+    this.productServices.getDataHome().subscribe(response =>{
+      console.log(response);
+      console.log(response[0].whatsApp);
+      this.whatsApp = response[0].whatsApp;
+    });
   }
 
   redirecWhatsapp(product : any, description :any, value : any){
-    const url = "https://wa.me/+573146724568?text=Hola,%20estoy%20interesado%20en%20"+product+" "+description+" que tiene un valor de: $"+value;
+    const url = "https://wa.me/+57"+this.whatsApp+"?text=Hola,%20estoy%20interesado%20en%20"+product+" "+description+" que tiene un valor de: $"+value;
     window.location.href = url;
   }
   async setAllProducts(){

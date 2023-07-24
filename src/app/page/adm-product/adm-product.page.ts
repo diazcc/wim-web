@@ -15,6 +15,11 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./adm-product.page.scss']
 })
 export class AdmProductPage {
+  dataAlert = {
+    classAlert : "hidden",
+    text : ""
+  }
+  diversProduct : any = [] ;
   textAlert : string = "";
   textStateView : string = "";
   validateStateView : boolean = false;
@@ -93,7 +98,7 @@ export class AdmProductPage {
     private firestore: Firestore,
     private storage : Storage,
     private router : Router,
-    private productServices : ProductServicesService,
+    private productService : ProductServicesService,
     private adminService : AdminService
    ){
     this.formulario = new FormGroup({
@@ -115,9 +120,9 @@ export class AdmProductPage {
   }
 
   ngOnInit(){
+    this.getProduct();
      if (this.validateEntry()) {
        this.getCategories();
-       this.getProduct();
        this.validateStateView = false;
       } else {
         this.validateStateView = true;
@@ -133,24 +138,8 @@ export class AdmProductPage {
         return false;
       }
   }
-  validate(): boolean{
-    let formValid = true;
-    Object.keys(this.formulario.controls).forEach(key => {
-      const control = this.formulario.controls[key];
-      if (control.value === null || control.value.trim() === '') {
-        formValid = false;
-      }
-    });
-    if (formValid) {
-      this.validateState = false;
-      console.log('Todos los campos tienen datos. Puedes continuar con la lógica.');
-    } else {
-      console.log('Al menos uno de los campos está vacío.');
-        this.textAlert = "No se ha completado todos los campos";
-        this.validateState = true;
-    }
-    return formValid;
-  }
+
+
   showMenu(){
     console.log("mmene");
     this.dataMenu.classMenu = ""
@@ -173,7 +162,7 @@ export class AdmProductPage {
     }
   }
   getProduct(){
-    this.productServices.getProduct(this.idProducNavigate,this.idTypeNavigate).subscribe((product:any)=>{
+    this.productService.getProduct(this.idProducNavigate,this.idTypeNavigate).subscribe((product:any)=>{
       console.log(product);
       const data : any = {
         id : product.id,
@@ -234,7 +223,6 @@ export class AdmProductPage {
   }
 
   onSubmit(){
-
     this.setImg();
     console.log(this.formulario.value);
     console.log(this.formulario.valid);
@@ -286,9 +274,19 @@ export class AdmProductPage {
     console.log(this.formulario.value);
     try {
       await updateDoc(categoryDoc, this.formulario.value);
+      this.textAlert = "Se ha guardado correctamente los cambios";
       console.log('Documento actualizado exitosamente!');
+      this.dataAlert = {
+        classAlert : "save",
+        text : "Se ha guardado correctamente"
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
       console.error('Error al actualizar el documento:', error);
+      this.dataAlert = {
+        classAlert : "error",
+        text : "Ha sucedido un error inesperado"
+      }
     }
   }
 
@@ -308,16 +306,59 @@ export class AdmProductPage {
     return this.urlImage;
   }
 
+  getAllProducts(){
+    this.productService.getCategories().subscribe((category) => {
+      const arrayData : any = [];
+      category.map((value : any) =>{
+        const data = {
+          marc: value.name
+        }
+        arrayData.push(data);
+      });
+      arrayData.map((value : any) =>{
+        const allProduct: any = [];
+        this.productService.getProducts(value.marc).subscribe((product =>{
+          product.map((value:any)=>{
+            const data =  {
+              id: value.id,
+              urlImgPrincipalProduct : value?.urlImg,
+              textTitle : value?.name,
+              textDescription :value?.description,
+              textValue : value.value,
+              clickProduct : () =>{
+                this.redirectUpdateProduct(value.id, value.type);
+              }
+            }
+            this.addAllProducts(data)
+          });
+        }));
+      })
+    });
+  }
+  async addAllProducts(value : any){
+    await this.diversProduct?.push(value);
+  }
+  setDataProductSearch(){
+    this.dataSearch.dataCardProduct = this.diversProduct;
+    console.log("Se setea");
+    console.log(this.diversProduct);
+  }
 
+  redirectUpdateProduct(id : any, type : any){
+    this.idProducNavigate = id;
+    this.idTypeNavigate = type;
+    this.getProduct();
+    this.closeSearch();
+  }
 
    setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
+      this.getAllProducts();
       this.dataSearch.classSearch = "search";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "hidde";
       this.renderer.addClass(document.body, 'bodyBlock');
-
-
+      this.setDataProductSearch();
     }else{
       this.dataSearch.classSearch = "hidde";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
@@ -330,7 +371,8 @@ export class AdmProductPage {
       this.dataSearch.classSearch = "hidde";
       this.dataHeader.classHeader = "header";
       this.renderer.removeClass(document.body, 'bodyBlock');
-
+      console.log("cierra");
+      this.diversProduct.splice(0,this.diversProduct.length);
     }else{
       this.dataSearch.classSearch = "search";
       this.renderer.addClass(document.body, 'bodyBlock');

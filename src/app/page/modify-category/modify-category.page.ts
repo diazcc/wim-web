@@ -1,17 +1,20 @@
 import { Component, Input, Renderer2 } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Firestore } from '@angular/fire/firestore';
+import { Firestore, collectionData } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL  } from '@angular/fire/storage';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { ProductServicesService } from 'src/app/services/product-services.service';
 import { AdminService } from 'src/app/services/admin.service';
+import { collection, getDocs } from 'firebase/firestore';
 @Component({
   selector: 'app-modify-category',
   templateUrl: './modify-category.page.html',
   styleUrls: ['./modify-category.page.scss']
 })
 export class ModifyCategoryPage {
+  diversProduct : any = [];
 
+  validateAlert : boolean = false;
   validateState : boolean = false;
   selectedOption : any = "";
   dataMenu  = {
@@ -33,7 +36,6 @@ export class ModifyCategoryPage {
   ];
   formulario: FormGroup;
   private name : string ="";
-  private newName : string ="";
   private urlImg : string ="";
   @Input() dataHeader = {
     textTitle :"Infinity Industry",
@@ -86,19 +88,21 @@ export class ModifyCategoryPage {
     private storage : Storage,
     private router : Router,
     private productServices : ProductServicesService,
-    private adminService : AdminService
+    private adminService : AdminService,
+    private firestore : Firestore
 
    ){
     this.formulario = new FormGroup({
       name : new FormControl(),
-      newName : new FormControl(),
       urlImg : new FormControl()
     })
    }
 
    ngOnInit(){
+    this.getAllProducts();
     this.getDataCategories()
     this.setDataMenu();
+
    }
    showMenu(){
     console.log("mmene");
@@ -119,10 +123,23 @@ export class ModifyCategoryPage {
   onSubmit(){
     console.log(this.urlImage);
     console.log(this.formulario.value);
-    this.setImg();
-    this.dataAlert =  {
-      classAlert : "save",
-      text : "Se ha guardado correctamente los cambios"
+
+    this.validateUpdate()
+  }
+
+  validateUpdate(){
+    console.log(this.selectedOption);
+    if (this.selectedOption != "") {
+      this.setImg();
+    } else {
+      this.validateAlert = true;
+      this.dataAlert =  {
+        classAlert : "error",
+        text : "Selecciona una categoria"
+      }
+      setTimeout(() => {
+        this.validateAlert = false;
+      }, 3000);
     }
   }
 
@@ -142,6 +159,14 @@ export class ModifyCategoryPage {
       .catch(error => console.log(error))
     }else{
       console.log(false)
+      this.validateAlert = true;
+          this.dataAlert =  {
+            classAlert : "error",
+            text : "Selecciona una imagen para poder continuar"
+          }
+          setTimeout(() => {
+            this.validateAlert = false;
+          }, 3000);
     }
   }
 
@@ -164,6 +189,9 @@ export class ModifyCategoryPage {
   }
   setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
+      this.setDataProduct();
+    console.log(this.diversProduct);
+
       this.dataSearch.classSearch = "search";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "hidde";
@@ -188,9 +216,56 @@ export class ModifyCategoryPage {
   redirectNewProduct(){
     this.router.navigate(['/newProduct']);
   }
+  setDataProduct(){
+    this.dataSearch.dataCardProduct = this.diversProduct;
+    console.log("Se setea");
+    console.log(this.diversProduct);
+  }
 
 
   //-------get
+  getAllProducts(){
+    this.productServices.getCategories().subscribe((category) => {
+      const arrayData : any = [];
+      category.map((value : any) =>{
+        const data = {
+          marc: value.name
+        }
+        arrayData.push(data);
+      });
+      arrayData.map((value : any) =>{
+        const allProduct: any = [];
+        this.productServices.getProducts(value.marc).subscribe((product =>{
+          product.map((value:any)=>{
+            const data =  {
+              id: value.id,
+              urlImgPrincipalProduct : value?.urlImg,
+              textTitle : value?.name,
+              textDescription :value?.description,
+              textValue : value.value,
+              clickProduct : () =>{
+                this.redirectUpdateProduct(value.id, value.type);
+              }
+            }
+            this.addAllProducts(data)
+          });
+        }));
+      })
+    });
+  }
+  async addAllProducts(value : any){
+    await this.diversProduct?.push(value);
+  }
+  redirectUpdateProduct(id : any, type : any){
+    const data : NavigationExtras = {
+      state : {
+        idProduct : id,
+        category : type
+      }
+    }
+    console.log(type);
+    this.router.navigate(['/admProduct'], data );
+  }
 
   validate(){
     console.log(this.selectedOption);
@@ -201,7 +276,7 @@ export class ModifyCategoryPage {
         if (value.name == this.formulario.value.name) {
           id = value.id;
           modifyCategory = {
-            name : this.formulario.value.newName,
+            name : this.formulario.value.name,
             urlImg : this.urlImage
           }
         }
@@ -209,8 +284,46 @@ export class ModifyCategoryPage {
     }else{
       console.log("Vacio");
     }
-    console.log(modifyCategory);
+    console.log(modifyCategory.name);
+    console.log(id);
+
     this.setCategory(id, modifyCategory);
+  }
+
+
+  async validateEmpty(){
+    if (this.selectedOption != "") {
+      const refData = collection(this.firestore,this.selectedOption);
+      try {
+        const refDoc = await getDocs(refData);
+        if (refDoc.empty) {
+          this.deleteCategory();
+
+          console.log('La colección está vacía.');
+        } else {
+          this.validateAlert = true;
+          this.dataAlert =  {
+            classAlert : "error",
+            text : "Contiene productos todavia"
+          }
+          setTimeout(() => {
+            this.validateAlert = false;
+          }, 3000);
+          console.log('La colección tiene datos.');
+        }
+      } catch (error) {
+        console.error('Error al obtener la colección:', error);
+      }
+    } else {
+      this.validateAlert = true;
+      this.dataAlert =  {
+        classAlert : "error",
+        text : "Selecciona una categoria"
+      }
+      setTimeout(() => {
+        this.validateAlert = false;
+      }, 3000);
+    }
   }
 
 
@@ -233,6 +346,15 @@ export class ModifyCategoryPage {
 
   setCategory(id : string, data : any){
     this.productServices.modifyCategory(id,data);
+    this.validateAlert = true;
+    this.dataAlert =  {
+      classAlert : "save",
+      text : "Se ha guardado correctamente los cambios"
+    }
+    setTimeout(() => {
+      this.validateAlert = false;
+      this.formulario.reset();
+    }, 3000);
   }
 
   setDataCategorySelect(data : any ){
@@ -249,6 +371,16 @@ export class ModifyCategoryPage {
         if (value.name == this.formulario.value.name) {
           id = value.id;
           this.productServices.deleteCategory(id);
+          console.log(value.name);
+          this.validateAlert = true;
+          this.dataAlert =  {
+            classAlert : "save",
+            text : "Categoria eliminada"
+          }
+          setTimeout(() => {
+            this.validateAlert = false;
+            this.formulario.reset();
+          }, 3000);
         }
       });
     }else{

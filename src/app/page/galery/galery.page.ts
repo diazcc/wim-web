@@ -129,11 +129,12 @@ export class GaleryPage {
 
   setSearch(){
     if (this.dataSearch.classSearch == "hidde") {
-      this.getAllProducts();
+      this.dataSearch.dataCardProduct = this.diversProduct;
       this.dataSearch.classSearch = "search";
       this.dataSearch.closeSearch = () =>{this.closeSearch()}
       this.dataHeader.classHeader = "hidde";
       this.renderer.addClass(document.body, 'bodyBlock');
+      console.log(this.diversProduct);
       this.setDataSearch();
 
     }else{
@@ -177,6 +178,7 @@ export class GaleryPage {
 
   detectChange(optionSelect : string){
     if (optionSelect=="Todo") {
+    console.log("Se ssdasdasdastea");
       this.diversProduct = []
       this.getAllProducts();
       this.setAllProducts();
@@ -341,6 +343,7 @@ export class GaleryPage {
 
 
   async addAllProducts(value : any){
+    console.log("Se ssdasdasdastea");
     await this.diversProduct?.push(value);
   }
 

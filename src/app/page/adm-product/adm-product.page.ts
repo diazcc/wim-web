@@ -228,9 +228,10 @@ export class AdmProductPage {
     console.log(this.formulario.valid);
     console.log(this.formulario.value.urlImg);
   }
-  deleteProduct(){
-    const refProduct =doc(this.firestore,this.product.type, this.product.id);
-    deleteDoc(refProduct);
+  async deleteProduct(){
+    console.log(this.product.id);
+    const refProduct =doc(this.firestore, await this.product?.type,await this.product?.id);
+    await deleteDoc(refProduct);
     console.log("Hola");
     this.validateStateView = true;
     this.textStateView = "Producto eliminado! Cambia de vista"

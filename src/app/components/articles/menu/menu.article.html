@@ -1,11 +1,11 @@
-<aside [class]="'menu menu--'+classMenu" #backgroundMenu id="backgroundMenu">
-  <article [class]="'contentArticle contentArticle--'+classMenu">
+<aside [class]="'menu menu--'+dataMenu.classMenu" #backgroundMenu id="backgroundMenu">
+  <article [class]="'contentArticle contentArticle--'+dataMenu.classMenu">
     <h1 class="titleContentArticle">Configuracion</h1>
     <ul class="menuOptions">
       <li class="option">Editar perfil</li>
       <li class="option">Terminos y Condiciones</li>
-      <li class="option">Reportar problema</li>
-      <li class=" option option--closeSession">Cerrar sesion</li>
+      <li class="option" (click)="dataMenu.reportProblem()">Reportar problema</li>
+      <li class=" option option--closeSession" (click)="dataMenu.logOut()">Cerrar sesion</li>
     </ul>
   </article>
 </aside>

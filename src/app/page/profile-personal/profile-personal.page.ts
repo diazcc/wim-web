@@ -1,5 +1,6 @@
 import { Component,Input, ElementRef, HostListener,ViewChild, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 // import Swiper from 'swiper';
 
 @Component({
@@ -14,7 +15,13 @@ export class ProfilePersonalPage {
   stateComment : boolean = false;
   stateColorBackGround : number = 0;
   classAllComments = "hidde";
-  classMenu = "hidde";
+  dataMenuSide = {
+    classMenu : "hidde",
+    reportProblem : () =>{},
+    logOut : () =>{this.userServices.logOut().then(()=>{
+      this.router.navigate(['/login']);
+    });}
+  }
   classNewPostOptions = "hidde";
   dataNavBar = {
     imgHome: "home",
@@ -54,7 +61,8 @@ export class ProfilePersonalPage {
   constructor(
     private el: ElementRef,
     private renderer: Renderer2,
-    private router : Router
+    private router : Router,
+    private userServices : UserService
 
     ) {}
 
@@ -101,11 +109,11 @@ export class ProfilePersonalPage {
   }
 
   openMenu(){
-    this.classMenu = "show";
+    this.dataMenuSide.classMenu = "show";
     console.log("Sdsds");
   }
   closeMenu(){
-    this.classMenu = "hidde";
+    this.dataMenuSide.classMenu = "hidde";
   }
 
   openNewPost(){

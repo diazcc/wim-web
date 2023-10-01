@@ -6,5 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./menu.article.scss']
 })
 export class MenuArticle {
-  @Input() classMenu = "";
+  @Input() dataMenu = {
+    classMenu : "",
+    reportProblem : () =>{},
+    logOut : () =>{}
+  }
 }

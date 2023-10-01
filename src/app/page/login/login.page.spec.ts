@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IndexPresentationPage } from './index-presentation.page';
+import { IndexPresentationPage } from './login.page';
 
 describe('IndexPresentationPage', () => {
   let component: IndexPresentationPage;

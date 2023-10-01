@@ -1,0 +1,108 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(to bottom,
+    #703200 0%,
+    #FFDCAE 100%
+  );
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  &--viewLogin{
+    transition: ease-out .2s;
+  }
+  .logo{
+    font-size: 3rem;
+    height: max-content;
+    &--hidde{
+      visibility: hidden;
+      opacity: 0;
+      height: 0%;
+      overflow: hidden;
+    }
+    &--show{
+      visibility: visible;
+      transition: 2s ease;
+      opacity: 1;
+    }
+  }
+  .description{
+    color: white;
+    &--hidde{
+      visibility: hidden;
+      transition: .2s ease;
+      opacity: 0;
+    }
+    &--show{
+      visibility: visible;
+      transition: 2s ease;
+      opacity: 1;
+    }
+  }
+  .formLogin{
+    box-sizing: border-box;
+    background-color: white;
+    color: black;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+    height: 0%;
+    overflow: hidden;
+    &--hidde{
+      visibility: hidden;
+      opacity: 0;
+    }
+    &--show{
+      height: max-content;
+      transition: ease-out .2s;
+      padding: 1rem;
+      visibility: visible;
+      opacity: 1;
+    }
+    .titleLogin{
+      font-size: 1rem;
+    }
+    .contentFormLogin{
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem;
+      .inputLogin{
+        font-size: 1rem;
+        padding: .5rem;
+        border: 1px solid gray;
+        border-radius: 1rem;
+      }
+    }
+    .initLogin{
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #9e4700;
+      color: white;
+      border-radius: 1rem;
+      border: none;
+    }
+  }
+  .linkForm{
+    &--show{
+      visibility: visible;
+      opacity: 1;
+      transition: ease-out .2s;
+    }
+    &--hidde{
+      visibility: hidden;
+      opacity: 0;
+      transition: ease-out .2s;
+    }
+  }
+}

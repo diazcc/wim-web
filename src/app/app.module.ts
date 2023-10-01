@@ -1,25 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { ComponentsModule } from './components/components.module';
-import { HomeModule } from './page/home/home.module';
-import { ProductModule } from './page/product/product.module';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { GaleryModule } from './page/galery/galery.module';
-import { LoginModule } from './page/login/login.module';
-import { AdmHomeModule } from './page/adm-home/adm-home.module';
-import { AdmProductModule } from './page/adm-product/adm-product.module';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-import { NewCategoryModule } from './page/new-category/new-category.module';
-import { NewProductModule } from './page/new-product/new-product.module';
-import { ModifyCategoryModule } from './page/modify-category/modify-category.module';
-import { FeaturedProductsModule } from './page/featured-products/featured-products.module';
 import { provideAuth,getAuth } from '@angular/fire/auth';
-import { ProductServicesService } from './services/product-services.service';
+import { ProfilePersonalModule } from './page/profile-personal/profile-personal.module';
+import { ContentUserModule } from './page/content-user/content-user.module';
+import { PostUserModule } from './page/post-user/post-user.module';
+import { DmModule } from './page/dm/dm.module';
+import { ChatModule } from './page/chat/chat.module';
+import { NewWimeModule } from './page/new-wime/new-wime.module';
+import { FollowsModule } from './page/follows/follows.module';
+import { HomeModule } from './page/home/home.module';
+import { NewPhotoModule } from './page/new-photo/new-photo.module';
+import { SearchModule } from './page/search/search.module';
+import { RegisterModule } from './page/register/register.module';
 
 @NgModule({
   declarations: [
@@ -27,27 +26,25 @@ import { ProductServicesService } from './services/product-services.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    ComponentsModule,
+    ProfilePersonalModule,
+    ContentUserModule,
+    PostUserModule,
+    DmModule,
+    ChatModule,
+    NewWimeModule,
+    FollowsModule,
     HomeModule,
-    ProductModule,
-    GaleryModule,
-    LoginModule,
-    AdmHomeModule,
-    AdmProductModule,
-    NewCategoryModule,
-    NewProductModule,
-    ModifyCategoryModule,
-    FeaturedProductsModule,
+    NewPhotoModule,
+    SearchModule,
+    RegisterModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    ReactiveFormsModule,
-    FormsModule,
     provideStorage(() => getStorage()),
     provideAuth(() => getAuth())
   ],
   providers: [
-    ProductServicesService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,9 @@
+<section [class]="'contentAlert contentAlert--'+dataAlert.classAlert">
+  <article class="alert">
+    <h3 class="titleAlert">
+      WIM
+    </h3>
+    <p class="textAlert">{{dataAlert.text}}</p>
+    <button class="buttonAlert" (click)="dataAlert.redirect()">{{dataAlert.textButton}}</button>
+  </article>
+</section>

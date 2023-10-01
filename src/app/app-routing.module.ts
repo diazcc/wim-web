@@ -1,38 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePage } from './page/home/home.page';
-import { adminGuard } from './page/guard/admin.guard';
-import { validateLoginGuard } from './page/guard/validate-login.guard';
+import { IndexPresentationPage } from './page/index-presentation/index-presentation.page';
 
 const routes: Routes = [
-  {path:'home', component:HomePage},
-  {path:'home', loadChildren: () => import('./page/home/home.module').then(m => m.HomeModule)},
-  {path:'product', loadChildren: () => import('./page/product/product.module').then(m => m.ProductModule)},
-  {path:'galery', loadChildren: () => import('./page/galery/galery.module').then(m => m.GaleryModule)},
-  {path:'login',canActivate :[validateLoginGuard],
-   loadChildren: () => import('./page/login/login.module').then(m => m.LoginModule)},
-  {path:'admProduct',
-  canActivate :[adminGuard],
-   loadChildren: () => import('./page/adm-product/adm-product.module').then(m => m.AdmProductModule)},
-  {path:'newCategory',
-  canActivate :[adminGuard],
-   loadChildren: () => import('./page/new-category/new-category.module').then(m => m.NewCategoryModule)},
-  {path:'newCategory',
-  canActivate :[adminGuard],
-   loadChildren: () => import('./page/new-category/new-category.module').then(m => m.NewCategoryModule)},
-  {path:'modifyCategory',
-  canActivate :[adminGuard],
-   loadChildren: () => import('./page/modify-category/modify-category.module').then(m => m.ModifyCategoryModule)},
-  {path:'newProduct', loadChildren: () => import('./page/new-product/new-product.module').then(m => m.NewProductModule)},
-  {path:'featuredProducts',
-  canActivate :[adminGuard],
-   loadChildren: () => import('./page/featured-products/featured-products.module').then(m => m.FeaturedProductsModule)},
-  {path:'admHome',
-    canActivate :[adminGuard],
-    loadChildren: () => import('./page/adm-home/adm-home.module').then(m => m.AdmHomeModule)
-  },
-  {path:'administration', loadChildren: () => import('./page/adminitration/administration.module').then(m => m.AdministrationModule)},
-  {path:'**', pathMatch:'full', redirectTo:'home'}
+  {path:'login', component:IndexPresentationPage},
+  {path:'profileUser',loadChildren: () => import('./page/profile-personal/profile-personal.module').then(m => m.ProfilePersonalModule)},
+  {path:'contentUser',loadChildren: () => import('./page/content-user/content-user.module').then(m => m.ContentUserModule)},
+  {path:'post',loadChildren: () => import('./page/post-user/post-user.module').then(m => m.PostUserModule)},
+  {path:'dm',loadChildren: () => import('./page/dm/dm.module').then(m => m.DmModule)},
+  {path:'chat',loadChildren: () => import('./page/chat/chat.module').then(m => m.ChatModule)},
+  {path:'newWime',loadChildren: () => import('./page/new-wime/new-wime.module').then(m => m.NewWimeModule)},
+  {path:'follows',loadChildren: () => import('./page/follows/follows.module').then(m => m.FollowsModule)},
+  {path:'newPost',loadChildren: () => import('./page/new-photo/new-photo.module').then(m => m.NewPhotoModule)},
+  {path:'search',loadChildren: () => import('./page/search/search.module').then(m => m.SearchModule)},
+  {path:'register',loadChildren: () => import('./page/register/register.module').then(m => m.RegisterModule)},
+  {path:'home',loadChildren: () => import('./page/home/home.module').then(m => m.HomeModule)},
+  {path:'**', pathMatch:'full', redirectTo:'login'}
 ];
 
 @NgModule({

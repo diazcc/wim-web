@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA,NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePage } from './home.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { HomeRoutingModule } from './home-routing.module';
-import { ProductServicesService } from 'src/app/services/product-services.service';
-import { HttpClientModule } from '@angular/common/http';
+import { register } from 'swiper/element/bundle';
+register();
 
 
 
@@ -15,11 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     ComponentsModule,
-    HomeRoutingModule,
-    HttpClientModule
+    HomeRoutingModule
   ],
-  providers:[
-    ProductServicesService
-  ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomeModule { }

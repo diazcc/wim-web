@@ -1,0 +1,32 @@
+<main class="mainNewWime">
+  <h1 class="titleNewWime">WIME</h1>
+  <ul class="contentNewWime">
+    <li class="contentUser">
+      <article class="userNewWime">
+        <img src="/assets/img/foto.png" alt="" class="userImage">
+        <p class="userNameNewWime">diazcc</p>
+      </article>
+    </li>
+    <li class="contentPost">
+      <textarea
+      class="textComment"
+      placeholder="Quieres decir algo?"
+      (input)="updateCharCount($event)"
+      maxlength="110"
+      ></textarea>
+    </li>
+    <li class="optionsNewWime">
+      <img src="/assets/svg/audio.svg" class="iconOption">
+      <img src="/assets/svg/user.svg" class="iconOption">
+      <img src="/assets/svg/image.svg" class="iconOption">
+      <img src="/assets/svg/media.svg" class="iconOption">
+
+    </li>
+    <li class="sendWime">
+      <button class="buttonSendWime">
+        Subir
+      </button>
+    </li>
+  </ul>
+</main>
+<app-navbar [dataNavBar]="dataNavBar"></app-navbar>

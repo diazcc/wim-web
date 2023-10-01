@@ -1,0 +1,47 @@
+.contentAlert{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(88, 49, 0, 0.463);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  &--hidde{
+    visibility: hidden;
+    opacity: 0;
+  }
+  &--show{
+    visibility: visible;
+    opacity: 1;
+    transition: ease-out .2s;
+  }
+  .alert{
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    .titleAlert{
+      color: rgb(108, 54, 0);
+      font-size: 1.5rem;
+    }
+    .textAlert{
+      color: black;
+    }
+    .buttonAlert{
+      border: none;
+      background-color: #ff973a;
+      padding: .5rem;
+      border-radius: 1rem;
+      color: white;
+      font-weight: bold;
+    }
+  }
+}

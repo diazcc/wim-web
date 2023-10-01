@@ -1,0 +1,68 @@
+.commentsWime{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  justify-content: space-between;
+  .closeComment{
+    margin-left: auto;
+  }
+  .comments{
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: auto;
+    .cardComment{
+      display: flex;
+      flex-direction: row;
+      gap: .5rem;
+      justify-content: space-between;
+      .imageUserComment{
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .contentComent{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        .userNameComment{
+          font-weight: bolder;
+        }
+        .timeComment{
+          font-size: .8rem;
+          color: #a54700;
+        }
+      }
+      .commentOptions{
+        flex-direction: column;
+        display: flex;
+        justify-content: space-between;
+        .contentLikes{
+          display: flex;
+          gap: .4rem;
+          .iconLike{
+            width: 1rem;
+          }
+          .numLike{
+            font-size: .8rem;
+          }
+        }
+        .textReponse{
+          font-size: .8rem;
+        }
+      }
+    }
+  }
+  .inputComment{
+    padding: .5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+  }
+
+}

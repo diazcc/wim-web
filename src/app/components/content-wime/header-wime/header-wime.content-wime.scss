@@ -1,0 +1,31 @@
+.headerWime{
+  display: flex;
+  flex-direction: row;
+  gap : .5rem;
+  padding: 3.024rem .5rem 0 .5rem;
+  .photoUser{
+    min-width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .contentReference{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    p{
+      font-size: 1rem;
+      text-shadow: 0px 0px 1px black;
+    }
+    .icon{
+      width: 1rem;
+    }
+    .date{
+      width: 100%;
+      font-size: .8rem;
+      color: #ffffff9e;
+    }
+  }
+
+}

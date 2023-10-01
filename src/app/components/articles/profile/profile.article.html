@@ -1,0 +1,29 @@
+<article class="contentDescriptionProfile">
+  <ul class="presentationProfile">
+    <li class="contentImg">
+      <section class="shadow"></section>
+      <a class="img">
+        <img src="/assets/img/foto.png" alt="">
+      </a>
+    </li>
+    <li class="contentProfile">
+      <p class="name">Andres Diaz</p>
+      <button class="followButton">Seguir</button>
+      <p class="description">Soy Andrés Díaz, creador de esta app.
+        Aquí podrás concerme a mi y mis servicios como desarrollador </p>
+    </li>
+    <app-icon-dm class="contentDmProfile"></app-icon-dm>
+  </ul>
+  <section class="bodyProfile">
+    <ul class="navProfile">
+      <li class="buttonRedirect-NavProfile" (click)="setContentInformation()"  appClickOutsideDirective (arrayDataChange)="handleArrayDataChange($event)">Informacion</li>
+      <li class="buttonRedirect-NavProfile" (click)="setContentLinks()">Redes sociales</li>
+      <li class="buttonRedirect-NavProfile" (click)="redirectContentUser()">Mi contenido</li>
+    </ul>
+    <app-content-information-profile *ngIf="stateContentInformation"></app-content-information-profile>
+    <app-nav-profile-links *ngIf="stateContentLinks"></app-nav-profile-links>
+    <button class="buttonWimes">
+      Wimes
+    </button>
+  </section>
+</article>

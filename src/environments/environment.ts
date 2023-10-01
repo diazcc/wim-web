@@ -1,12 +1,11 @@
 export const environment = {
   firebase: {
-    projectId: 'infinity-industry-73a15',
-    appId: '1:1095543743408:web:465f2263bff22d95cd2c75',
-    databaseURL: 'https://infinity-industry-73a15-default-rtdb.firebaseio.com',
-    storageBucket: 'infinity-industry-73a15.appspot.com',
-    locationId: 'us-central',
-    apiKey: 'AIzaSyAEZ_LiG5hmvDSgbJe2aBECwwv0zWvzq-E',
-    authDomain: 'infinity-industry-73a15.firebaseapp.com',
-    messagingSenderId: '1095543743408',
+    apiKey: "AIzaSyB2bAbShoeY8hEeCFzykwdvxjlt3ubxgbg",
+    authDomain: "wim-web-2248b.firebaseapp.com",
+    projectId: "wim-web-2248b",
+    storageBucket: "wim-web-2248b.appspot.com",
+    messagingSenderId: "196965791220",
+    appId: "1:196965791220:web:c3bbde0f86af300e52f5a1",
+    measurementId: "G-BSGXWB0SC2"
   },
 };

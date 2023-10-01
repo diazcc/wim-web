@@ -1,0 +1,92 @@
+ $widthUser  :  94.5vh;
+ $stringSmall : .8rem;
+ $text : 1rem;
+ $colorMoreComments : #957862;
+.photoCircle{
+  min-width: 2.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.cardComment{
+  display: flex;
+  flex-direction: row;
+  gap: .4rem;
+  .contentComment{
+    width:  90%;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    .ct{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .title{
+        font-size: $text;
+      }
+      .likes{
+        display: flex;
+        flex-direction: row;
+        gap: .3rem;
+        .numberLikes{
+          font-size: $stringSmall;
+        }
+      }
+      .timelapse{
+        font-size: $stringSmall;
+      }
+      .responseComment{
+        font-size: $stringSmall;
+      }
+    }
+    .comment{
+      width: 100%;
+    }
+  }
+  .deleteComment{
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(172, 0, 0);
+    padding: 1rem;
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.textBehind{
+  color: #824e27;
+}
+
+.icon{
+  width: 1.5rem;
+  &--big{
+    width: 1.5rem;
+    margin-right: .7rem;
+  }
+  &--dm{
+    width: 3rem;
+  }
+  &--small{
+    width: 1rem;
+  }
+}
+
+.headerProfile{
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+}
+.body{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 6vh;
+  .wrapper{
+    position: relative;
+    min-height: 94vh;
+    flex-direction: column;
+    display: flex;
+    gap: 2rem;
+  }
+}

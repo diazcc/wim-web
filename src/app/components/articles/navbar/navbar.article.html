@@ -1,0 +1,9 @@
+<nav [class]="'navbar navbar--'+dataNavBar.classNavbar">
+  <ul class="contentNavbar">
+    <img [src]="'/assets/svg/'+dataNavBar.imgHome+'.svg'" alt="" class="iconNavbar" (click)="redirectHome()">
+    <img [src]="'/assets/svg/'+dataNavBar.imgSearch+'.svg'"  alt="" class="iconNavbar"(click)="redirectSearch()">
+    <img [src]="'/assets/svg/'+dataNavBar.imgMore+'.svg'" alt="" class="iconNavbar" (click)="dataNavBar.setNewPost();">
+    <img [src]="'/assets/svg/'+dataNavBar.imgMedia+'.svg'" alt="" class="iconNavbar">
+    <img [src]="dataNavBar.imgUser" alt="" class="imgPerfilNavbar" (click)="redirectPerfil()">
+  </ul>
+</nav>

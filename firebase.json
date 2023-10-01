@@ -1,6 +1,11 @@
 {
   "hosting": {
-    "public": "dist/infinityindustry",
+    "public": "dist/wim",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "rewrites": [
       {
         "source": "**",

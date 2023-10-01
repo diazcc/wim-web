@@ -1,0 +1,93 @@
+.descriptionWime{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  .shadow{
+    // background-image: linear-gradient( #3f1b000c  0%,  #3f1b0091 50%, #3f1b00 100%);
+    background-image: linear-gradient( #0000000c  0%,  #00000091 50%, #000000 100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+  }
+  .firstSectionDescriptionWime{
+    padding: 0 .5rem 0 .5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    z-index: 1;
+    .contentInformationWime{
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      .informationWime{
+        display: flex;
+        flex-direction: row;
+        gap: .5rem;
+      }
+    }
+    .sendPost{
+      width: auto;
+    }
+  }
+  .secondSectionDescriptionWime{
+    padding: 0 .5rem 0 .5rem;
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    z-index: 1;
+
+    .contentInput{
+      background-color: white;
+      color: black;
+      border-radius: .5rem;
+      width: 88%;
+      height: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 .5rem;
+      .coment{
+        width: 100%;
+        height: 100%;
+        background-color: #3f1b0000;
+        border: none;
+        font-size: 1rem;
+        color: white;
+        &:focus {
+          outline: none;
+        }
+
+      }
+      &--hidde{
+        background-color: #ffffff00;
+        border: 1px solid #ffffff6d;
+      }
+    }
+    .contentDmWime{
+      width: 3rem;
+      position: relative;
+      .dmProfile{
+        width: 100%;
+      }
+      .alertDm{
+        background-color: red;
+        border-radius: 50%;
+        position: absolute;
+        font-weight: bolder;
+        font-size: .7rem;
+        width: 1rem;
+        height: 1rem;
+        top: -.3rem;
+        left: -.3rem;
+      }
+    }
+    .buttonDm{
+      background-color: #F4BE94;
+      color: black;
+      border-radius: .5rem;
+    }
+  }
+}

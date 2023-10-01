@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ProductServicesService } from './services/product-services.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +6,8 @@ import { ProductServicesService } from './services/product-services.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'infinityindustry';
+  title = 'wim';
   constructor(
-    private productService :ProductServicesService
   ){}
   ngOnInit(){}
 }

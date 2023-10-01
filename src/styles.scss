@@ -1,49 +1,90 @@
-@font-face{
-  font-family: 'buvica';
-  src: url('/assets/fonts/queenside/Queensides-3z7Ey.ttf') format('truetype');
-}
+/* You can add global styles to this file, and also import other style files */
 *{
-  margin: 0;
-  color: white;
-  font-family: buvica;
+  font-family: Helvetica;
+}
+$widthUser  :  94.5vh;
+$stringSmall : .8rem;
+$text : 1rem;
+$textBig : 1.4rem;
+.photoCircle{
+ width: 2.5rem;
+ height: 2.5rem;
+ object-fit: cover;
+ border-radius: 50%;
+}
+
+.textBehind{
+ color: #ffffff60;
+}
+
+.icon{
+ width: 1.5rem;
+ &--big{
+   width: 1.5rem;
+   margin-right: .7rem;
+ }
+ &--dm{
+   width: 3rem;
+ }
+ &--small{
+   width: 1rem;
+ }
 }
 body{
-  background-color: rgb(0, 0, 0);
+  margin: 0;
+  padding: 0;
+  background-color: #3f1b00;
+  color: white;
+  position: relative;
+  transition: ease-out  .2s;
 }
-.bodyBlock{
-  overflow: hidden;
+
+.bodyBlack{
+  background-color: black;
+  transition: ease-out  .2s;
 }
+.bodyWhite{
+  background-color: white;
+  transition: ease-out  .2s;
+}
+
+
+
+
+ul, ol{
+  margin: 0;
+  padding: 0;
+}
+
 li{
   list-style: none;
+  margin: 0;
 }
-ul{
-  display: flex;
+
+a{
+  text-decoration: none;
+}
+
+h1, h2, h3{
   padding: 0;
+  margin: 0;
+  height:min-content;
 }
 p{
   margin: 0;
-}
-.delete{
-  font-size: 1rem;
-  font-weight: bold;
-  border: 1px rgb(0, 0, 0) solid;
-  background-color: red;
-  color: white;
-  border-radius: .5rem;
-  max-width: 10rem;
-  align-self: center;
   display: flex;
-  padding: .5rem;
-  margin: 2rem;
+  align-items: center;
 }
-.save{
-  font-size: 1.5rem;
-  font-weight: bold;
-  border: 1px rgb(0, 0, 0) solid;
-  color: black;
-  border-radius: .5rem;
-  max-width: 10rem;
-  align-self: center;
-  display: flex;
-  padding: .5rem;
+.slick-slider {
+  width: 88%;
+  margin: auto;
+  background: rgb(14, 13, 13);
+}
+
+body .slick-prev,
+body .slick-next {
+  height: 45px;
+  width: 40px;
+  background: grey !important;
+  z-index: 100;
 }

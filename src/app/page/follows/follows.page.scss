@@ -1,0 +1,58 @@
+.contentViewFollows{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 6vh;
+  .optionsFollows{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    justify-content: space-around;
+    .option{
+      padding: 1rem;
+      border-bottom: 1px solid white;
+      font-weight: bold;
+    }
+  }
+  .contentTextSearch{
+    display: flex;
+    justify-content: center;
+    .inputSearch{
+      background-color: rgba(0, 0, 0, 0.184);
+      border: none;
+      border-radius: 1rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 90%;
+      color: white;
+    }
+  }
+  .listUsersFollows{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    .cardUser{
+      display: flex;
+      justify-content: space-between;
+      gap: .5rem;
+      padding: .5rem 0;
+      align-items: center;
+      .imageUser{
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background-color: black;
+        object-fit: cover;
+      }
+      .nameUser{
+        margin-right: auto;
+      }
+      .stateUser{
+        width: .7rem;
+        height: .7rem;
+        background-color: rgba(255, 255, 255, 0.305);
+        border-radius: 50%;
+      }
+    }
+  }
+}

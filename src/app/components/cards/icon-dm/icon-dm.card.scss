@@ -1,0 +1,33 @@
+.contentDmProfile{
+  width: 3.5rem;
+  align-self: flex-end;
+  margin: 1rem;
+  position: relative;
+
+  .alertDm{
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    font-weight: bolder;
+    font-size: .7rem;
+    padding: .3rem;
+    top: -.3rem;
+    left: -.3rem;
+  }
+
+  .dmProfile{
+    width: 100%;
+  }
+  &--wime{
+    width: 3rem;
+    position: relative;
+    margin: 0;
+    .dmProfile{
+      width: 100%;
+    }
+    .alertDm{
+      visibility: hidden;
+      display: none;
+    }
+  }
+}

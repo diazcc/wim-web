@@ -1,0 +1,51 @@
+$widthUser  :  94.5vh;
+$stringSmall : .8rem;
+$text : 1rem;
+$colorMoreComments : #957862;;
+.cardComment{
+  display: flex;
+  flex-direction: row;
+  gap: .4rem;
+  .contentComment{
+    width:  90%;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+
+    .ct{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .title{
+        font-size: $text;
+      }
+      .likes{
+        display: flex;
+        flex-direction: row;
+        gap: .3rem;
+        .numberLikes{
+          font-size: $stringSmall;
+        }
+      }
+      .timelapse{
+        font-size: $stringSmall;
+      }
+      .responseComment{
+        font-size: $stringSmall;
+      }
+    }
+    .comment{
+      width: 100%;
+    }
+  }
+  .deleteComment{
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(172, 0, 0);
+    padding: 1rem;
+    display: none;
+    visibility: hidden;
+  }
+}

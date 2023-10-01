@@ -1,0 +1,38 @@
+.navbar{
+  width: 100%;
+  position: fixed;
+  z-index: 4;
+  background-color: #3f1b00;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  transition:  ease-out .2s;
+  .contentNavbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-around;
+    width: 100%;
+    .iconNavbar{
+      width: 1.6rem;
+    }
+    .imgPerfilNavbar{
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  &--viewWime{
+    transition:  ease-out .2s;
+    background-color: #000000;
+  }
+  &--white{
+    transition:  ease-out .2s;
+    background-color: white;
+  }
+}

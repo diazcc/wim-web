@@ -1,0 +1,12 @@
+<article [class]="'backgroundSettings backgroundSettings--'+ dataSettingWime.classSetting">
+  <div  [class]="'background background--'+ dataSettingWime.classSetting" id="backgroundSettings"></div>
+  <section [class]="'settings settings--'+ dataSettingWime.classSetting">
+    <ul class="contentSettings">
+      <li class="closeSettings" (click)="dataSettingWime.close()">
+        <img src="/assets/svg/close.svg" alt=""  class="icon--small">
+      </li>
+      <li class="cardSetting" (click)="dataSettingWime.reportContent()">Contenido inadecuado</li>
+      <li class="cardSetting" (click)="dataSettingWime.reportCount()">Reportar esta cuenta</li>
+    </ul>
+  </section>
+</article>

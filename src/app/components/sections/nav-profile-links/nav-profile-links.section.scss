@@ -1,0 +1,23 @@
+.contentNavProfileContacts{
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  .cardContact{
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: .3rem;
+    .contentCard{
+      width: 3.5rem;
+      height: 3.5rem;
+      background-color: rgba(255, 255, 255, 0.193);
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+}

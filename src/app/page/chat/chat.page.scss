@@ -1,0 +1,124 @@
+// general class to cardMessage
+.cardMessage{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: .3rem;
+  align-items: center;
+  .contentMessage{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding: 0.7rem;
+    min-height: 3rem;
+    .messages{
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+      .textdf{
+        max-width: 80%;
+        padding: .8rem;
+        height: min-content;
+        border-radius: 1rem;
+      }
+    }
+  }
+  .descriptionChat{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    .settingsMessage{
+      width: 1.5rem;
+      margin-left: auto;
+    }
+    .time{
+      font-size: .9rem;
+      color: rgb(186, 91, 59);
+      width: max-content;
+    }
+  }
+
+}
+.chat{
+ display: flex;
+ justify-content: space-between;
+ flex-direction: column;
+ height: 100vh;
+ .headerChat{
+  height: 2rem;
+  padding: .5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  .userName{
+    font-size: 1.5rem;
+  }
+  .settingsChat{
+    width: 2.5rem;
+  }
+ }
+ .contentChat{
+  display: flex;
+  flex-grow: 1;
+  padding: .5rem;
+  flex-direction: column;
+  gap: .5rem;
+  .cardMessageGet{
+    .messages{
+      .text{
+        background-color:#C7B1A5;
+        color: black;
+      }
+    }
+    .descriptionChat{
+      margin-left: auto;
+    }
+    .userImage{
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background-color: red;
+      object-fit: cover;
+    }
+  }
+
+  .cardMessageSend{
+    flex-direction: row-reverse;
+    .contentMessage{
+      .messages{
+        margin-left: auto;
+        .text{
+          margin-left: auto;
+          background-color: #542600;
+        }
+      }
+    }
+  }
+ }
+ .contentInput{
+  position: sticky;
+  bottom: 0;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  padding: .5rem;
+  gap: .5rem;
+  .inputText{
+    padding: .7rem;
+    border: none;
+    border-radius: 1rem;
+    width: 100%;
+    background-color: #542600;
+    color: white;
+    &::placeholder{
+      color: white;
+    }
+  }
+  .moreChat{
+    width: 2rem;
+
+  }
+ }
+}

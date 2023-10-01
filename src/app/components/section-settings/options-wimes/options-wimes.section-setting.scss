@@ -1,0 +1,78 @@
+.icon{
+  width: 1.5rem;
+  &--big{
+    width: 1.5rem;
+    margin-right: .7rem;
+  }
+  &--dm{
+    width: 3rem;
+  }
+
+  &--small{
+    width: 1rem;
+  }
+}
+
+
+.backgroundSettings{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 5;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  .background{
+    background-color: rgba(0, 0, 0, 0.118);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    &--show{
+      opacity: 1;
+      visibility: visible;
+      backdrop-filter: blur(5px);
+      transition: ease-out .3s;
+    }
+    &--hidde{
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  .settings{
+    margin: 1rem;
+    padding: 1rem;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4705882353) 0%, rgba(0, 0, 0, 0.4470588235) 100%);
+    height: min-content;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    z-index: 2;
+    backdrop-filter: blur(40px);
+    width: 100%;
+    align-self: center;
+    max-width: 30rem;
+    .contentSettings{
+      margin: 1rem;
+      display: flex;
+      gap: .5rem;
+      flex-direction: column;
+      .closeSettings{
+        margin-left: auto;
+        font-size: 1.5rem;
+        color: black;
+      }
+      .cardSetting{
+        border-bottom: 1px solid #ffcfaa;
+        padding: 1rem;
+      }
+    }
+  }
+  &--show{
+
+    visibility: visible;
+    transition: ease-out .2s;
+  }
+  &--hidde{
+    visibility: hidden;
+  }
+}

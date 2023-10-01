@@ -1,0 +1,29 @@
+<div class="body">
+
+  <header class="headerDm">
+    <h1 class="nameUserHeader" (click)="redirectPerfil()">
+      diazcc
+    </h1>
+    <a class="count">
+      <p class="descriptionCount">
+        120
+      </p>
+      <p class="descriptionCount">
+        Mensajes pendientes
+      </p>
+    </a>
+    <p (click)="redirectPerfil()">
+      <img src="/assets/svg/closeWhite.svg" alt=""  class="icon--small">
+    </p>
+  </header>
+  <main class="wrapper">
+    <input type="text" placeholder="Buscar" class="search">
+    <app-card-chat (click)="redirectChat() "></app-card-chat>
+    <app-card-chat (click)="redirectChat() "></app-card-chat>
+    <app-card-chat (click)="redirectChat() "></app-card-chat>
+    <app-card-chat (click)="redirectChat() "></app-card-chat>
+  </main>
+  <footer class="footer">
+    <button class="buttonArchives">Archivados</button>
+  </footer>
+</div>

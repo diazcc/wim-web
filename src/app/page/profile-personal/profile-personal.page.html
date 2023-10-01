@@ -1,0 +1,41 @@
+<app-header class="headerProfile" [dataMenu]="dataMenu"></app-header>
+<app-menu [classMenu]="classMenu"></app-menu>
+<section class="body">
+  <main class="wrapper" >
+    <swiper-container class="swiper-container" direction = "vertical" id="swiper-wime" #swiperWime >
+      <swiper-slide class="swiper-slide" >
+        <app-profile class="wime" ></app-profile>
+      </swiper-slide>
+      <swiper-slide lazy="true" class="swiper-slide">
+        <app-wimes class="wime"
+        [dataDescription]="dataDescription"
+        [dataOpenSettings]="dataOpenSettings"
+        ></app-wimes>
+      </swiper-slide>
+      <swiper-slide lazy="true" class="swiper-slide">
+        <app-wimes class="wime"
+        [dataDescription]="dataDescription"
+        [dataOpenSettings]="dataOpenSettings"
+        ></app-wimes>
+      </swiper-slide>
+      <swiper-slide lazy="true" class="swiper-slide">
+        <app-wimes class="wime"
+        [dataDescription]="dataDescription"
+        [dataOpenSettings]="dataOpenSettings"
+        ></app-wimes>
+      </swiper-slide>
+    </swiper-container>
+    <app-options-wimes [dataSettingWime]="dataSettingWime"></app-options-wimes>
+  </main>
+</section>
+<app-all-comments [class]="'allComments allComments--'+ classAllComments"
+  [classAllComments]="classAllComments"
+  [dataAllComments]="dataAllComments"
+  id="fatherAllComments"
+  >
+</app-all-comments>
+<app-share [classShare]="classShare"></app-share>
+<app-new-post-option [classNewPostOptions]="classNewPostOptions"></app-new-post-option>
+<app-navbar   [dataNavBar]="dataNavBar"></app-navbar>
+
+

@@ -1,0 +1,45 @@
+.contentOptionsShare{
+
+  position: fixed;
+    top: 0;
+    left: 0;
+    margin-bottom: 6vh;
+    width: 100%;
+    height: 100%;
+    color: black;
+    z-index: 5;
+    align-items: flex-end;
+    display: flex;
+    justify-content: center;
+    visibility: hidden;
+
+    &--show{
+      transition: ease-out .2s;
+      background-color: rgba(0, 0, 0, 0.167);
+      opacity: 1;
+      visibility: visible;
+    }
+    &--hidde{
+      visibility: hidden;
+      transition: ease-out .2s;
+      opacity: 0;
+    }
+  .shareOptions{
+    padding: 1rem;
+    margin:1rem;
+    background-color: rgba(255, 255, 255, 0.494);
+    border-radius: 1rem;
+    box-sizing: border-box;
+    width: min-content;
+    margin-bottom: 6vh;
+    display: flex;
+    gap: 1rem;
+    backdrop-filter: blur(10px);
+    .cardOptionShare{
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      object-fit: cover;
+    }
+  }
+}

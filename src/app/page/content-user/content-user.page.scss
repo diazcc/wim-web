@@ -1,0 +1,55 @@
+
+.headerProfile{
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+}
+.wrapper{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  min-height: 93vh;
+  .bodyMain{
+    padding-top: 3rem;
+    width: 100%;
+    max-width: 45rem;
+    display: flex;
+    flex-direction: column;
+    .titleContent{
+      padding-left:1rem;
+    }
+    .navbarContent{
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      padding: 1rem 1rem .4rem 1rem;
+      .optionNavbar{
+        border-top: 1px solid white;
+        padding: .3rem 2rem ;
+        .iconNavbar{
+          width: 1.5rem;
+        }
+      }
+    }
+    .contentMedia{
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      flex-grow: 1;
+      .row{
+        display: flex;
+        height: min-content;
+        flex-wrap: wrap;
+        .content{
+          flex-grow: 1;
+          position: relative;
+          margin: .05rem; /* Espacio entre los hijos */
+          min-width: 32%;
+          max-width: 33.3%;
+          box-sizing: border-box;
+          height: min-content;
+        }
+      }
+    }
+  }
+}

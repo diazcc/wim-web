@@ -1,11 +1,20 @@
-<app-home-template
- (textInputModel)="detectChange($event)"
-  [dataSlider]="dataSlider"
-  [dataCategory]="dataCategory"
-  [dataMain]="dataMain"
-  [dataSearch]="dataSearch"
-  [dataPresentation]="dataPresentation"
-  [dataFooter]="dataHome.dataFooter"
-  [dataHeader]="dataHeader"
-  [dataArticlePresentation]="dataHome.dataArticlePresentation"
-></app-home-template>
+<app-header class="headerProfile"></app-header>
+<section class="body">
+  <main class="wrapper" >
+    <swiper-container class="swiper-container" direction = "vertical" >
+      <swiper-slide class="swiper-slide" >
+        <app-wimes class="wime"></app-wimes>
+      </swiper-slide>
+      <swiper-slide lazy="true" class="swiper-slide">
+        <app-wimes class="wime"></app-wimes>
+      </swiper-slide>
+      <swiper-slide lazy="true" class="swiper-slide">
+        <app-wimes class="wime"></app-wimes>
+      </swiper-slide>
+      <swiper-slide lazy="true" class="swiper-slide">
+        <app-wimes class="wime"></app-wimes>
+      </swiper-slide>
+    </swiper-container>
+  </main>
+</section>
+<app-navbar [dataNavBar]="dataNavBar"></app-navbar>

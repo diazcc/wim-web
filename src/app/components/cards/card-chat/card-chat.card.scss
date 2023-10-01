@@ -1,0 +1,61 @@
+$widthUser  :  94.5vh;
+$stringSmall : .8rem;
+$text : 1rem;
+$textBig : 1.4rem;
+$colorTextBehind : #824e27;
+.icon{
+  width: 1.5rem;
+  &--big{
+    width: 1.5rem;
+    margin-right: .7rem;
+  }
+  &--dm{
+    width: 3rem;
+  }
+  &--small{
+    width: 1rem;
+  }
+}
+.cardMessage{
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  position: relative;
+  .imageUser{
+    min-width: 3.4rem;
+    min-height: 3.4rem;
+    max-width: 3.4rem;
+    max-height: 3.4rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .contentMessage{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: .2rem;
+    .f{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .userName{
+        font-size: 1rem;
+      }
+    }
+    .f3{
+      margin-left: auto;
+      font-size: $stringSmall;
+      color: $colorTextBehind;
+    }
+  }
+  .options{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    visibility: hidden;
+    display:none;
+  }
+}

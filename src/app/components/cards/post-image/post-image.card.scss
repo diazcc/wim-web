@@ -1,0 +1,35 @@
+.content{
+  .cardMedia{
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* Proporción cuadrada */
+    overflow: hidden; /* Ocultar contenido fuera de límites */
+    .image{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .shadow{
+      box-sizing: border-box;
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      padding: 0.6rem;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.607) 0%, rgba(0, 0, 0, 0.259) 50%, rgba(0, 0, 0, 0) 100%);
+      .descriptionPost{
+        display: flex;
+        align-items: center;
+        gap: .3rem;
+        .iconLike{
+          width: 1rem;
+        }
+        .likes{
+          font-size: .7rem;
+          color: white;
+        }
+      }
+    }
+  }
+}

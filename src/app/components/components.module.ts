@@ -1,88 +1,81 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA,NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeTemplate } from './templates/home/home.template';
-import { NavbarMolecule } from './molescules/navbar/navbar.molecule';
-import { HeaderOrganism } from './organisms/header/header.organism';
-import { IconAtom } from './atoms/icon/icon.atom';
-import { ArticlePresentationOrganism } from './organisms/article-presentation/article-presentation.organism';
-import { FooterOrganism } from './organisms/footer/footer.organism';
-import { PresentationIndexOrganism } from './organisms/presentation-index/presentation-index.organism';
-import { SectionPhotosOrganism } from './organisms/section-photos/section-photos.organism';
-import { SectionPrincipalProductOrganism } from './organisms/section-principal-product/section-principal-product.organism';
-import { ProductTemplate } from './templates/product/product.template';
-import { AdministrationTemplate } from './templates/administration/administration.template';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { SearchOrganism } from './organisms/search/search.organism';
-import { CardProductMolecule } from './molescules/card-product/card-product.molecule';
-import { ViewProductOrganism } from './organisms/view-product/view-product.organism';
-import { GaleryTemplate } from './templates/galery/galery.template';
-import { CategoryOrganism } from './organisms/category/category.organism';
-import { SliderOrganism } from './organisms/slider/slider.organism';
-import { LoginTemplate } from './templates/login/login.template';
-import { AdmHomeTemplate } from './templates/adm-home/adm-home.template';
-import { AdmProductTemplate } from './templates/adm-product/adm-product.template';
-import { NewCategoryTemplate } from './templates/new-category/new-category.template';
-import { NewProductTemplate } from './templates/new-product/new-product.template';
-import { AlertMolecule } from './molescules/alert/alert.molecule';
-import { MenuAdmOrganism } from './organisms/menu-adm/menu-adm.organism';
+import { WimesArticle } from './articles/wimes/wimes.article';
+import { ProfileArticle } from './articles/profile/profile.article';
+import { HeaderWimeContentWime } from './content-wime/header-wime/header-wime.content-wime';
+import { DescriptionWimeContentWime } from './content-wime/description-wime/description-wime.content-wime';
+import { CommentsWimeContentWime } from './content-wime/comments-wime/comments-wime.content-wime';
+import { AllCommentsSection } from './sections/all-comments/all-comments.section';
+import { HeaderArticle } from './articles/header/header.article';
+import { NavbarArticle } from './articles/navbar/navbar.article';
+import { CardCommentCard } from './cards/card-comment/card-comment.card';
+import { PostSection } from './sections/post/post.section';
+import { IconDmCard } from './cards/icon-dm/icon-dm.card';
+import { CardChatCard } from './cards/card-chat/card-chat.card';
+import { PostImageCard } from './cards/post-image/post-image.card';
+import { OptionsWimesSectionSetting } from './section-settings/options-wimes/options-wimes.section-setting';
+import { register } from 'swiper/element/bundle';
+import { NavProfileLinksSection } from './sections/nav-profile-links/nav-profile-links.section';
+import { ContentInformationProfileSection } from './sections/content-information-profile/content-information-profile.section';
+import { ClickOutsideDirectiveDirective } from './directives/click-outside-directive.directive';
+import { MenuArticle } from './articles/menu/menu.article';
+import { NewPostOptionArticle } from './articles/new-post-option/new-post-option.article';
+import { ShareArticle } from './articles/share/share.article';
+import { AlertViewComponent } from './alert-view/alert-view.component';
+
+register();
 
 
 @NgModule({
   declarations: [
-    HomeTemplate,
-    NavbarMolecule,
-    HeaderOrganism,
-    IconAtom,
-    ArticlePresentationOrganism,
-    FooterOrganism,
-    PresentationIndexOrganism,
-    SectionPhotosOrganism,
-    SectionPrincipalProductOrganism,
-    ProductTemplate,
-    AdministrationTemplate,
-    SearchOrganism,
-    CardProductMolecule,
-    ViewProductOrganism,
-    GaleryTemplate,
-    CategoryOrganism,
-    SliderOrganism,
-    LoginTemplate,
-    AdmHomeTemplate,
-    AdmProductTemplate,
-    NewCategoryTemplate,
-    NewProductTemplate,
-    AlertMolecule,
-    MenuAdmOrganism
+    WimesArticle,
+    ProfileArticle,
+    HeaderWimeContentWime,
+    DescriptionWimeContentWime,
+    CommentsWimeContentWime,
+    AllCommentsSection,
+    HeaderArticle,
+    NavbarArticle,
+    CardCommentCard,
+    PostSection,
+    IconDmCard,
+    CardChatCard,
+    PostImageCard,
+    OptionsWimesSectionSetting,
+    NavProfileLinksSection,
+    ContentInformationProfileSection,
+    ClickOutsideDirectiveDirective,
+    MenuArticle,
+    NewPostOptionArticle,
+    ShareArticle,
+    AlertViewComponent
   ],
   imports: [
-    CommonModule,
-    FormsModule
+    CommonModule
   ],
   exports:[
-    HomeTemplate,
-    NavbarMolecule,
-    HeaderOrganism,
-    IconAtom,
-    ArticlePresentationOrganism,
-    FooterOrganism,
-    PresentationIndexOrganism,
-    SectionPhotosOrganism,
-    SectionPrincipalProductOrganism,
-    ProductTemplate,
-    AdministrationTemplate,
-    SearchOrganism,
-    CardProductMolecule,
-    ViewProductOrganism,
-    GaleryTemplate,
-    CategoryOrganism,
-    SliderOrganism,
-    LoginTemplate,
-    AdmHomeTemplate,
-    AdmProductTemplate,
-    NewCategoryTemplate,
-    NewProductTemplate,
-    AlertMolecule,
-    MenuAdmOrganism
-  ]
+    WimesArticle,
+    ProfileArticle,
+    HeaderWimeContentWime,
+    DescriptionWimeContentWime,
+    CommentsWimeContentWime,
+    AllCommentsSection,
+    HeaderArticle,
+    NavbarArticle,
+    CardCommentCard,
+    PostSection,
+    IconDmCard,
+    CardChatCard,
+    PostImageCard,
+    OptionsWimesSectionSetting,
+    NavProfileLinksSection,
+    ContentInformationProfileSection,
+    ClickOutsideDirectiveDirective,
+    MenuArticle,
+    NewPostOptionArticle,
+    ShareArticle,
+    AlertViewComponent
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule { }

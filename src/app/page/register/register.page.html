@@ -1,0 +1,36 @@
+<main class="wrapperRegister">
+  <h1 class="titleRegister textColor">WIM</h1>
+  <h2 class="subtitleRegister textColor">Crear cuenta</h2>
+  <form class="formRegister" [formGroup]="formRegister" (ngSubmit)="onSubmit()">
+    <label for="userName" class="labelRegister textColor">Nombre de usuario</label>
+    <input
+      type="text"
+      class="inputLabel"
+      id="userName"
+      formControlName="userName"
+      maxlength="20"
+      placeholder="user_22"
+      >
+    <p *ngIf="alertUserName" class="errorInput">{{textUserName}}</p>
+
+    <label for="password" class="labelRegister textColor">Contraseña</label>
+    <input type="password" class="inputLabel" id="password" formControlName="password">
+    <p *ngIf="alertPassword" class="errorInput">{{textPassword}}</p>
+
+    <label for="email" class="labelRegister textColor">Correo electrónico</label>
+    <input type="email" class="inputLabel" id="email" formControlName="email">
+    <p *ngIf="alertEmail" class="errorInput">{{textEmail}}</p>
+
+    <label for="emailConfirm" class="labelRegister textColor">Confirmar correo electrónico</label>
+    <input type="email" class="inputLabel" id="emailConfirm" formControlName="emailConfirm">
+    <p *ngIf="alertEmailConfirm" class="errorInput">{{textEmailConfirm}}</p>
+
+    <label for="phoneNumber" class="labelRegister textColor">Teléfono</label>
+    <input type="number" class="inputLabel" id="phoneNumber" formControlName="phoneNumber">
+    <p *ngIf="alertPhoneNumber" class="errorInput">{{textPhoneNumber}}</p>
+
+    <input type="submit" value="Crear" class="inputSubmitRegister">
+  </form>
+
+</main>
+<app-alert-view [dataAlert]="dataAlert"></app-alert-view>

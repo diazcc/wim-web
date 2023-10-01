@@ -1,0 +1,23 @@
+.contentNavProfile{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: .5rem;
+  .description{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    h3{
+      font-weight: bolder;
+      font-size: .9rem;
+    }
+    p{
+      font-size: .9rem;
+    }
+  }
+  &--hidde{
+    visibility: hidden;
+    display: none;
+  }
+}

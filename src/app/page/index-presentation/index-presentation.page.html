@@ -1,0 +1,17 @@
+<div class="content">
+  <!-- <img [class]="'logo logo--'+ classImg" src="assets/svg/logowime.svg" alt=""> -->
+  <h1 [class]="'logo logo--'+ classImg">WIM</h1>
+  <p [class]="'description description--'+classDescription"> Who i'm? </p>
+  <form [class]="'formLogin formLogin--'+classFormLogin">
+    <h2 class="titleLogin">Iniciar sesion</h2>
+    <section class="contentFormLogin">
+      <label for="userNameLogin">Usuario</label>
+      <input type="text" id="userNameLogin" class="inputLogin">
+      <label for="userPassword">Contraseña</label>
+      <input type="text" id="userPassword" class="inputLogin">
+    </section>
+    <input type="submit" value="Iniciar" class="initLogin" (click)="redirectHome()">
+  </form>
+  <a [class]="'linkForm linkForm--'+classFormLogin" (click)="redirectCrearCount()">Crear cuenta</a>
+  <a [class]="'linkForm linkForm--'+classFormLogin">Olvide mi contraseña</a>
+</div>

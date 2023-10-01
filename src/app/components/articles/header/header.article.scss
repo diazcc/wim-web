@@ -1,0 +1,40 @@
+.icon{
+  width: 1.5rem;
+  &--big{
+    width: 1.5rem;
+    margin-right: .7rem;
+  }
+  &--dm{
+    width: 3rem;
+  }
+}
+
+.headerProfile{
+  .haderContent{
+    background-image: linear-gradient( rgba(0, 0, 0, 0.77)  0%, rgba(0, 0, 0, 0.36) 50%, rgba(0, 0, 0, 0) 100%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: .7rem;
+    justify-content: space-between;
+    .nameLeftHeader{
+      font-size: 1.4rem;
+    }
+    .descriptionContentNav{
+      display: flex;
+      flex-direction: row;
+      gap: .3rem;
+      .secondContentHeader{
+        font-size: 1rem;
+      }
+      .secondContentDescription{
+        display: flex;
+        font-size: .8rem;
+        align-items: center;
+      }
+    }
+    .iconMenu{
+      width: 1.5rem;
+    }
+  }
+}

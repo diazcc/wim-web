@@ -1,0 +1,85 @@
+.mainNewWime{
+ background-color: black;
+ width: 100vw;
+ height: 84vh;
+ padding: 1rem;
+ box-sizing: border-box;
+ display: flex;
+ flex-direction: column;
+ .titleNewWime{
+  font-size: 1.5rem;
+  text-align: center;
+ }
+ .contentNewWime{
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow:1 ;
+  .contentUser{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    .userNewWime{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      .userImage{
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .userNameNewWime{
+        font-weight: bold;
+      }
+    }
+  }
+  .contentPost{
+    width: 80%;
+    height: 60%;
+    padding: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .textComment{
+      border: none;
+      font-size: 1rem;
+      background-color: rgba(255, 255, 255, 0);
+      color: white;
+      resize: none;
+      outline: none;
+      height: 5rem;
+    }
+  }
+  .optionsNewWime{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    .iconOption{
+      width: 2rem;
+      height: 2rem;
+      margin-left: auto;
+    }
+  }
+  .sendWime{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .buttonSendWime{
+      font-size: 1rem;
+      padding: .5rem;
+      width: 50%;
+      max-width: 50%;
+      border-radius: 1rem;
+      background: #ffffff00;
+      color: white;
+      border: 1px solid white;
+    }
+  }
+ }
+}

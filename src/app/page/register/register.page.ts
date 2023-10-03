@@ -22,10 +22,10 @@ export class RegisterPage {
   textEmailConfirm  = "";
   textPhoneNumber  = "";
   dataAlert = {
-    classAlert : "hidde",
-    text : "¡Tu cuenta ha sido creada exitosamente!",
-    textButton : "Iniciar sesion",
-    redirect : ()=>{this.router.navigate(['/login'])}
+    classAlert : "show",
+    text : "Requisitos: Nombre usuario en minuscula y sin espacios, contraseña mas de 6 caracteres",
+    textButton : "Continuar",
+    redirect : ()=>{this.closeAlert()}
   }
   constructor(
     private renderer : Renderer2,
@@ -63,10 +63,12 @@ export class RegisterPage {
     } else if(/[A-Z]/.test(this.formRegister.value.userName)) {
       this.stateForm = false;
       this.alertUserName = true;
+      console.log("may");
       this.textUserName = "El nombre debe ser en minisculas";
     } else if(this.formRegister.value.userName.includes(' ')){
       this.stateForm = false;
       this.alertUserName = true;
+      console.log("vacio");
       this.textUserName = "No puede haber espacios";
     }else {
       this.alertUserName = false ;
@@ -112,6 +114,11 @@ export class RegisterPage {
     }
   }
 
+
+  // dataAlert
+  closeAlert(){
+    this.dataAlert.classAlert = "hidde"
+  }
   setData(){
     const data = {
       userName : this.formRegister.value.userName,

@@ -23,8 +23,7 @@ const routes: Routes = [
   loadChildren: () => import('./page/new-photo/new-photo.module').then(m => m.NewPhotoModule)},
   {path:'search',canActivate :[userGuard],
   loadChildren: () => import('./page/search/search.module').then(m => m.SearchModule)},
-  {path:'register',canActivate :[userGuard],
-  loadChildren: () => import('./page/register/register.module').then(m => m.RegisterModule)},
+  {path:'register',loadChildren: () => import('./page/register/register.module').then(m => m.RegisterModule)},
   {path:'home',canActivate :[userGuard],
   loadChildren: () => import('./page/home/home.module').then(m => m.HomeModule)},
   {path:'**', pathMatch:'full', redirectTo:'login'}

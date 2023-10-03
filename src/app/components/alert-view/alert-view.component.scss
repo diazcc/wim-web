@@ -10,6 +10,7 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+
   &--hidde{
     visibility: hidden;
     opacity: 0;
@@ -28,6 +29,7 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    max-width: 20rem;
     .titleAlert{
       color: rgb(108, 54, 0);
       font-size: 1.5rem;

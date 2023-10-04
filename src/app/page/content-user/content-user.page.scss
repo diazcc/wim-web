@@ -21,11 +21,20 @@
     .navbarContent{
       display: flex;
       flex-direction: row;
+      justify-content: space-around;
       gap: 2rem;
       padding: 1rem 1rem .4rem 1rem;
       .optionNavbar{
         border-top: 1px solid white;
-        padding: .3rem 2rem ;
+        width: 4rem;
+        height: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &--iconWime{
+          font-size: 2rem;
+          font-weight: bold;
+        }
         .iconNavbar{
           width: 1.5rem;
         }

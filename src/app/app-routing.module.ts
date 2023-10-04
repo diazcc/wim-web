@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { userGuard } from './guards/user.guard';
+import { userLoggedGuard } from './guards/user-logged.guard';
 
 const routes: Routes = [
-  {path:'login',loadChildren: () => import('./page/login/login.module').then(m => m.LoginModule)},
+  {path:'login',canActivate :[userLoggedGuard],
+  loadChildren: () => import('./page/login/login.module').then(m => m.LoginModule)},
   {path:'profileUser',canActivate :[userGuard],
   loadChildren: () => import('./page/profile-personal/profile-personal.module').then(m => m.ProfilePersonalModule)
   },
@@ -23,7 +25,8 @@ const routes: Routes = [
   loadChildren: () => import('./page/new-photo/new-photo.module').then(m => m.NewPhotoModule)},
   {path:'search',canActivate :[userGuard],
   loadChildren: () => import('./page/search/search.module').then(m => m.SearchModule)},
-  {path:'register',loadChildren: () => import('./page/register/register.module').then(m => m.RegisterModule)},
+  {path:'register',canActivate :[userLoggedGuard],
+  loadChildren: () => import('./page/register/register.module').then(m => m.RegisterModule)},
   {path:'home',canActivate :[userGuard],
   loadChildren: () => import('./page/home/home.module').then(m => m.HomeModule)},
   {path:'**', pathMatch:'full', redirectTo:'login'}

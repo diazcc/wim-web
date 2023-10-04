@@ -30,4 +30,33 @@
       display: none;
     }
   }
+  &--fixed{
+    position: fixed;
+    width: 3.5rem;
+    z-index: 2;
+    right: 0;
+    bottom: 11rem;
+    .dmProfile{
+      width: 100%;
+    }
+    .alertDm{
+      z-index: 2;
+    }
+  }
+  &--bottomFixed{
+    position: fixed;
+    width: 3.5rem;
+    z-index: 2;
+    right: 0;
+    bottom: 4rem;
+    .dmProfile{
+      width: 100%;
+      opacity: .2;
+    }
+    .alertDm{
+      z-index: 2;
+      opacity: .2;
+
+    }
+  }
 }

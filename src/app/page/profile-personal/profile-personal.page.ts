@@ -27,7 +27,7 @@ export class ProfilePersonalPage {
     imgHome: "home",
     imgSearch: "search",
     imgMore: "more",
-    imgMedia: "media",
+    imgNoti: "message-white",
     imgUser: "/assets/img/foto.png",
     classNavbar :"",
     setNewPost : ()=>{this.openNewPost()},
@@ -177,7 +177,7 @@ export class ProfilePersonalPage {
   setIconsBlackNavbar(){
     this.dataNavBar.classNavbar= "white";
     this.dataNavBar.imgHome ="home-black";
-    this.dataNavBar.imgMedia ="media-black";
+    this.dataNavBar.imgNoti ="message-black";
     this.dataNavBar.imgMore ="more-black";
     this.dataNavBar.imgSearch ="search-black";
   }
@@ -185,7 +185,7 @@ export class ProfilePersonalPage {
  setIconsWhiteNavbar(){
   this.dataNavBar.classNavbar= "viewWime";
   this.dataNavBar.imgHome ="home";
-  this.dataNavBar.imgMedia ="media";
+  this.dataNavBar.imgNoti ="message-white";
   this.dataNavBar.imgMore ="more";
   this.dataNavBar.imgSearch ="search";
  }
@@ -193,7 +193,7 @@ export class ProfilePersonalPage {
  setIconsDefaultNavbar(){
   this.dataNavBar.classNavbar= "";
   this.dataNavBar.imgHome ="home";
-  this.dataNavBar.imgMedia ="media";
+  this.dataNavBar.imgNoti ="message-white";
   this.dataNavBar.imgMore ="more";
   this.dataNavBar.imgSearch ="search";
  }

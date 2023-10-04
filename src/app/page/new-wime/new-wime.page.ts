@@ -17,7 +17,7 @@ export class NewWimePage {
     imgHome: "home",
     imgSearch: "search",
     imgMore: "more",
-    imgMedia: "media",
+    imgNoti: "message-white",
     imgUser: "/assets/img/foto.png",
     classNavbar :"viewWime",
     setNewPost : ()=>{},

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./content-user.page.scss']
 })
 export class ContentUserPage {
-
+  classDm = "fixed";
 }

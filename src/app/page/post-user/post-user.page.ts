@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./post-user.page.scss']
 })
 export class PostUserPage {
-
+  classDm= "fixed";
 }

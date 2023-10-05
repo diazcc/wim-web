@@ -13,6 +13,10 @@ $textBig : 1.4rem;
  border-radius: 50%;
 }
 
+.textColorBg{
+  color: #3f1b00;
+}
+
 .textBehind{
  color: #ffffff60;
 }
@@ -29,6 +33,9 @@ $textBig : 1.4rem;
  &--small{
    width: 1rem;
  }
+}
+.textColor{
+  color: black;
 }
 body{
   margin: 0;

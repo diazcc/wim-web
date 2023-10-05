@@ -19,6 +19,8 @@ import { HomeModule } from './page/home/home.module';
 import { NewPhotoModule } from './page/new-photo/new-photo.module';
 import { SearchModule } from './page/search/search.module';
 import { RegisterModule } from './page/register/register.module';
+import { NewUserDescriptionModule } from './page/new-user-description/new-user-description.module';
+import { PhotoProfileModule } from './page/photo-profile/photo-profile.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { RegisterModule } from './page/register/register.module';
     NewPhotoModule,
     SearchModule,
     RegisterModule,
+    NewUserDescriptionModule,
+    PhotoProfileModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),

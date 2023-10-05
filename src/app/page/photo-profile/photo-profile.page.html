@@ -1,0 +1,21 @@
+<main class="wrapperProfilePhoto">
+  <form class="formProfilePhoto">
+    <h1 class="titleWim ">WIM</h1>
+    <h2 class="titleFormProfielPhoto">Foto de perfil</h2>
+    <p class="descriptionFormProfilePhoto">Este es tu primer paso, necesitamos reconocerte o que el mundo te identifique. Sube la foto la cual quieres que vean.</p>
+    <section class="dFPP">
+      <article class="dFPPContent">
+        <img src="/assets/img/foto.png" alt="" class="imgFormPhoto" (click)="abrirSelectorDeArchivo()">
+      </article>
+    </section>
+    <p class="footerDescriptionFormProfilePhoto">haz click en la imagen para cambiar la foto</p>
+    <input type="submit" value="Subir" class="submitFormPhoto">
+    <input type="file" style="display: none;" (change)="cargarArchivo($event)" #fileInput>
+  </form>
+</main>
+
+
+<!-- <div>
+  <img src="/assets/svg/media-black.svg" (click)="abrirSelectorDeArchivo()">
+</div>
+<input type="file" style="display: none;" (change)="cargarArchivo($event)" #fileInput> -->

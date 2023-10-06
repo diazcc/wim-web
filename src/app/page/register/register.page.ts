@@ -114,6 +114,14 @@ export class RegisterPage {
     }
   }
 
+  getDataUser(){
+    const userData = {
+      userName : this.formRegister.value?.userName,
+      phoneNumber : this.formRegister.value?.phoneNumber
+    }
+    return userData;
+  }
+
 
   // dataAlert
   closeAlert(){
@@ -126,13 +134,20 @@ export class RegisterPage {
       email : this.formRegister.value.email,
       phoneNumber : this.formRegister.value.phoneNumber,
     }
-    console.log(data);
     this.userService.register(data.email, data.password)
     .then(()=>{
-      this.dataAlert.classAlert = "show";
+      this.dataAlert = {
+        classAlert : "show",
+        text : "¡"+data.userName+" se ha creado exitosamente tu cuenta!",
+        textButton : "Continuar",
+        redirect : ()=>{this.router.navigate(['/photoProfile'])}
+      }
+
+      this.userService.createUserIdandSetData(this.getDataUser());
     })
     .catch((e)=>{
       console.log(e);
     });
+
   }
 }

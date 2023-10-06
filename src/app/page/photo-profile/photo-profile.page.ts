@@ -7,14 +7,16 @@ import { documentId } from 'firebase/firestore';
   styleUrls: ['./photo-profile.page.scss']
 })
 export class PhotoProfilePage {
+  @ViewChild('fileInput') fileInput!: ElementRef;
   constructor(
     private renderer :Renderer2
   ){}
 
+
   ngOnInit(){
-    this.renderer.addClass(document.body , 'bodyWhite');
+    this.renderer.addClass(document.body, 'bodyWhite')
   }
-  @ViewChild('fileInput') fileInput!: ElementRef;
+
 
   abrirSelectorDeArchivo() {
     this.fileInput.nativeElement.click();
@@ -23,5 +25,8 @@ export class PhotoProfilePage {
   cargarArchivo(event: any) {
     const archivoSeleccionado = event.target.files[0];
     // Aquí puedes realizar las acciones que desees con el archivo seleccionado, como cargarlo o procesarlo.
+  }
+  ngOnDestroy(){
+    this.renderer.removeClass(document.body, 'bodyWhite')
   }
 }

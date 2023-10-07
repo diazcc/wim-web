@@ -1,0 +1,58 @@
+@import url('//fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap');
+@keyframes giro {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading{
+  background-color: #00000054;
+  display: grid;
+  place-content: center;
+  height: 100%;
+  color: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  &--show{
+    visibility: visible;
+    opacity: 1;
+    transition: ease-out .2s;
+  }
+  &--hidde{
+    visibility: hidden;
+    opacity: 0;
+    transition: ease-out .2s;
+  }
+  .contenedor-loader{
+    background-color: #a24500;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 10rem;
+    border-radius: 1rem;
+    .content-circle{
+      .rueda {
+        border: 10px solid rgba(255, 255, 255, .3);
+        border-radius: 50%;
+        border-left-color: transparent;
+        width: 2rem;
+        height:2rem;
+        animation: giro 1s linear infinite;
+      }
+    }
+    .cargando{
+      color: #FFF;
+    }
+  }
+}
+
+
+

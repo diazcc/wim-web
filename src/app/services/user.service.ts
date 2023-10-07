@@ -11,6 +11,7 @@ export class UserService {
   data = {
     name : "hola"
   }
+  private userId = "";
   constructor(
     private auth: Auth,
     private firestore : Firestore
@@ -29,16 +30,15 @@ export class UserService {
       const  dataEmpty = {}
       let userId = "";
       const collectionRef = collection(this.firestore, 'user');
-      const docRef =addDoc(collectionRef, dataEmpty)
-      .then((response)=>{
-        this.addDataUser(response?.id,userData);
-      });
+      return addDoc(collectionRef, dataEmpty)
     }
 
 
     addDataUser( id : any, userData : {}){
       console.log("id "+id);
       console.log(userData);
+      console.log(this.userId);
+
       const  dataEmpty = {};
       const collectionRef : any = collection(this.firestore,"user/"+id+"/userData");
       const docRef = doc(collectionRef, 'data');

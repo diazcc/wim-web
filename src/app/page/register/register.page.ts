@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./register.page.scss']
 })
 export class RegisterPage {
+  classLoading = "hidde";
   formRegister : FormGroup;
   alertUserName : boolean = false;
   alertPassword : boolean = false;
@@ -128,22 +129,31 @@ export class RegisterPage {
     this.dataAlert.classAlert = "hidde"
   }
   setData(){
-    const data = {
+    let userId = "";
+    this.classLoading = "show";
+    const userData = {
       userName : this.formRegister.value.userName,
       password : this.formRegister.value.password,
       email : this.formRegister.value.email,
       phoneNumber : this.formRegister.value.phoneNumber,
     }
-    this.userService.register(data.email, data.password)
+    this.userService.register(userData.email, userData.password)
     .then(()=>{
-      this.dataAlert = {
-        classAlert : "show",
-        text : "¡"+data.userName+" se ha creado exitosamente tu cuenta!",
-        textButton : "Continuar",
-        redirect : ()=>{this.router.navigate(['/photoProfile'])}
-      }
-
-      this.userService.createUserIdandSetData(this.getDataUser());
+      this.userService.createUserIdandSetData(this.getDataUser())
+      .then((response)=>{
+        userId = response?.id;
+        this.userService.addDataUser(response?.id,userData)
+        .then(()=>{
+          this.classLoading = "hidde";
+          this.dataAlert = {
+            classAlert : "show",
+            text : "¡"+userData.userName+" se ha creado exitosamente tu cuenta!",
+            textButton : "Continuar",
+            redirect : ()=>{this.router.navigate(['/photoProfile'])}
+          }
+        })
+        .catch();
+      });;
     })
     .catch((e)=>{
       console.log(e);

@@ -22,6 +22,7 @@ import { MenuArticle } from './articles/menu/menu.article';
 import { NewPostOptionArticle } from './articles/new-post-option/new-post-option.article';
 import { ShareArticle } from './articles/share/share.article';
 import { AlertViewComponent } from './alert-view/alert-view.component';
+import { LoadViewComponent } from './load-view/load-view.component';
 
 register();
 
@@ -48,7 +49,8 @@ register();
     MenuArticle,
     NewPostOptionArticle,
     ShareArticle,
-    AlertViewComponent
+    AlertViewComponent,
+    LoadViewComponent
   ],
   imports: [
     CommonModule
@@ -74,7 +76,8 @@ register();
     MenuArticle,
     NewPostOptionArticle,
     ShareArticle,
-    AlertViewComponent
+    AlertViewComponent,
+    LoadViewComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,6 +1,7 @@
 import { Component, Renderer2 } from '@angular/core';
 import { FormGroup, FormControl, UntypedFormArray } from '@angular/forms';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,11 +10,12 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./register.page.scss']
 })
 export class RegisterPage {
+  private arrayDataUser : any = [];
   classLoading = "hidde";
   formRegister : FormGroup;
   alertUserName : boolean = false;
   alertPassword : boolean = false;
-  alertEmail : boolean = false;
+  alertEmail : boolean = true;
   alertEmailConfirm : boolean = false;
   alertPhoneNumber : boolean = false;
   stateForm : boolean = false;
@@ -41,7 +43,9 @@ export class RegisterPage {
       phoneNumber : new FormControl(),
     })
   }
-
+  ngOnInit(){
+    this.getUserData();
+  }
 
   ngAfterViewInit(){
     this.renderer.addClass(document.body,"bodyWhite")
@@ -54,7 +58,46 @@ export class RegisterPage {
   onSubmit(){
     this.validateForm();
   }
+  // listeners
 
+  onInputChangeUserName(event: any) {
+    const inputValue = event.target.value;
+    const userNames :any = [];
+    if (inputValue.length>=2) {
+      this.arrayDataUser.map((value:any)=>{
+        userNames.push(value.userName);
+        if (userNames.includes(inputValue)) {
+          this.alertUserName = true;
+          this.textUserName = "Este usuario ya existe";
+        } else {
+          this.alertUserName = false;
+
+        }
+      })
+    }
+    // Realiza las acciones que desees con el valor ingresado.
+  }
+
+  onInputChangeEmail(event: any) {
+    const inputValue = event.target.value;
+    const userEmail :any = [];
+    if (inputValue.length>=2) {
+      this.arrayDataUser.map((value:any)=>{
+        userEmail.push(value.userEmail);
+        if (userEmail.includes(inputValue)) {
+          this.alertEmail = true;
+          this.textEmail = "Este correo ya esta registrado";
+        }else{
+          this.alertEmail = false;
+        }
+      })
+    }
+  }
+
+
+
+  //-------------------validators
+  //validate form
   validateForm(){
     //userName
     if (this.formRegister.value.userName=="" || this.formRegister.value.userName==null) {
@@ -114,19 +157,26 @@ export class RegisterPage {
       this.setData();
     }
   }
-
-  getDataUser(){
-    const userData = {
-      userName : this.formRegister.value?.userName,
-      phoneNumber : this.formRegister.value?.phoneNumber
-    }
-    return userData;
+  //gets y sets
+  getUserData(){
+    const arrayData : any  = [];
+    this.userService.getUserId().subscribe((response)=>{
+      response.map((value : any) =>{
+        this.userService.getUserData(value.id).subscribe((response)=>{
+          arrayData.push(response[0]);
+          this.arrayDataUser.push(response[0]);
+        });
+      });
+    });
   }
 
-
-  // dataAlert
-  closeAlert(){
-    this.dataAlert.classAlert = "hidde"
+  getDataUserForm(){
+    const userData = {
+      userName : this.formRegister.value?.userName,
+      phoneNumber : this.formRegister.value?.phoneNumber,
+      userEmail : this.formRegister.value?.email
+    }
+    return userData;
   }
   setData(){
     let userId = "";
@@ -139,10 +189,10 @@ export class RegisterPage {
     }
     this.userService.register(userData.email, userData.password)
     .then(()=>{
-      this.userService.createUserIdandSetData(this.getDataUser())
+      this.userService.createUserIdandSetData()
       .then((response)=>{
         userId = response?.id;
-        this.userService.addDataUser(response?.id,userData)
+        this.userService.addDataUser(response?.id,this.getDataUserForm())
         .then(()=>{
           this.classLoading = "hidde";
           this.dataAlert = {
@@ -159,5 +209,9 @@ export class RegisterPage {
       console.log(e);
     });
 
+  }
+  // dataAlert
+  closeAlert(){
+    this.dataAlert.classAlert = "hidde"
   }
 }

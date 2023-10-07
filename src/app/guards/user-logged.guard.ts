@@ -10,11 +10,8 @@ import { Auth, authState } from '@angular/fire/auth';
 export const userLoggedGuard : CanActivateFn = (route, state) =>{
   const auth = inject(Auth);;
   const router = inject(Router);
-  console.log("adn");
   return authState(auth).pipe(
     map(user => {
-      console.log(user);
-      console.log(user?.email);
       if (user) {
         router.navigate(['/profileUser']);
         return false;

@@ -10,6 +10,7 @@
       formControlName="userName"
       maxlength="20"
       placeholder="user_22"
+      (input)="onInputChangeUserName($event)"
       >
     <p *ngIf="alertUserName" class="errorInput">{{textUserName}}</p>
 
@@ -17,8 +18,8 @@
     <input type="password" class="inputLabel" id="password" formControlName="password">
     <p *ngIf="alertPassword" class="errorInput">{{textPassword}}</p>
 
-    <label for="email" class="labelRegister textColor">Correo electrónico</label>
-    <input type="email" class="inputLabel" id="email" formControlName="email">
+    <label for="email" class="labelRegister textColor" >Correo electrónico</label>
+    <input type="email" class="inputLabel" id="email" formControlName="email" (input)="onInputChangeEmail($event)">
     <p *ngIf="alertEmail" class="errorInput">{{textEmail}}</p>
 
     <label for="emailConfirm" class="labelRegister textColor">Confirmar correo electrónico</label>

@@ -13,8 +13,6 @@ export const userGuard : CanActivateFn = (route, state) =>{
   console.log("adn");
   return authState(auth).pipe(
     map(user => {
-      console.log(user);
-      console.log(user?.email);
       if (user) {
         return true; // Permite el acceso a la ruta del administrador.
       } else {

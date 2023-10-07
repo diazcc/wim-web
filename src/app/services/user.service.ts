@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, user } from '@angular/fire/auth';
-import { Firestore } from '@angular/fire/firestore';
-import { addDoc, collection, doc, setDoc, updateDoc } from 'firebase/firestore';
+import { Firestore, collectionData, docData } from '@angular/fire/firestore';
+import { addDoc, collection, doc, onSnapshot, setDoc, updateDoc } from 'firebase/firestore';
 import { Observable, map } from 'rxjs';
 
 @Injectable({
@@ -26,18 +26,24 @@ export class UserService {
       return signInWithEmailAndPassword(this.auth, email, password);
     }
 
-    createUserIdandSetData(userData : {}){
+    getUserId() : Observable <any>{
+      const collectionRef = collection(this.firestore,'user');
+      return collectionData(collectionRef, {idField : 'id'}) as Observable<any>;
+    }
+
+    getUserData(id : any) : Observable <any>{
+      const collectionRef = collection(this.firestore,"user/"+id+"/userData");
+      return collectionData(collectionRef, {idField : 'id'}) as Observable<any>;
+    }
+
+    createUserIdandSetData(){
       const  dataEmpty = {}
-      let userId = "";
       const collectionRef = collection(this.firestore, 'user');
       return addDoc(collectionRef, dataEmpty)
     }
 
 
     addDataUser( id : any, userData : {}){
-      console.log("id "+id);
-      console.log(userData);
-      console.log(this.userId);
 
       const  dataEmpty = {};
       const collectionRef : any = collection(this.firestore,"user/"+id+"/userData");

@@ -42,4 +42,12 @@
       border: none;
     }
   }
+  .omit{
+    padding: .5rem;
+    font-size: 1rem;
+    border: 1px solid gray;
+    background-color: rgba(255, 255, 255, 0.3764705882);
+    border-radius: 1rem;
+    margin-left: auto;
+  }
 }

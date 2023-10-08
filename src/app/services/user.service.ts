@@ -66,6 +66,11 @@ export class UserService {
 
     // create data
 
+    setDataDescription(id :any, data: any){
+      const collectionRef : any = collection(this.firestore,"user/"+id+"/profileData");
+      const docRef = doc(collectionRef,'dataDescription');
+      return setDoc(docRef, data);
+    }
     createUserIdandSetData(){
       const  dataEmpty = {}
       const collectionRef = collection(this.firestore, 'user');
@@ -73,7 +78,6 @@ export class UserService {
     }
 
     addItemDataUser(id : any, userData : {}){
-
       const collectionRef : any = collection(this.firestore,"user/"+id+"/userData");
       const docRef = doc(collectionRef, 'data');
       return updateDoc(docRef , userData)

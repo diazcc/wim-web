@@ -15,6 +15,8 @@ const routes: Routes = [
   canActivate :[userGuard],loadChildren: () => import('./page/photo-profile/photo-profile.module').then(m => m.PhotoProfileModule)},
   {path:'post',canActivate :[userGuard],
   loadChildren: () => import('./page/post-user/post-user.module').then(m => m.PostUserModule)},
+  {path:'presentation',canActivate :[userGuard],
+  loadChildren: () => import('./page/new-description/new-description.module').then(m => m.NewDescriptionModule)},
   {path:'dm',canActivate :[userGuard],
   loadChildren: () => import('./page/dm/dm.module').then(m => m.DmModule)},
   {path:'chat',canActivate :[userGuard],

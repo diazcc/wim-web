@@ -1,19 +1,21 @@
 <main class="wrapperDescription">
   <h1 class="titleDescription">WIM</h1>
   <h2 class="subTitleDescription">Cuentanos mas de ti</h2>
-  <form class="formDescription">
+  <form class="formDescription" (ngSubmit)="onSubmit()" [formGroup]="descriptionForm">
     <label for="userAge" class="titleText">Cuantos años tienes?</label>
-    <input type="text" class="inputDescription">
+    <input type="text" class="inputDescription" formControlName="age">
 
-    <label for="userLocation" class="titleText">Donde vives?</label>
-    <input type="text" class="inputDescription">
+    <label for="userLocation" class="titleText" >Donde vives?</label>
+    <input type="text" class="inputDescription" formControlName="locate">
 
     <label for="userHobbies" class="titleText">Que te gusta hacer?</label>
-    <input type="text" class="inputDescription">
+    <input type="text" class="inputDescription" formControlName="hobbies">
 
     <label for="userOcupation" class="titleText">En que te destacas o te especializas en algo?</label>
-    <input type="text" class="inputDescription">
+    <input type="text" class="inputDescription" formControlName="skills">
 
     <input type="submit" value="Continuar" class="submitInput">
   </form>
+  <button class="omit" (click)="redirect()">Omitir</button>
 </main>
+<app-load-view [classLoading]="classLoading"></app-load-view>

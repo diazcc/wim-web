@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, user } from '@angular/fire/auth';
 import { Firestore, collectionData, docData } from '@angular/fire/firestore';
+import { Storage, getDownloadURL, ref, uploadBytes } from '@angular/fire/storage';
 import { addDoc, collection, doc, onSnapshot, setDoc, updateDoc } from 'firebase/firestore';
 import { Observable, map } from 'rxjs';
 
@@ -14,9 +15,23 @@ export class UserService {
   private userId = "";
   constructor(
     private auth: Auth,
-    private firestore : Firestore
+    private firestore : Firestore,
+    private storage : Storage
   ) { }
 
+
+  //generate id
+  generateIdRandom(){
+    let textoGenerado = "";
+    const fechaHoraActual = new Date();
+    const fecha = fechaHoraActual.toISOString().split('T')[0];
+    const hora = fechaHoraActual.toTimeString().split(' ')[0];
+    const milisegundos = fechaHoraActual.getMilliseconds();
+    const valorAleatorio = Math.floor(Math.random() * 1000);
+    return textoGenerado = `${fecha}${hora}${milisegundos}${valorAleatorio}`.replace(/[\s:-]/g, '');
+  }
+
+  //sesion
     register(email : any, password : any){
       console.log(email,password);
       return createUserWithEmailAndPassword(this.auth, email, password);
@@ -25,6 +40,12 @@ export class UserService {
     login(email : any , password : any){
       return signInWithEmailAndPassword(this.auth, email, password);
     }
+
+    logOut(){
+      return signOut(this.auth);
+    }
+
+    // getData
 
     getUserId() : Observable <any>{
       const collectionRef = collection(this.firestore,'user');
@@ -36,10 +57,26 @@ export class UserService {
       return collectionData(collectionRef, {idField : 'id'}) as Observable<any>;
     }
 
+    // getToken() : Observable<boolean>{
+    //   console.log(authState(this.auth));
+    //   return authState(this.auth).pipe(
+    //     map(user => !!user) // Devuelve true si hay un usuario autenticado, o false si no hay un usuario autenticado
+    //   );
+    // }
+
+    // create data
+
     createUserIdandSetData(){
       const  dataEmpty = {}
       const collectionRef = collection(this.firestore, 'user');
       return addDoc(collectionRef, dataEmpty)
+    }
+
+    addItemDataUser(id : any, userData : {}){
+
+      const collectionRef : any = collection(this.firestore,"user/"+id+"/userData");
+      const docRef = doc(collectionRef, 'data');
+      return updateDoc(docRef , userData)
     }
 
 
@@ -51,15 +88,18 @@ export class UserService {
       return setDoc(docRef, userData);
     }
 
-    logOut(){
-      return signOut(this.auth);
-    }
 
-    getToken() : Observable<boolean>{
-      console.log(authState(this.auth));
-      return authState(this.auth).pipe(
-        map(user => !!user) // Devuelve true si hay un usuario autenticado, o false si no hay un usuario autenticado
-      );
-    }
+    // create field
 
+    async setImage(field : any){
+      const imgRef = ref(this.storage,`images/${this.generateIdRandom()}`);
+      try {
+        await uploadBytes(imgRef, field);
+        const downloadURL = await getDownloadURL(imgRef);
+        return downloadURL;
+      } catch (error) {
+        console.error('Error al subir el archivo:', error);
+        return null;
+      }
+    }
 }

@@ -51,9 +51,7 @@ export class RegisterPage {
     this.renderer.addClass(document.body,"bodyWhite")
   }
 
-  ngOnDestroy(){
-    this.renderer.removeClass(document.body,"bodyWhite")
-  }
+
 
   onSubmit(){
     this.validateForm();
@@ -199,7 +197,11 @@ export class RegisterPage {
             classAlert : "show",
             text : "¡"+userData.userName+" se ha creado exitosamente tu cuenta!",
             textButton : "Continuar",
-            redirect : ()=>{this.router.navigate(['/photoProfile'])}
+            redirect : ()=>{
+              localStorage.setItem('idUser', userId);
+              console.log(userId);
+              this.router.navigate(['/photoProfile'])
+            }
           }
         })
         .catch();
@@ -214,4 +216,10 @@ export class RegisterPage {
   closeAlert(){
     this.dataAlert.classAlert = "hidde"
   }
+
+  ngOnDestroy(){
+    this.renderer.removeClass(document.body,"bodyWhite");
+    localStorage.removeItem('us');
+  }
+
 }

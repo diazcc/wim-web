@@ -1,7 +1,7 @@
-import { Component, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup, FormControl, UntypedFormArray } from '@angular/forms';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,7 +9,8 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss']
 })
-export class RegisterPage {
+export class RegisterPage implements OnInit, OnDestroy, AfterViewInit {
+  private subscription: Subscription = new Subscription();
   private arrayDataUser : any = [];
   classLoading = "hidde";
   formRegister : FormGroup;
@@ -46,13 +47,9 @@ export class RegisterPage {
   ngOnInit(){
     this.getUserData();
   }
-
   ngAfterViewInit(){
     this.renderer.addClass(document.body,"bodyWhite")
   }
-
-
-
   onSubmit(){
     this.validateForm();
   }
@@ -69,13 +66,10 @@ export class RegisterPage {
           this.textUserName = "Este usuario ya existe";
         } else {
           this.alertUserName = false;
-
         }
       })
     }
-    // Realiza las acciones que desees con el valor ingresado.
   }
-
   onInputChangeEmail(event: any) {
     const inputValue = event.target.value;
     const userEmail :any = [];
@@ -91,7 +85,6 @@ export class RegisterPage {
       })
     }
   }
-
 
 
   //-------------------validators
@@ -150,7 +143,6 @@ export class RegisterPage {
       this.alertPhoneNumber = false ;
       this.stateForm = true;
     }
-
     if (this.stateForm) {
       this.setData();
     }
@@ -158,14 +150,17 @@ export class RegisterPage {
   //gets y sets
   getUserData(){
     const arrayData : any  = [];
-    this.userService.getUserId().subscribe((response)=>{
+
+    const userIdSubs = this.userService.getUserId().subscribe((response)=>{
       response.map((value : any) =>{
-        this.userService.getUserData(value.id).subscribe((response)=>{
+        const dataUserSubs = this.userService.getUserData(value.id).subscribe((response)=>{
           arrayData.push(response[0]);
           this.arrayDataUser.push(response[0]);
         });
+        this.subscription.add(dataUserSubs);
       });
     });
+    this.subscription.add(userIdSubs);
   }
 
   getDataUserForm(){
@@ -204,22 +199,18 @@ export class RegisterPage {
             }
           }
         })
-        .catch();
-      });;
+      });
     })
     .catch((e)=>{
       console.log(e);
     });
-
   }
   // dataAlert
   closeAlert(){
     this.dataAlert.classAlert = "hidde"
   }
-
   ngOnDestroy(){
     this.renderer.removeClass(document.body,"bodyWhite");
-    localStorage.removeItem('us');
+    this.subscription.unsubscribe();
   }
-
 }

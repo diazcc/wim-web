@@ -13,9 +13,4 @@
     <input type="file" style="display: none;" (change)="loadArchive($event)" #fileInput>
   </form>
 </main>
-
-
-<!-- <div>
-  <img src="/assets/svg/media-black.svg" (click)="abrirSelectorDeArchivo()">
-</div>
-<input type="file" style="display: none;" (change)="cargarArchivo($event)" #fileInput> -->
+<app-load-view [classLoading]="classLoading"></app-load-view>

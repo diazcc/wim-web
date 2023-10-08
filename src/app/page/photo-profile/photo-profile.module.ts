@@ -4,6 +4,7 @@ import { PhotoProfilePage } from './photo-profile.page';
 import { PhotoProfileRoutingModule } from './photo-profile-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 
 
@@ -15,7 +16,8 @@ import { UserService } from 'src/app/services/user.service';
     CommonModule,
     PhotoProfileRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ComponentsModule
   ],
   providers:[
     UserService

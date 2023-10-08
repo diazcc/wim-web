@@ -4,6 +4,7 @@ import { RegisterPage } from './register.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { RegisterRoutingModule } from './register-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 
 
@@ -17,7 +18,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ComponentsModule,
     RegisterRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+  ],
+  providers:[
+    UserService
   ]
 })
 export class RegisterModule { }

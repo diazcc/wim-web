@@ -71,6 +71,11 @@ export class UserService {
       const docRef = doc(collectionRef,'dataDescription');
       return setDoc(docRef, data);
     }
+    setDataPresentation(id :any, data: any){
+      const collectionRef : any = collection(this.firestore,"user/"+id+"/profileData");
+      const docRef = doc(collectionRef,'dataPresentation');
+      return setDoc(docRef, data);
+    }
     createUserIdandSetData(){
       const  dataEmpty = {}
       const collectionRef = collection(this.firestore, 'user');

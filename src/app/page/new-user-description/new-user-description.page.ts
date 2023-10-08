@@ -35,11 +35,11 @@ export class NewUserDescriptionPage {
     .then((response:any)=>{
       console.log(response);
       this.classLoading = "hidde";
-      this.router.navigate(['/profileUser']);
+      this.router.navigate(['/presentation']);
     });
   }
   redirect(){
-    this.router.navigate(['/profileUser']);
+    this.router.navigate(['/presentation']);
   }
   ngOnDestroy(){
     this.renderer.removeClass(document.body, 'bodyWhite')

@@ -1,1 +1,11 @@
-<p>new-description works!</p>
+<main class="wrapperDescription">
+  <h1 class="titleDescription">WIM</h1>
+  <h2 class="subTitleDescription">Quieres añadir alguna presentacion?</h2>
+  <form class="formDescription" (ngSubmit)="onSubmit()" [formGroup]="descriptionForm">
+    <p class="titleText">Cuantos años tienes?</p>
+    <textarea  class="inputDescription" name="" id="" maxlength="40" formControlName="textDescription" placeholder="Quieres decir algo?"></textarea>
+    <input type="submit" value="Continuar" class="submitInput">
+  </form>
+  <button class="omit" (click)="redirect()">Omitir</button>
+</main>
+<app-load-view [classLoading]="classLoading"></app-load-view>

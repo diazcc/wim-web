@@ -54,7 +54,7 @@ export class UserService {
 
     getUserData(id : any) : Observable <any>{
       const collectionRef = collection(this.firestore,"user/"+id+"/userData");
-      return collectionData(collectionRef, {idField : 'id'}) as Observable<any>;
+      return collectionData(collectionRef) as Observable<any>;
     }
 
     // getToken() : Observable<boolean>{

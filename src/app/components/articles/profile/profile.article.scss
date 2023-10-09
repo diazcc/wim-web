@@ -49,6 +49,10 @@
         background-color: #9C7159;
         color: white;
         font-weight: bold;
+        &--edit{
+          background-color: #9c715900;
+          border: 1px solid white;
+        }
       }
     }
     .contentDmProfile{

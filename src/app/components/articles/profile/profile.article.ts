@@ -10,11 +10,25 @@ export class ProfileArticle {
   stateContentInformation : boolean = false;
   stateContentLinks : boolean = false;
   @Output() arrayDataChange = new EventEmitter<boolean[]>();
+
+  dataProfile = {
+    userName : "User Name",
+    clickFolloEdit : ()=>{
+      console.log("folo");
+    },
+    textFolloEdit : "Editar",
+    classFolloEdit : "edit",
+    textPresentation : "Soy  Díaz, creador de esta app. Aquí podrás concerme a mi y mis servicios como desarrollador",
+    dataContentInformation : {
+      age : "--",
+      locate : "--",
+      hobbies : "--",
+      skills : "--"
+    }
+  }
   constructor(
     private router : Router
-  ){
-
-  }
+  ){}
   redirectDm(){
     this.router.navigate(['/dm']);
   }

@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class ProfilePersonalPage {
   @ViewChild('swiperWime', { static: false }) swiperWime!: ElementRef;
   @ViewChild('elementoDeseado') elementoDeseado!: ElementRef;
+  private idUser : any =  "";
   classShare = "";
   stateComment : boolean = false;
   stateColorBackGround : number = 0;
@@ -88,6 +89,8 @@ export class ProfilePersonalPage {
   }
   ngOnInit(){
     window.scrollTo({top: 0,behavior: 'smooth',})
+    this.idUser = localStorage.getItem('idUser');
+    console.log(this.idUser);
   }
 
   // windows validators
@@ -197,6 +200,9 @@ export class ProfilePersonalPage {
   this.dataNavBar.imgMore ="more";
   this.dataNavBar.imgSearch ="search";
  }
+
+
+
 
 
 

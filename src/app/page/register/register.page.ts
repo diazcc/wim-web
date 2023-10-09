@@ -15,12 +15,14 @@ export class RegisterPage implements OnInit, OnDestroy, AfterViewInit {
   classLoading = "hidde";
   formRegister : FormGroup;
   alertUserName : boolean = false;
+  alertName : boolean = false;
   alertPassword : boolean = false;
   alertEmail : boolean = true;
   alertEmailConfirm : boolean = false;
   alertPhoneNumber : boolean = false;
   stateForm : boolean = false;
   textUserName  = "";
+  textName  = "";
   textPassword  = "";
   textEmail  = "";
   textEmailConfirm  = "";
@@ -37,6 +39,7 @@ export class RegisterPage implements OnInit, OnDestroy, AfterViewInit {
     private userService : UserService
   ){
     this.formRegister = new FormGroup({
+      name : new FormControl(),
       userName : new FormControl(),
       password : new FormControl(),
       email : new FormControl(),
@@ -55,6 +58,19 @@ export class RegisterPage implements OnInit, OnDestroy, AfterViewInit {
   }
   // listeners
 
+  onInputChangeName(event: any) {
+    const specialCharactersRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\``|,.<>\/?]+/;
+    const numbersRegex = /[0-9]/;
+    if (specialCharactersRegex.test(event.target.value) || numbersRegex.test(event.target.value)) {
+      console.log('El valor contiene caracteres especiales y números.');
+      this.alertName = true;
+      this.textName = "Tu nombre no debe contener caracteres especiales o numeros";
+
+    } else {
+      this.alertName = false;
+    }
+
+  }
   onInputChangeUserName(event: any) {
     const inputValue = event.target.value;
     const userNames :any = [];
@@ -109,6 +125,16 @@ export class RegisterPage implements OnInit, OnDestroy, AfterViewInit {
       this.alertUserName = false ;
       this.stateForm = true;
     }
+    // name
+    if (this.formRegister.value.name=="" || this.formRegister.value.name==null) {
+      this.stateForm = false;
+      this.alertUserName = true;
+      this.textUserName = "El campo esta vacio";
+    } else {
+      this.stateForm = true;
+      this.alertUserName = false;
+    }
+
     //password
     if(this.formRegister.value.password == "" || this.formRegister.value.password == null) {
       this.stateForm = false;
@@ -165,10 +191,12 @@ export class RegisterPage implements OnInit, OnDestroy, AfterViewInit {
 
   getDataUserForm(){
     const userData = {
+      name :  this.formRegister.value?.name,
       userName : this.formRegister.value?.userName,
       phoneNumber : this.formRegister.value?.phoneNumber,
       userEmail : this.formRegister.value?.email
     }
+    console.log(userData);
     return userData;
   }
   setData(){

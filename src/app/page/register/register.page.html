@@ -14,6 +14,18 @@
       >
     <p *ngIf="alertUserName" class="errorInput">{{textUserName}}</p>
 
+    <label for="userName" class="labelRegister textColor">Nombre publico</label>
+    <input
+      type="text"
+      class="inputLabel"
+      id="name"
+      formControlName="name"
+      maxlength="20"
+      placeholder="Fulano Tal"
+      (input)="onInputChangeName($event)"
+      >
+    <p *ngIf="alertName" class="errorInput">{{textName}}</p>
+
     <label for="password" class="labelRegister textColor">Contraseña</label>
     <input type="password" class="inputLabel" id="password" formControlName="password">
     <p *ngIf="alertPassword" class="errorInput">{{textPassword}}</p>

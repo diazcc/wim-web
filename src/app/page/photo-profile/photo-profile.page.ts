@@ -39,13 +39,9 @@ export class PhotoProfilePage {
     const userDataSubs = this.userServices.getUserData(this.idUser).subscribe((response:any)=>{
       this.subscriptions.add(userDataSubs);
       console.log(response[0]);
-      const data = {
-        userName : response[0].userName,
-        userEmail :response[0].userEmail,
-        phoneNumber : response[0].phoneNumber,
-        urlImg : this.urlImg
-      }
-      console.log(data.urlImg);
+      const data = response[0];
+      data['urlImg'] = this.urlImg;
+      console.log(data);
       this.userServices.addDataUser(this.idUser, data)
       .then(()=>{
         this.classLoading ="hidde";

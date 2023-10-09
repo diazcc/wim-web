@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-content-information-profile',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./content-information-profile.section.scss']
 })
 export class ContentInformationProfileSection {
-
+  @Input() dataContentInformation = {
+    age : "--",
+    locate : "--",
+    hobbies : "--",
+    skills : "--"
+  }
 }

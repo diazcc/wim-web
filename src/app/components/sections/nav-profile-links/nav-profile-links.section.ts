@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-nav-profile-links',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-profile-links.section.scss']
 })
 export class NavProfileLinksSection {
-
+  @Input() dataLinks = [
+    {
+      nameLink : "",
+      urlLink : "",
+      urlImg : ""
+    }
+  ]
 }

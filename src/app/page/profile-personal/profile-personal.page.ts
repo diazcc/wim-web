@@ -16,6 +16,29 @@ export class ProfilePersonalPage {
   stateComment : boolean = false;
   stateColorBackGround : number = 0;
   classAllComments = "hidde";
+  dataProfile = {
+    userName : "User Name",
+    urlImg : "/assets/img/default.png",
+    clickFolloEdit : ()=>{
+      console.log("folo");
+    },
+    textFolloEdit : "Editar",
+    classFolloEdit : "edit",
+    textPresentation : "Soy  Díaz, creador de esta app. Aquí podrás concerme a mi y mis servicios como desarrollador",
+    dataContentInformation : {
+      age : "--",
+      locate : "--",
+      hobbies : "--",
+      skills : "--"
+    },
+    dataLinks : [
+      {
+        nameLink : "empty",
+        urlLink : "https://www.instagram.com/",
+        urlImg : "/assets/img/foto.png"
+      }
+    ]
+  }
   dataMenuSide = {
     classMenu : "hidde",
     reportProblem : () =>{},
@@ -91,6 +114,7 @@ export class ProfilePersonalPage {
     window.scrollTo({top: 0,behavior: 'smooth',})
     this.idUser = localStorage.getItem('idUser');
     console.log(this.idUser);
+    this.getDataUserProfile();
   }
 
   // windows validators
@@ -201,9 +225,27 @@ export class ProfilePersonalPage {
   this.dataNavBar.imgSearch ="search";
  }
 
+//gets
+ getDataUserProfile(){
+  this.userServices.getUserData(this.idUser).subscribe((response:any)=>{
+    let data = {}
+    response.map((value:any)=>{
+      data = {
+        userName: value.userName,
+        name :  value.name,
+        urlImg : value.urlImg
+      }
+    })
+    console.log(data);
 
+    this.setDataUserProfile(data);
+  });
+ }
 
-
+ setDataUserProfile(data : any){
+  this.dataProfile.userName = data.userName;
+  this.dataProfile.urlImg = data.urlImg;
+ }
 
 
 

@@ -1,32 +1,11 @@
 <swiper-container class="contentNavProfileContacts" slides-per-view="3" spaceBetween="54">
-  <swiper-slide class="cardContact">
-    <img src="/assets/img/foto.png" class="contentCard">
-    <p>
-      Instagram
-    </p>
-  </swiper-slide>
-  <swiper-slide class="cardContact">
-    <img src="/assets/img/foto.png" class="contentCard">
-    <p>
-      Facebook
-    </p>
-  </swiper-slide>
-  <swiper-slide class="cardContact">
-    <img src="/assets/img/foto.png" class="contentCard">
-    <p>
-      Twitch
-    </p>
-  </swiper-slide>
-  <swiper-slide class="cardContact">
-    <img src="/assets/img/foto.png" class="contentCard">
-    <p>
-      Twitch
-    </p>
-  </swiper-slide>
-  <swiper-slide class="cardContact">
-    <img src="/assets/img/foto.png" class="contentCard">
-    <p>
-      Twitch
-    </p>
+  <swiper-slide class="cardContact" *ngFor="let item of dataLinks">
+    <a [href]="item.urlLink" class="content" target="_blank">
+      <img [src]="item.urlImg" class="contentCard">
+      <p class="nameLink">
+        {{item.nameLink}}
+      </p>
+    </a>
   </swiper-slide>
 </swiper-container>
+

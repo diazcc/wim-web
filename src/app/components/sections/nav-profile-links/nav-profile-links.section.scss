@@ -12,12 +12,20 @@
     align-items: center;
     flex-direction: column;
     gap: .3rem;
-    .contentCard{
-      width: 3.5rem;
-      height: 3.5rem;
-      background-color: rgba(255, 255, 255, 0.193);
-      border-radius: 50%;
-      object-fit: cover;
+    .content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .contentCard{
+        width: 3.5rem;
+        height: 3.5rem;
+        background-color: rgba(255, 255, 255, 0.193);
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .nameLink{
+        color: white;
+      }
     }
   }
 }

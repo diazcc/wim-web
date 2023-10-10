@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,21 +10,27 @@ export class ProfileArticle {
   stateContentInformation : boolean = false;
   stateContentLinks : boolean = false;
   @Output() arrayDataChange = new EventEmitter<boolean[]>();
-
-  dataProfile = {
-    userName : "User Name",
-    clickFolloEdit : ()=>{
-      console.log("folo");
-    },
-    textFolloEdit : "Editar",
-    classFolloEdit : "edit",
-    textPresentation : "Soy  Díaz, creador de esta app. Aquí podrás concerme a mi y mis servicios como desarrollador",
+// FALTA LOS DATOS DE LINKS
+  @Input() dataProfile = {
+    userName : "",
+    urlImg : "",
+    clickFolloEdit : ()=>{},
+    textFolloEdit : "",
+    classFolloEdit : "",
+    textPresentation : "",
     dataContentInformation : {
       age : "--",
       locate : "--",
       hobbies : "--",
       skills : "--"
-    }
+    },
+    dataLinks : [
+      {
+        nameLink : "",
+        urlLink : "",
+        urlImg : ""
+      }
+    ]
   }
   constructor(
     private router : Router

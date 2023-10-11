@@ -112,7 +112,7 @@ export class ProfilePersonalPage {
   }
   ngOnInit(){
     window.scrollTo({top: 0,behavior: 'smooth',})
-    this.idUser = localStorage.getItem('idUser');
+    this.idUser = localStorage.getItem('uid');
     console.log(this.idUser);
     this.getDataUserProfile();
   }

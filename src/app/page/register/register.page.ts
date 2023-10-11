@@ -177,12 +177,17 @@ export class RegisterPage implements OnInit, OnDestroy, AfterViewInit {
   getUserData(){
     const arrayData : any  = [];
 
-    const userIdSubs = this.userService.getUserId().subscribe((response)=>{
+    const userIdSubs = this.userService.getUserId().subscribe((response:any)=>{
+      console.log(response);
       response.map((value : any) =>{
+      console.log(value);
+
         const dataUserSubs = this.userService.getUserData(value.id).subscribe((response)=>{
           arrayData.push(response[0]);
           this.arrayDataUser.push(response[0]);
         });
+      console.log(arrayData);
+
         this.subscription.add(dataUserSubs);
       });
     });
@@ -209,11 +214,13 @@ export class RegisterPage implements OnInit, OnDestroy, AfterViewInit {
       phoneNumber : this.formRegister.value.phoneNumber,
     }
     this.userService.register(userData.email, userData.password)
-    .then(()=>{
-      this.userService.createUserIdandSetData()
-      .then((response)=>{
-        userId = response?.id;
-        this.userService.addDataUser(response?.id,this.getDataUserForm())
+    .then((response:any)=>{
+      console.log(response.user.uid);
+      const userId = response.user.uid;
+      this.userService.createUserIdandSetData(response.user.uid)
+      .then((response : any)=>{
+        console.log(response);
+        this.userService.addDataUser(userId,this.getDataUserForm())
         .then(()=>{
           this.classLoading = "hidde";
           this.dataAlert = {
@@ -221,8 +228,7 @@ export class RegisterPage implements OnInit, OnDestroy, AfterViewInit {
             text : "¡"+userData.userName+" se ha creado exitosamente tu cuenta!",
             textButton : "Continuar",
             redirect : ()=>{
-              localStorage.setItem('idUser', userId);
-              console.log(userId);
+              localStorage.setItem('uid', userId);
               this.router.navigate(['/photoProfile'])
             }
           }

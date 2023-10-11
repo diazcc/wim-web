@@ -16,7 +16,7 @@ export class PhotoProfilePage {
   private subscriptions : Subscription = new Subscription();
 
   urlImg = "/assets/img/default.png";
-  private idUser : any =  "";
+  private userId : any =  "";
   private field : any;
 
   constructor(
@@ -28,21 +28,21 @@ export class PhotoProfilePage {
 
   ngOnInit(){
     this.renderer.addClass(document.body, 'bodyWhite')
-    this.idUser = localStorage.getItem('idUser');
-    console.log(this.idUser);
+    this.userId = localStorage.getItem('uid');
+    console.log(this.userId);
   }
 
   onSubmit() {
     this.classLoading = "show";
-    console.log(this.idUser);
+    console.log(this.userId);
     console.log(this.urlImg);
-    const userDataSubs = this.userServices.getUserData(this.idUser).subscribe((response:any)=>{
+    const userDataSubs = this.userServices.getUserData(this.userId).subscribe((response:any)=>{
       this.subscriptions.add(userDataSubs);
       console.log(response[0]);
       const data = response[0];
       data['urlImg'] = this.urlImg;
       console.log(data);
-      this.userServices.addDataUser(this.idUser, data)
+      this.userServices.addDataUser(this.userId, data)
       .then(()=>{
         this.classLoading ="hidde";
         this.subscriptions.unsubscribe();

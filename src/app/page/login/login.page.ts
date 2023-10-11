@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 
 export class Login {
+  classLoading = "hidde";
   classContent = "";
   classImg = "hidde";
   classDescription = "hidde";
@@ -33,6 +34,7 @@ export class Login {
   }
 
   ngOnInit(){
+    localStorage.removeItem('uid');
     setTimeout(() => {
       this.classImg = "show";
     }, 1700);
@@ -73,7 +75,9 @@ export class Login {
 
   login(){
     this.userServices.login(this.formLogin.value.email, this.formLogin.value.password)
-    .then(()=>{
+    .then((response :any)=>{
+      console.log(response.user.uid);
+      localStorage.setItem('uid' ,response.user.uid);
       this.router.navigate(['/profileUser'])
     })
     .catch((e : any)=>{

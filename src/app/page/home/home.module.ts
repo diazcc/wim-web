@@ -4,6 +4,7 @@ import { HomePage } from './home.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { register } from 'swiper/element/bundle';
+import { NavbarComponentsModule } from 'src/app/components/navbars/navbar-components.module';
 register();
 
 
@@ -15,7 +16,8 @@ register();
   imports: [
     CommonModule,
     ComponentsModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    NavbarComponentsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

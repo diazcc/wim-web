@@ -4,6 +4,7 @@ import { NewDescriptionPage } from './new-description.page';
 import { NewDescriptionRoutingModule } from './new-description-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComponentsAlertsModule } from 'src/app/components/alterts/components-alerts.module';
 
 
 
@@ -16,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NewDescriptionRoutingModule,
     ComponentsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ComponentsAlertsModule
   ]
 })
 export class NewDescriptionModule { }

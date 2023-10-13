@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SearchPage } from './search.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { SearchRoutingModule } from './search-routing.module';
+import { NavbarComponentsModule } from 'src/app/components/navbars/navbar-components.module';
 
 
 
@@ -13,7 +14,8 @@ import { SearchRoutingModule } from './search-routing.module';
   imports: [
     CommonModule,
     ComponentsModule,
-    SearchRoutingModule
+    SearchRoutingModule,
+    NavbarComponentsModule
   ]
 })
 export class SearchModule { }

@@ -28,8 +28,8 @@ export class NewDescriptionPage {
     this.classLoading = "show";
     console.log(this.descriptionForm.value);
     const dataPresentation = this.descriptionForm.value;
-    console.log(localStorage.getItem('idUser'));
-    this.userServices.setDataPresentation(localStorage.getItem('idUser'),dataPresentation)
+    console.log(localStorage.getItem('uid'));
+    this.userServices.setDataPresentation(localStorage.getItem('uid'),dataPresentation)
     .then((response:any)=>{
       console.log(response);
       this.classLoading = "hidde";

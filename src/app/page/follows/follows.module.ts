@@ -4,6 +4,7 @@ import { FollowsPage } from './follows.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { FollowsRoutingModule } from './follows-routing.module';
 import { register } from 'swiper/element/bundle';
+import { NavbarComponentsModule } from 'src/app/components/navbars/navbar-components.module';
 register();
 
 
@@ -14,7 +15,8 @@ register();
   imports: [
     CommonModule,
     ComponentsModule,
-    FollowsRoutingModule
+    FollowsRoutingModule,
+    NavbarComponentsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

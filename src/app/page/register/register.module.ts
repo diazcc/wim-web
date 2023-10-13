@@ -5,6 +5,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { RegisterRoutingModule } from './register-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { ComponentsAlertsModule } from 'src/app/components/alterts/components-alerts.module';
 
 
 
@@ -19,6 +20,7 @@ import { UserService } from 'src/app/services/user.service';
     RegisterRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    ComponentsAlertsModule
   ],
   providers:[
     UserService

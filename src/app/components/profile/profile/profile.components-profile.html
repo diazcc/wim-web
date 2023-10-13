@@ -1,0 +1,28 @@
+<article class="contentDescriptionProfile">
+  <ul class="presentationProfile">
+    <li class="contentImg">
+      <section class="shadow"></section>
+      <a class="img">
+        <img [src]="dataProfile.urlImg" alt="">
+      </a>
+    </li>
+    <li class="contentProfile">
+      <p class="name">{{dataProfile.userName}}</p>
+      <button [class]="'followButton followButton--'+dataProfile.classFolloEdit" (click)="dataProfile.clickFolloEdit()">{{dataProfile.textFolloEdit}}</button>
+      <p class="description">{{dataProfile.textPresentation}} </p>
+    </li>
+    <!-- <app-icon-dm class="contentDmProfile"></app-icon-dm> -->
+  </ul>
+  <section class="bodyProfile">
+    <ul class="navProfile">
+      <li class="buttonRedirect-NavProfile" (click)="setContentInformation()" appClickOutsideDirective (arrayDataChange)="handleArrayDataChange($event)">Informacion</li>
+      <li class="buttonRedirect-NavProfile" (click)="setContentLinks()">Redes sociales</li>
+      <li class="buttonRedirect-NavProfile" (click)="redirectContentUser()">Mi contenido</li>
+    </ul>
+    <app-description-profile *ngIf="stateContentInformation" [dataContentInformation]="dataProfile.dataContentInformation"></app-description-profile>
+    <app-links *ngIf="stateContentLinks" [dataLinks]="dataProfile.dataLinks"></app-links>
+    <button class="buttonWimes">
+      Wimes
+    </button>
+  </section>
+</article>

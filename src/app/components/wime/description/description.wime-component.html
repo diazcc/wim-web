@@ -1,0 +1,23 @@
+<section class="descriptionWime">
+  <span class="shadow"></span>
+  <a class="firstSectionDescriptionWime">
+    <ul class="contentInformationWime">
+      <li class="informationWime">
+        <img src="/assets/svg/like.svg" alt="" class="icon">
+        <p>123</p>
+      </li>
+      <li class="informationWime" (click)="dataDescription.openComment()">
+        <img src="/assets/svg/comentario.svg" alt="" class="icon">
+        <p>123</p>
+      </li>
+    </ul>
+    <img src="/assets/svg/compartir.svg" alt="" class="icon--big" (click)="dataDescription.openShare()">
+  </a>
+  <ul class="secondSectionDescriptionWime">
+    <li class="contentInput contentInput--hidde">
+      <input type="text" class="coment">
+      <img src="/assets/svg/arriba.svg" alt="" class="icon">
+    </li>
+    <!-- <app-icon-dm [classDm]="classDmWime"></app-icon-dm> -->
+  </ul>
+</section>

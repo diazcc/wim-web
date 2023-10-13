@@ -4,6 +4,10 @@ import { ProfilePersonalPage } from './profile-personal.page';
 import { ProfilePersonalRoutingModule } from './profile-personal-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { register } from 'swiper/element/bundle';
+import { WimeComponentsModule } from 'src/app/components/wime/wime-components.module';
+import { NavbarComponentsModule } from 'src/app/components/navbars/navbar-components.module';
+import { OptionComponentsModule } from 'src/app/components/options/option-components.module';
+import { ProfileComponentsModule } from 'src/app/components/profile/profile-components.module';
 register();
 
 
@@ -14,7 +18,11 @@ register();
   imports: [
     CommonModule,
     ProfilePersonalRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    WimeComponentsModule,
+    NavbarComponentsModule,
+    OptionComponentsModule,
+    ProfileComponentsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

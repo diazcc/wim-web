@@ -4,38 +4,47 @@
   <main class="wrapper" >
     <swiper-container class="swiper-container" direction = "vertical" id="swiper-wime" #swiperWime >
       <swiper-slide class="swiper-slide" >
-        <app-profile class="wime" [dataProfile]="dataProfile"></app-profile>
+        <app-profiled  class="wime" [dataProfile]="dataProfile"></app-profiled>
       </swiper-slide>
+      <!-- <swiper-slide class="swiper-slide" >
+        <app-profile  class="wime" [dataProfile]="dataProfile"></app-profile>
+      </swiper-slide> -->
       <swiper-slide lazy="true" class="swiper-slide">
-        <app-wimes class="wime"
+        <app-wime class="wime"
         [dataDescription]="dataDescription"
         [dataOpenSettings]="dataOpenSettings"
-        ></app-wimes>
+        ></app-wime>
       </swiper-slide>
       <swiper-slide lazy="true" class="swiper-slide">
-        <app-wimes class="wime"
+        <app-wime class="wime"
         [dataDescription]="dataDescription"
         [dataOpenSettings]="dataOpenSettings"
-        ></app-wimes>
+        ></app-wime>
       </swiper-slide>
       <swiper-slide lazy="true" class="swiper-slide">
-        <app-wimes class="wime"
+        <app-wime class="wime"
         [dataDescription]="dataDescription"
         [dataOpenSettings]="dataOpenSettings"
-        ></app-wimes>
+        ></app-wime>
+      </swiper-slide>
+      <swiper-slide lazy="true" class="swiper-slide">
+        <app-wime class="wime"
+        [dataDescription]="dataDescription"
+        [dataOpenSettings]="dataOpenSettings"
+        ></app-wime>
       </swiper-slide>
     </swiper-container>
-    <app-options-wimes [dataSettingWime]="dataSettingWime"></app-options-wimes>
+    <app-options-wime [dataSettingWime]="dataSettingWime"></app-options-wime>
   </main>
 </section>
-<app-all-comments [class]="'allComments allComments--'+ classAllComments"
+<app-all-comments
+  [class]="'allComments allComments--'+ classAllComments"
   [classAllComments]="classAllComments"
   [dataAllComments]="dataAllComments"
-  id="fatherAllComments"
-  >
+  id="fatherAllComments">
 </app-all-comments>
 <app-share [classShare]="classShare"></app-share>
 <app-new-post-option [classNewPostOptions]="classNewPostOptions"></app-new-post-option>
-<app-navbar   [dataNavBar]="dataNavBar"></app-navbar>
+<app-navbar [dataNavBar]="dataNavBar"></app-navbar>
 
 

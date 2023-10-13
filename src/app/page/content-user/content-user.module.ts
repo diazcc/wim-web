@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ContentUserPage } from './content-user.page';
 import { ContentUserRoutingModule } from './content-user-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { NavbarComponentsModule } from 'src/app/components/navbars/navbar-components.module';
 
 
 
@@ -13,7 +14,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
   imports: [
     CommonModule,
     ContentUserRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    NavbarComponentsModule
   ]
 })
 export class ContentUserModule { }

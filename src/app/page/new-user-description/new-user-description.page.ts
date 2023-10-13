@@ -30,8 +30,8 @@ export class NewUserDescriptionPage {
     this.classLoading = "show";
     console.log(this.descriptionForm.value);
     const dataDescription = this.descriptionForm.value;
-    console.log(localStorage.getItem('idUser'));
-    this.userServices.setDataDescription(localStorage.getItem('idUser'),dataDescription)
+    console.log(localStorage.getItem('uid'));
+    this.userServices.setDataDescription(localStorage.getItem('uid'),dataDescription)
     .then((response:any)=>{
       console.log(response);
       this.classLoading = "hidde";

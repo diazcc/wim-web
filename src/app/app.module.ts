@@ -21,7 +21,6 @@ import { SearchModule } from './page/search/search.module';
 import { RegisterModule } from './page/register/register.module';
 import { NewUserDescriptionModule } from './page/new-user-description/new-user-description.module';
 import { PhotoProfileModule } from './page/photo-profile/photo-profile.module';
-import { NewDescriptionPage } from './page/new-description/new-description.page';
 import { NewDescriptionModule } from './page/new-description/new-description.module';
 
 @NgModule({

@@ -5,6 +5,7 @@ import { PhotoProfileRoutingModule } from './photo-profile-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { ComponentsAlertsModule } from 'src/app/components/alterts/components-alerts.module';
 
 
 
@@ -17,7 +18,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     PhotoProfileRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    ComponentsModule
+    ComponentsModule,
+    ComponentsAlertsModule
   ],
   providers:[
     UserService

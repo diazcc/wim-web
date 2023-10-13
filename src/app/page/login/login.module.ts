@@ -4,6 +4,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { Login } from './login.page';
 import { LoginRoutingModule } from './login-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComponentsAlertsModule } from 'src/app/components/alterts/components-alerts.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ComponentsModule,
     LoginRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ComponentsAlertsModule
   ]
 })
 export class LoginModule { }

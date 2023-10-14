@@ -4,6 +4,7 @@ import { ProfileComponentsProfile } from './profile/profile.components-profile';
 import { DescriptionComponentsProfile } from './description/description.components-profile';
 import { LinksComponentsProfile } from './links/links.components-profile';
 import { register } from 'swiper/element';
+import { ButtonComponentsModule } from '../buttons/button-components.module';
 
 register();
 
@@ -15,7 +16,8 @@ register();
     LinksComponentsProfile
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ButtonComponentsModule
   ],
   exports:[
     ProfileComponentsProfile,

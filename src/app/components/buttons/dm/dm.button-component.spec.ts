@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PostSection } from './post.section';
+import { DmButtonComponent } from './dm.button-component';
 
-describe('PostSection', () => {
-  let component: PostSection;
-  let fixture: ComponentFixture<PostSection>;
+describe('DmButtonComponent', () => {
+  let component: DmButtonComponent;
+  let fixture: ComponentFixture<DmButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PostSection ]
+      declarations: [ DmButtonComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PostSection);
+    fixture = TestBed.createComponent(DmButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

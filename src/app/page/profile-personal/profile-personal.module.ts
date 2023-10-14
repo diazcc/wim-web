@@ -2,7 +2,6 @@ import { CUSTOM_ELEMENTS_SCHEMA,NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfilePersonalPage } from './profile-personal.page';
 import { ProfilePersonalRoutingModule } from './profile-personal-routing.module';
-import { ComponentsModule } from 'src/app/components/components.module';
 import { register } from 'swiper/element/bundle';
 import { WimeComponentsModule } from 'src/app/components/wime/wime-components.module';
 import { NavbarComponentsModule } from 'src/app/components/navbars/navbar-components.module';
@@ -19,7 +18,6 @@ register();
   imports: [
     CommonModule,
     ProfilePersonalRoutingModule,
-    ComponentsModule,
     WimeComponentsModule,
     NavbarComponentsModule,
     OptionComponentsModule,

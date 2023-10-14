@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-icon-dm',
-  templateUrl: './icon-dm.card.html',
-  styleUrls: ['./icon-dm.card.scss']
+  selector: 'app-dm',
+  templateUrl: './dm.button-component.html',
+  styleUrls: ['./dm.button-component.scss']
 })
-export class IconDmCard {
+export class DmButtonComponent {
   constructor(
     private router : Router
   ){}

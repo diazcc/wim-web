@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { WimeWimeComponent } from './wime/wime.wime-component';
 import { DescriptionWimeComponent } from './description/description.wime-component';
 import { HeaderWimeComponent } from './header/header.wime-component';
+import { ButtonComponentsModule } from '../buttons/button-components.module';
 
 
 
@@ -13,7 +14,8 @@ import { HeaderWimeComponent } from './header/header.wime-component';
     HeaderWimeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ButtonComponentsModule
   ],
   exports:[
     WimeWimeComponent,

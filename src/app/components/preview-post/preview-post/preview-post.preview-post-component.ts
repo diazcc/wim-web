@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-post-image',
-  templateUrl: './post-image.card.html',
-  styleUrls: ['./post-image.card.scss']
+  selector: 'app-preview-post',
+  templateUrl: './preview-post.preview-post-component.html',
+  styleUrls: ['./preview-post.preview-post-component.scss']
 })
-export class PostImageCard {
+export class PreviewPostPreviewPostComponent {
   constructor(
     private router : Router
   ){}

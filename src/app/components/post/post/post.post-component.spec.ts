@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PostImageCard } from './post-image.card';
+import { PostPostComponent } from './post.post-component';
 
-describe('PostImageCard', () => {
-  let component: PostImageCard;
-  let fixture: ComponentFixture<PostImageCard>;
+describe('PostPostComponent', () => {
+  let component: PostPostComponent;
+  let fixture: ComponentFixture<PostPostComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PostImageCard ]
+      declarations: [ PostPostComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PostImageCard);
+    fixture = TestBed.createComponent(PostPostComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

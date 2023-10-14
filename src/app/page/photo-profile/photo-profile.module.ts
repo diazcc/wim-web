@@ -4,7 +4,6 @@ import { PhotoProfilePage } from './photo-profile.page';
 import { PhotoProfileRoutingModule } from './photo-profile-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
-import { ComponentsModule } from 'src/app/components/components.module';
 import { ComponentsAlertsModule } from 'src/app/components/alterts/components-alerts.module';
 
 
@@ -18,7 +17,6 @@ import { ComponentsAlertsModule } from 'src/app/components/alterts/components-al
     PhotoProfileRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    ComponentsModule,
     ComponentsAlertsModule
   ],
   providers:[

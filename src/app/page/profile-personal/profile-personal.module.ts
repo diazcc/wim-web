@@ -8,6 +8,7 @@ import { WimeComponentsModule } from 'src/app/components/wime/wime-components.mo
 import { NavbarComponentsModule } from 'src/app/components/navbars/navbar-components.module';
 import { OptionComponentsModule } from 'src/app/components/options/option-components.module';
 import { ProfileComponentsModule } from 'src/app/components/profile/profile-components.module';
+import { ComponentsCommentsModule } from 'src/app/components/comments/components-comments.module';
 register();
 
 
@@ -22,7 +23,8 @@ register();
     WimeComponentsModule,
     NavbarComponentsModule,
     OptionComponentsModule,
-    ProfileComponentsModule
+    ProfileComponentsModule,
+    ComponentsCommentsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

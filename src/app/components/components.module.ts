@@ -1,7 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA,NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AllCommentsSection } from './sections/all-comments/all-comments.section';
-import { CardCommentCard } from './cards/card-comment/card-comment.card';
 import { PostSection } from './sections/post/post.section';
 import { IconDmCard } from './cards/icon-dm/icon-dm.card';
 import { CardChatCard } from './cards/card-chat/card-chat.card';
@@ -14,20 +12,16 @@ register();
 
 @NgModule({
   declarations: [
-    AllCommentsSection,
-    CardCommentCard,
     PostSection,
     IconDmCard,
     CardChatCard,
     PostImageCard,
-    ClickOutsideDirectiveDirective,
+    ClickOutsideDirectiveDirective
   ],
   imports: [
     CommonModule
   ],
   exports:[
-    AllCommentsSection,
-    CardCommentCard,
     PostSection,
     IconDmCard,
     CardChatCard,

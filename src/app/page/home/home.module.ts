@@ -5,6 +5,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { register } from 'swiper/element/bundle';
 import { NavbarComponentsModule } from 'src/app/components/navbars/navbar-components.module';
+import { WimeComponentsModule } from 'src/app/components/wime/wime-components.module';
 register();
 
 
@@ -17,7 +18,8 @@ register();
     CommonModule,
     ComponentsModule,
     HomeRoutingModule,
-    NavbarComponentsModule
+    NavbarComponentsModule,
+    WimeComponentsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

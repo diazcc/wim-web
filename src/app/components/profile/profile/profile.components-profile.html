@@ -7,8 +7,8 @@
       </a>
     </li>
     <li class="contentProfile">
-      <p class="name">{{dataProfile.userName}}</p>
-      <button [class]="'followButton followButton--'+dataProfile.classFolloEdit" (click)="dataProfile.clickFolloEdit()">{{dataProfile.textFolloEdit}}</button>
+      <p  #followButton [class]="'name name--'+classUserName">{{dataProfile.userName}}</p>
+      <button  [class]="'followButton followButton--'+dataProfile.classFolloEdit" (click)="dataProfile.clickFolloEdit()">{{dataProfile.textFolloEdit}}</button>
       <p class="description">{{dataProfile.textPresentation}} </p>
     </li>
     <app-dm class="contentDmProfile"></app-dm>

@@ -57,6 +57,18 @@ export class UserService {
       return collectionData(collectionRef) as Observable<any>;
     }
 
+    getDescriptionProfile(id : any) : Observable <any>{
+      const collectionRef = collection(this.firestore,"user/"+id+"/profileData");
+      const docRef = doc(collectionRef,'dataDescription');
+      return docData(docRef) as Observable<any>;
+    }
+
+    getDataPresentation(id : any) : Observable <any>{
+      const collectionRef = collection(this.firestore,"user/"+id+"/profileData");
+      const docRef = doc(collectionRef,'dataPresentation');
+      return docData(docRef) as Observable<any>;
+    }
+
     // getToken() : Observable<boolean>{
     //   console.log(authState(this.auth));
     //   return authState(this.auth).pipe(

@@ -59,8 +59,11 @@ export class ProfilePersonalPage {
     redirectSearch:()=>{},
     redirectUndefined : ()=>{}
   }
-  dataMenu= {
-    setMenu: ()=>{this.openMenu()}
+  dataHeader = {
+    userName : "WIM",
+    countFollowers : "22S",
+    countFollowing : "212",
+    setMenu : ()=>{this.openMenu()},
   }
   dataSettingWime = {
     classSetting :"hidde",
@@ -115,6 +118,8 @@ export class ProfilePersonalPage {
     this.idUser = localStorage.getItem('uid');
     console.log(this.idUser);
     this.getDataUserProfile();
+    this.getDataDescriptionPerfil();
+    this.getDataPresentation();
   }
 
   // windows validators
@@ -243,8 +248,36 @@ export class ProfilePersonalPage {
  }
 
  setDataUserProfile(data : any){
-  this.dataProfile.userName = data.userName;
+  this.dataProfile.userName = data.name;
   this.dataProfile.urlImg = data.urlImg;
+  this.dataHeader.userName = data.userName;
+ }
+
+ getDataDescriptionPerfil(){
+  this.userServices.getDescriptionProfile(this.idUser).subscribe((response:any)=>{
+    console.log(response);
+    this.setDataDescriptionPerfil(response);
+  });
+ }
+
+ setDataDescriptionPerfil(data:any){
+  this.dataProfile.dataContentInformation = {
+    age : data.age,
+    locate : data.locate,
+    hobbies : data.hobbies,
+    skills : data.skills
+  }
+ }
+
+ getDataPresentation(){
+  this.userServices.getDataPresentation(this.idUser).subscribe((response : any )=>{
+    console.log(response);
+    this.setDataPresentation(response);
+  });
+ }
+
+ setDataPresentation(data:any){
+  this.dataProfile.textPresentation = data.textDescription;
  }
 
 

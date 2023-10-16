@@ -38,8 +38,11 @@
       margin-right: auto;
       .name{
         color: white;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         font-weight: bold;
+        &--small{
+          font-size: 1rem;
+        }
       }
       .followButton{
         width: 4rem;
@@ -54,6 +57,10 @@
           background-color: #9c715900;
           border: 1px solid white;
         }
+
+      }
+      .description{
+        width: 100%;
       }
     }
     .contentDmProfile{

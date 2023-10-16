@@ -1,14 +1,14 @@
 <header class="headerProfile">
   <article class="haderContent">
-    <h3 class="nameLeftHeader" (click)="redirectPerfil()">diazcc</h3>
+    <h3 class="nameLeftHeader" (click)="redirectPerfil()" #userName>{{dataHeader.userName}}</h3>
     <ul class="descriptionContentNav" (click)="redirectViewFollows()">
-      <h3 class="secondContentHeader">Seguidores</h3>
-      <p class="secondContentDescription">123</p>
+      <h3 class="secondContentHeader" *ngIf="stateFollowers">Seguidores</h3>
+      <p class="secondContentDescription">{{dataHeader.countFollowers}}</p>
     </ul>
     <ul class="descriptionContentNav" (click)="redirectViewFollows()">
-      <h3 class="secondContentHeader">Seguidos</h3>
-      <p class="secondContentDescription">123</p>
+      <h3 class="secondContentHeader" *ngIf="stateFollowing">Seguidos</h3>
+      <p class="secondContentDescription">{{dataHeader.countFollowing}}</p>
     </ul>
-    <img src="/assets/svg/menu.svg" alt="" class="iconMenu" (click)="dataMenu.setMenu()">
+    <img src="/assets/svg/menu.svg" alt="" class="iconMenu" (click)="dataHeader.setMenu()">
   </article>
 </header>
